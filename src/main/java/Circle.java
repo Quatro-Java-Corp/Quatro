@@ -22,16 +22,10 @@ public final class Circle implements Figure{
     }
 
     public enum ConstructorType {
-        surfaceArea(0),
-        circuit(1),
-        diameter(2),
-        radius(3);
-
-        private final int value;
-
-        private ConstructorType(int value) {
-            this.value = value;
-        }
+        surfaceArea,
+        circuit,
+        diameter,
+        radius;
 
     }
 

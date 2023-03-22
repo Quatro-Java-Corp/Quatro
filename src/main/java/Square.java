@@ -4,15 +4,9 @@ public final class Square implements Figure{
     private double surfaceArea;
 
     public enum ConstructorType {
-        surfaceArea(0),
-        diagonalLength(1),
-        sideLength(2);
-
-        private final int value;
-
-        private ConstructorType(int value) {
-            this.value = value;
-        }
+        surfaceArea,
+        diagonalLength,
+        sideLength;
     }
 
 
