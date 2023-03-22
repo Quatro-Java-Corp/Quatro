@@ -1,20 +1,18 @@
 public final class Circle implements Figure{
-    private double circuit;
-    private double diameter;
     private double radius;
-    private double surfaceArea;
+
 
     @Override
     public double getSurfaceArea() {
-        return surfaceArea;
+        return radius * radius * Math.PI;
     }
 
     public double getCircuit() {
-        return circuit;
+        return radius * 2 * Math.PI;
     }
 
     public double getDiameter() {
-        return diameter;
+        return radius * 2;
     }
 
     public double getRadius() {
@@ -32,10 +30,10 @@ public final class Circle implements Figure{
     @Override
     public String toString() {
         return "Circle{" +
-                "circuit=" + circuit +
-                ", diameter=" + diameter +
+                "circuit=" +  String.valueOf(getCircuit()) +
+                ", diameter=" + String.valueOf(getDiameter()) +
                 ", radius=" + radius +
-                ", surfaceArea=" + surfaceArea +
+                ", surfaceArea=" + String.valueOf(getSurfaceArea()) +
                 '}';
     }
 
@@ -44,29 +42,16 @@ public final class Circle implements Figure{
         if(value < 0) throw new Exception("Value cannot be negative.");
         switch(which) {
             case surfaceArea:
-
-                this.surfaceArea = value;
-                this.radius =  Math.pow(surfaceArea / Math.PI,0.5 );
-                this.diameter = radius * 2;
-                this.circuit = diameter * Math.PI;
+                this.radius =  Math.pow(value / Math.PI,0.5 );
                 break;
             case circuit:
-                this.circuit = value;
-                this.diameter = circuit / Math.PI;
-                this.radius = diameter / 2;
-                this.surfaceArea = radius * radius * Math.PI;
+                this.radius = value / Math.PI / 2;
                 break;
             case diameter:
-                this.diameter = value;
-                this.radius = diameter /2;
-                this.circuit = diameter * Math.PI;
-                this.surfaceArea = radius * radius * Math.PI;
+                this.radius = value /2;
                 break;
             case radius :
                 this.radius = value;
-                this.diameter = radius * 2;
-                this.circuit = diameter * Math.PI;
-                this.surfaceArea = radius * radius * Math.PI;
-        }
+                }
     }
 }
