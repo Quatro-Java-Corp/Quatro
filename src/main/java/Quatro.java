@@ -5,7 +5,7 @@ public class Quatro {
             System.out.println(sqr.toString());
             Circle crc = new Circle(4, Circle.ConstructorType.radius);
             System.out.println(crc.toString());
-        }catch (Exception e){
+        } catch (Exception e) {
             System.out.println(e.getMessage());
         }
 

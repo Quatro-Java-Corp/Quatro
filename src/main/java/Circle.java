@@ -1,4 +1,4 @@
-public final class Circle implements Figure{
+public final class Circle implements Figure {
     private double radius;
 
 
@@ -20,38 +20,30 @@ public final class Circle implements Figure{
     }
 
     public enum ConstructorType {
-        surfaceArea,
-        circuit,
-        diameter,
-        radius;
+        surfaceArea, circuit, diameter, radius;
 
     }
 
     @Override
     public String toString() {
-        return "Circle{" +
-                "circuit=" +  String.valueOf(getCircuit()) +
-                ", diameter=" + String.valueOf(getDiameter()) +
-                ", radius=" + radius +
-                ", surfaceArea=" + String.valueOf(getSurfaceArea()) +
-                '}';
+        return "Circle{" + "circuit=" + String.valueOf(getCircuit()) + ", diameter=" + String.valueOf(getDiameter()) + ", radius=" + radius + ", surfaceArea=" + String.valueOf(getSurfaceArea()) + '}';
     }
 
     public Circle(double value, ConstructorType which) throws Exception {
 
-        if(value < 0) throw new Exception("Value cannot be negative.");
-        switch(which) {
+        if (value < 0) throw new Exception("Value cannot be negative.");
+        switch (which) {
             case surfaceArea:
-                this.radius =  Math.pow(value / Math.PI,0.5 );
+                this.radius = Math.pow(value / Math.PI, 0.5);
                 break;
             case circuit:
                 this.radius = value / Math.PI / 2;
                 break;
             case diameter:
-                this.radius = value /2;
+                this.radius = value / 2;
                 break;
-            case radius :
+            case radius:
                 this.radius = value;
-                }
+        }
     }
 }
