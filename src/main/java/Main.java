@@ -7,6 +7,7 @@ public class Main {
             String input = scanner.nextLine();
             String[] inputArgs = input.split(" ");
             if (inputArgs.length == 1 && inputArgs[0].equals("exit")) {
+                scanner.close();
                 System.exit(0);
             }
             if (inputArgs.length == 3) {
@@ -46,4 +47,3 @@ public class Main {
         };
     }
 }
-
