@@ -19,6 +19,8 @@ public class Main {
                                 new Circle(Double.parseDouble(inputArgs[2]), convertCircleInputType(inputArgs[1])).toString();
                         default -> "Unknown figure name";
                     });
+                } catch (NumberFormatException e) {
+                    System.out.println("Value must be a number.");
                 } catch (Exception e) {
                     System.out.println(e.getMessage());
                 }
