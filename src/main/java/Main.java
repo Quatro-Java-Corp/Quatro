@@ -13,10 +13,8 @@ public class Main {
             if (inputArgs.length == 3) {
                 try {
                     System.out.println(switch (inputArgs[0]) {
-                        case "Square" ->
-                                new Square(Double.parseDouble(inputArgs[2]), convertSquareInputType(inputArgs[1])).toString();
-                        case "Circle" ->
-                                new Circle(Double.parseDouble(inputArgs[2]), convertCircleInputType(inputArgs[1])).toString();
+                        case "Square" -> convertSquareInputType(inputArgs[1], Double.parseDouble(inputArgs[2]));
+                        case "Circle" -> convertCircleInputType(inputArgs[1], Double.parseDouble(inputArgs[2]));
                         default -> "Unknown figure name";
                     });
                 } catch (NumberFormatException e) {
@@ -30,21 +28,21 @@ public class Main {
         }
     }
 
-    private static Circle.ConstructorType convertCircleInputType(String type) throws Exception {
+    private static Circle convertCircleInputType(String type, double value) throws Exception {
         return switch (type) {
-            case "area" -> Circle.ConstructorType.surfaceArea;
-            case "circuit" -> Circle.ConstructorType.circuit;
-            case "diameter" -> Circle.ConstructorType.diameter;
-            case "radius" -> Circle.ConstructorType.radius;
+            case "area" -> Circle.withSurfaceArea(value);
+            case "circuit" -> Circle.withCircuit(value);
+            case "diameter" -> Circle.withDiameter(value);
+            case "radius" -> Circle.withRadius(value);
             default -> throw new Exception("Unknown type");
         };
     }
 
-    private static Square.ConstructorType convertSquareInputType(String type) throws Exception {
+    private static Square convertSquareInputType(String type, double value) throws Exception {
         return switch (type) {
-            case "area" -> Square.ConstructorType.surfaceArea;
-            case "diagonal" -> Square.ConstructorType.diagonalLength;
-            case "side" -> Square.ConstructorType.sideLength;
+            case "area" -> Square.withSurfaceArea(value);
+            case "diagonal" -> Square.withDiagonalLength(value);
+            case "side" -> Square.withSideLength(value);
             default -> throw new Exception("Unknown type");
         };
     }

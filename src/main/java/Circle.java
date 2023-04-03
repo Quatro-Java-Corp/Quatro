@@ -18,10 +18,6 @@ public final class Circle implements Figure {
         return radius;
     }
 
-    public enum ConstructorType {
-        surfaceArea, circuit, diameter, radius
-    }
-
     @Override
     public String toString() {
         return "Circle{" +
@@ -32,13 +28,35 @@ public final class Circle implements Figure {
                 '}';
     }
 
-    public Circle(double value, ConstructorType which) throws Exception {
-        if (value < 0) throw new Exception("Value cannot be negative.");
-        radius = switch (which) {
-            case surfaceArea -> Math.pow(value / Math.PI, 0.5);
-            case circuit -> value / Math.PI / 2;
-            case diameter -> value / 2;
-            case radius -> value;
-        };
+    private Circle(double radius) {
+        this.radius = radius;
+    }
+
+    public static Circle withSurfaceArea(double surfaceArea) {
+        if (surfaceArea < 0) {
+            throw new IllegalArgumentException("Negative surface area");
+        }
+        return new Circle(Math.pow(surfaceArea / Math.PI, 0.5));
+    }
+
+    public static Circle withRadius(double radius) {
+        if (radius < 0) {
+            throw new IllegalArgumentException("Negative radius");
+        }
+        return new Circle(radius);
+    }
+
+    public static Circle withDiameter(double diameter) {
+        if (diameter < 0) {
+            throw new IllegalArgumentException("Negative diameter");
+        }
+        return new Circle(diameter / 2);
+    }
+
+    public static Circle withCircuit(double circuit) {
+        if (circuit < 0) {
+            throw new IllegalArgumentException("Negative surface area");
+        }
+        return new Circle(circuit / Math.PI / 2);
     }
 }

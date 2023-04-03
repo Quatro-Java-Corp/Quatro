@@ -1,10 +1,6 @@
 public final class Square implements Figure {
     private final double sideLength;
 
-    public enum ConstructorType {
-        surfaceArea, diagonalLength, sideLength
-    }
-
     @Override
     public String toString() {
         return "Square{" +
@@ -27,12 +23,28 @@ public final class Square implements Figure {
         return sideLength * Math.pow(2, 0.5);
     }
 
-    public Square(double value, ConstructorType which) throws Exception {
-        if (value < 0) throw new Exception("Value cannot be negative.");
-        sideLength = switch (which) {
-            case surfaceArea -> Math.pow(value, 0.5);
-            case diagonalLength -> Math.pow(value * value / 2, 0.5);
-            case sideLength -> value;
-        };
+    private Square(double sideLength) {
+        this.sideLength = sideLength;
+    }
+
+    public static Square withSideLength(double sideLength) {
+        if (sideLength < 0) {
+            throw new IllegalArgumentException("Negative side length");
+        }
+        return new Square(sideLength);
+    }
+
+    public static Square withDiagonalLength(double diagonalLength) {
+        if (diagonalLength < 0) {
+            throw new IllegalArgumentException("Negative diagonal length");
+        }
+        return new Square(Math.pow(diagonalLength * diagonalLength / 2, 0.5));
+    }
+
+    public static Square withSurfaceArea(double surfaceArea) {
+        if (surfaceArea < 0) {
+            throw new IllegalArgumentException("Negative surface area");
+        }
+        return new Square(Math.pow(surfaceArea, 0.5));
     }
 }
