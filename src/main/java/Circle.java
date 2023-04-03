@@ -18,16 +18,6 @@ public final class Circle implements Figure {
         return radius;
     }
 
-    @Override
-    public String toString() {
-        return "Circle{" +
-                "circuit=" + getCircuit() +
-                ", diameter=" + getDiameter() +
-                ", radius=" + radius +
-                ", surfaceArea=" + getSurfaceArea() +
-                '}';
-    }
-
     private Circle(double radius) {
         this.radius = radius;
     }
@@ -58,5 +48,15 @@ public final class Circle implements Figure {
             throw new IllegalArgumentException("Negative surface area");
         }
         return new Circle(circuit / Math.PI / 2);
+    }
+
+    @Override
+    public String toString() {
+        return "Circle{" +
+                "circuit=" + getCircuit() +
+                ", diameter=" + getDiameter() +
+                ", radius=" + radius +
+                ", surfaceArea=" + getSurfaceArea() +
+                '}';
     }
 }

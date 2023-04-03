@@ -2,15 +2,6 @@ public final class Square implements Figure {
     private final double sideLength;
 
     @Override
-    public String toString() {
-        return "Square{" +
-                "sideLength=" + sideLength +
-                ", diagonalLength=" + getDiagonalLength() +
-                ", surfaceArea=" + getSurfaceArea() +
-                '}';
-    }
-
-    @Override
     public double getSurfaceArea() {
         return sideLength * sideLength;
     }
@@ -46,5 +37,14 @@ public final class Square implements Figure {
             throw new IllegalArgumentException("Negative surface area");
         }
         return new Square(Math.pow(surfaceArea, 0.5));
+    }
+
+    @Override
+    public String toString() {
+        return "Square{" +
+                "sideLength=" + sideLength +
+                ", diagonalLength=" + getDiagonalLength() +
+                ", surfaceArea=" + getSurfaceArea() +
+                '}';
     }
 }
