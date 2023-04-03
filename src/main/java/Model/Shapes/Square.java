@@ -1,4 +1,6 @@
-public final class Square implements Figure {
+package Model.Shapes;
+
+public final class Square implements RegularPolygon {
     private final double sideLength;
 
     public enum ConstructorType {
@@ -19,6 +21,7 @@ public final class Square implements Figure {
         return sideLength * sideLength;
     }
 
+    @Override
     public double getSideLength() {
         return sideLength;
     }

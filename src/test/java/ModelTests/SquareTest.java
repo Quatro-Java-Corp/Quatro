@@ -1,6 +1,11 @@
+package ModelTests;
+
+
 import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
+
+import Model.Shapes.Square;
 
 /**
  * Unit test for Square.

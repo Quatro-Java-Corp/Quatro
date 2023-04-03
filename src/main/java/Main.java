@@ -1,5 +1,8 @@
 import java.util.Scanner;
 
+import Model.Shapes.Circle;
+import Model.Shapes.Square;
+
 public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
@@ -40,7 +43,7 @@ public class Main {
         };
     }
 
-    private static Square.ConstructorType convertSquareInputType(String type) throws Exception {
+    private static Model.Shapes.Square.ConstructorType convertSquareInputType(String type) throws Exception {
         return switch (type) {
             case "area" -> Square.ConstructorType.surfaceArea;
             case "diagonal" -> Square.ConstructorType.diagonalLength;
