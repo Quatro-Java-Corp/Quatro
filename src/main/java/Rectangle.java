@@ -4,6 +4,23 @@ public class Rectangle implements Figure {
     private final double shortSideLength;
     private final double longSideLength;
 
+    public double getShortSideLength() {
+        return shortSideLength;
+    }
+
+    public double getLongSideLength() {
+        return longSideLength;
+    }
+
+    public double getDiagonalLength() {
+        return sqrt(pow(shortSideLength, 2) + pow(longSideLength, 2));
+    }
+
+    @Override
+    public double getSurfaceArea() {
+        return shortSideLength * longSideLength;
+    }
+
     private Rectangle(double shortSideLength, double longSideLength) {
         this.shortSideLength = shortSideLength;
         this.longSideLength = longSideLength;
@@ -51,24 +68,6 @@ public class Rectangle implements Figure {
         double val = sqrt(sqrt(pow(diagonalLength, 4) - 4 * pow(surfaceArea, 2)) + pow(diagonalLength, 2));
         return new Rectangle(abs(val / sqrt(2)), abs(sqrt(2) * surfaceArea / val)
         );
-    }
-
-
-    public double getShortSideLength() {
-        return shortSideLength;
-    }
-
-    public double getLongSideLength() {
-        return longSideLength;
-    }
-
-    public double getDiagonalLength() {
-        return sqrt(pow(shortSideLength, 2) + pow(longSideLength, 2));
-    }
-
-    @Override
-    public double getSurfaceArea() {
-        return shortSideLength * longSideLength;
     }
 
     @Override

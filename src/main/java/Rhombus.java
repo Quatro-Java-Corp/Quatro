@@ -4,6 +4,23 @@ public class Rhombus implements Figure {
     private final double shortDiagonalLength;
     private final double longDiagonalLength;
 
+    public double getShortDiagonalLength() {
+        return shortDiagonalLength;
+    }
+
+    public double getLongDiagonalLength() {
+        return longDiagonalLength;
+    }
+
+    public double getSideLength() {
+        return sqrt(pow(shortDiagonalLength, 2) + pow(longDiagonalLength, 2)) / 2;
+    }
+
+    @Override
+    public double getSurfaceArea() {
+        return shortDiagonalLength * longDiagonalLength / 2;
+    }
+
     private Rhombus(double shortDiagonalLength, double longDiagonalLength) {
         this.shortDiagonalLength = shortDiagonalLength;
         this.longDiagonalLength = longDiagonalLength;
@@ -50,23 +67,6 @@ public class Rhombus implements Figure {
         }
         double cos = sqrt(1 - pow(surfaceArea / pow(sideLength, 2), 2));
         return new Rhombus(sideLength * sqrt(2 + 2 * cos), sideLength * 2 * sqrt(2 - 2 * cos));
-    }
-
-    public double getShortDiagonalLength() {
-        return shortDiagonalLength;
-    }
-
-    public double getLongDiagonalLength() {
-        return longDiagonalLength;
-    }
-
-    public double getSideLength() {
-        return sqrt(pow(shortDiagonalLength, 2) + pow(longDiagonalLength, 2)) / 2;
-    }
-
-    @Override
-    public double getSurfaceArea() {
-        return shortDiagonalLength * longDiagonalLength / 2;
     }
 
     @Override
