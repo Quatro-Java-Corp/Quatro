@@ -38,3 +38,34 @@ Możliwe wejście
 * Średnica
 * Obwód
 * Pole powierzchni
+
+## Pracownia 2
+
+### Wymagania ogólne
+
+* Program ma umożliwić rozwiązywanie podstawowych zadań geometrycznych dla prostokąta i rombu
+* Ma wyświetlić pełne informacje o danej figurze, na podstawie zadanego wejścia
+
+#### Pracownia: Prostokąt
+
+Charakterystyka figury:
+* Długości krótszego i dłuższego boku
+* Długość przekątnej
+* Pole powierzchni
+
+Możliwe wejście: (dowolna dwójka):
+* Długości boków
+* Długość przekątnej
+* Pole powierzchni
+
+#### Pracownia: Romb
+
+Charakterystyka figury:
+* Długość boku
+* Długości krótszej i dłuższej przekątnej
+* Pole powierzchni
+
+Możliwe wejście: (dowolna dwójka):
+* Długość boku
+* Długości przekątnych
+* Pole powierzchni
