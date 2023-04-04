@@ -66,7 +66,7 @@ public class Rectangle implements Figure {
             throw new IllegalArgumentException("Values must be non-negative");
         }
         double val = sqrt(sqrt(pow(diagonalLength, 4) - 4 * pow(surfaceArea, 2)) + pow(diagonalLength, 2));
-        return new Rectangle(abs(val / sqrt(2)), abs(sqrt(2) * surfaceArea / val)
+        return new Rectangle(abs(sqrt(2) * surfaceArea / val), abs(val / sqrt(2))
         );
     }
 
