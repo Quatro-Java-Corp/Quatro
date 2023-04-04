@@ -26,6 +26,7 @@ public class Main {
                 try {
                     System.out.println(switch (inputArgs[0]) {
                         case "Rectangle" -> convertRectangleInputType(inputArgs[1], Double.parseDouble(inputArgs[2]), inputArgs[3], Double.parseDouble(inputArgs[4]));
+                        case "Rhombus" -> convertRhombusInputType(inputArgs[1], Double.parseDouble(inputArgs[2]), inputArgs[3], Double.parseDouble(inputArgs[4]));
                         default -> "Unknown figure name";
                     });
                 } catch (NumberFormatException e) {
@@ -72,6 +73,24 @@ public class Main {
             case "area|short-side" -> Rectangle.withShortSideAndSurfaceArea(value2, value1);
             case "area|long-side" -> Rectangle.withLongSideAndSurfaceArea(value2, value1);
             case "area|diagonal" -> Rectangle.withDiagonalAndSurfaceArea(value2, value1);
+            default -> throw new Exception("Unknown type");
+        };
+    }
+
+    private static Rhombus convertRhombusInputType(String type1, double value1, String type2, double value2) throws Exception {
+        return switch (type1+"|"+type2) {
+            case "short-diagonal|long-diagonal" -> Rhombus.withShortDiagonalAndLongDiagonal(value1, value2);
+            case "short-diagonal|side" -> Rhombus.withShortDiagonalAndSide(value1, value2);
+            case "short-diagonal|area" -> Rhombus.withShortDiagonalAndSurfaceArea(value1, value2);
+            case "long-diagonal|short-diagonal" -> Rhombus.withShortDiagonalAndLongDiagonal(value2, value1);
+            case "long-diagonal|side" -> Rhombus.withLongDiagonalAndSide(value1, value2);
+            case "long-diagonal|area" -> Rhombus.withLongDiagonalAndSurfaceArea(value1, value2);
+            case "side|short-diagonal" -> Rhombus.withShortDiagonalAndSide(value2, value1);
+            case "side|long-diagonal" -> Rhombus.withLongDiagonalAndSide(value2, value1);
+            case "side|area" -> Rhombus.withSideLengthAndSurfaceArea(value1, value2);
+            case "area|short-diagonal" -> Rhombus.withShortDiagonalAndSurfaceArea(value2, value1);
+            case "area|long-diagonal" -> Rhombus.withLongDiagonalAndSurfaceArea(value2, value1);
+            case "area|side" -> Rhombus.withSideLengthAndSurfaceArea(value2, value1);
             default -> throw new Exception("Unknown type");
         };
     }
