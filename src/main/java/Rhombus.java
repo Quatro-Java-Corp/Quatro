@@ -66,7 +66,7 @@ public class Rhombus implements Figure {
             throw new IllegalArgumentException("Values must be non-negative");
         }
         double cos = sqrt(1 - pow(surfaceArea / pow(sideLength, 2), 2));
-        return new Rhombus(sideLength * sqrt(2 + 2 * cos), sideLength * 2 * sqrt(2 - 2 * cos));
+        return new Rhombus(sideLength * sqrt(2 - 2 * cos), sideLength  * sqrt(2 + 2 * cos));
     }
 
     @Override
