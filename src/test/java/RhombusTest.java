@@ -12,7 +12,7 @@ public class RhombusTest {
     private final double LONG_DIAGONAL_VALUE = 8;
     private final double SHORT_DIAGONAL_VALUE = 6;
     private final double AREA_VALUE = 24;
-    private final double NEGATIVE_VALUE = -13.5;
+    private final double NEGATIVE_VALUE = 0;
 
     /**
      * Short Diagonal And Long Diagonal
@@ -106,5 +106,18 @@ public class RhombusTest {
     @Test(expected = Exception.class)
     public void shouldThrowExceptionAfterReceivingNegativeLongDiagonalLength() {
         Rhombus.withShortDiagonalAndLongDiagonal(SHORT_DIAGONAL_VALUE, NEGATIVE_VALUE);
+    }
+
+    /**
+     * Short Diagonal shorter than long Diagonal
+     */
+    @Test
+    public void shouldCreateRhombusWithShorterShortDiagonalThanLongDiagonal() {
+        Rhombus r = Rhombus.withShortDiagonalAndLongDiagonal(LONG_DIAGONAL_VALUE, SHORT_DIAGONAL_VALUE);
+
+        assertEquals(r.getSideLength(), SIDE_VALUE, DELTA);
+        assertEquals(r.getShortDiagonalLength(), SHORT_DIAGONAL_VALUE, DELTA);
+        assertEquals(r.getLongDiagonalLength(), LONG_DIAGONAL_VALUE, DELTA);
+        assertEquals(r.getSurfaceArea(), AREA_VALUE, DELTA);
     }
 }

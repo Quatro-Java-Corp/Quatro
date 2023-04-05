@@ -23,28 +23,28 @@ public final class Circle implements Figure {
     }
 
     public static Circle withSurfaceArea(double surfaceArea) {
-        if (surfaceArea < 0) {
+        if (surfaceArea <= 0) {
             throw new IllegalArgumentException("Negative surface area");
         }
         return new Circle(Math.pow(surfaceArea / Math.PI, 0.5));
     }
 
     public static Circle withRadius(double radius) {
-        if (radius < 0) {
+        if (radius <= 0) {
             throw new IllegalArgumentException("Negative radius");
         }
         return new Circle(radius);
     }
 
     public static Circle withDiameter(double diameter) {
-        if (diameter < 0) {
+        if (diameter <= 0) {
             throw new IllegalArgumentException("Negative diameter");
         }
         return new Circle(diameter / 2);
     }
 
     public static Circle withCircuit(double circuit) {
-        if (circuit < 0) {
+        if (circuit <= 0) {
             throw new IllegalArgumentException("Negative surface area");
         }
         return new Circle(circuit / Math.PI / 2);
