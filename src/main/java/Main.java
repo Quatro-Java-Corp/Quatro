@@ -46,7 +46,7 @@ public class Main {
             case "circuit" -> Circle.withCircuit(value);
             case "diameter" -> Circle.withDiameter(value);
             case "radius" -> Circle.withRadius(value);
-            default -> throw new Exception("Unknown combination of arguments for this figure");
+            default -> throw new Exception("Unknown combination of arguments for circle");
         };
     }
 
@@ -55,7 +55,7 @@ public class Main {
             case "area" -> Square.withSurfaceArea(value);
             case "diagonal" -> Square.withDiagonalLength(value);
             case "side" -> Square.withSideLength(value);
-            default -> throw new Exception("Unknown combination of arguments for this figure");
+            default -> throw new Exception("Unknown combination of arguments for square");
         };
     }
 
@@ -73,7 +73,7 @@ public class Main {
             case "area|short-side" -> Rectangle.withShortSideAndSurfaceArea(value2, value1);
             case "area|long-side" -> Rectangle.withLongSideAndSurfaceArea(value2, value1);
             case "area|diagonal" -> Rectangle.withDiagonalAndSurfaceArea(value2, value1);
-            default -> throw new Exception("Unknown combination of arguments for this figure");
+            default -> throw new Exception("Unknown combination of arguments for rectangle");
         };
     }
 
@@ -91,7 +91,7 @@ public class Main {
             case "area|short-diagonal" -> Rhombus.withShortDiagonalAndSurfaceArea(value2, value1);
             case "area|long-diagonal" -> Rhombus.withLongDiagonalAndSurfaceArea(value2, value1);
             case "area|side" -> Rhombus.withSideLengthAndSurfaceArea(value2, value1);
-            default -> throw new Exception("Unknown combination of arguments for this figure");
+            default -> throw new Exception("Unknown combination of arguments for rhombus");
         };
     }
 }

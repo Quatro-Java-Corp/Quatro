@@ -76,7 +76,7 @@ public class Rhombus implements Figure {
 
     @Override
     public String toString() {
-        return "Rectangle{" +
+        return "Rhombus{" +
                 "sideLength=" + getSideLength() +
                 ", shortDiagonalLength=" + shortDiagonalLength +
                 ", longDiagonalLength=" + longDiagonalLength +
