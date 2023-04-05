@@ -65,6 +65,11 @@ Charakterystyka figury:
 * Długości krótszej i dłuższej przekątnej
 * Pole powierzchni
 
+Możliwe wejście: (dowolna dwójka):
+* Długość boku
+* Długości przekątnych
+* Pole powierzchni
+
 ## Pracowania 3
 
 ### Wymagania ogólne
@@ -83,7 +88,3 @@ Możliwe wejście:
 * Pole powierzchni
 * Wysokość
 
-Możliwe wejście: (dowolna dwójka):
-* Długość boku
-* Długości przekątnych
-* Pole powierzchni
