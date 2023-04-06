@@ -23,8 +23,7 @@ public class InputHandler {
 
     private static ShapeService.ShapeName formatShapeName(String shapeName) throws Exception {
         try {
-            ShapeService.ShapeName name = ShapeService.ShapeName.valueOf(shapeName.toLowerCase());
-            return name;
+            return ShapeService.ShapeName.valueOf(shapeName.toLowerCase());
         } catch (IllegalArgumentException e) {
             throw new Exception(INVALID_SHAPE_NAME);
         }

@@ -4,22 +4,22 @@ public class ShapeService {
 
     public enum ShapeName {
         circle, square, rectangle, rhombus
-    };
+    }
 
     public enum ArgumentType {
         side, diagonal, area, radius, diameter, circuit
-    };
+    }
 
     public Figure createShape(
             ShapeName shapeName,
             List<ArgumentType> parametersNames,
             List<Double> parametersValues) throws Exception {
-        return (switch(shapeName) {
+        return switch(shapeName) {
             case circle -> convertCircleInputType(parametersNames, parametersValues);
             case square -> convertSquareInputType(parametersNames, parametersValues);
             case rectangle -> convertRectangleInputType(parametersNames, parametersValues);
             case rhombus -> convertRhombusInputType(parametersNames, parametersValues);
-        });
+        };
     }
 
     private static Circle convertCircleInputType(List<ArgumentType> paramsTypes, List<Double> paramsValues) throws Exception {
