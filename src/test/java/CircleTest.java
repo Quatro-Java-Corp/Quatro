@@ -1,6 +1,7 @@
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * Unit test for Circle.
@@ -69,32 +70,32 @@ public class CircleTest {
     /**
      * Checking exceptions caused by negative value of radius
      */
-    @Test(expected = Exception.class)
+    @Test
     public void shouldThrowExceptionAfterReceivingNegativeRadius() {
-        Circle.withRadius(NEGATIVE_VALUE);
+        assertThrows(Exception.class, () -> Circle.withRadius(NEGATIVE_VALUE));
     }
 
     /**
      * Checking exceptions caused by negative value of diameter
      */
-    @Test(expected = Exception.class)
+    @Test
     public void shouldThrowExceptionAfterReceivingNegativeDiameter() {
-        Circle.withDiameter(NEGATIVE_VALUE);
+        assertThrows(Exception.class, () -> Circle.withDiameter(NEGATIVE_VALUE));
     }
 
     /**
      * Checking exceptions caused by negative value of circut
      */
-    @Test(expected = Exception.class)
+    @Test
     public void shouldThrowExceptionAfterReceivingNegativeCircuit() {
-        Circle.withCircuit(NEGATIVE_VALUE);
+        assertThrows(Exception.class, () -> Circle.withCircuit(NEGATIVE_VALUE));
     }
 
     /**
      * Checking exceptions caused by negative value of surface area
      */
-    @Test(expected = Exception.class)
+    @Test
     public void shouldThrowExceptionAfterReceivingNegativeSurfaceArea() {
-        Circle.withSurfaceArea(NEGATIVE_VALUE);
+        assertThrows(Exception.class, () -> Circle.withSurfaceArea(NEGATIVE_VALUE));
     }
 }

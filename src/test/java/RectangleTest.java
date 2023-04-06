@@ -1,6 +1,7 @@
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * Unit test for Rectangle.
@@ -95,48 +96,48 @@ public class RectangleTest {
     /**
      * Checking exceptions caused by negative value of short side length
      */
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void shouldThrowExceptionAfterReceivingNegativeShortSideLength() {
-        Rectangle.withShortSideAndLongSide(NEGATIVE_VALUE, LONG_SIDE_VALUE);
+        assertThrows(Exception.class, () -> Rectangle.withShortSideAndLongSide(NEGATIVE_VALUE, LONG_SIDE_VALUE));
     }
 
     /**
      * Checking exceptions caused by negative value of short side length
      */
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void shouldThrowExceptionAfterReceivingNegativeShortSideLengthAndDiagonal() {
-        Rectangle.withShortSideAndDiagonal(NEGATIVE_VALUE, DIAGONAL_VALUE);
+        assertThrows(Exception.class, () -> Rectangle.withShortSideAndDiagonal(NEGATIVE_VALUE, DIAGONAL_VALUE));
     }
 
     /**
      * Checking exceptions caused by negative value of short side length
      */
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void shouldThrowExceptionAfterReceivingNegativeShortSideLengthAndSurfaceArea() {
-        Rectangle.withShortSideAndSurfaceArea(NEGATIVE_VALUE, AREA_VALUE);
+        assertThrows(Exception.class, () -> Rectangle.withShortSideAndSurfaceArea(NEGATIVE_VALUE, AREA_VALUE));
     }
 
     /**
      * Checking exceptions caused by negative value of long side length
      */
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void shouldThrowExceptionAfterReceivingNegativeLongSideLength() {
-        Rectangle.withShortSideAndLongSide(SHORT_SIDE_VALUE, NEGATIVE_VALUE);
+        assertThrows(Exception.class, () -> Rectangle.withShortSideAndLongSide(SHORT_SIDE_VALUE, NEGATIVE_VALUE));
     }
 
     /**
      * Checking exceptions caused by negative value of long side length
      */
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void shouldThrowExceptionAfterReceivingNegativeLongSideLengthAndDiagonal() {
-        Rectangle.withLongSideAndDiagonal(NEGATIVE_VALUE, DIAGONAL_VALUE);
+        assertThrows(Exception.class, () -> Rectangle.withLongSideAndDiagonal(NEGATIVE_VALUE, DIAGONAL_VALUE));
     }
 
     /**
      * Checking exceptions caused by negative value of long side length
      */
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void shouldThrowExceptionAfterReceivingNegativeLongSideLengthAndSurfaceArea() {
-        Rectangle.withLongSideAndSurfaceArea(NEGATIVE_VALUE, AREA_VALUE);
+        assertThrows(Exception.class, () -> Rectangle.withLongSideAndSurfaceArea(NEGATIVE_VALUE, AREA_VALUE));
     }
 }

@@ -1,6 +1,7 @@
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * Unit test for Square.
@@ -52,24 +53,24 @@ public class SquareTest {
     /**
      * Checking exceptions caused by negative value of side length
      */
-    @Test(expected = Exception.class)
+    @Test
     public void shouldThrowExceptionAfterReceivingNegativeSideLength() {
-        Square.withSideLength(NEGATIVE_VALUE);
+        assertThrows(Exception.class, () -> Square.withSideLength(NEGATIVE_VALUE));
     }
 
     /**
      * Checking exceptions caused by negative value of diagonal length
      */
-    @Test(expected = Exception.class)
+    @Test
     public void shouldThrowExceptionAfterReceivingNegativeDiagonaLength() {
-        Square.withDiagonalLength(NEGATIVE_VALUE);
+        assertThrows(Exception.class, () -> Square.withDiagonalLength(NEGATIVE_VALUE));
     }
 
     /**
      * Checking exceptions caused by negative value of surface area
      */
-    @Test(expected = Exception.class)
+    @Test
     public void shouldThrowExceptionAfterReceivingNegativeSurfaceArea() {
-        Square.withSurfaceArea(NEGATIVE_VALUE);
+        assertThrows(Exception.class, () -> Square.withSurfaceArea(NEGATIVE_VALUE));
     }
 }
