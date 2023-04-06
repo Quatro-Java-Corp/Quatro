@@ -69,3 +69,22 @@ Możliwe wejście: (dowolna dwójka):
 * Długość boku
 * Długości przekątnych
 * Pole powierzchni
+
+## Pracowania 3
+
+### Wymagania ogólne
+* Program ma umożliwić rozwiązywanie podstawowych zadań geometrycznych dla trójkąta równobocznego
+* Ma wyświetlić pełne informacje o danej figurze, na podstawie zadanego wejścia
+* Program ma umożliwić wyświetlenie informacji o wszystkich wprowadzonych figurach posortowanych wg pola powierzchni rosnąco
+
+#### Pracownia:Trójkąt równoboczny
+Charakterystyka figury
+* Długość boku
+* Pole powierzchni
+* Wysokość
+
+Możliwe wejście:
+* Długość boku
+* Pole powierzchni
+* Wysokość
+
