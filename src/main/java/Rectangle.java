@@ -22,47 +22,52 @@ public class Rectangle implements Figure {
     }
 
     private Rectangle(double shortSideLength, double longSideLength) {
-        this.shortSideLength = shortSideLength;
-        this.longSideLength = longSideLength;
+        if (shortSideLength > longSideLength) {
+            this.shortSideLength = longSideLength;
+            this.longSideLength = shortSideLength;
+        } else {
+            this.shortSideLength = shortSideLength;
+            this.longSideLength = longSideLength;
+        }
     }
 
     public static Rectangle withShortSideAndLongSide(double shortSideLength, double longSideLength) {
-        if (shortSideLength < 0 || longSideLength < 0) {
+        if (shortSideLength <= 0 || longSideLength <= 0) {
             throw new IllegalArgumentException("Values must be non-negative");
         }
         return new Rectangle(shortSideLength, longSideLength);
     }
 
     public static Rectangle withShortSideAndDiagonal(double shortSideLength, double diagonalLength) {
-        if (shortSideLength < 0 || diagonalLength < 0) {
+        if (shortSideLength <= 0 || diagonalLength <= 0) {
             throw new IllegalArgumentException("Values must be non-negative");
         }
         return new Rectangle(shortSideLength, sqrt(pow(diagonalLength, 2) - pow(shortSideLength, 2)));
     }
 
     public static Rectangle withShortSideAndSurfaceArea(double shortSideLength, double surfaceArea) {
-        if (shortSideLength < 0 || surfaceArea < 0) {
+        if (shortSideLength <= 0 || surfaceArea <= 0) {
             throw new IllegalArgumentException("Values must be non-negative");
         }
         return new Rectangle(shortSideLength, surfaceArea / shortSideLength);
     }
 
     public static Rectangle withLongSideAndDiagonal(double longSideLength, double diagonalLength) {
-        if (longSideLength < 0 || diagonalLength < 0) {
+        if (longSideLength <= 0 || diagonalLength <= 0) {
             throw new IllegalArgumentException("Values must be non-negative");
         }
         return new Rectangle(sqrt(pow(diagonalLength, 2) - pow(longSideLength, 2)), longSideLength);
     }
 
     public static Rectangle withLongSideAndSurfaceArea(double longSideLength, double surfaceArea) {
-        if (longSideLength < 0 || surfaceArea < 0) {
+        if (longSideLength <= 0 || surfaceArea <= 0) {
             throw new IllegalArgumentException("Values must be non-negative");
         }
         return new Rectangle(surfaceArea / longSideLength, longSideLength);
     }
 
     public static Rectangle withDiagonalAndSurfaceArea(double diagonalLength, double surfaceArea) {
-        if (diagonalLength < 0 || surfaceArea < 0) {
+        if (diagonalLength <= 0 || surfaceArea <= 0) {
             throw new IllegalArgumentException("Values must be non-negative");
         }
         double val = sqrt(sqrt(pow(diagonalLength, 4) - 4 * pow(surfaceArea, 2)) + pow(diagonalLength, 2));

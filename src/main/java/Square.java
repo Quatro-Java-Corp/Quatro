@@ -19,21 +19,21 @@ public final class Square implements Figure {
     }
 
     public static Square withSideLength(double sideLength) {
-        if (sideLength < 0) {
+        if (sideLength <= 0) {
             throw new IllegalArgumentException("Negative side length");
         }
         return new Square(sideLength);
     }
 
     public static Square withDiagonalLength(double diagonalLength) {
-        if (diagonalLength < 0) {
+        if (diagonalLength <= 0) {
             throw new IllegalArgumentException("Negative diagonal length");
         }
         return new Square(Math.pow(diagonalLength * diagonalLength / 2, 0.5));
     }
 
     public static Square withSurfaceArea(double surfaceArea) {
-        if (surfaceArea < 0) {
+        if (surfaceArea <= 0) {
             throw new IllegalArgumentException("Negative surface area");
         }
         return new Square(Math.pow(surfaceArea, 0.5));

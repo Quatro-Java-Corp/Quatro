@@ -139,4 +139,17 @@ public class RectangleTest {
     public void shouldThrowExceptionAfterReceivingNegativeLongSideLengthAndSurfaceArea() {
         Rectangle.withLongSideAndSurfaceArea(NEGATIVE_VALUE, AREA_VALUE);
     }
+
+    /**
+     * Short Side shorter than long side
+     */
+    @Test
+    public void shouldCreateRectangleWithShorterShortSideThanLongSide() {
+        Rectangle r = Rectangle.withShortSideAndLongSide(LONG_SIDE_VALUE, SHORT_SIDE_VALUE);
+
+        assertEquals(r.getShortSideLength(), SHORT_SIDE_VALUE, DELTA);
+        assertEquals(r.getLongSideLength(), LONG_SIDE_VALUE, DELTA);
+        assertEquals(r.getDiagonalLength(), DIAGONAL_VALUE, DELTA);
+        assertEquals(r.getSurfaceArea(), AREA_VALUE, DELTA);
+    }
 }
