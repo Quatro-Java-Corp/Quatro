@@ -1,4 +1,4 @@
-public final class Square implements Figure {
+public final class Square implements Shape {
     private final double sideLength;
 
     @Override

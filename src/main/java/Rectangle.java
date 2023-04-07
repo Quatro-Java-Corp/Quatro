@@ -1,6 +1,6 @@
 import static java.lang.Math.*;
 
-public class Rectangle implements Figure {
+public class Rectangle implements Shape {
     private final double shortSideLength;
     private final double longSideLength;
 

@@ -1,4 +1,4 @@
-public final class Circle implements Figure {
+public final class Circle implements Shape {
     private final double radius;
 
     @Override

@@ -4,7 +4,7 @@ import java.util.List;
 public class InputHandler {
 
     private final ShapeFactory shapeFactory = new ShapeFactory();
-    private final FigureRepository figureList = new FigureRepository();
+    private final ShapeRepository figureList = new ShapeRepository();
 
     private static final String INVALID_SHAPE_NAME = "Unknown figure name";
     private static final String INVALID_ARGUMENT_VALUE = "Value must be a positive number.";
@@ -17,12 +17,12 @@ public class InputHandler {
             if (args.length == 1 && args[0].equals("exit")) {
                 System.exit(0);
             } else if (args.length == 1 && args[0].equals("ShowFigures")) {
-                figureList.getFigures().forEach(System.out::println);
+                figureList.getShapes().forEach(System.out::println);
             } else {
                 try {
-                    Figure figure = createFigureWithArguments(args);
-                    figureList.addFigure(figure);
-                    System.out.println(figure.toString());
+                    Shape shape = createFigureWithArguments(args);
+                    figureList.addShape(shape);
+                    System.out.println(shape.toString());
                 } catch (Exception e) {
                     System.out.println(e.getMessage());
                 }
@@ -30,7 +30,7 @@ public class InputHandler {
         }
     }
 
-    public Figure createFigureWithArguments(String[] args) throws Exception {
+    public Shape createFigureWithArguments(String[] args) throws Exception {
         ShapeFactory.ShapeName shapeName = formatShapeName(args[0]);
         List<ShapeFactory.ArgumentType> argsTypes = getTypesFromArguments(args);
         List<Double> argsValues = getValuesFromArguments(args);

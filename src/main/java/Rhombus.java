@@ -1,6 +1,6 @@
 import static java.lang.Math.*;
 
-public class Rhombus implements Figure {
+public class Rhombus implements Shape {
     private final double shortDiagonalLength;
     private final double longDiagonalLength;
 

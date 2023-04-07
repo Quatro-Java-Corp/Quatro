@@ -1,4 +1,4 @@
 
-public interface Figure {
+public interface Shape {
     double getSurfaceArea();
 }
