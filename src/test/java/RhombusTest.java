@@ -1,6 +1,7 @@
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * Unit test for Rhombus.
@@ -95,17 +96,17 @@ public class RhombusTest {
     /**
      * Checking exceptions caused by negative value of short diagonal length
      */
-    @Test(expected = Exception.class)
+    @Test
     public void shouldThrowExceptionAfterReceivingNegativeShortDiagonalLength() {
-        Rhombus.withShortDiagonalAndLongDiagonal(NON_POSITIVE_VALUE, LONG_DIAGONAL_VALUE);
+        assertThrows(Exception.class, () -> Rhombus.withShortDiagonalAndLongDiagonal(NEGATIVE_VALUE, LONG_DIAGONAL_VALUE));
     }
 
     /**
      * Checking exceptions caused by negative value of long diagonal length
      */
-    @Test(expected = Exception.class)
+    @Test
     public void shouldThrowExceptionAfterReceivingNegativeLongDiagonalLength() {
-        Rhombus.withShortDiagonalAndLongDiagonal(SHORT_DIAGONAL_VALUE, NON_POSITIVE_VALUE);
+        assertThrows(Exception.class, () -> Rhombus.withShortDiagonalAndLongDiagonal(SHORT_DIAGONAL_VALUE, NEGATIVE_VALUE));
     }
 
     /**
