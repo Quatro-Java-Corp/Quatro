@@ -7,7 +7,7 @@ public class ShapeService {
     }
 
     public enum ArgumentType {
-        side, diagonal, area, radius, diameter, circuit , height
+        side, diagonal, area, radius, diameter, circuit, height
     }
 
     public Figure createShape(
