@@ -4,11 +4,31 @@ import java.util.List;
 public class InputHandler {
 
     private final ShapeFactory shapeFactory = new ShapeFactory();
+    private final FigureRepository figureList = new FigureRepository();
 
     private static final String INVALID_SHAPE_NAME = "Unknown figure name";
     private static final String INVALID_ARGUMENT_VALUE = "Value must be a positive number.";
     private static final String INVALID_ARGUMENT_TYPE = "Unknown argument name";
     private static final String INVALID_NUMBER_OF_ARGUMENTS = "Each argument type must have a value";
+
+    public void parseInput(String input) {
+        String[] args = input.split(" ");
+        if (args.length > 0) {
+            if (args.length == 1 && args[0].equals("exit")) {
+                System.exit(0);
+            } else if (args.length == 1 && args[0].equals("ShowFigures")) {
+                figureList.getFigures().forEach(System.out::println);
+            } else {
+                try {
+                    Figure figure = createFigureWithArguments(args);
+                    figureList.addFigure(figure);
+                    System.out.println(figure.toString());
+                } catch (Exception e) {
+                    System.out.println(e.getMessage());
+                }
+            }
+        }
+    }
 
     public Figure createFigureWithArguments(String[] args) throws Exception {
         ShapeFactory.ShapeName shapeName = formatShapeName(args[0]);
