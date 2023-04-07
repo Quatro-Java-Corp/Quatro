@@ -6,7 +6,7 @@ public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         InputHandler inputHandler = new InputHandler();
-        ArrayList<Figure> figueList = new ArrayList<Figure>();
+        ArrayList<Figure> figureList = new ArrayList<Figure>();
         while (true) {
             String input = scanner.nextLine();
             String[] inputArgs = input.split(" ");
@@ -15,14 +15,12 @@ public class Main {
                 System.exit(0);
             }
             if (inputArgs.length == 1 && inputArgs[0].equals("ShowFigures")) {
-                for (Figure f: figueList) {
-                    System.out.println(f.toString());
-                }
+                figureList.sort( (Figure a, Figure b) -> a.getSurfaceArea() < b.getSurfaceArea() ? -1 : 1);
+                figureList.forEach(System.out::println);
             } else
             try {
                 Figure figure = inputHandler.createFigureWithArguments(inputArgs);
-                figueList.add(figure);
-                Collections.sort(figueList, (Figure a, Figure b) -> a.getSurfaceArea() < b.getSurfaceArea() ? -1 : 1);
+                figureList.add(figure);
                 System.out.println(figure.toString());
             } catch (Exception e) {
                 System.out.println(e.getMessage());
