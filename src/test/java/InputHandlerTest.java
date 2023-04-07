@@ -24,7 +24,7 @@ public class InputHandlerTest {
     public void shouldCreateRectangleWithShortSideAndLongSideAndCalculateOtherParameters() throws Exception {
         String[] args = String.format("rectangle side %4f side %4f", SHORT_SIDE_VALUE, LONG_SIDE_VALUE).split(" ");
 
-        Rectangle r = assertDoesNotThrow(() -> (Rectangle) inputHandler.createFigureWithArguments(args) );
+        Rectangle r = assertDoesNotThrow(() -> (Rectangle) inputHandler.createFigureWithArguments(args));
         assertEquals(r.getShortSideLength(), SHORT_SIDE_VALUE, DELTA);
         assertEquals(r.getLongSideLength(), LONG_SIDE_VALUE, DELTA);
         assertEquals(r.getDiagonalLength(), DIAGONAL_VALUE, DELTA);
