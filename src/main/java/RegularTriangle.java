@@ -10,7 +10,7 @@ public class RegularTriangle implements Figure{
     }
 
 
-    public double getheight () {
+    public double getHeight () {
         return sideLength * pow(3, 0.5) / 2.0;
     }
 
@@ -29,7 +29,7 @@ public class RegularTriangle implements Figure{
         }
         return new RegularTriangle(side);
     }
-    public static RegularTriangle withheight(double height) {
+    public static RegularTriangle withHeight(double height) {
         if (height <= 0) {
             throw new IllegalArgumentException("Value must be positive");
         }
@@ -48,7 +48,7 @@ public class RegularTriangle implements Figure{
     public String toString() {
         return "RegularTriangle{" +
                 "sideLength=" + sideLength +
-                ", height=" + getheight() +
+                ", height=" + getHeight() +
                 ", surfaceArea=" + getSurfaceArea() +
                 '}';
     }

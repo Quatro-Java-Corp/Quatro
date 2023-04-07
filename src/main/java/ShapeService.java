@@ -102,7 +102,7 @@ public class ShapeService {
 
         return switch (paramsTypes.get(0)) {
             case area -> RegularTriangle.withSurfaceArea(value);
-            case height -> RegularTriangle.withheight(value);
+            case height -> RegularTriangle.withHeight(value);
             case side -> RegularTriangle.withSide(value);
             default -> throw new Exception("Unknown argument Type for regular triangle");
         };
