@@ -16,9 +16,7 @@ public class Main {
             }
             if (inputArgs.length == 1 && inputArgs[0].equals("ShowFigures")) {
                 figureList.sort( (Figure a, Figure b) -> a.getSurfaceArea() < b.getSurfaceArea() ? -1 : 1);
-                for (Figure f: figureList) {
-                    System.out.println(f.toString());
-                }
+                figureList.forEach(System.out::println);
             } else
             try {
                 Figure figure = inputHandler.createFigureWithArguments(inputArgs);
