@@ -3,11 +3,11 @@ import java.util.List;
 public class ShapeService {
 
     public enum ShapeName {
-        circle, square, rectangle, rhombus
+        circle, square, rectangle, rhombus, regulartriangle
     }
 
     public enum ArgumentType {
-        side, diagonal, area, radius, diameter, circuit
+        side, diagonal, area, radius, diameter, circuit , height
     }
 
     public Figure createShape(
@@ -19,6 +19,7 @@ public class ShapeService {
             case square -> convertSquareInputType(parametersNames, parametersValues);
             case rectangle -> convertRectangleInputType(parametersNames, parametersValues);
             case rhombus -> convertRhombusInputType(parametersNames, parametersValues);
+            case regulartriangle -> convertRegulartriangleInputType(parametersNames,parametersValues);
         };
     }
 
@@ -92,4 +93,19 @@ public class ShapeService {
             default -> throw new Exception("Unknown combination of arguments for rhombus");
         };
     }
+    private static RegularTriangle convertRegulartriangleInputType(List<ArgumentType> paramsTypes, List<Double> paramsValues) throws Exception {
+        if (paramsTypes.size() != 1) {
+            throw new Exception("Invalid number of arguments for regular triangle");
+        }
+
+        double value = paramsValues.get(0);
+
+        return switch (paramsTypes.get(0)) {
+            case area -> RegularTriangle.withSurfaceArea(value);
+            case height -> RegularTriangle.withheight(value);
+            case side -> RegularTriangle.withSide(value);
+            default -> throw new Exception("Unknown argument Type for regular triangle");
+        };
+    }
+
 }

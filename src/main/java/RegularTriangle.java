@@ -23,6 +23,12 @@ public class RegularTriangle implements Figure{
         this.sideLength = sideLength;
     }
 
+    public static RegularTriangle withSide(double side) {
+        if (side <= 0) {
+            throw new IllegalArgumentException("Side length must be positive");
+        }
+        return new RegularTriangle(side);
+    }
     public static RegularTriangle withheight(double height) {
         if (height <= 0) {
             throw new IllegalArgumentException("Value must be positive");
