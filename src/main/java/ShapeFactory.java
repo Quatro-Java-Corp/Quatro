@@ -1,6 +1,6 @@
 import java.util.List;
 
-public class ShapeService {
+public class ShapeFactory {
 
     public enum ShapeName {
         circle, square, rectangle, rhombus, regulartriangle
