@@ -13,5 +13,5 @@ jobs:
         with:
           java-version: '18'
           distribution: 'temurin'
-      - name: Run the Maven verify phase
+      - name: Run tests
         run: mvn --batch-mode --update-snapshots test
