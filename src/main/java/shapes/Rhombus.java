@@ -1,3 +1,5 @@
+package shapes;
+
 import static java.lang.Math.*;
 
 public class Rhombus implements Shape {
@@ -76,7 +78,7 @@ public class Rhombus implements Shape {
 
     @Override
     public String toString() {
-        return "Rhombus{" +
+        return "shapes.Rhombus{" +
                 "sideLength=" + getSideLength() +
                 ", shortDiagonalLength=" + shortDiagonalLength +
                 ", longDiagonalLength=" + longDiagonalLength +

@@ -1,3 +1,5 @@
+import shapes.Shape;
+
 import java.util.LinkedList;
 import java.util.List;
 

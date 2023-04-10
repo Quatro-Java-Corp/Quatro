@@ -1,3 +1,5 @@
+package shapes;
+
 import static java.lang.Math.*;
 
 public class Rectangle implements Shape {
@@ -76,7 +78,7 @@ public class Rectangle implements Shape {
 
     @Override
     public String toString() {
-        return "Rectangle{" +
+        return "shapes.Rectangle{" +
                 "shortSideLength=" + shortSideLength +
                 ", longSideLength=" + longSideLength +
                 ", diagonalLength=" + getDiagonalLength() +

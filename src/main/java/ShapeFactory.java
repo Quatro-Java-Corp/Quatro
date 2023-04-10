@@ -1,3 +1,5 @@
+import shapes.*;
+
 import java.util.List;
 
 public class ShapeFactory {

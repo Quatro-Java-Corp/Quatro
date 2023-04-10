@@ -1,4 +1,6 @@
-import static java.lang.Math.*;
+package shapes;
+
+import static java.lang.Math.pow;
 
 public class RegularTriangle implements Shape {
 
@@ -44,7 +46,7 @@ public class RegularTriangle implements Shape {
 
     @Override
     public String toString() {
-        return "RegularTriangle{" +
+        return "shapes.RegularTriangle{" +
                 "sideLength=" + sideLength +
                 ", height=" + getHeight() +
                 ", surfaceArea=" + getSurfaceArea() +
