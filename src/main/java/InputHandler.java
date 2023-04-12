@@ -12,14 +12,20 @@ public class InputHandler {
     private static final String INVALID_ARGUMENT_VALUE = "Value must be a positive number.";
     private static final String INVALID_ARGUMENT_TYPE = "Unknown argument name";
     private static final String INVALID_NUMBER_OF_ARGUMENTS = "Each argument type must have a value";
+    private static final String NO_NEED_ARGUMENTS = "This function don't need any arguments";
+    private static final String UNKNOWN_FUNCTION = "Unknown function";
 
     public void parseInput(String input) {
         String[] args = input.split(" ");
         if (args.length > 0) {
             if (args.length == 1 && args[0].equals("exit")) {
                 System.exit(0);
-            } else if (args.length == 1 && args[0].equals("ShowFigures")) {
+            } else if (args.length >= 1 && args[0].toLowerCase().equals("showfigures")) {
+                if (args.length != 1)
+                    System.out.println(NO_NEED_ARGUMENTS);
                 figureList.getShapes().forEach(System.out::println);
+            } else if (args.length == 1) {
+                System.out.println(UNKNOWN_FUNCTION);
             } else {
                 try {
                     Shape shape = createFigureWithArguments(args);
