@@ -1,7 +1,8 @@
-import static java.lang.Math.*;
-import static java.lang.Math.sqrt;
+package shapes;
 
-public class RegularTriangle implements Figure{
+import static java.lang.Math.pow;
+
+public class RegularTriangle implements Shape {
 
     private final double sideLength;
 
@@ -9,8 +10,7 @@ public class RegularTriangle implements Figure{
         return sideLength;
     }
 
-
-    public double getHeight () {
+    public double getHeight() {
         return sideLength * pow(3, 0.5) / 2.0;
     }
 
@@ -29,24 +29,24 @@ public class RegularTriangle implements Figure{
         }
         return new RegularTriangle(side);
     }
+
     public static RegularTriangle withHeight(double height) {
         if (height <= 0) {
             throw new IllegalArgumentException("Value must be positive");
         }
-        return new RegularTriangle(height * 2 / pow(3,0.5) );
+        return new RegularTriangle(height * 2 / pow(3, 0.5));
     }
 
     public static RegularTriangle withSurfaceArea(double surfaceArea) {
-        if (surfaceArea <= 0 ) {
+        if (surfaceArea <= 0) {
             throw new IllegalArgumentException("Value must be positive");
         }
-        return new RegularTriangle( pow( surfaceArea * 4 / pow(3,0.5)  ,0.5) );
+        return new RegularTriangle(pow(surfaceArea * 4 / pow(3, 0.5), 0.5));
     }
-
 
     @Override
     public String toString() {
-        return "RegularTriangle{" +
+        return "shapes.RegularTriangle{" +
                 "sideLength=" + sideLength +
                 ", height=" + getHeight() +
                 ", surfaceArea=" + getSurfaceArea() +

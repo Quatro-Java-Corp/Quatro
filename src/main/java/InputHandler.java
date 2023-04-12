@@ -1,39 +1,60 @@
+import shapes.Shape;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class InputHandler {
 
-    private final ShapeService shapeService = new ShapeService();
+    private final ShapeFactory shapeFactory = new ShapeFactory();
+    private final ShapeRepository figureList = new ShapeRepository();
 
     private static final String INVALID_SHAPE_NAME = "Unknown figure name";
     private static final String INVALID_ARGUMENT_VALUE = "Value must be a positive number.";
     private static final String INVALID_ARGUMENT_TYPE = "Unknown argument name";
     private static final String INVALID_NUMBER_OF_ARGUMENTS = "Each argument type must have a value";
 
-    public Figure createFigureWithArguments(String[] args) throws Exception {
-        ShapeService.ShapeName shapeName = formatShapeName(args[0]);
-        List<ShapeService.ArgumentType> argsTypes = getTypesFromArguments(args);
+    public void parseInput(String input) {
+        String[] args = input.split(" ");
+        if (args.length > 0) {
+            if (args.length == 1 && args[0].equals("exit")) {
+                System.exit(0);
+            } else if (args.length == 1 && args[0].equals("ShowFigures")) {
+                figureList.getShapes().forEach(System.out::println);
+            } else {
+                try {
+                    Shape shape = createFigureWithArguments(args);
+                    figureList.addShape(shape);
+                    System.out.println(shape.toString());
+                } catch (Exception e) {
+                    System.out.println(e.getMessage());
+                }
+            }
+        }
+    }
+
+    public Shape createFigureWithArguments(String[] args) throws Exception {
+        ShapeFactory.ShapeName shapeName = formatShapeName(args[0]);
+        List<ShapeFactory.ArgumentType> argsTypes = getTypesFromArguments(args);
         List<Double> argsValues = getValuesFromArguments(args);
-        ;
         if (argsTypes.size() != argsValues.size()) {
             throw new Exception(INVALID_NUMBER_OF_ARGUMENTS);
         }
-        return shapeService.createShape(shapeName, argsTypes, argsValues);
+        return shapeFactory.createShape(shapeName, argsTypes, argsValues);
     }
 
-    private static ShapeService.ShapeName formatShapeName(String shapeName) throws Exception {
+    private static ShapeFactory.ShapeName formatShapeName(String shapeName) throws Exception {
         try {
-            return ShapeService.ShapeName.valueOf(shapeName.toLowerCase());
+            return ShapeFactory.ShapeName.valueOf(shapeName.toLowerCase());
         } catch (IllegalArgumentException e) {
             throw new Exception(INVALID_SHAPE_NAME);
         }
     }
 
-    private static List<ShapeService.ArgumentType> getTypesFromArguments(String[] args) throws Exception {
-        List<ShapeService.ArgumentType> types = new ArrayList<>();
+    private static List<ShapeFactory.ArgumentType> getTypesFromArguments(String[] args) throws Exception {
+        List<ShapeFactory.ArgumentType> types = new ArrayList<>();
         try {
             for (int i = 1; i < args.length; i += 2) {
-                types.add(ShapeService.ArgumentType.valueOf(args[i].toLowerCase()));
+                types.add(ShapeFactory.ArgumentType.valueOf(args[i].toLowerCase()));
             }
         } catch (IllegalArgumentException e) {
             throw new Exception(INVALID_ARGUMENT_TYPE);

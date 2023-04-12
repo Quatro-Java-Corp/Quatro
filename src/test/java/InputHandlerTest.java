@@ -2,8 +2,10 @@ import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
+import shapes.Rectangle;
+
 /**
- * Unit test for Rectangle.
+ * Unit test for shapes.Rectangle.
  */
 public class InputHandlerTest {
     private final double DELTA = 1e-2;

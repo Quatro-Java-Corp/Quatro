@@ -1,6 +1,8 @@
+import shapes.*;
+
 import java.util.List;
 
-public class ShapeService {
+public class ShapeFactory {
 
     public enum ShapeName {
         circle, square, rectangle, rhombus, regulartriangle
@@ -10,16 +12,16 @@ public class ShapeService {
         side, diagonal, area, radius, diameter, circuit, height
     }
 
-    public Figure createShape(
+    public Shape createShape(
             ShapeName shapeName,
             List<ArgumentType> parametersNames,
             List<Double> parametersValues) throws Exception {
-        return switch(shapeName) {
+        return switch (shapeName) {
             case circle -> convertCircleInputType(parametersNames, parametersValues);
             case square -> convertSquareInputType(parametersNames, parametersValues);
             case rectangle -> convertRectangleInputType(parametersNames, parametersValues);
             case rhombus -> convertRhombusInputType(parametersNames, parametersValues);
-            case regulartriangle -> convertRegulartriangleInputType(parametersNames,parametersValues);
+            case regulartriangle -> convertRegulartriangleInputType(parametersNames, parametersValues);
         };
     }
 
@@ -62,7 +64,7 @@ public class ShapeService {
         double value1 = paramsValues.get(0);
         double value2 = paramsValues.get(1);
 
-        return switch (paramsTypes.get(0).toString()+"|"+paramsTypes.get(1).toString()) {
+        return switch (paramsTypes.get(0).toString() + "|" + paramsTypes.get(1).toString()) {
             case "side|side" -> Rectangle.withShortSideAndLongSide(value1, value2);
             case "side|diagonal" -> Rectangle.withShortSideAndDiagonal(value1, value2);
             case "side|area" -> Rectangle.withShortSideAndSurfaceArea(value1, value2);
@@ -82,7 +84,7 @@ public class ShapeService {
         double value1 = paramsValues.get(0);
         double value2 = paramsValues.get(1);
 
-        return switch (paramsTypes.get(0).toString()+"|"+paramsTypes.get(1).toString()) {
+        return switch (paramsTypes.get(0).toString() + "|" + paramsTypes.get(1).toString()) {
             case "diagonal|diagonal" -> Rhombus.withShortDiagonalAndLongDiagonal(value1, value2);
             case "diagonal|side" -> Rhombus.withShortDiagonalAndSide(value1, value2);
             case "diagonal|area" -> Rhombus.withShortDiagonalAndSurfaceArea(value1, value2);
@@ -93,6 +95,7 @@ public class ShapeService {
             default -> throw new Exception("Unknown combination of arguments for rhombus");
         };
     }
+
     private static RegularTriangle convertRegulartriangleInputType(List<ArgumentType> paramsTypes, List<Double> paramsValues) throws Exception {
         if (paramsTypes.size() != 1) {
             throw new Exception("Invalid number of arguments for regular triangle");

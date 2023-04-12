@@ -1,4 +1,6 @@
-public final class Square implements Figure {
+package shapes;
+
+public final class Square implements Shape {
     private final double sideLength;
 
     @Override
@@ -41,7 +43,7 @@ public final class Square implements Figure {
 
     @Override
     public String toString() {
-        return "Square{" +
+        return "shapes.Square{" +
                 "sideLength=" + sideLength +
                 ", diagonalLength=" + getDiagonalLength() +
                 ", surfaceArea=" + getSurfaceArea() +
