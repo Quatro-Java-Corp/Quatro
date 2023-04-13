@@ -54,7 +54,7 @@ public final class Circle implements Shape {
 
     @Override
     public String toString() {
-        return "shapes.Circle{" +
+        return "Circle{" +
                 "circuit=" + getCircuit() +
                 ", diameter=" + getDiameter() +
                 ", radius=" + radius +

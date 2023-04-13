@@ -23,6 +23,11 @@ public class Rhombus implements Shape {
         return shortDiagonalLength * longDiagonalLength / 2;
     }
 
+    @Override
+    public double getCircuit() {
+        return 4 * getSideLength();
+    }
+
     private Rhombus(double shortDiagonalLength, double longDiagonalLength) {
         if (shortDiagonalLength > longDiagonalLength) {
             this.shortDiagonalLength = longDiagonalLength;
@@ -73,12 +78,12 @@ public class Rhombus implements Shape {
             throw new IllegalArgumentException("Values must be non-negative");
         }
         double cos = sqrt(1 - pow(surfaceArea / pow(sideLength, 2), 2));
-        return new Rhombus(sideLength * sqrt(2 - 2 * cos), sideLength  * sqrt(2 + 2 * cos));
+        return new Rhombus(sideLength * sqrt(2 - 2 * cos), sideLength * sqrt(2 + 2 * cos));
     }
 
     @Override
     public String toString() {
-        return "shapes.Rhombus{" +
+        return "Rhombus{" +
                 "sideLength=" + getSideLength() +
                 ", shortDiagonalLength=" + shortDiagonalLength +
                 ", longDiagonalLength=" + longDiagonalLength +
