@@ -7,6 +7,7 @@ public class InputHandler {
 
     private final ShapeFactory shapeFactory = new ShapeFactory();
     private final ShapeRepository figureList = new ShapeRepository();
+    private final ComparatorFactory comparatorFactory = new ComparatorFactory();
 
     private static final String INVALID_SHAPE_NAME = "Unknown figure name";
     private static final String INVALID_ARGUMENT_VALUE = "Value must be a positive number.";
@@ -20,9 +21,11 @@ public class InputHandler {
         if (args.length > 0) {
             if (args.length == 1 && args[0].equals("exit")) {
                 System.exit(0);
-            } else if (args.length >= 1 && args[0].toLowerCase().equals("showfigures")) {
-                if (args.length != 1)
+            } else if (args[0].equalsIgnoreCase("showfigures")) {
+                if (args.length != 1) {
                     System.out.println(NO_NEED_ARGUMENTS);
+                }
+                figureList.sort(comparatorFactory.getComparator(ComparatorFactory.CompareBy.surfaceArea, ComparatorFactory.OrderBy.descending));
                 figureList.getShapes().forEach(System.out::println);
             } else if (args.length == 1) {
                 System.out.println(UNKNOWN_FUNCTION);
