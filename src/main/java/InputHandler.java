@@ -3,6 +3,8 @@ import shapes.Shape;
 import java.util.ArrayList;
 import java.util.List;
 
+import factory.ShapeFactory;
+
 public class InputHandler {
 
     private final ShapeFactory shapeFactory = new ShapeFactory();
