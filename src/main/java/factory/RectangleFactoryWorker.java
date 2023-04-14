@@ -6,7 +6,7 @@ import factory.ShapeFactory.ArgumentType;
 import factory.ShapeFactory.ShapeName;
 import shapes.Rectangle;
 
-public class RectangleFactoryWorker implements IShapeFactoryWorker {
+public class RectangleFactoryWorker implements ShapeFactoryWorker {
     private static ShapeName shapeName = ShapeName.rectangle;
     private static int numberOfArguments = 2;
 

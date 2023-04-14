@@ -15,7 +15,7 @@ public class ShapeFactory {
         side, diagonal, area, radius, diameter, circuit, height
     }
 
-    private List<IShapeFactoryWorker> _workers = new ArrayList<IShapeFactoryWorker>();
+    private List<ShapeFactoryWorker> _workers = new ArrayList<ShapeFactoryWorker>();
 
     public ShapeFactory() {
         registerWorker(new CircleFactoryWorker());
@@ -25,7 +25,7 @@ public class ShapeFactory {
         registerWorker(new RhombusFactoryWorker());
     }
 
-    private void registerWorker(IShapeFactoryWorker worker)
+    private void registerWorker(ShapeFactoryWorker worker)
     {
         _workers.add(worker);
     }
@@ -35,7 +35,7 @@ public class ShapeFactory {
             List<ArgumentType> parametersNames,
             List<Double> parametersValues) throws Exception {
 
-        for (IShapeFactoryWorker worker : _workers)
+        for (ShapeFactoryWorker worker : _workers)
         {
             Shape createdShape = worker.create(shapeName, parametersNames, parametersValues);
 

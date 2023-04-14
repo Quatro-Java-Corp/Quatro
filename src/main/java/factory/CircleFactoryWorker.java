@@ -6,7 +6,7 @@ import factory.ShapeFactory.ArgumentType;
 import factory.ShapeFactory.ShapeName;
 import shapes.Circle;
 
-public class CircleFactoryWorker implements IShapeFactoryWorker {
+public class CircleFactoryWorker implements ShapeFactoryWorker {
     private static ShapeName shapeName = ShapeName.circle;
     private static int numberOfArguments = 1;
 

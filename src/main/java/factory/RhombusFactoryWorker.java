@@ -6,7 +6,7 @@ import factory.ShapeFactory.ArgumentType;
 import factory.ShapeFactory.ShapeName;
 import shapes.Rhombus;
 
-public class RhombusFactoryWorker implements IShapeFactoryWorker {
+public class RhombusFactoryWorker implements ShapeFactoryWorker {
     private static ShapeName shapeName = ShapeName.rhombus;
     private static int numberOfArguments = 2;
 

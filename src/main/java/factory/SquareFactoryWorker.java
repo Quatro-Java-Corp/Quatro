@@ -6,7 +6,7 @@ import factory.ShapeFactory.ArgumentType;
 import factory.ShapeFactory.ShapeName;
 import shapes.Square;
 
-public class SquareFactoryWorker implements IShapeFactoryWorker {
+public class SquareFactoryWorker implements ShapeFactoryWorker {
     private static ShapeName shapeName = ShapeName.square;
     private static int numberOfArguments = 1;
 
