@@ -1,40 +1,33 @@
 import shapes.Shape;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class InputHandler {
 
     private final ShapeFactory shapeFactory = new ShapeFactory();
-    private final ShapeRepository figureList = new ShapeRepository();
+
+    private final CommandFactory commandFactory = new CommandFactory(this);
 
     private static final String INVALID_SHAPE_NAME = "Unknown figure name";
     private static final String INVALID_ARGUMENT_VALUE = "Value must be a positive number.";
     private static final String INVALID_ARGUMENT_TYPE = "Unknown argument name";
     private static final String INVALID_NUMBER_OF_ARGUMENTS = "Each argument type must have a value";
-    private static final String NO_NEED_ARGUMENTS = "This function don't need any arguments";
     private static final String UNKNOWN_FUNCTION = "Unknown function";
 
     public void parseInput(String input) {
         String[] args = input.split(" ");
         if (args.length > 0) {
-            if (args.length == 1 && args[0].equals("exit")) {
-                System.exit(0);
-            } else if (args.length >= 1 && args[0].toLowerCase().equals("showfigures")) {
-                if (args.length != 1)
-                    System.out.println(NO_NEED_ARGUMENTS);
-                figureList.getShapes().forEach(System.out::println);
-            } else if (args.length == 1) {
-                System.out.println(UNKNOWN_FUNCTION);
-            } else {
-                try {
-                    Shape shape = createFigureWithArguments(args);
-                    figureList.addShape(shape);
-                    System.out.println(shape.toString());
-                } catch (Exception e) {
-                    System.out.println(e.getMessage());
-                }
+
+            try {
+                LoadCommand(args);
+                commandFactory.runCommand();
+
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
             }
+
         }
     }
 
@@ -46,6 +39,21 @@ public class InputHandler {
             throw new Exception(INVALID_NUMBER_OF_ARGUMENTS);
         }
         return shapeFactory.createShape(shapeName, argsTypes, argsValues);
+    }
+
+
+    public void LoadCommand(String[] args) throws Exception{
+        CommandFactory.CommandName commandName = formatCommandName(args[0]);
+        String[] comandargs = Arrays.copyOfRange(args, 1, args.length);
+        commandFactory.command = commandName;
+        commandFactory.args = comandargs;
+    }
+    private static CommandFactory.CommandName formatCommandName(String commandName) throws Exception {
+        try {
+            return CommandFactory.CommandName.valueOf(commandName.toLowerCase());
+        } catch (IllegalArgumentException e) {
+            throw new Exception(UNKNOWN_FUNCTION);
+        }
     }
 
     private static ShapeFactory.ShapeName formatShapeName(String shapeName) throws Exception {
