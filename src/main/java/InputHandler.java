@@ -13,7 +13,6 @@ public class InputHandler {
     private final ShapeFactory shapeFactory = new ShapeFactory();
     private final ShapeRepository figureList = new ShapeRepository();
 
-    private static final String INVALID_SHAPE_NAME = "Unknown figure name";
     private static final String INVALID_ARGUMENT_VALUE = "Value must be a positive number.";
     private static final String INVALID_ARGUMENT_TYPE = "Unknown argument name";
     private static final String INVALID_NUMBER_OF_ARGUMENTS = "Each argument type must have a value";
@@ -25,6 +24,8 @@ public class InputHandler {
         if (args.length > 0) {
             if (args.length == 1 && args[0].equals("exit")) {
                 System.exit(0);
+            } else if (args.length % 2 == 0) {
+                System.out.println(INVALID_NUMBER_OF_ARGUMENTS);
             } else if (args.length >= 1 && args[0].toLowerCase().equals("showfigures")) {
                 if (args.length != 1)
                     System.out.println(NO_NEED_ARGUMENTS);

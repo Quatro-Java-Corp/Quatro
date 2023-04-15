@@ -34,6 +34,6 @@ public class ShapeFactory {
                 return createdShape;
             }
         }
-        throw new Exception(shapeName + " is not avaliable in factory");
+        throw new Exception(shapeName + " is not avaliable shape");
     }
 }
