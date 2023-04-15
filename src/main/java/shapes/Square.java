@@ -3,6 +3,9 @@ package shapes;
 public final class Square implements Shape {
     private final double sideLength;
 
+    public static final String name = "square";
+    public static final double numberOfArguments = 1;
+
     @Override
     public double getSurfaceArea() {
         return sideLength * sideLength;

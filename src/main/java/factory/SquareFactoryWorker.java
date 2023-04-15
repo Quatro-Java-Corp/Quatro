@@ -1,30 +1,27 @@
 package factory;
 
 import java.util.List;
+import java.util.Map.Entry;
 
 import factory.ShapeFactory.ArgumentType;
-import factory.ShapeFactory.ShapeName;
 import shapes.Square;
 
 public class SquareFactoryWorker implements ShapeFactoryWorker {
-    private static ShapeName shapeName = ShapeName.square;
-    private static int numberOfArguments = 1;
-
-    public Square create(ShapeName shapeName, List<ArgumentType> paramsTypes, List<Double> paramsValues) throws Exception {
-        if (shapeName != SquareFactoryWorker.shapeName) {
+    public Square create(String shapeName, List<Entry<ArgumentType, Double>> args) throws Exception {
+        if (!shapeName.equalsIgnoreCase(Square.name)) {
             return null;
         }
 
-        if (paramsTypes.size() != SquareFactoryWorker.numberOfArguments) {
+        if (args.size() != Square.numberOfArguments) {
             throw new Exception("Invalid number of arguments for square");
         }
 
-        double value = paramsValues.get(0);
+        var arg = args.get(0);
 
-        return switch (paramsTypes.get(0)) {
-            case area -> Square.withSurfaceArea(value);
-            case diagonal -> Square.withDiagonalLength(value);
-            case side -> Square.withSideLength(value);
+        return switch (arg.getKey()) {
+            case area -> Square.withSurfaceArea(arg.getValue());
+            case diagonal -> Square.withDiagonalLength(arg.getValue());
+            case side -> Square.withSideLength(arg.getValue());
             default -> throw new Exception("Unknown combination of arguments for square");
         };
     }

@@ -6,6 +6,9 @@ public class Rhombus implements Shape {
     private final double shortDiagonalLength;
     private final double longDiagonalLength;
 
+    public static final String name = "rhombus";
+    public static final double numberOfArguments = 2;
+
     public double getShortDiagonalLength() {
         return shortDiagonalLength;
     }

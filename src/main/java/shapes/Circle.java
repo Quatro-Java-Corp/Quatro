@@ -3,6 +3,9 @@ package shapes;
 public final class Circle implements Shape {
     private final double radius;
 
+    public static final String name = "circle";
+    public static final double numberOfArguments = 1;
+
     @Override
     public double getSurfaceArea() {
         return radius * radius * Math.PI;

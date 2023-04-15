@@ -1,35 +1,32 @@
 package factory;
 
 import java.util.List;
+import java.util.Map.Entry;
 
 import factory.ShapeFactory.ArgumentType;
-import factory.ShapeFactory.ShapeName;
 import shapes.Rhombus;
 
 public class RhombusFactoryWorker implements ShapeFactoryWorker {
-    private static ShapeName shapeName = ShapeName.rhombus;
-    private static int numberOfArguments = 2;
-
-    public Rhombus create(ShapeName shapeName, List<ArgumentType> paramsTypes, List<Double> paramsValues) throws Exception {
-        if (shapeName != RhombusFactoryWorker.shapeName) {
+    public Rhombus create(String shapeName, List<Entry<ArgumentType, Double>> args) throws Exception {
+        if (!shapeName.equalsIgnoreCase(Rhombus.name)) {
             return null;
         }
 
-        if (paramsTypes.size() != RhombusFactoryWorker.numberOfArguments) {
-            throw new Exception("Invalid number of arguments for Rhombus");
+        if (args.size() != Rhombus.numberOfArguments) {
+            throw new Exception("Invalid number of arguments for rhombus");
         }
 
-        double value1 = paramsValues.get(0);
-        double value2 = paramsValues.get(1);
+        var arg1 = args.get(0);
+        var arg2 = args.get(1);
 
-        return switch (paramsTypes.get(0).toString() + "|" + paramsTypes.get(1).toString()) {
-            case "diagonal|diagonal" -> Rhombus.withShortDiagonalAndLongDiagonal(value1, value2);
-            case "diagonal|side" -> Rhombus.withShortDiagonalAndSide(value1, value2);
-            case "diagonal|area" -> Rhombus.withShortDiagonalAndSurfaceArea(value1, value2);
-            case "side|diagonal" -> Rhombus.withShortDiagonalAndSide(value2, value1);
-            case "side|area" -> Rhombus.withSideLengthAndSurfaceArea(value1, value2);
-            case "area|diagonal" -> Rhombus.withShortDiagonalAndSurfaceArea(value2, value1);
-            case "area|side" -> Rhombus.withSideLengthAndSurfaceArea(value2, value1);
+        return switch (arg1.getKey().toString() + "|" + arg2.getKey().toString()) {
+            case "diagonal|diagonal" -> Rhombus.withShortDiagonalAndLongDiagonal(arg1.getValue(), arg2.getValue());
+            case "diagonal|side" -> Rhombus.withShortDiagonalAndSide(arg1.getValue(), arg2.getValue());
+            case "diagonal|area" -> Rhombus.withShortDiagonalAndSurfaceArea(arg1.getValue(), arg2.getValue());
+            case "side|diagonal" -> Rhombus.withShortDiagonalAndSide(arg2.getValue(), arg1.getValue());
+            case "side|area" -> Rhombus.withSideLengthAndSurfaceArea(arg1.getValue(), arg2.getValue());
+            case "area|diagonal" -> Rhombus.withShortDiagonalAndSurfaceArea(arg2.getValue(), arg1.getValue());
+            case "area|side" -> Rhombus.withSideLengthAndSurfaceArea(arg2.getValue(), arg1.getValue());
             default -> throw new Exception("Unknown combination of arguments for rhombus");
         };
     }

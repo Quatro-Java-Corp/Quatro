@@ -6,6 +6,9 @@ public class RegularTriangle implements Shape {
 
     private final double sideLength;
 
+    public static final String name = "regularTriangle";
+    public static final double numberOfArguments = 1;
+
     public double getSideLength() {
         return sideLength;
     }

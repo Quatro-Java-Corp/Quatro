@@ -4,12 +4,9 @@ import shapes.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map.Entry;
 
 public class ShapeFactory {
-
-    public enum ShapeName {
-        circle, square, rectangle, rhombus, regulartriangle
-    }
 
     public enum ArgumentType {
         side, diagonal, area, radius, diameter, circuit, height
@@ -25,26 +22,18 @@ public class ShapeFactory {
         registerWorker(new RhombusFactoryWorker());
     }
 
-    private void registerWorker(ShapeFactoryWorker worker)
-    {
+    private void registerWorker(ShapeFactoryWorker worker) {
         _workers.add(worker);
     }
 
-    public Shape createShape(
-            ShapeName shapeName,
-            List<ArgumentType> parametersNames,
-            List<Double> parametersValues) throws Exception {
+    public Shape createShape(String shapeName, List<Entry<ArgumentType, Double>> args) throws Exception {
+        for (ShapeFactoryWorker worker : _workers) {
+            Shape createdShape = worker.create(shapeName, args);
 
-        for (ShapeFactoryWorker worker : _workers)
-        {
-            Shape createdShape = worker.create(shapeName, parametersNames, parametersValues);
-
-            if (createdShape != null)
-            {
+            if (createdShape != null) {
                 return createdShape;
             }
         }
-
         throw new Exception(shapeName + " is not avaliable in factory");
     }
 }

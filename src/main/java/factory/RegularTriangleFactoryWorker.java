@@ -1,30 +1,27 @@
 package factory;
 
 import java.util.List;
+import java.util.Map.Entry;
 
 import factory.ShapeFactory.ArgumentType;
-import factory.ShapeFactory.ShapeName;
 import shapes.RegularTriangle;
 
 public class RegularTriangleFactoryWorker implements ShapeFactoryWorker {
-    private static ShapeName shapeName = ShapeName.regulartriangle;
-    private static int numberOfArguments = 1;
-
-    public RegularTriangle create(ShapeName shapeName, List<ArgumentType> paramsTypes, List<Double> paramsValues) throws Exception {
-        if (shapeName != RegularTriangleFactoryWorker.shapeName) {
+    public RegularTriangle create(String shapeName, List<Entry<ArgumentType, Double>> args) throws Exception {
+        if (!shapeName.equalsIgnoreCase(RegularTriangle.name)) {
             return null;
         }
 
-        if (paramsTypes.size() != RegularTriangleFactoryWorker.numberOfArguments) {
+        if (args.size() != RegularTriangle.numberOfArguments) {
             throw new Exception("Invalid number of arguments for RegularTriangle");
         }
 
-        double value = paramsValues.get(0);
+        var arg = args.get(0);
 
-        return switch (paramsTypes.get(0)) {
-            case area -> RegularTriangle.withSurfaceArea(value);
-            case height -> RegularTriangle.withHeight(value);
-            case side -> RegularTriangle.withSide(value);
+        return switch (arg.getKey()) {
+            case area -> RegularTriangle.withSurfaceArea(arg.getValue());
+            case height -> RegularTriangle.withHeight(arg.getValue());
+            case side -> RegularTriangle.withSide(arg.getValue());
             default -> throw new Exception("Unknown argument Type for regular triangle");
         };
     }

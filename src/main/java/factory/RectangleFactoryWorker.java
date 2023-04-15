@@ -1,35 +1,32 @@
 package factory;
 
 import java.util.List;
+import java.util.Map.Entry;
 
 import factory.ShapeFactory.ArgumentType;
-import factory.ShapeFactory.ShapeName;
 import shapes.Rectangle;
 
 public class RectangleFactoryWorker implements ShapeFactoryWorker {
-    private static ShapeName shapeName = ShapeName.rectangle;
-    private static int numberOfArguments = 2;
-
-    public Rectangle create(ShapeName shapeName, List<ArgumentType> paramsTypes, List<Double> paramsValues) throws Exception {
-        if (shapeName != RectangleFactoryWorker.shapeName) {
+    public Rectangle create(String shapeName, List<Entry<ArgumentType, Double>> args) throws Exception {
+        if (!shapeName.equalsIgnoreCase(Rectangle.name)) {
             return null;
         }
 
-        if (paramsTypes.size() != RectangleFactoryWorker.numberOfArguments) {
+        if (args.size() != Rectangle.numberOfArguments) {
             throw new Exception("Invalid number of arguments for Rectangle");
         }
 
-        double value1 = paramsValues.get(0);
-        double value2 = paramsValues.get(1);
+        var arg1 = args.get(0);
+        var arg2 = args.get(1);
 
-        return switch (paramsTypes.get(0).toString() + "|" + paramsTypes.get(1).toString()) {
-            case "side|side" -> Rectangle.withShortSideAndLongSide(value1, value2);
-            case "side|diagonal" -> Rectangle.withShortSideAndDiagonal(value1, value2);
-            case "side|area" -> Rectangle.withShortSideAndSurfaceArea(value1, value2);
-            case "diagonal|side" -> Rectangle.withShortSideAndDiagonal(value2, value1);
-            case "diagonal|area" -> Rectangle.withDiagonalAndSurfaceArea(value1, value2);
-            case "area|side" -> Rectangle.withLongSideAndSurfaceArea(value2, value1);
-            case "area|diagonal" -> Rectangle.withDiagonalAndSurfaceArea(value2, value1);
+        return switch (arg1.getKey().toString() + "|" + arg2.getKey().toString()) {
+            case "side|side" -> Rectangle.withShortSideAndLongSide(arg1.getValue(), arg2.getValue());
+            case "side|diagonal" -> Rectangle.withShortSideAndDiagonal(arg1.getValue(), arg2.getValue());
+            case "side|area" -> Rectangle.withShortSideAndSurfaceArea(arg1.getValue(), arg2.getValue());
+            case "diagonal|side" -> Rectangle.withShortSideAndDiagonal(arg2.getValue(), arg1.getValue());
+            case "diagonal|area" -> Rectangle.withDiagonalAndSurfaceArea(arg1.getValue(), arg2.getValue());
+            case "area|side" -> Rectangle.withLongSideAndSurfaceArea(arg2.getValue(), arg1.getValue());
+            case "area|diagonal" -> Rectangle.withDiagonalAndSurfaceArea(arg2.getValue(), arg1.getValue());
             default -> throw new Exception("Unknown combination of arguments for rectangle");
         };
     }

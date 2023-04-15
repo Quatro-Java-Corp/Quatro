@@ -2,8 +2,11 @@ import shapes.Shape;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.AbstractMap.SimpleImmutableEntry;
+import java.util.Map.Entry;
 
 import factory.ShapeFactory;
+import factory.ShapeFactory.ArgumentType;
 
 public class InputHandler {
 
@@ -41,48 +44,36 @@ public class InputHandler {
     }
 
     public Shape createFigureWithArguments(String[] args) throws Exception {
-        ShapeFactory.ShapeName shapeName = formatShapeName(args[0]);
-        List<ShapeFactory.ArgumentType> argsTypes = getTypesFromArguments(args);
-        List<Double> argsValues = getValuesFromArguments(args);
-        if (argsTypes.size() != argsValues.size()) {
-            throw new Exception(INVALID_NUMBER_OF_ARGUMENTS);
-        }
-        return shapeFactory.createShape(shapeName, argsTypes, argsValues);
+        return shapeFactory.createShape(args[0], getArgumentsList(args));
     }
 
-    private static ShapeFactory.ShapeName formatShapeName(String shapeName) throws Exception {
-        try {
-            return ShapeFactory.ShapeName.valueOf(shapeName.toLowerCase());
-        } catch (IllegalArgumentException e) {
-            throw new Exception(INVALID_SHAPE_NAME);
+    private static List<Entry<ArgumentType, Double>> getArgumentsList(String[] args) throws Exception {
+        List<Entry<ArgumentType, Double>> argsList = new ArrayList<>();
+        for (int i = 1; i < args.length; i += 2) {
+            argsList.add(new SimpleImmutableEntry<ArgumentType, Double>(
+                    convertStringToArgumentType(args[i]),
+                    convertStringToArgumentValue(args[i + 1])));
         }
+        return argsList;
     }
 
-    private static List<ShapeFactory.ArgumentType> getTypesFromArguments(String[] args) throws Exception {
-        List<ShapeFactory.ArgumentType> types = new ArrayList<>();
+    private static ShapeFactory.ArgumentType convertStringToArgumentType(String s) throws Exception {
         try {
-            for (int i = 1; i < args.length; i += 2) {
-                types.add(ShapeFactory.ArgumentType.valueOf(args[i].toLowerCase()));
-            }
+            return ShapeFactory.ArgumentType.valueOf(s.toLowerCase());
         } catch (IllegalArgumentException e) {
             throw new Exception(INVALID_ARGUMENT_TYPE);
         }
-        return types;
     }
 
-    private static List<Double> getValuesFromArguments(String[] args) throws Exception {
-        List<Double> values = new ArrayList<>();
+    private static Double convertStringToArgumentValue(String s) throws Exception {
         try {
-            for (int i = 2; i < args.length; i += 2) {
-                double val = Double.parseDouble(args[i]);
-                if (val <= 0) {
-                    throw new NumberFormatException();
-                }
-                values.add(val);
+            double val = Double.parseDouble(s);
+            if (val <= 0) {
+                throw new NumberFormatException();
             }
+            return val;
         } catch (NumberFormatException e) {
             throw new Exception(INVALID_ARGUMENT_VALUE);
         }
-        return values;
     }
 }

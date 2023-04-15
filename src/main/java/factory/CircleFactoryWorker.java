@@ -1,31 +1,28 @@
 package factory;
 
 import java.util.List;
+import java.util.Map.Entry;
 
 import factory.ShapeFactory.ArgumentType;
-import factory.ShapeFactory.ShapeName;
 import shapes.Circle;
 
 public class CircleFactoryWorker implements ShapeFactoryWorker {
-    private static ShapeName shapeName = ShapeName.circle;
-    private static int numberOfArguments = 1;
-
-    public Circle create(ShapeName shapeName, List<ArgumentType> paramsTypes, List<Double> paramsValues) throws Exception {
-        if (shapeName != CircleFactoryWorker.shapeName) {
+    public Circle create(String shapeName, List<Entry<ArgumentType, Double>> args) throws Exception {
+        if (!shapeName.equalsIgnoreCase(Circle.name)) {
             return null;
         }
 
-        if (paramsTypes.size() != CircleFactoryWorker.numberOfArguments) {
+        if (args.size() != Circle.numberOfArguments) {
             throw new Exception("Invalid number of arguments for Circle");
         }
 
-        double value = paramsValues.get(0);
+        var arg = args.get(0);
 
-        return switch (paramsTypes.get(0)) {
-            case area -> Circle.withSurfaceArea(value);
-            case circuit -> Circle.withCircuit(value);
-            case diameter -> Circle.withDiameter(value);
-            case radius -> Circle.withRadius(value);
+        return switch (arg.getKey()) {
+            case area -> Circle.withSurfaceArea(arg.getValue());
+            case circuit -> Circle.withCircuit(arg.getValue());
+            case diameter -> Circle.withDiameter(arg.getValue());
+            case radius -> Circle.withRadius(arg.getValue());
             default -> throw new Exception("Unknown combination of arguments for circle");
         };
     }
