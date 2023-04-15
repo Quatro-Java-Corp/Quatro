@@ -3,11 +3,9 @@ package shapes;
 import static java.lang.Math.*;
 
 public class Rectangle implements Shape {
+
     private final double shortSideLength;
     private final double longSideLength;
-
-    public static final String name = "rectangle";
-    public static final double numberOfArguments = 2;
 
     public double getShortSideLength() {
         return shortSideLength;

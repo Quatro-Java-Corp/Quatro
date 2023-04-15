@@ -7,12 +7,12 @@ import factory.ShapeFactory.ArgumentType;
 import shapes.Rhombus;
 
 public class RhombusFactoryWorker implements ShapeFactoryWorker {
-    public Rhombus create(String shapeName, List<Entry<ArgumentType, Double>> args) throws Exception {
-        if (!shapeName.equalsIgnoreCase(Rhombus.name)) {
-            return null;
-        }
 
-        if (args.size() != Rhombus.numberOfArguments) {
+    public static final String shapeName = "rhombus";
+    public static final double numberOfArguments = 2;
+
+    public Rhombus create(List<Entry<ArgumentType, Double>> args) throws Exception {
+        if (args.size() != RhombusFactoryWorker.numberOfArguments) {
             throw new Exception("Invalid number of arguments for rhombus");
         }
 

@@ -7,12 +7,12 @@ import factory.ShapeFactory.ArgumentType;
 import shapes.Square;
 
 public class SquareFactoryWorker implements ShapeFactoryWorker {
-    public Square create(String shapeName, List<Entry<ArgumentType, Double>> args) throws Exception {
-        if (!shapeName.equalsIgnoreCase(Square.name)) {
-            return null;
-        }
 
-        if (args.size() != Square.numberOfArguments) {
+    public static final String shapeName = "square";
+    public static final double numberOfArguments = 2;
+
+    public Square create(List<Entry<ArgumentType, Double>> args) throws Exception {
+        if (args.size() != SquareFactoryWorker.numberOfArguments) {
             throw new Exception("Invalid number of arguments for square");
         }
 

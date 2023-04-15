@@ -1,10 +1,8 @@
 package shapes;
 
 public final class Circle implements Shape {
-    private final double radius;
 
-    public static final String name = "circle";
-    public static final double numberOfArguments = 1;
+    private final double radius;
 
     @Override
     public double getSurfaceArea() {

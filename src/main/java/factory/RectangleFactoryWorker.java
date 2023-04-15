@@ -7,12 +7,12 @@ import factory.ShapeFactory.ArgumentType;
 import shapes.Rectangle;
 
 public class RectangleFactoryWorker implements ShapeFactoryWorker {
-    public Rectangle create(String shapeName, List<Entry<ArgumentType, Double>> args) throws Exception {
-        if (!shapeName.equalsIgnoreCase(Rectangle.name)) {
-            return null;
-        }
 
-        if (args.size() != Rectangle.numberOfArguments) {
+    public static final String shapeName = "rectangle";
+    public static final double numberOfArguments = 2;
+
+    public Rectangle create(List<Entry<ArgumentType, Double>> args) throws Exception {
+        if (args.size() != RectangleFactoryWorker.numberOfArguments) {
             throw new Exception("Invalid number of arguments for Rectangle");
         }
 

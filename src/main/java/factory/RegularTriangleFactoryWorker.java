@@ -7,12 +7,13 @@ import factory.ShapeFactory.ArgumentType;
 import shapes.RegularTriangle;
 
 public class RegularTriangleFactoryWorker implements ShapeFactoryWorker {
-    public RegularTriangle create(String shapeName, List<Entry<ArgumentType, Double>> args) throws Exception {
-        if (!shapeName.equalsIgnoreCase(RegularTriangle.name)) {
-            return null;
-        }
 
-        if (args.size() != RegularTriangle.numberOfArguments) {
+    public static final String shapeName = "regularTriangle";
+    public static final double numberOfArguments = 1;
+
+
+    public RegularTriangle create(List<Entry<ArgumentType, Double>> args) throws Exception {
+        if (args.size() != RegularTriangleFactoryWorker.numberOfArguments) {
             throw new Exception("Invalid number of arguments for RegularTriangle");
         }
 
