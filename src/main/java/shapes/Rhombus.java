@@ -3,6 +3,7 @@ package shapes;
 import static java.lang.Math.*;
 
 public class Rhombus implements Shape {
+
     private final double shortDiagonalLength;
     private final double longDiagonalLength;
 
@@ -73,7 +74,7 @@ public class Rhombus implements Shape {
             throw new IllegalArgumentException("Values must be non-negative");
         }
         double cos = sqrt(1 - pow(surfaceArea / pow(sideLength, 2), 2));
-        return new Rhombus(sideLength * sqrt(2 - 2 * cos), sideLength  * sqrt(2 + 2 * cos));
+        return new Rhombus(sideLength * sqrt(2 - 2 * cos), sideLength * sqrt(2 + 2 * cos));
     }
 
     @Override

@@ -1,6 +1,7 @@
 package shapes;
 
 public final class Circle implements Shape {
+
     private final double radius;
 
     @Override

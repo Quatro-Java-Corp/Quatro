@@ -1,6 +1,7 @@
 package shapes;
 
 public final class Square implements Shape {
+
     private final double sideLength;
 
     @Override
