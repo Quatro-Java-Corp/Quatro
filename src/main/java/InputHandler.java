@@ -15,13 +15,13 @@ public class InputHandler {
     private static final String INVALID_ARGUMENT_TYPE = "Unknown argument name";
     private static final String INVALID_NUMBER_OF_ARGUMENTS = "Each argument type must have a value";
     private static final String UNKNOWN_FUNCTION = "Unknown function";
-
+    public final ShapeRepository figureList = new ShapeRepository();
     public void parseInput(String input) {
         String[] args = input.split(" ");
         if (args.length > 0) {
 
             try {
-                commandFactory.runCommand(LoadCommand(args),args);
+                commandFactory.runCommand(LoadCommand(args),args,this);
 
             } catch (Exception e) {
                 System.out.println(e.getMessage());
