@@ -21,6 +21,11 @@ public final class Square implements Shape {
         this.sideLength = sideLength;
     }
 
+    @Override
+    public double getCircuit() {
+        return 4 * sideLength;
+    }
+
     public static Square withSideLength(double sideLength) {
         if (sideLength <= 0) {
             throw new IllegalArgumentException("Negative side length");
@@ -44,7 +49,7 @@ public final class Square implements Shape {
 
     @Override
     public String toString() {
-        return "shapes.Square{" +
+        return "Square{" +
                 "sideLength=" + sideLength +
                 ", diagonalLength=" + getDiagonalLength() +
                 ", surfaceArea=" + getSurfaceArea() +

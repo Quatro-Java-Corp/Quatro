@@ -24,6 +24,11 @@ public class Rhombus implements Shape {
         return shortDiagonalLength * longDiagonalLength / 2;
     }
 
+    @Override
+    public double getCircuit() {
+        return 4 * getSideLength();
+    }
+
     private Rhombus(double shortDiagonalLength, double longDiagonalLength) {
         if (shortDiagonalLength > longDiagonalLength) {
             this.shortDiagonalLength = longDiagonalLength;
@@ -79,7 +84,7 @@ public class Rhombus implements Shape {
 
     @Override
     public String toString() {
-        return "shapes.Rhombus{" +
+        return "Rhombus{" +
                 "sideLength=" + getSideLength() +
                 ", shortDiagonalLength=" + shortDiagonalLength +
                 ", longDiagonalLength=" + longDiagonalLength +

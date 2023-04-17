@@ -3,7 +3,6 @@ package shapes;
 import static java.lang.Math.pow;
 
 public class RegularTriangle implements Shape {
-
     private final double sideLength;
 
     public double getSideLength() {
@@ -17,6 +16,11 @@ public class RegularTriangle implements Shape {
     @Override
     public double getSurfaceArea() {
         return sideLength * sideLength * pow(3, 0.5) / 4.0;
+    }
+
+    @Override
+    public double getCircuit() {
+        return 3 * sideLength;
     }
 
     public RegularTriangle(double sideLength) {
@@ -46,7 +50,7 @@ public class RegularTriangle implements Shape {
 
     @Override
     public String toString() {
-        return "shapes.RegularTriangle{" +
+        return "RegularTriangle{" +
                 "sideLength=" + sideLength +
                 ", height=" + getHeight() +
                 ", surfaceArea=" + getSurfaceArea() +

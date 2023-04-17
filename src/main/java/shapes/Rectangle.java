@@ -24,6 +24,11 @@ public class Rectangle implements Shape {
         return shortSideLength * longSideLength;
     }
 
+    @Override
+    public double getCircuit() {
+        return 2 * shortSideLength + 2 * longSideLength;
+    }
+
     private Rectangle(double shortSideLength, double longSideLength) {
         if (shortSideLength > longSideLength) {
             this.shortSideLength = longSideLength;
@@ -79,7 +84,7 @@ public class Rectangle implements Shape {
 
     @Override
     public String toString() {
-        return "shapes.Rectangle{" +
+        return "Rectangle{" +
                 "shortSideLength=" + shortSideLength +
                 ", longSideLength=" + longSideLength +
                 ", diagonalLength=" + getDiagonalLength() +
