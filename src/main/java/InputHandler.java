@@ -21,8 +21,7 @@ public class InputHandler {
         if (args.length > 0) {
 
             try {
-                LoadCommand(args);
-                commandFactory.runCommand();
+                commandFactory.runCommand(LoadCommand(args),args);
 
             } catch (Exception e) {
                 System.out.println(e.getMessage());
@@ -42,12 +41,11 @@ public class InputHandler {
     }
 
 
-    public void LoadCommand(String[] args) throws Exception{
+    public  CommandFactory.CommandName LoadCommand(String[] args) throws Exception {
         CommandFactory.CommandName commandName = formatCommandName(args[0]);
-        String[] comandargs = Arrays.copyOfRange(args, 1, args.length);
-        commandFactory.command = commandName;
-        commandFactory.args = comandargs;
+        return commandName;
     }
+
     private static CommandFactory.CommandName formatCommandName(String commandName) throws Exception {
         try {
             return CommandFactory.CommandName.valueOf(commandName.toLowerCase());
