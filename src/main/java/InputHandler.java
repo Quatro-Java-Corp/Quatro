@@ -1,7 +1,6 @@
 import shapes.Shape;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class InputHandler {
