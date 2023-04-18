@@ -15,6 +15,7 @@ public class RectangleTest {
     private final double SHORT_SIDE_VALUE = 3;
     private final double DIAGONAL_VALUE = 5;
     private final double AREA_VALUE = 12;
+    private final double CIRCUIT_VALUE = 14;
     private final double NEGATIVE_VALUE = -13.5;
 
     /**
@@ -28,6 +29,7 @@ public class RectangleTest {
         assertEquals(r.getLongSideLength(), LONG_SIDE_VALUE, DELTA);
         assertEquals(r.getDiagonalLength(), DIAGONAL_VALUE, DELTA);
         assertEquals(r.getSurfaceArea(), AREA_VALUE, DELTA);
+        assertEquals(r.getCircuit(), CIRCUIT_VALUE, DELTA);
     }
 
     /**
@@ -41,6 +43,7 @@ public class RectangleTest {
         assertEquals(r.getLongSideLength(), LONG_SIDE_VALUE, DELTA);
         assertEquals(r.getDiagonalLength(), DIAGONAL_VALUE, DELTA);
         assertEquals(r.getSurfaceArea(), AREA_VALUE, DELTA);
+        assertEquals(r.getCircuit(), CIRCUIT_VALUE, DELTA);
     }
 
     /**
@@ -54,6 +57,7 @@ public class RectangleTest {
         assertEquals(r.getLongSideLength(), LONG_SIDE_VALUE, DELTA);
         assertEquals(r.getDiagonalLength(), DIAGONAL_VALUE, DELTA);
         assertEquals(r.getSurfaceArea(), AREA_VALUE, DELTA);
+        assertEquals(r.getCircuit(), CIRCUIT_VALUE, DELTA);
     }
 
     /**
@@ -67,6 +71,7 @@ public class RectangleTest {
         assertEquals(r.getLongSideLength(), LONG_SIDE_VALUE, DELTA);
         assertEquals(r.getDiagonalLength(), DIAGONAL_VALUE, DELTA);
         assertEquals(r.getSurfaceArea(), AREA_VALUE, DELTA);
+        assertEquals(r.getCircuit(), CIRCUIT_VALUE, DELTA);
     }
 
     /**
@@ -80,6 +85,7 @@ public class RectangleTest {
         assertEquals(r.getLongSideLength(), LONG_SIDE_VALUE, DELTA);
         assertEquals(r.getDiagonalLength(), DIAGONAL_VALUE, DELTA);
         assertEquals(r.getSurfaceArea(), AREA_VALUE, DELTA);
+        assertEquals(r.getCircuit(), CIRCUIT_VALUE, DELTA);
     }
 
     /**
@@ -93,6 +99,7 @@ public class RectangleTest {
         assertEquals(r.getLongSideLength(), LONG_SIDE_VALUE, DELTA);
         assertEquals(r.getDiagonalLength(), DIAGONAL_VALUE, DELTA);
         assertEquals(r.getSurfaceArea(), AREA_VALUE, DELTA);
+        assertEquals(r.getCircuit(), CIRCUIT_VALUE, DELTA);
     }
 
     /**

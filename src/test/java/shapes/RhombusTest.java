@@ -15,6 +15,7 @@ public class RhombusTest {
     private final double LONG_DIAGONAL_VALUE = 8;
     private final double SHORT_DIAGONAL_VALUE = 6;
     private final double AREA_VALUE = 24;
+    private final double CIRCUIT_VALUE = 20;
     private final double NON_POSITIVE_VALUE = 0;
 
     /**
@@ -28,6 +29,7 @@ public class RhombusTest {
         assertEquals(r.getShortDiagonalLength(), SHORT_DIAGONAL_VALUE, DELTA);
         assertEquals(r.getLongDiagonalLength(), LONG_DIAGONAL_VALUE, DELTA);
         assertEquals(r.getSurfaceArea(), AREA_VALUE, DELTA);
+        assertEquals(r.getCircuit(), CIRCUIT_VALUE, DELTA);
     }
 
     /**
@@ -41,6 +43,7 @@ public class RhombusTest {
         assertEquals(r.getShortDiagonalLength(), SHORT_DIAGONAL_VALUE, DELTA);
         assertEquals(r.getLongDiagonalLength(), LONG_DIAGONAL_VALUE, DELTA);
         assertEquals(r.getSurfaceArea(), AREA_VALUE, DELTA);
+        assertEquals(r.getCircuit(), CIRCUIT_VALUE, DELTA);
     }
 
     /**
@@ -54,6 +57,7 @@ public class RhombusTest {
         assertEquals(r.getShortDiagonalLength(), SHORT_DIAGONAL_VALUE, DELTA);
         assertEquals(r.getLongDiagonalLength(), LONG_DIAGONAL_VALUE, DELTA);
         assertEquals(r.getSurfaceArea(), AREA_VALUE, DELTA);
+        assertEquals(r.getCircuit(), CIRCUIT_VALUE, DELTA);
     }
 
     /**
@@ -67,6 +71,7 @@ public class RhombusTest {
         assertEquals(r.getShortDiagonalLength(), SHORT_DIAGONAL_VALUE, DELTA);
         assertEquals(r.getLongDiagonalLength(), LONG_DIAGONAL_VALUE, DELTA);
         assertEquals(r.getSurfaceArea(), AREA_VALUE, DELTA);
+        assertEquals(r.getCircuit(), CIRCUIT_VALUE, DELTA);
     }
 
     /**
@@ -80,6 +85,7 @@ public class RhombusTest {
         assertEquals(r.getShortDiagonalLength(), SHORT_DIAGONAL_VALUE, DELTA);
         assertEquals(r.getLongDiagonalLength(), LONG_DIAGONAL_VALUE, DELTA);
         assertEquals(r.getSurfaceArea(), AREA_VALUE, DELTA);
+        assertEquals(r.getCircuit(), CIRCUIT_VALUE, DELTA);
     }
 
     /**
@@ -93,6 +99,7 @@ public class RhombusTest {
         assertEquals(r.getShortDiagonalLength(), SHORT_DIAGONAL_VALUE, DELTA);
         assertEquals(r.getLongDiagonalLength(), LONG_DIAGONAL_VALUE, DELTA);
         assertEquals(r.getSurfaceArea(), AREA_VALUE, DELTA);
+        assertEquals(r.getCircuit(), CIRCUIT_VALUE, DELTA);
     }
 
     /**
@@ -100,7 +107,8 @@ public class RhombusTest {
      */
     @Test
     public void shouldThrowExceptionAfterReceivingNegativeShortDiagonalLength() {
-        assertThrows(Exception.class, () -> Rhombus.withShortDiagonalAndLongDiagonal(NON_POSITIVE_VALUE, LONG_DIAGONAL_VALUE));
+        assertThrows(Exception.class,
+                () -> Rhombus.withShortDiagonalAndLongDiagonal(NON_POSITIVE_VALUE, LONG_DIAGONAL_VALUE));
     }
 
     /**
@@ -108,7 +116,8 @@ public class RhombusTest {
      */
     @Test
     public void shouldThrowExceptionAfterReceivingNegativeLongDiagonalLength() {
-        assertThrows(Exception.class, () -> Rhombus.withShortDiagonalAndLongDiagonal(SHORT_DIAGONAL_VALUE, NON_POSITIVE_VALUE));
+        assertThrows(Exception.class,
+                () -> Rhombus.withShortDiagonalAndLongDiagonal(SHORT_DIAGONAL_VALUE, NON_POSITIVE_VALUE));
     }
 
     /**

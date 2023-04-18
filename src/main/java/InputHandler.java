@@ -3,6 +3,11 @@ import shapes.Shape;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.AbstractMap.SimpleImmutableEntry;
+import java.util.Map.Entry;
+
+import factory.ShapeFactory;
+import factory.ShapeFactory.ArgumentType;
 
 public class InputHandler {
 
@@ -10,7 +15,6 @@ public class InputHandler {
 
     private final CommandFactory commandFactory = new CommandFactory(this);
 
-    private static final String INVALID_SHAPE_NAME = "Unknown figure name";
     private static final String INVALID_ARGUMENT_VALUE = "Value must be a positive number.";
     private static final String INVALID_ARGUMENT_TYPE = "Unknown argument name";
     private static final String INVALID_NUMBER_OF_ARGUMENTS = "Each argument type must have a value";
@@ -20,6 +24,7 @@ public class InputHandler {
         String[] args = input.split(" ");
         if (args.length > 0) {
 
+
             try {
                 CommandFactory.CommandName commandName = readCommandName(args);
                 Command command = commandFactory.createCommand(commandName, Arrays.copyOfRange(args, 1, args.length),figureList);
@@ -27,10 +32,12 @@ public class InputHandler {
 
             } catch (Exception e) {
                 System.out.println(e.getMessage());
+
             }
 
         }
     }
+
 
     public  CommandFactory.CommandName readCommandName(String[] args) throws Exception {
         CommandFactory.CommandName commandName = formatCommandName(args[0]);
@@ -44,14 +51,17 @@ public class InputHandler {
         } catch (IllegalArgumentException e) {
             throw new Exception(UNKNOWN_FUNCTION);
         }
+
     }
 
-    private static ShapeFactory.ShapeName formatShapeName(String shapeName) throws Exception {
-        try {
-            return ShapeFactory.ShapeName.valueOf(shapeName.toLowerCase());
-        } catch (IllegalArgumentException e) {
-            throw new Exception(INVALID_SHAPE_NAME);
+    private static List<Entry<ArgumentType, Double>> getArgumentsList(String[] args) throws Exception {
+        List<Entry<ArgumentType, Double>> argsList = new ArrayList<>();
+        for (int i = 1; i < args.length; i += 2) {
+            argsList.add(new SimpleImmutableEntry<ArgumentType, Double>(
+                    convertStringToArgumentType(args[i]),
+                    convertStringToArgumentValue(args[i + 1])));
         }
+        return argsList;
     }
 
 
@@ -67,30 +77,24 @@ public class InputHandler {
 
     private static List<ShapeFactory.ArgumentType> getTypesFromArguments(String[] args) throws Exception {
         List<ShapeFactory.ArgumentType> types = new ArrayList<>();
+
         try {
-            for (int i = 1; i < args.length; i += 2) {
-                types.add(ShapeFactory.ArgumentType.valueOf(args[i].toLowerCase()));
-            }
+            return ShapeFactory.ArgumentType.valueOf(s.toLowerCase());
         } catch (IllegalArgumentException e) {
             throw new Exception(INVALID_ARGUMENT_TYPE);
         }
-        return types;
     }
 
-    private static List<Double> getValuesFromArguments(String[] args) throws Exception {
-        List<Double> values = new ArrayList<>();
+    private static Double convertStringToArgumentValue(String s) throws Exception {
         try {
-            for (int i = 2; i < args.length; i += 2) {
-                double val = Double.parseDouble(args[i]);
-                if (val <= 0) {
-                    throw new NumberFormatException();
-                }
-                values.add(val);
+            double val = Double.parseDouble(s);
+            if (val <= 0) {
+                throw new NumberFormatException();
             }
+            return val;
         } catch (NumberFormatException e) {
             throw new Exception(INVALID_ARGUMENT_VALUE);
         }
-        return values;
     }
 
 

@@ -1,5 +1,6 @@
 import shapes.Shape;
 
+import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -10,8 +11,11 @@ public class ShapeRepository {
         shapes.add(shape);
     }
 
+    public void sort(Comparator<Shape> comparator) {
+        shapes.sort(comparator);
+    }
+
     public List<Shape> getShapes() {
-        shapes.sort((Shape a, Shape b) -> a.getSurfaceArea() < b.getSurfaceArea() ? -1 : 1);
         return shapes;
     }
 }

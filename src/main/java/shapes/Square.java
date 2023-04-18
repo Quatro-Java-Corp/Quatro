@@ -1,6 +1,7 @@
 package shapes;
 
 public final class Square implements Shape {
+
     private final double sideLength;
 
     @Override
@@ -18,6 +19,11 @@ public final class Square implements Shape {
 
     private Square(double sideLength) {
         this.sideLength = sideLength;
+    }
+
+    @Override
+    public double getCircuit() {
+        return 4 * sideLength;
     }
 
     public static Square withSideLength(double sideLength) {
@@ -43,7 +49,7 @@ public final class Square implements Shape {
 
     @Override
     public String toString() {
-        return "shapes.Square{" +
+        return "Square{" +
                 "sideLength=" + sideLength +
                 ", diagonalLength=" + getDiagonalLength() +
                 ", surfaceArea=" + getSurfaceArea() +
