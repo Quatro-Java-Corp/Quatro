@@ -15,32 +15,17 @@ public class CommandFactory {
 
     public String[] args;
 
-    private static final String NO_NEED_ARGUMENTS = "This function don't need any arguments";
 
-    public void runCommand(CommandName command,String[] args,InputHandler ih)  {
-        switch (command) {
-            case exit -> System.exit(0);
-            case add -> addShape( Arrays.copyOfRange(args, 1, args.length),ih );
-            case showfigures -> showFigures( Arrays.copyOfRange(args, 1, args.length),ih);
-        }
+
+    public Command createCommand(CommandName command,String[] args ,ShapeRepository shapeRepo)  {
+        return switch (command) {
+            case exit ->  new CommandExit();
+            case add ->  new CommandAdd(args,shapeRepo);  //addShape( Arrays.copyOfRange(args, 1, args.length),ih );
+            case showfigures ->  new CommandShow(shapeRepo, args.length == 0);   //showFigures( Arrays.copyOfRange(args, 1, args.length),ih);
+        };
 
     }
 
-    private void showFigures(String[] args,InputHandler ih) {
-        if (args.length != 0)
-            System.out.println(NO_NEED_ARGUMENTS);
-        ih.figureList.getShapes().forEach(System.out::println);
-    }
-
-    private void addShape(String[] args,InputHandler ih) {
-        try {
-            Shape shape = inputHandler.createFigureWithArguments(args);
-            System.out.println(shape.toString());
-            ih.figureList.addShape(shape);
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
-    }
 
 
 }

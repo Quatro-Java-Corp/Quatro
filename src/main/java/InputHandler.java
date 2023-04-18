@@ -1,11 +1,12 @@
 import shapes.Shape;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class InputHandler {
 
-    private final ShapeFactory shapeFactory = new ShapeFactory();
+    private static final ShapeFactory shapeFactory = new ShapeFactory();
 
     private final CommandFactory commandFactory = new CommandFactory(this);
 
@@ -20,7 +21,9 @@ public class InputHandler {
         if (args.length > 0) {
 
             try {
-                commandFactory.runCommand(LoadCommand(args),args,this);
+                CommandFactory.CommandName commandName = readCommandName(args);
+                Command command = commandFactory.createCommand(commandName, Arrays.copyOfRange(args, 1, args.length),figureList);
+                command.run();
 
             } catch (Exception e) {
                 System.out.println(e.getMessage());
@@ -29,21 +32,11 @@ public class InputHandler {
         }
     }
 
-    public Shape createFigureWithArguments(String[] args) throws Exception {
-        ShapeFactory.ShapeName shapeName = formatShapeName(args[0]);
-        List<ShapeFactory.ArgumentType> argsTypes = getTypesFromArguments(args);
-        List<Double> argsValues = getValuesFromArguments(args);
-        if (argsTypes.size() != argsValues.size()) {
-            throw new Exception(INVALID_NUMBER_OF_ARGUMENTS);
-        }
-        return shapeFactory.createShape(shapeName, argsTypes, argsValues);
-    }
-
-
-    public  CommandFactory.CommandName LoadCommand(String[] args) throws Exception {
+    public  CommandFactory.CommandName readCommandName(String[] args) throws Exception {
         CommandFactory.CommandName commandName = formatCommandName(args[0]);
         return commandName;
     }
+
 
     private static CommandFactory.CommandName formatCommandName(String commandName) throws Exception {
         try {
@@ -59,6 +52,17 @@ public class InputHandler {
         } catch (IllegalArgumentException e) {
             throw new Exception(INVALID_SHAPE_NAME);
         }
+    }
+
+
+    public static Shape createFigureWithArguments(String[] args) throws Exception {
+        ShapeFactory.ShapeName shapeName = formatShapeName(args[0]);
+        List<ShapeFactory.ArgumentType> argsTypes = getTypesFromArguments(args);
+        List<Double> argsValues = getValuesFromArguments(args);
+        if (argsTypes.size() != argsValues.size()) {
+            throw new Exception(INVALID_NUMBER_OF_ARGUMENTS);
+        }
+        return shapeFactory.createShape(shapeName, argsTypes, argsValues);
     }
 
     private static List<ShapeFactory.ArgumentType> getTypesFromArguments(String[] args) throws Exception {
@@ -88,4 +92,6 @@ public class InputHandler {
         }
         return values;
     }
+
+
 }
