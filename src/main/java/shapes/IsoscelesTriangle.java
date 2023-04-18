@@ -52,7 +52,7 @@ public class IsoscelesTriangle implements Shape {
         if (delta <= 0) {
             throw new IllegalArgumentException("Surface area is to big for this side lenght");
         }
-        return new IsoscelesTriangle(sideLength, sqrt(2.0 * pow(sideLength, 2) + 2.0 * sqrt(delta)));
+        return new IsoscelesTriangle(sideLength, sqrt(2.0 * pow(sideLength, 2) - 2.0 * sqrt(delta)));
     }
 
     public static IsoscelesTriangle withSideAndHeight(double sideLength, double height) {
