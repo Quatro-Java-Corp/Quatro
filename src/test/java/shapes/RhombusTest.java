@@ -1,9 +1,8 @@
 package shapes;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-
 import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * Unit test for Rhombus.
@@ -131,5 +130,11 @@ public class RhombusTest {
         assertEquals(r.getShortDiagonalLength(), SHORT_DIAGONAL_VALUE, DELTA);
         assertEquals(r.getLongDiagonalLength(), LONG_DIAGONAL_VALUE, DELTA);
         assertEquals(r.getSurfaceArea(), AREA_VALUE, DELTA);
+    }
+
+    @Test
+    public void shouldReturnEmptyOptionalWhenAskedForCircumscribedCircle() {
+        Rhombus r = Rhombus.withShortDiagonalAndLongDiagonal(LONG_DIAGONAL_VALUE, SHORT_DIAGONAL_VALUE);
+        assertTrue(r.getCircumscribedCircle().isEmpty());
     }
 }

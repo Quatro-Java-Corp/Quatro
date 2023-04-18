@@ -1,9 +1,8 @@
 package shapes;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-
 import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * Unit test for Square.
@@ -16,6 +15,7 @@ public class SquareTest {
     private final double AREA_VALUE = 299.29;
     private final double CIRCUIT_VALUE = 69.2;
     private final double NEGATIVE_VALUE = -13.5;
+    private final double CIRCUMSCRIBED_CIRCLE_RADIUS_VALUE = 12.23;
 
     /**
      * Side length constructor
@@ -78,5 +78,12 @@ public class SquareTest {
     @Test
     public void shouldThrowExceptionAfterReceivingNegativeSurfaceArea() {
         assertThrows(Exception.class, () -> Square.withSurfaceArea(NEGATIVE_VALUE));
+    }
+
+    @Test
+    void shouldReturnCircleWithCorrectRadiusWhenProvidingCircumscribedCircle() {
+        Square s = Square.withSideLength(SIDE_VALUE);
+        var c = assertDoesNotThrow(s.getCircumscribedCircle()::get);
+        assertEquals(CIRCUMSCRIBED_CIRCLE_RADIUS_VALUE, c.getRadius(),DELTA);
     }
 }
