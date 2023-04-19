@@ -1,5 +1,7 @@
 package shapes;
 
+import java.util.Optional;
+
 import static java.lang.Math.*;
 
 public class IsoscelesTriangle implements Shape {
@@ -27,6 +29,11 @@ public class IsoscelesTriangle implements Shape {
     @Override
     public double getCircuit() {
         return 2 * sideLength + baseLength;
+    }
+
+    @Override
+    public Optional<Circle> getCircumscribedCircle() {
+        return Optional.of(Circle.withRadius(sideLength * sideLength * baseLength / (4 * getSurfaceArea())));
     }
 
     private IsoscelesTriangle(double sideLength, double baseLength) {

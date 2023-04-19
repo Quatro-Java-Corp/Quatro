@@ -13,12 +13,12 @@ public class ShapeFactory {
         side, diagonal, area, radius, diameter, circuit, height, base
     }
 
-    private Map<String, ShapeFactoryWorker> workers = new HashMap<String, ShapeFactoryWorker>();
+    private final Map<String, ShapeFactoryWorker> workers = new HashMap<>();
 
     public ShapeFactory() {
         registerWorker(CircleFactoryWorker.shapeName, new CircleFactoryWorker());
         registerWorker(SquareFactoryWorker.shapeName, new SquareFactoryWorker());
-        registerWorker(RegularTriangleFactoryWorker.shapeName,new RegularTriangleFactoryWorker());
+        registerWorker(RegularTriangleFactoryWorker.shapeName, new RegularTriangleFactoryWorker());
         registerWorker(RectangleFactoryWorker.shapeName, new RectangleFactoryWorker());
         registerWorker(RhombusFactoryWorker.shapeName, new RhombusFactoryWorker());
         registerWorker(IsoscelesTriangleFactoryWorker.shapeName, new IsoscelesTriangleFactoryWorker());
@@ -30,8 +30,19 @@ public class ShapeFactory {
 
     public Shape createShape(String shapeName, List<Entry<ArgumentType, Double>> args) throws Exception {
         if (workers.containsKey(shapeName)) {
-            return workers.get(shapeName).create(args);
+            Shape shape = workers.get(shapeName).create(args);
+            if (shapeName.equals("rhombus")) {
+                return convertRhombusToSquareIfPossible((Rhombus) shape);
+            }
+            return shape;
         }
         throw new Exception(shapeName + " is not avaliable shape");
+    }
+
+    private Shape convertRhombusToSquareIfPossible(Rhombus rhombus) {
+        if (rhombus.getLongDiagonalLength() - rhombus.getShortDiagonalLength() < 0.0001) {
+            return Square.withDiagonalLength(rhombus.getShortDiagonalLength());
+        }
+        return rhombus;
     }
 }
