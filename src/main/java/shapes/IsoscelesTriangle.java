@@ -31,7 +31,7 @@ public class IsoscelesTriangle implements Shape {
 
     private IsoscelesTriangle(double sideLength, double baseLength) {
         if ((2 * sideLength) <= baseLength) {
-            throw new IllegalArgumentException("2.0 times side length should be bigger than base length");
+            throw new IllegalArgumentException("side length should be bigger 2 times than base length");
         }
         this.sideLength = sideLength;
         this.baseLength = baseLength;
