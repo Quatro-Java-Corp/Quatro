@@ -7,22 +7,23 @@ import java.util.List;
 public class InputHandler {
 
     private static final ShapeFactory shapeFactory = new ShapeFactory();
-
     private final CommandFactory commandFactory = new CommandFactory(this);
+
+    private final ShapeRepository figureList = new ShapeRepository();
 
     private static final String INVALID_SHAPE_NAME = "Unknown figure name";
     private static final String INVALID_ARGUMENT_VALUE = "Value must be a positive number.";
     private static final String INVALID_ARGUMENT_TYPE = "Unknown argument name";
     private static final String INVALID_NUMBER_OF_ARGUMENTS = "Each argument type must have a value";
     private static final String UNKNOWN_FUNCTION = "Unknown function";
-    public final ShapeRepository figureList = new ShapeRepository();
+
     public void parseInput(String input) {
         String[] args = input.split(" ");
         if (args.length > 0) {
 
             try {
                 CommandFactory.CommandName commandName = readCommandName(args);
-                Command command = commandFactory.createCommand(commandName, Arrays.copyOfRange(args, 1, args.length),figureList);
+                Command command = commandFactory.createCommand(commandName,args,figureList);
                 command.run();
 
             } catch (Exception e) {
@@ -33,8 +34,7 @@ public class InputHandler {
     }
 
     public  CommandFactory.CommandName readCommandName(String[] args) throws Exception {
-        CommandFactory.CommandName commandName = formatCommandName(args[0]);
-        return commandName;
+        return formatCommandName(args[0]);
     }
 
 
