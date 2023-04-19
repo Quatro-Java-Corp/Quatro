@@ -1,9 +1,8 @@
 package shapes;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-
 import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * Unit test for Regular Triangle.
@@ -14,7 +13,9 @@ public class RegularTriangleTest {
     private final double SIDE_VALUE = 19.2;
     private final double HEIGHT_VALUE = 16.6276877;
     private final double AREA_VALUE = 159.625802;
+    private final double CIRCUIT_VALUE = 57.6;
     private final double NEGATIVE_VALUE = -13.592;
+    private final double CIRCUMSCRIBED_CIRCLE_RADIUS_VALUE = 11.08515;
 
     /**
      * Side length constructor
@@ -26,6 +27,7 @@ public class RegularTriangleTest {
         assertEquals(t.getSideLength(), SIDE_VALUE, DELTA);
         assertEquals(t.getHeight(), HEIGHT_VALUE, DELTA);
         assertEquals(t.getSurfaceArea(), AREA_VALUE, DELTA);
+        assertEquals(t.getCircuit(), CIRCUIT_VALUE, DELTA);
     }
 
     /**
@@ -38,6 +40,7 @@ public class RegularTriangleTest {
         assertEquals(t.getSideLength(), SIDE_VALUE, DELTA);
         assertEquals(t.getHeight(), HEIGHT_VALUE, DELTA);
         assertEquals(t.getSurfaceArea(), AREA_VALUE, DELTA);
+        assertEquals(t.getCircuit(), CIRCUIT_VALUE, DELTA);
     }
 
     /**
@@ -50,6 +53,7 @@ public class RegularTriangleTest {
         assertEquals(t.getSideLength(), SIDE_VALUE, DELTA);
         assertEquals(t.getHeight(), HEIGHT_VALUE, DELTA);
         assertEquals(t.getSurfaceArea(), AREA_VALUE, DELTA);
+        assertEquals(t.getCircuit(), CIRCUIT_VALUE, DELTA);
     }
 
     /**
@@ -74,5 +78,12 @@ public class RegularTriangleTest {
     @Test
     public void shouldThrowExceptionAfterReceivingNegativeSurfaceArea() {
         assertThrows(Exception.class, () -> RegularTriangle.withSurfaceArea(NEGATIVE_VALUE));
+    }
+
+    @Test
+    void shouldReturnCircleWithCorrectRadiusWhenProvidingCircumscribedCircle() {
+        RegularTriangle t = RegularTriangle.withSide(SIDE_VALUE);
+        var c = assertDoesNotThrow(t.getCircumscribedCircle()::get);
+        assertEquals(CIRCUMSCRIBED_CIRCLE_RADIUS_VALUE, c.getRadius(),DELTA);
     }
 }

@@ -1,6 +1,9 @@
 package shapes;
 
+import java.util.Optional;
+
 public final class Circle implements Shape {
+
     private final double radius;
 
     @Override
@@ -8,8 +11,14 @@ public final class Circle implements Shape {
         return radius * radius * Math.PI;
     }
 
+    @Override
     public double getCircuit() {
         return radius * 2 * Math.PI;
+    }
+
+    @Override
+    public Optional<Circle> getCircumscribedCircle() {
+        return Optional.of(Circle.withRadius(radius));
     }
 
     public double getDiameter() {
@@ -54,7 +63,7 @@ public final class Circle implements Shape {
 
     @Override
     public String toString() {
-        return "shapes.Circle{" +
+        return "Circle{" +
                 "circuit=" + getCircuit() +
                 ", diameter=" + getDiameter() +
                 ", radius=" + radius +

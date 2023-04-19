@@ -4,6 +4,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.Test;
 import shapes.Rectangle;
 
+import java.util.Locale;
+
 /**
  * Unit test for shapes.Rectangle.
  */
@@ -21,8 +23,8 @@ public class InputHandlerTest {
      * Short Side And Long Side
      */
     @Test
-    public void shouldCreateRectangleWithShortSideAndLongSideAndCalculateOtherParameters() throws Exception {
-        String[] args = String.format("rectangle side %4f side %4f", SHORT_SIDE_VALUE, LONG_SIDE_VALUE).split(" ");
+    public void shouldCreateRectangleWithShortSideAndLongSideAndCalculateOtherParameters() {
+        String[] args = String.format(Locale.ENGLISH, "rectangle side %4f side %4f", SHORT_SIDE_VALUE, LONG_SIDE_VALUE).split(" ");
 
         Rectangle r = assertDoesNotThrow(() -> (Rectangle) inputHandler.createFigureWithArguments(args));
         assertEquals(r.getShortSideLength(), SHORT_SIDE_VALUE, DELTA);

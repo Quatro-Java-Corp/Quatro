@@ -1,8 +1,11 @@
 package shapes;
 
+import java.util.Optional;
+
 import static java.lang.Math.*;
 
 public class Rectangle implements Shape {
+
     private final double shortSideLength;
     private final double longSideLength;
 
@@ -21,6 +24,16 @@ public class Rectangle implements Shape {
     @Override
     public double getSurfaceArea() {
         return shortSideLength * longSideLength;
+    }
+
+    @Override
+    public double getCircuit() {
+        return 2 * shortSideLength + 2 * longSideLength;
+    }
+
+    @Override
+    public Optional<Circle> getCircumscribedCircle() {
+        return Optional.of(Circle.withDiameter(getDiagonalLength()));
     }
 
     private Rectangle(double shortSideLength, double longSideLength) {
@@ -78,7 +91,7 @@ public class Rectangle implements Shape {
 
     @Override
     public String toString() {
-        return "shapes.Rectangle{" +
+        return "Rectangle{" +
                 "shortSideLength=" + shortSideLength +
                 ", longSideLength=" + longSideLength +
                 ", diagonalLength=" + getDiagonalLength() +

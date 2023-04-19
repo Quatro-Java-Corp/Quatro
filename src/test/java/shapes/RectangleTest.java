@@ -1,9 +1,8 @@
 package shapes;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-
 import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * Unit test for Rectangle.
@@ -15,7 +14,10 @@ public class RectangleTest {
     private final double SHORT_SIDE_VALUE = 3;
     private final double DIAGONAL_VALUE = 5;
     private final double AREA_VALUE = 12;
+    private final double CIRCUIT_VALUE = 14;
     private final double NEGATIVE_VALUE = -13.5;
+    private static final double CIRCUMSCRIBED_CIRCLE_RADIUS_VALUE = 2.5;
+
 
     /**
      * Short Side And Long Side
@@ -28,6 +30,7 @@ public class RectangleTest {
         assertEquals(r.getLongSideLength(), LONG_SIDE_VALUE, DELTA);
         assertEquals(r.getDiagonalLength(), DIAGONAL_VALUE, DELTA);
         assertEquals(r.getSurfaceArea(), AREA_VALUE, DELTA);
+        assertEquals(r.getCircuit(), CIRCUIT_VALUE, DELTA);
     }
 
     /**
@@ -41,6 +44,7 @@ public class RectangleTest {
         assertEquals(r.getLongSideLength(), LONG_SIDE_VALUE, DELTA);
         assertEquals(r.getDiagonalLength(), DIAGONAL_VALUE, DELTA);
         assertEquals(r.getSurfaceArea(), AREA_VALUE, DELTA);
+        assertEquals(r.getCircuit(), CIRCUIT_VALUE, DELTA);
     }
 
     /**
@@ -54,6 +58,7 @@ public class RectangleTest {
         assertEquals(r.getLongSideLength(), LONG_SIDE_VALUE, DELTA);
         assertEquals(r.getDiagonalLength(), DIAGONAL_VALUE, DELTA);
         assertEquals(r.getSurfaceArea(), AREA_VALUE, DELTA);
+        assertEquals(r.getCircuit(), CIRCUIT_VALUE, DELTA);
     }
 
     /**
@@ -67,6 +72,7 @@ public class RectangleTest {
         assertEquals(r.getLongSideLength(), LONG_SIDE_VALUE, DELTA);
         assertEquals(r.getDiagonalLength(), DIAGONAL_VALUE, DELTA);
         assertEquals(r.getSurfaceArea(), AREA_VALUE, DELTA);
+        assertEquals(r.getCircuit(), CIRCUIT_VALUE, DELTA);
     }
 
     /**
@@ -80,6 +86,7 @@ public class RectangleTest {
         assertEquals(r.getLongSideLength(), LONG_SIDE_VALUE, DELTA);
         assertEquals(r.getDiagonalLength(), DIAGONAL_VALUE, DELTA);
         assertEquals(r.getSurfaceArea(), AREA_VALUE, DELTA);
+        assertEquals(r.getCircuit(), CIRCUIT_VALUE, DELTA);
     }
 
     /**
@@ -93,6 +100,7 @@ public class RectangleTest {
         assertEquals(r.getLongSideLength(), LONG_SIDE_VALUE, DELTA);
         assertEquals(r.getDiagonalLength(), DIAGONAL_VALUE, DELTA);
         assertEquals(r.getSurfaceArea(), AREA_VALUE, DELTA);
+        assertEquals(r.getCircuit(), CIRCUIT_VALUE, DELTA);
     }
 
     /**
@@ -154,5 +162,12 @@ public class RectangleTest {
         assertEquals(r.getLongSideLength(), LONG_SIDE_VALUE, DELTA);
         assertEquals(r.getDiagonalLength(), DIAGONAL_VALUE, DELTA);
         assertEquals(r.getSurfaceArea(), AREA_VALUE, DELTA);
+    }
+
+    @Test
+    void shouldReturnCircleWithCorrectRadiusWhenProvidingCircumscribedCircle() {
+        Rectangle r = Rectangle.withShortSideAndLongSide(SHORT_SIDE_VALUE, LONG_SIDE_VALUE);
+        var c = assertDoesNotThrow(r.getCircumscribedCircle()::get);
+        assertEquals(CIRCUMSCRIBED_CIRCLE_RADIUS_VALUE, c.getRadius(),DELTA);
     }
 }

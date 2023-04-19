@@ -1,5 +1,7 @@
 package shapes;
 
+import java.util.Optional;
+
 import static java.lang.Math.pow;
 
 public class RegularTriangle implements Shape {
@@ -17,6 +19,16 @@ public class RegularTriangle implements Shape {
     @Override
     public double getSurfaceArea() {
         return sideLength * sideLength * pow(3, 0.5) / 4.0;
+    }
+
+    @Override
+    public double getCircuit() {
+        return 3 * sideLength;
+    }
+
+    @Override
+    public Optional<Circle> getCircumscribedCircle() {
+        return Optional.of(Circle.withRadius(getHeight() * 2 / 3));
     }
 
     public RegularTriangle(double sideLength) {
@@ -46,7 +58,7 @@ public class RegularTriangle implements Shape {
 
     @Override
     public String toString() {
-        return "shapes.RegularTriangle{" +
+        return "RegularTriangle{" +
                 "sideLength=" + sideLength +
                 ", height=" + getHeight() +
                 ", surfaceArea=" + getSurfaceArea() +

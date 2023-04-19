@@ -1,9 +1,8 @@
 package shapes;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-
 import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * Unit test for Square.
@@ -14,7 +13,9 @@ public class SquareTest {
     private final double SIDE_VALUE = 17.3;
     private final double DIAGONAL_VALUE = 24.465894629;
     private final double AREA_VALUE = 299.29;
+    private final double CIRCUIT_VALUE = 69.2;
     private final double NEGATIVE_VALUE = -13.5;
+    private final double CIRCUMSCRIBED_CIRCLE_RADIUS_VALUE = 12.23;
 
     /**
      * Side length constructor
@@ -26,6 +27,7 @@ public class SquareTest {
         assertEquals(s.getSideLength(), SIDE_VALUE, DELTA);
         assertEquals(s.getDiagonalLength(), DIAGONAL_VALUE, DELTA);
         assertEquals(s.getSurfaceArea(), AREA_VALUE, DELTA);
+        assertEquals(s.getCircuit(), CIRCUIT_VALUE, DELTA);
     }
 
     /**
@@ -38,6 +40,7 @@ public class SquareTest {
         assertEquals(s.getSideLength(), SIDE_VALUE, DELTA);
         assertEquals(s.getDiagonalLength(), DIAGONAL_VALUE, DELTA);
         assertEquals(s.getSurfaceArea(), AREA_VALUE, DELTA);
+        assertEquals(s.getCircuit(), CIRCUIT_VALUE, DELTA);
     }
 
     /**
@@ -50,6 +53,7 @@ public class SquareTest {
         assertEquals(s.getSideLength(), SIDE_VALUE, DELTA);
         assertEquals(s.getDiagonalLength(), DIAGONAL_VALUE, DELTA);
         assertEquals(s.getSurfaceArea(), AREA_VALUE, DELTA);
+        assertEquals(s.getCircuit(), CIRCUIT_VALUE, DELTA);
     }
 
     /**
@@ -74,5 +78,12 @@ public class SquareTest {
     @Test
     public void shouldThrowExceptionAfterReceivingNegativeSurfaceArea() {
         assertThrows(Exception.class, () -> Square.withSurfaceArea(NEGATIVE_VALUE));
+    }
+
+    @Test
+    void shouldReturnCircleWithCorrectRadiusWhenProvidingCircumscribedCircle() {
+        Square s = Square.withSideLength(SIDE_VALUE);
+        var c = assertDoesNotThrow(s.getCircumscribedCircle()::get);
+        assertEquals(CIRCUMSCRIBED_CIRCLE_RADIUS_VALUE, c.getRadius(),DELTA);
     }
 }

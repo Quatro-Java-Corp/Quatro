@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 public class CommandFactory {
     public enum CommandName {
-        exit, add, showfigures
+        exit, add, showfigures, sort, circumscribed
     }
     private static final String NO_NEED_ARGUMENTS = "This function don't need any arguments";
 
@@ -20,6 +20,8 @@ public class CommandFactory {
                 case exit -> new CommandExit();
                 case add -> new CommandAdd(args, shapeRepo);
                 case showfigures -> createShow(args, shapeRepo);
+                case sort -> new CommandSort(args,shapeRepo);
+                case circumscribed -> new CommandCircumscribed(args,shapeRepo);
             };
         } catch (Exception e) {
             return  new CommandPrintException(e.getMessage());
