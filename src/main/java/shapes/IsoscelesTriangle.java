@@ -66,7 +66,7 @@ public class IsoscelesTriangle implements Shape {
         if (baseLength <= 0 || surfaceArea <= 0) {
             throw new IllegalArgumentException("Values must be non-negative");
         }
-        return new IsoscelesTriangle(sqrt((4 * pow(surfaceArea, 2) / pow(baseLength, 2)) + (pow(baseLength, 2) / 2)), baseLength);
+        return new IsoscelesTriangle(sqrt((4 * pow(surfaceArea, 2) / pow(baseLength, 2)) + (pow(baseLength, 2) / 4)), baseLength);
     }
 
     public static IsoscelesTriangle withBaseAndHeight(double baseLength, double height) {
