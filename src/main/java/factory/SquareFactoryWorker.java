@@ -9,7 +9,7 @@ import shapes.Square;
 public class SquareFactoryWorker implements ShapeFactoryWorker {
 
     public static final String shapeName = "square";
-    public static final double numberOfArguments = 2;
+    public static final double numberOfArguments = 1;
 
     public Square create(List<Entry<ArgumentType, Double>> args) throws Exception {
         if (args.size() != SquareFactoryWorker.numberOfArguments) {
