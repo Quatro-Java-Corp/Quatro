@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test;
  * Unit test for IsoscelesTriangle.
  */
 public class IsoscelesTriangleTest {
-    private final double DELTA = 1e-1;
+    private final double DELTA = 1e-2;
 
     private final double SIDE_VALUE = 10;
     private final double BASE_VALUE = 4;
