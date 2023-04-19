@@ -1,5 +1,7 @@
 package shapes;
 
+import java.util.Optional;
+
 public final class Square implements Shape {
 
     private final double sideLength;
@@ -24,6 +26,11 @@ public final class Square implements Shape {
     @Override
     public double getCircuit() {
         return 4 * sideLength;
+    }
+
+    @Override
+    public Optional<Circle> getCircumscribedCircle() {
+        return Optional.of(Circle.withDiameter(getDiagonalLength()));
     }
 
     public static Square withSideLength(double sideLength) {

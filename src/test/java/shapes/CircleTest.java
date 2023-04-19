@@ -1,9 +1,8 @@
 package shapes;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-
 import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * Unit test for Circle.
@@ -99,5 +98,12 @@ public class CircleTest {
     @Test
     public void shouldThrowExceptionAfterReceivingNegativeSurfaceArea() {
         assertThrows(Exception.class, () -> Circle.withSurfaceArea(NEGATIVE_VALUE));
+    }
+
+    @Test
+    void shouldReturnCircleWithCorrectRadiusWhenProvidingCircumscribedCircle() {
+        Circle c = Circle.withRadius(RADIUS_VALUE);
+        var cc = assertDoesNotThrow(c.getCircumscribedCircle()::get);
+        assertEquals(RADIUS_VALUE, cc.getRadius());
     }
 }

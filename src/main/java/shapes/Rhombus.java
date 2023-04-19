@@ -1,5 +1,7 @@
 package shapes;
 
+import java.util.Optional;
+
 import static java.lang.Math.*;
 
 public class Rhombus implements Shape {
@@ -27,6 +29,11 @@ public class Rhombus implements Shape {
     @Override
     public double getCircuit() {
         return 4 * getSideLength();
+    }
+
+    @Override
+    public Optional<Circle> getCircumscribedCircle() {
+        return Optional.empty();
     }
 
     private Rhombus(double shortDiagonalLength, double longDiagonalLength) {
