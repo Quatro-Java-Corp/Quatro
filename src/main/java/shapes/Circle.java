@@ -2,7 +2,7 @@ package shapes;
 
 import java.util.Optional;
 
-public final class Circle implements Shape {
+public class Circle implements Shape {
 
     private final double radius;
 
