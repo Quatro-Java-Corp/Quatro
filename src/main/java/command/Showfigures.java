@@ -1,3 +1,7 @@
+package command;
+
+import shapes.ShapeRepository;
+
 public class CommandShow implements Command{
     ShapeRepository shapeRepo;
 

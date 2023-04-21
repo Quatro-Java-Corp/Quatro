@@ -1,4 +1,6 @@
-public class CommandExit implements Command{
+package command;
+
+public class CommandExit implements Command {
     @Override
     public void run() {
         System.exit(0);

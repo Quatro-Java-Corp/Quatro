@@ -1,4 +1,6 @@
 
+import command.Command;
+import command.CommandFactory;
 import shapes.Shape;
 
 import java.util.ArrayList;
@@ -102,7 +104,7 @@ import factory.ShapeFactory.ArgumentType;
 public class InputHandler {
 
     private static final ShapeFactory shapeFactory = new ShapeFactory();
-    private final CommandFactory commandFactory = new CommandFactory(this);
+    private final command.CommandFactory commandFactory = new command.CommandFactory(this);
 
     private final ShapeRepository figureList = new ShapeRepository();
     private final ComparatorFactory comparatorFactory=new ComparatorFactory();
@@ -119,8 +121,8 @@ public class InputHandler {
 
 
             try {
-                CommandFactory.CommandName commandName = readCommandName(args);
-                Command command = commandFactory.createCommand(commandName, args, figureList);
+                command.CommandFactory.CommandName commandName = readCommandName(args);
+                command.Command command = commandFactory.createCommand(commandName, args, figureList);
                 command.run();
 
             } catch (Exception e) {
@@ -174,13 +176,13 @@ public class InputHandler {
         }
     }
 
-    public  CommandFactory.CommandName readCommandName(String[] args) throws Exception {
+    public  command.CommandFactory.CommandName readCommandName(String[] args) throws Exception {
         return formatCommandName(args[0]);
     }
 
-    private static CommandFactory.CommandName formatCommandName(String commandName) throws Exception {
+    private static command.CommandFactory.CommandName formatCommandName(String commandName) throws Exception {
         try {
-            return CommandFactory.CommandName.valueOf(commandName.toLowerCase());
+            return command.CommandFactory.CommandName.valueOf(commandName.toLowerCase());
         } catch (IllegalArgumentException e) {
             throw new Exception(UNKNOWN_FUNCTION);
         }

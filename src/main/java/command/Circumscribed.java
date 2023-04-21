@@ -1,9 +1,12 @@
+package command;
+
 import shapes.Circle;
 import shapes.Shape;
+import shapes.ShapeRepository;
 
 import java.util.Optional;
 
-public class CommandCircumscribed implements  Command{
+public class CommandCircumscribed implements Command {
      private ShapeRepository figureList;
      private String[] args;
 
