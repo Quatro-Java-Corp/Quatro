@@ -1,3 +1,5 @@
+package shapes;
+
 import shapes.Shape;
 
 import java.util.Comparator;

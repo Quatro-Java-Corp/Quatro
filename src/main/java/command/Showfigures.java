@@ -2,12 +2,12 @@ package command;
 
 import shapes.ShapeRepository;
 
-public class CommandShow implements Command{
+class Showfigures implements Command{
     ShapeRepository shapeRepo;
 
     private static final String NO_NEED_ARGUMENTS = "This function don't need any arguments";
 
-    public CommandShow(ShapeRepository shapeRepo) {
+    public Showfigures(ShapeRepository shapeRepo) {
         this.shapeRepo = shapeRepo;
     }
 

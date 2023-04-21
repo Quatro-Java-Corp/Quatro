@@ -1,14 +1,16 @@
+package other;
+
 import shapes.Shape;
 
 import java.util.Comparator;
 
 public class ComparatorFactory {
 
-    enum CompareBy {
+    public enum CompareBy {
         surfaceArea, circuit
     }
 
-    enum OrderBy {
+    public enum OrderBy {
         ascending, descending
     }
 

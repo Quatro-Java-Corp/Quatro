@@ -1,3 +1,5 @@
+import other.InputHandler;
+
 import java.util.Scanner;
 
 public class Main {

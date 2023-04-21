@@ -6,11 +6,11 @@ import shapes.ShapeRepository;
 
 import java.util.Optional;
 
-public class CommandCircumscribed implements Command {
+class Circumscribed implements Command {
      private ShapeRepository figureList;
      private String[] args;
 
-    public CommandCircumscribed(String[] args, ShapeRepository figureList) {
+    public Circumscribed(String[] args, ShapeRepository figureList) {
         this.figureList = figureList;
         this.args = args;
     }

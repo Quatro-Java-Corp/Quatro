@@ -3,11 +3,11 @@ package command;
 import other.ComparatorFactory;
 import shapes.ShapeRepository;
 
-public class CommandSort implements  Command{
+class Sort implements  Command{
     private ShapeRepository shapeRepo;
     private String[] args;
     private final ComparatorFactory comparatorFactory=new ComparatorFactory();
-    public CommandSort(String[] args, ShapeRepository shapeRepo) {
+    public Sort(String[] args, ShapeRepository shapeRepo) {
         this.shapeRepo = shapeRepo;
         this.args = args;
     }

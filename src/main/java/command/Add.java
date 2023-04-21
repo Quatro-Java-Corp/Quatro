@@ -1,16 +1,16 @@
 package command;
 
+import other.InputHandler;
 import shapes.Shape;
+import shapes.ShapeRepository;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
-public class CommandAdd implements Command {
+class Add implements Command {
     private final ShapeRepository shapeRepo;
     private final String[] args;
 
-    public CommandAdd(String[] args, ShapeRepository shapeRepo) {
+    public Add(String[] args, ShapeRepository shapeRepo) {
         this.shapeRepo = shapeRepo;
         this.args = args;
     }

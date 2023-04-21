@@ -1,6 +1,6 @@
 package command;
 
-public class CommandExit implements Command {
+ class Exit implements Command {
     @Override
     public void run() {
         System.exit(0);
