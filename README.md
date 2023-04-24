@@ -128,3 +128,26 @@ Możliwe wejście: (dowolna dwójka)
 * Długość podstawy
 * Pole powierzchni
 * Wysokość (od podstawy)
+
+## Pracownia 5
+
+### Wymagania ogólne
+
+Program ma umożliwić rozwiązywanie podstawowych zadań geometrycznych dla trójkąta prostokątnego
+* Program ma przechowywać informację kiedy dana figura została utworzona i zapewnić dodatkowo sortowanie wyników po dacie (rosnąco / malejąco)
+* Użytkownik może wybrać figurę z listy i wykonać na niej akcję: podwojenie
+* Zwraca figurę tego samego typu z 2 razy większym polem powierzchni zachowując proporcje
+
+#### Trójkąt prostokątny
+* Charakterystyka figury:
+* Długość przyprostokątnej 1
+* Długość przyprostokątnej 2
+* Długość przeciwprostokątnej
+* Pole powierzchni
+
+Możliwe wejście: (dowolna dwójka)
+
+* Długość przyprostokątnej 1
+* Długość przyprostokątnej 2
+* Długość przeciwprostokątnej
+* Pole powierzchni
