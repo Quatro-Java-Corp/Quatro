@@ -1,3 +1,5 @@
+import repository.ComparatorFactory;
+import repository.ShapeRepository;
 import shapes.Circle;
 import shapes.Shape;
 
