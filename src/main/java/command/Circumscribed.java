@@ -7,8 +7,8 @@ import shapes.ShapeRepository;
 import java.util.Optional;
 
 class Circumscribed implements Command {
-     private ShapeRepository figureList;
-     private String[] args;
+     private final ShapeRepository figureList;
+     private final String[] args;
 
     public Circumscribed(String[] args, ShapeRepository figureList) {
         this.figureList = figureList;

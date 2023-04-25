@@ -2,17 +2,17 @@ package command;
 
 import shapes.ShapeRepository;
 
-class Showfigures implements Command{
-    ShapeRepository shapeRepo;
+public class ShowFigures implements Command{
+    private final ShapeRepository shapeRepo;
 
     private static final String NO_NEED_ARGUMENTS = "This function don't need any arguments";
 
-    public Showfigures(ShapeRepository shapeRepo) {
+    public ShowFigures(ShapeRepository shapeRepo) {
         this.shapeRepo = shapeRepo;
     }
 
     @Override
     public void run() {
-            shapeRepo.getShapes().forEach(System.out::println);
+        shapeRepo.print();
     }
 }

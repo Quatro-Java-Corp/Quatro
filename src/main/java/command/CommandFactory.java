@@ -19,7 +19,7 @@ public class CommandFactory {
         try {
             return switch (command) {
                 case exit -> new Exit();
-                case add -> new Add(args, shapeRepo);
+                case add -> new Add(args, shapeRepo,inputHandler);
                 case showfigures -> createShow(args, shapeRepo);
                 case sort -> new Sort(args,shapeRepo);
                 case circumscribed -> new Circumscribed(args,shapeRepo);
@@ -31,9 +31,9 @@ public class CommandFactory {
     }
     private Command createShow(String[] args , ShapeRepository shapeRep) throws Exception{
         if (args.length != 1)
-             throw new Exception(NO_NEED_ARGUMENTS);
+            throw new Exception(NO_NEED_ARGUMENTS);
         else
-        return new Showfigures(shapeRep);
+            return new ShowFigures(shapeRep);
     }
 
 

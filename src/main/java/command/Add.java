@@ -10,15 +10,18 @@ class Add implements Command {
     private final ShapeRepository shapeRepo;
     private final String[] args;
 
-    public Add(String[] args, ShapeRepository shapeRepo) {
+    private final InputHandler inputHandler;
+
+    public Add(String[] args, ShapeRepository shapeRepo, InputHandler inputHandler) {
         this.shapeRepo = shapeRepo;
         this.args = args;
+        this.inputHandler = inputHandler;
     }
 
     @Override
     public void run() {
         try {
-            Shape shape = InputHandler.createFigureWithArguments(Arrays.copyOfRange(args, 1, args.length));
+            Shape shape = inputHandler.createFigureWithArguments(args);
             System.out.println(shape.toString());
             shapeRepo.addShape(shape);
         } catch (Exception e) {
