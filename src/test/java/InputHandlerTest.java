@@ -25,7 +25,7 @@ public class InputHandlerTest {
      */
     @Test
     public void shouldCreateRectangleWithShortSideAndLongSideAndCalculateOtherParameters() {
-        String[] args = String.format(Locale.ENGLISH, "rectangle side %4f side %4f", SHORT_SIDE_VALUE, LONG_SIDE_VALUE).split(" ");
+        String[] args = String.format(Locale.ENGLISH, "add rectangle side %4f side %4f", SHORT_SIDE_VALUE, LONG_SIDE_VALUE).split(" ");
 
         Rectangle r = assertDoesNotThrow(() -> (Rectangle) inputHandler.createFigureWithArguments(args));
         assertEquals(r.getShortSideLength(), SHORT_SIDE_VALUE, DELTA);
