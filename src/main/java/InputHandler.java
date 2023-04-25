@@ -45,6 +45,18 @@ public class InputHandler {
                 catch (Exception e){
                     System.out.println("Illegal Index");
                 }
+            } else if(args.length==2 && args[0].equalsIgnoreCase("doubled")){
+                try {
+                    int index = Integer.parseInt(args[1]);
+                    Shape shape = figureList.get(index).orElseThrow(Exception::new);
+                    Shape doubledSizedShape = shape.getDoubledSized();
+
+                    System.out.println(doubledSizedShape);
+                    figureList.addShape(doubledSizedShape);
+                }
+                catch (Exception e){
+                    System.out.println("Illegal Index");
+                }
             }
             else if (args.length % 2 == 0) {
                 System.out.println(INVALID_NUMBER_OF_ARGUMENTS);
@@ -59,7 +71,7 @@ public class InputHandler {
                 try {
                     figureList.sort(comparatorFactory.getComparator(ComparatorFactory.CompareBy.valueOf(args[1]),ComparatorFactory.OrderBy.valueOf(args[2])));
                 }
-                catch (Exception e){
+                catch (Exception e) {
                     System.out.println("Wrong sort arguments");
                 }
             }
