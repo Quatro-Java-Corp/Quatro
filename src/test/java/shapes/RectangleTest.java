@@ -17,6 +17,7 @@ public class RectangleTest {
     private final double CIRCUIT_VALUE = 14;
     private final double NEGATIVE_VALUE = -13.5;
     private static final double CIRCUMSCRIBED_CIRCLE_RADIUS_VALUE = 2.5;
+    private final double DOUBLED_AREA_VALUE = 2 * AREA_VALUE;
 
 
     /**
@@ -169,5 +170,16 @@ public class RectangleTest {
         Rectangle r = Rectangle.withShortSideAndLongSide(SHORT_SIDE_VALUE, LONG_SIDE_VALUE);
         var c = assertDoesNotThrow(r.getCircumscribedCircle()::get);
         assertEquals(CIRCUMSCRIBED_CIRCLE_RADIUS_VALUE, c.getRadius(),DELTA);
+    }
+
+    /**
+     * Doubled sized method
+     */
+    @Test
+    public void shouldReturnRectangleWithDoubledSurfaceArea() {
+        Rectangle r = Rectangle.withShortSideAndSurfaceArea(SHORT_SIDE_VALUE, AREA_VALUE);
+        Rectangle r2 = r.getDoubledSized();
+        
+        assertEquals(r2.getSurfaceArea(), DOUBLED_AREA_VALUE, DELTA);
     }
 }

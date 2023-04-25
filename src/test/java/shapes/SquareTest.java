@@ -16,6 +16,7 @@ public class SquareTest {
     private final double CIRCUIT_VALUE = 69.2;
     private final double NEGATIVE_VALUE = -13.5;
     private final double CIRCUMSCRIBED_CIRCLE_RADIUS_VALUE = 12.23;
+    private final double DOUBLED_AREA_VALUE = 2 * AREA_VALUE;
 
     /**
      * Side length constructor
@@ -85,5 +86,16 @@ public class SquareTest {
         Square s = Square.withSideLength(SIDE_VALUE);
         var c = assertDoesNotThrow(s.getCircumscribedCircle()::get);
         assertEquals(CIRCUMSCRIBED_CIRCLE_RADIUS_VALUE, c.getRadius(),DELTA);
+    }
+
+    /**
+     * Doubled sized method
+     */
+    @Test
+    public void shouldReturnSquareWithDoubledSurfaceArea() {
+        Square s = Square.withSurfaceArea(AREA_VALUE);
+        Square s2 = s.getDoubledSized();
+        
+        assertEquals(s2.getSurfaceArea(), DOUBLED_AREA_VALUE, DELTA);
     }
 }
