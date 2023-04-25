@@ -33,6 +33,11 @@ public final class Square implements Shape {
         return Optional.of(Circle.withDiameter(getDiagonalLength()));
     }
 
+    @Override
+    public Square getDoubledSized() {
+        return withSurfaceArea(2 * getSurfaceArea());
+    }
+
     public static Square withSideLength(double sideLength) {
         if (sideLength <= 0) {
             throw new IllegalArgumentException("Negative side length");

@@ -36,6 +36,11 @@ public class Rhombus implements Shape {
         return Optional.empty();
     }
 
+    @Override
+    public Rhombus getDoubledSized() {
+        return withShortDiagonalAndSurfaceArea(sqrt(2.0) * shortDiagonalLength, 2 * getSurfaceArea());
+    }
+
     private Rhombus(double shortDiagonalLength, double longDiagonalLength) {
         if (shortDiagonalLength > longDiagonalLength) {
             this.shortDiagonalLength = longDiagonalLength;

@@ -31,6 +31,11 @@ public class RegularTriangle implements Shape {
         return Optional.of(Circle.withRadius(getHeight() * 2 / 3));
     }
 
+    @Override
+    public RegularTriangle getDoubledSized() {
+        return withSurfaceArea(2 * getSurfaceArea());
+    }
+
     public RegularTriangle(double sideLength) {
         this.sideLength = sideLength;
     }
