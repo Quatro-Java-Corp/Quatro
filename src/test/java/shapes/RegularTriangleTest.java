@@ -16,6 +16,7 @@ public class RegularTriangleTest {
     private final double CIRCUIT_VALUE = 57.6;
     private final double NEGATIVE_VALUE = -13.592;
     private final double CIRCUMSCRIBED_CIRCLE_RADIUS_VALUE = 11.08515;
+    private final double DOUBLED_AREA_VALUE = 2 * AREA_VALUE;
 
     /**
      * Side length constructor
@@ -85,5 +86,16 @@ public class RegularTriangleTest {
         RegularTriangle t = RegularTriangle.withSide(SIDE_VALUE);
         var c = assertDoesNotThrow(t.getCircumscribedCircle()::get);
         assertEquals(CIRCUMSCRIBED_CIRCLE_RADIUS_VALUE, c.getRadius(),DELTA);
+    }
+
+    /**
+     * Doubled sized method
+     */
+    @Test
+    public void shouldReturnRegularTriangleWithDoubledSurfaceArea() {
+        RegularTriangle t = RegularTriangle.withSurfaceArea(AREA_VALUE);
+        RegularTriangle t2 = t.getDoubledSized();
+        
+        assertEquals(t2.getSurfaceArea(), DOUBLED_AREA_VALUE, DELTA);
     }
 }

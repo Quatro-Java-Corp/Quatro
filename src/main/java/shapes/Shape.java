@@ -8,4 +8,6 @@ public interface Shape {
     double getCircuit();
 
     Optional<Circle> getCircumscribedCircle();
+
+    Shape getDoubledSized();
 }

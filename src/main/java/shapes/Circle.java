@@ -21,6 +21,11 @@ public class Circle implements Shape {
         return Optional.of(Circle.withRadius(radius));
     }
 
+    @Override
+    public Circle getDoubledSized() {
+        return withSurfaceArea(2 * getSurfaceArea());
+    }
+
     public double getDiameter() {
         return radius * 2;
     }
