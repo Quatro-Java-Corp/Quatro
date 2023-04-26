@@ -15,6 +15,7 @@ public class CircleTest {
     private final double CIRCUIT_VALUE = 108.699105814;
     private final double AREA_VALUE = 940.247265293;
     private final double NEGATIVE_VALUE = -13.5;
+    private final double DOUBLED_AREA_VALUE = 2 * AREA_VALUE;
 
     /**
      * Radius constructor
@@ -105,5 +106,16 @@ public class CircleTest {
         Circle c = Circle.withRadius(RADIUS_VALUE);
         var cc = assertDoesNotThrow(c.getCircumscribedCircle()::get);
         assertEquals(RADIUS_VALUE, cc.getRadius());
+    }
+
+    /**
+     * Doubled sized method
+     */
+    @Test
+    public void shouldReturnCircleWithDoubledSurfaceArea() {
+        Circle c = Circle.withSurfaceArea(AREA_VALUE);
+        Circle c2 = c.getDoubledSized();
+        
+        assertEquals(c2.getSurfaceArea(), DOUBLED_AREA_VALUE, DELTA);
     }
 }

@@ -16,6 +16,7 @@ public class RhombusTest {
     private final double AREA_VALUE = 24;
     private final double CIRCUIT_VALUE = 20;
     private final double NON_POSITIVE_VALUE = 0;
+    private final double DOUBLED_AREA_VALUE = 2 * AREA_VALUE;
 
     /**
      * Short Diagonal And Long Diagonal
@@ -136,5 +137,16 @@ public class RhombusTest {
     public void shouldReturnEmptyOptionalWhenAskedForCircumscribedCircle() {
         Rhombus r = Rhombus.withShortDiagonalAndLongDiagonal(LONG_DIAGONAL_VALUE, SHORT_DIAGONAL_VALUE);
         assertTrue(r.getCircumscribedCircle().isEmpty());
+    }
+
+    /**
+     * Doubled sized method
+     */
+    @Test
+    public void shouldReturnRhombusWithDoubledSurfaceArea() {
+        Rhombus r = Rhombus.withShortDiagonalAndSurfaceArea(SHORT_DIAGONAL_VALUE, AREA_VALUE);
+        Rhombus r2 = r.getDoubledSized();
+        
+        assertEquals(r2.getSurfaceArea(), DOUBLED_AREA_VALUE, DELTA);
     }
 }

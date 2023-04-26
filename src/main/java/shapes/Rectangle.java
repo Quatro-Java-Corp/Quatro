@@ -36,6 +36,11 @@ public class Rectangle implements Shape {
         return Optional.of(Circle.withDiameter(getDiagonalLength()));
     }
 
+    @Override
+    public Rectangle getDoubledSized() {
+        return withShortSideAndSurfaceArea(sqrt(2.0) * shortSideLength, 2 * getSurfaceArea());
+    }
+
     private Rectangle(double shortSideLength, double longSideLength) {
         if (shortSideLength > longSideLength) {
             this.shortSideLength = longSideLength;

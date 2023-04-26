@@ -36,6 +36,11 @@ public class IsoscelesTriangle implements Shape {
         return Optional.of(Circle.withRadius(sideLength * sideLength * baseLength / (4 * getSurfaceArea())));
     }
 
+    @Override
+    public IsoscelesTriangle getDoubledSized() {
+        return withBaseAndSurfaceArea(sqrt(2.0) * baseLength, 2 * getSurfaceArea());
+    }
+
     private IsoscelesTriangle(double sideLength, double baseLength) {
         if ((2 * sideLength) <= baseLength) {
             throw new IllegalArgumentException("side length should be bigger 2 times than base length");

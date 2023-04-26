@@ -18,6 +18,7 @@ public class IsoscelesTriangleTest {
     private final double CIRCUIT_VALUE = 24;
     private final double NEGATIVE_VALUE = -13.5;
     private final double LONG_BASE_VALUE = 200;
+    private final double DOUBLED_AREA_VALUE = 2 * AREA_VALUE;
 
     /**
      * Side And Base
@@ -205,5 +206,16 @@ public class IsoscelesTriangleTest {
     @Test
     public void shouldThrowExceptionAfterReceivingBaseTooLongForGivenSideLenght() {
         assertThrows(Exception.class, () -> IsoscelesTriangle.withSideAndBase(SIDE_VALUE, LONG_BASE_VALUE));
+    }
+
+    /**
+     * Doubled sized method
+     */
+    @Test
+    public void shouldReturnIsoscelesTriangleWithDoubledSurfaceArea() {
+        IsoscelesTriangle t = IsoscelesTriangle.withSideAndBase(SIDE_VALUE, BASE_VALUE);
+        IsoscelesTriangle t2 = t.getDoubledSized();
+        
+        assertEquals(t2.getSurfaceArea(), DOUBLED_AREA_VALUE, DELTA);
     }
 }

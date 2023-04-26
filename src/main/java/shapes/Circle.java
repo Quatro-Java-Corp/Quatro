@@ -2,7 +2,7 @@ package shapes;
 
 import java.util.Optional;
 
-public final class Circle implements Shape {
+public class Circle implements Shape {
 
     private final double radius;
 
@@ -19,6 +19,11 @@ public final class Circle implements Shape {
     @Override
     public Optional<Circle> getCircumscribedCircle() {
         return Optional.of(Circle.withRadius(radius));
+    }
+
+    @Override
+    public Circle getDoubledSized() {
+        return withSurfaceArea(2 * getSurfaceArea());
     }
 
     public double getDiameter() {
