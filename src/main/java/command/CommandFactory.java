@@ -14,8 +14,8 @@ public class CommandFactory {
         this.inputHandler = inputHandler;
     }
 
-    public Command createCommand(CommandName command, String[] args , ShapeRepository shapeRepo)  {
-        try {
+    public Command createCommand(CommandName command, String[] args , ShapeRepository shapeRepo) throws Exception {
+
             return switch (command) {
                 case exit -> new Exit();
                 case add -> new Add(args, shapeRepo,inputHandler);
@@ -24,10 +24,7 @@ public class CommandFactory {
                 case circumscribed -> new Circumscribed(args,shapeRepo);
                 case doubled -> new DoubledSized(args,shapeRepo);
             };
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-            return  null;
-        }
+
     }
     private Command createShow(String[] args , ShapeRepository shapeRep) throws Exception{
         if (args.length != 1)
