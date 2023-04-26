@@ -5,14 +5,15 @@ import java.util.Map.Entry;
 
 import factory.ShapeFactory.ArgumentType;
 import shapes.Rectangle;
+import shapes.RightTriangle;
 
 public class RightTriangleWorker implements ShapeFactoryWorker {
 
-    public static final String shapeName = "rectangle";
+    public static final String shapeName = "righttriangle";
     public static final double numberOfArguments = 2;
 
-    public Rectangle create(List<Entry<ArgumentType, Double>> args) throws Exception {
-        if (args.size() != RectangleFactoryWorker.numberOfArguments) {
+    public RightTriangle create(List<Entry<ArgumentType, Double>> args) throws Exception {
+        if (args.size() != numberOfArguments) {
             throw new Exception("Invalid number of arguments for Right Triangle");
         }
 
@@ -20,14 +21,14 @@ public class RightTriangleWorker implements ShapeFactoryWorker {
         var arg2 = args.get(1);
 
         return switch (arg1.getKey().toString() + "|" + arg2.getKey().toString()) {
-            case "cathetus|cathetus" -> Rectangle.withShortSideAndLongSide(arg1.getValue(), arg2.getValue());
-            case "cathetus|hypotenuse" -> Rectangle.withShortSideAndDiagonal(arg1.getValue(), arg2.getValue());
-            case "cathetus|area" -> Rectangle.withShortSideAndSurfaceArea(arg1.getValue(), arg2.getValue());
-            case "hypotenuse|cathetus" -> Rectangle.withShortSideAndDiagonal(arg2.getValue(), arg1.getValue());
-            case "hypotenuse|area" -> Rectangle.withDiagonalAndSurfaceArea(arg1.getValue(), arg2.getValue());
-            case "area|cathetus" -> Rectangle.withLongSideAndSurfaceArea(arg2.getValue(), arg1.getValue());
-            case "area|hypotenuse" -> Rectangle.withDiagonalAndSurfaceArea(arg2.getValue(), arg1.getValue());
-            default -> throw new Exception("Unknown combination of arguments for rectangle");
+            case "cathetus|cathetus" -> RightTriangle.withCatheti(arg1.getValue(), arg2.getValue());
+            case "cathetus|hypotenuse" -> RightTriangle.withCathetusAndHypotenuse(arg1.getValue(), arg2.getValue());
+            case "cathetus|area" -> RightTriangle.withCathetusAndSurfaceArea(arg1.getValue(), arg2.getValue());
+            case "hypotenuse|cathetus" -> RightTriangle.withCathetusAndHypotenuse(arg2.getValue(), arg1.getValue());
+            case "hypotenuse|area" -> RightTriangle.withHypotenuseAndSurfaceArea(arg1.getValue(), arg2.getValue());
+            case "area|cathetus" -> RightTriangle.withCathetusAndSurfaceArea(arg2.getValue(), arg1.getValue());
+            case "area|hypotenuse" -> RightTriangle.withHypotenuseAndSurfaceArea(arg2.getValue(), arg1.getValue());
+            default -> throw new Exception("Unknown combination of arguments for Right Triangle");
         };
     }
 }
