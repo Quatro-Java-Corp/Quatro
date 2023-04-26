@@ -17,6 +17,7 @@ public class RightTriangleTest {
     private final double CIRCUIT_VALUE = 12;
     private final double NEGATIVE_VALUE = -13.592;
     private final double CIRCUMSCRIBED_CIRCLE_RADIUS_VALUE = 2.5;
+    private final double DOUBLED_AREA_VALUE = 12;
 
     /**
      * Catheti  constructor
@@ -101,5 +102,13 @@ public class RightTriangleTest {
         RightTriangle t = RightTriangle.withCatheti(SHORT_CATHETUS_LENGTH, LONG_CATHETUS_LENGTH);
         var c = assertDoesNotThrow(t.getCircumscribedCircle()::get);
         assertEquals(CIRCUMSCRIBED_CIRCLE_RADIUS_VALUE, c.getRadius(), DELTA);
+    }
+
+    @Test
+    public void shouldReturnRightTriangleWithDoubledSurfaceArea() {
+        RightTriangle t = RightTriangle.withCathetusAndSurfaceArea(SHORT_CATHETUS_LENGTH, AREA_VALUE);
+        RightTriangle t2 = t.getDoubledSized();
+
+        assertEquals(t2.getSurfaceArea(), DOUBLED_AREA_VALUE, DELTA);
     }
 }
