@@ -40,6 +40,10 @@ public class RightTriangle implements Shape {
         return Optional.of(Circle.withRadius(getHypotenuse() / 2));
     }
 
+    public RightTriangle getDoubledSized() {
+        return withCathetusAndSurfaceArea(sqrt(2.0) * shortCathetusLength, 2 * getSurfaceArea());
+    }
+
     private RightTriangle(double shortCathetusLength, double longCathetusLength) {
         if ((2 * shortCathetusLength) <= longCathetusLength) {
             throw new IllegalArgumentException("Cathetus length should be bigger 2 times than base length");
