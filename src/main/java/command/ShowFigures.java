@@ -1,6 +1,6 @@
 package command;
 
-import shapes.ShapeRepository;
+import repository.ShapeRepository;
 
 public class ShowFigures implements Command{
     private final ShapeRepository shapeRepo;

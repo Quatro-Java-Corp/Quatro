@@ -1,11 +1,8 @@
 package command;
 
-import other.InputHandler;
 import shapes.Shape;
-import shapes.ShapeRepository;
-
-import java.util.Arrays;
-
+import repository.ShapeRepository;
+import input.InputHandler;
 class Add implements Command {
     private final ShapeRepository shapeRepo;
     private final String[] args;

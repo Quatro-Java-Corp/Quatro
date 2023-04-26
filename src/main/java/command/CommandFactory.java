@@ -1,11 +1,10 @@
 package command;
 
-import other.InputHandler;
-import shapes.ShapeRepository;
-
+import repository.ShapeRepository;
+import input.InputHandler;
 public class CommandFactory {
     public enum CommandName {
-        exit, add, showfigures, sort, circumscribed
+        exit, add, showfigures, sort, circumscribed ,doubled
     }
     private static final String NO_NEED_ARGUMENTS = "This function don't need any arguments";
 
@@ -23,6 +22,7 @@ public class CommandFactory {
                 case showfigures -> createShow(args, shapeRepo);
                 case sort -> new Sort(args,shapeRepo);
                 case circumscribed -> new Circumscribed(args,shapeRepo);
+                case doubled -> new DoubledSized(args,shapeRepo);
             };
         } catch (Exception e) {
             System.out.println(e.getMessage());

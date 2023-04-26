@@ -2,11 +2,10 @@ import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
-import other.InputHandler;
 import shapes.Rectangle;
 
 import java.util.Locale;
-
+import input.InputHandler;
 /**
  * Unit test for shapes.Rectangle.
  */

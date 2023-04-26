@@ -2,7 +2,7 @@ package command;
 
 import shapes.Circle;
 import shapes.Shape;
-import shapes.ShapeRepository;
+import repository.ShapeRepository;
 
 import java.util.Optional;
 

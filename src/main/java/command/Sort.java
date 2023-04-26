@@ -1,7 +1,7 @@
 package command;
 
-import other.ComparatorFactory;
-import shapes.ShapeRepository;
+import repository.ComparatorFactory;
+import repository.ShapeRepository;
 
 class Sort implements Command{
     private final ShapeRepository shapeRepo;
