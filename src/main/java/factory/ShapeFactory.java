@@ -32,19 +32,8 @@ public class ShapeFactory {
 
     public Shape createShape(String shapeName, List<Entry<ArgumentType, Double>> args) throws Exception {
         if (workers.containsKey(shapeName)) {
-            Shape shape = workers.get(shapeName).create(args);
-            if (shapeName.equals("rhombus")) {
-                return convertRhombusToSquareIfPossible((Rhombus) shape);
-            }
-            return shape;
+            return workers.get(shapeName).create(args);
         }
         throw new UnknownShapeException(shapeName);
-    }
-
-    private Shape convertRhombusToSquareIfPossible(Rhombus rhombus) {
-        if (rhombus.getLongDiagonalLength() - rhombus.getShortDiagonalLength() < 0.0001) {
-            return Square.withDiagonalLength(rhombus.getShortDiagonalLength());
-        }
-        return rhombus;
     }
 }
