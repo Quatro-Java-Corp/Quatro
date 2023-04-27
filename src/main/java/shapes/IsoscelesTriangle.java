@@ -5,7 +5,7 @@ import java.util.Optional;
 import exceptions.IllegalSurfaceException;
 import exceptions.IllegalTriangleSidesException;
 import exceptions.NegativeArgumentValueException;
-import utilities.Format;
+import utils.Format;
 
 import static java.lang.Math.*;
 

@@ -3,7 +3,7 @@ package shapes;
 import java.util.Optional;
 
 import exceptions.NegativeArgumentValueException;
-import utilities.Format;
+import utils.Format;
 
 public final class Square implements Shape {
 
