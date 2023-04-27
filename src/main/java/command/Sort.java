@@ -3,21 +3,28 @@ package command;
 import repository.ComparatorFactory;
 import repository.ShapeRepository;
 
-class Sort implements Command{
-    private final ShapeRepository shapeRepo;
-    private final String[] args;
+import java.util.Queue;
+
+class Sort implements Command {
+    private final ShapeRepository shapeRepository;
+    private final Queue<String> args;
     private final ComparatorFactory comparatorFactory = new ComparatorFactory();
-    public Sort(String[] args, ShapeRepository shapeRepo) {
-        this.shapeRepo = shapeRepo;
+
+    public Sort(Queue<String> args, ShapeRepository shapeRepository) {
+        this.shapeRepository = shapeRepository;
         this.args = args;
     }
 
     @Override
     public void run() {
         try {
-            shapeRepo.sort(comparatorFactory.getComparator(ComparatorFactory.CompareBy.valueOf(args[1]), ComparatorFactory.OrderBy.valueOf(args[2])));
-        }
-        catch (Exception e){
+            shapeRepository.sort(comparatorFactory.getComparator(
+                            ComparatorFactory.CompareBy.valueOf(args.poll()),
+                            ComparatorFactory.OrderBy.valueOf(args.poll())
+                    )
+            );
+            shapeRepository.print();
+        } catch (Exception e) {
             System.out.println("Wrong sort arguments");
         }
     }
