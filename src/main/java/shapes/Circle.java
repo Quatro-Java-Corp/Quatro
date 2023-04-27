@@ -2,6 +2,9 @@ package shapes;
 
 import java.util.Optional;
 
+import exceptions.NegativeArgumentValueException;
+import utilities.Format;
+
 public class Circle implements Shape {
 
     private final double radius;
@@ -40,28 +43,28 @@ public class Circle implements Shape {
 
     public static Circle withSurfaceArea(double surfaceArea) {
         if (surfaceArea <= 0) {
-            throw new IllegalArgumentException("Negative surface area");
+            throw new NegativeArgumentValueException();
         }
         return new Circle(Math.pow(surfaceArea / Math.PI, 0.5));
     }
 
     public static Circle withRadius(double radius) {
         if (radius <= 0) {
-            throw new IllegalArgumentException("Negative radius");
+            throw new NegativeArgumentValueException();
         }
         return new Circle(radius);
     }
 
     public static Circle withDiameter(double diameter) {
         if (diameter <= 0) {
-            throw new IllegalArgumentException("Negative diameter");
+            throw new NegativeArgumentValueException();
         }
         return new Circle(diameter / 2);
     }
 
     public static Circle withCircuit(double circuit) {
         if (circuit <= 0) {
-            throw new IllegalArgumentException("Negative surface area");
+            throw new NegativeArgumentValueException();
         }
         return new Circle(circuit / Math.PI / 2);
     }
@@ -69,10 +72,10 @@ public class Circle implements Shape {
     @Override
     public String toString() {
         return "Circle{" +
-                "circuit=" + getCircuit() +
-                ", diameter=" + getDiameter() +
-                ", radius=" + radius +
-                ", surfaceArea=" + getSurfaceArea() +
+                "circuit=" + Format.format(getCircuit()) +
+                ", diameter=" + Format.format(getDiameter()) +
+                ", radius=" + Format.format(radius) +
+                ", surfaceArea=" + Format.format(getSurfaceArea()) +
                 '}';
     }
 }

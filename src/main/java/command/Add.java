@@ -3,6 +3,7 @@ package command;
 import shapes.Shape;
 import repository.ShapeRepository;
 import input.InputHandler;
+
 class Add implements Command {
     private final ShapeRepository shapeRepo;
     private final String[] args;
@@ -16,14 +17,9 @@ class Add implements Command {
     }
 
     @Override
-    public void run() {
-        try {
-            Shape shape = inputHandler.createFigureWithArguments(args);
-            System.out.println(shape.toString());
-            shapeRepo.addShape(shape);
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
+    public void run() throws Exception {
+        Shape shape = inputHandler.createFigureWithArguments(args);
+        System.out.println(shape.toString());
+        shapeRepo.addShape(shape);
     }
-
 }

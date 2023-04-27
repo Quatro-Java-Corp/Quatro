@@ -3,6 +3,8 @@ package factory;
 import java.util.List;
 import java.util.Map.Entry;
 
+import exceptions.InvalidArgumentsCombinationException;
+import exceptions.InvalidArgumentsNumberException;
 import factory.ShapeFactory.ArgumentType;
 import shapes.Rhombus;
 
@@ -13,7 +15,7 @@ public class RhombusFactoryWorker implements ShapeFactoryWorker {
 
     public Rhombus create(List<Entry<ArgumentType, Double>> args) throws Exception {
         if (args.size() != RhombusFactoryWorker.numberOfArguments) {
-            throw new Exception("Invalid number of arguments for rhombus");
+            throw new InvalidArgumentsNumberException(shapeName);
         }
 
         var arg1 = args.get(0);
@@ -27,7 +29,7 @@ public class RhombusFactoryWorker implements ShapeFactoryWorker {
             case "side|area" -> Rhombus.withSideLengthAndSurfaceArea(arg1.getValue(), arg2.getValue());
             case "area|diagonal" -> Rhombus.withShortDiagonalAndSurfaceArea(arg2.getValue(), arg1.getValue());
             case "area|side" -> Rhombus.withSideLengthAndSurfaceArea(arg2.getValue(), arg1.getValue());
-            default -> throw new Exception("Unknown combination of arguments for rhombus");
+            default -> throw new InvalidArgumentsCombinationException(shapeName);
         };
     }
 }

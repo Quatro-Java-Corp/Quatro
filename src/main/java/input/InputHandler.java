@@ -10,6 +10,9 @@ import factory.ShapeFactory;
 import factory.ShapeFactory.ArgumentType;
 import command.Command;
 import command.CommandFactory;
+import exceptions.InvalidArgumentTypeException;
+import exceptions.InvalidArgumentValueException;
+import exceptions.InvalidFunctionNameException;
 
 
 public class InputHandler {
@@ -17,10 +20,6 @@ public class InputHandler {
     private static final ShapeFactory shapeFactory = new ShapeFactory();
     private final CommandFactory commandFactory = new CommandFactory(this);
     private final ShapeRepository figureList = new ShapeRepository();
-
-    private static final String INVALID_ARGUMENT_VALUE = "Value must be a positive number.";
-    private static final String INVALID_ARGUMENT_TYPE = "Unknown argument name";
-    private static final String UNKNOWN_FUNCTION = "Unknown function";
 
     public void parseInput(String input) {
         String[] args = input.split(" ");
@@ -50,7 +49,7 @@ public class InputHandler {
         try {
             return CommandFactory.CommandName.valueOf(commandName.toLowerCase());
         } catch (IllegalArgumentException e) {
-            throw new Exception(UNKNOWN_FUNCTION);
+            throw new InvalidFunctionNameException();
         }
     }
 
@@ -68,7 +67,7 @@ public class InputHandler {
         try {
             return ShapeFactory.ArgumentType.valueOf(s.toLowerCase());
         } catch (IllegalArgumentException e) {
-            throw new Exception(INVALID_ARGUMENT_TYPE);
+            throw new InvalidArgumentTypeException();
         }
     }
 
@@ -80,7 +79,7 @@ public class InputHandler {
             }
             return val;
         } catch (NumberFormatException e) {
-            throw new Exception(INVALID_ARGUMENT_VALUE);
+            throw new InvalidArgumentValueException();
         }
     }
 }

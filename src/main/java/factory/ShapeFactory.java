@@ -7,6 +7,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import exceptions.UnknownShapeException;
+
 public class ShapeFactory {
 
     public enum ArgumentType {
@@ -36,7 +38,7 @@ public class ShapeFactory {
             }
             return shape;
         }
-        throw new Exception(shapeName + " is not avaliable shape");
+        throw new UnknownShapeException(shapeName);
     }
 
     private Shape convertRhombusToSquareIfPossible(Rhombus rhombus) {

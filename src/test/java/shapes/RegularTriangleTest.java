@@ -2,6 +2,8 @@ package shapes;
 
 import org.junit.jupiter.api.Test;
 
+import exceptions.NegativeArgumentValueException;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
@@ -62,7 +64,7 @@ public class RegularTriangleTest {
      */
     @Test
     public void shouldThrowExceptionAfterReceivingNegativeSideLength() {
-        assertThrows(Exception.class, () -> RegularTriangle.withSide(NEGATIVE_VALUE));
+        assertThrows(NegativeArgumentValueException.class, () -> RegularTriangle.withSide(NEGATIVE_VALUE));
     }
 
     /**
@@ -70,7 +72,7 @@ public class RegularTriangleTest {
      */
     @Test
     public void shouldThrowExceptionAfterReceivingNegativeDiagonaLength() {
-        assertThrows(Exception.class, () -> RegularTriangle.withHeight(NEGATIVE_VALUE));
+        assertThrows(NegativeArgumentValueException.class, () -> RegularTriangle.withHeight(NEGATIVE_VALUE));
     }
 
     /**
@@ -78,7 +80,7 @@ public class RegularTriangleTest {
      */
     @Test
     public void shouldThrowExceptionAfterReceivingNegativeSurfaceArea() {
-        assertThrows(Exception.class, () -> RegularTriangle.withSurfaceArea(NEGATIVE_VALUE));
+        assertThrows(NegativeArgumentValueException.class, () -> RegularTriangle.withSurfaceArea(NEGATIVE_VALUE));
     }
 
     @Test
@@ -95,7 +97,7 @@ public class RegularTriangleTest {
     public void shouldReturnRegularTriangleWithDoubledSurfaceArea() {
         RegularTriangle t = RegularTriangle.withSurfaceArea(AREA_VALUE);
         RegularTriangle t2 = t.getDoubledSized();
-        
+
         assertEquals(t2.getSurfaceArea(), DOUBLED_AREA_VALUE, DELTA);
     }
 }

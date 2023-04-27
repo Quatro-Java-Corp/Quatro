@@ -6,9 +6,12 @@ import repository.ShapeRepository;
 
 import java.util.Optional;
 
+import exceptions.IllegalIndexException;
+import exceptions.InvalidShapeForCircumscribedCircleException;
+
 class Circumscribed implements Command {
-     private final ShapeRepository figureList;
-     private final String[] args;
+    private final ShapeRepository figureList;
+    private final String[] args;
 
     public Circumscribed(String[] args, ShapeRepository figureList) {
         this.figureList = figureList;
@@ -16,24 +19,17 @@ class Circumscribed implements Command {
     }
 
     @Override
-    public void run() {
+    public void run() throws InvalidShapeForCircumscribedCircleException {
+        int index = Integer.parseInt(args[1]);
+        Shape shape = figureList.get(index).orElseThrow(IllegalIndexException::new);
+        Optional<Circle> optionalCircle = shape.getCircumscribedCircle();
 
-        try{
-            int index=Integer.parseInt(args[1]);
-            Shape shape=figureList.get(index).orElseThrow(Exception::new);
-            Optional<Circle> optionalCircle=shape.getCircumscribedCircle();
-            if(optionalCircle.isPresent()){
-                System.out.println(optionalCircle.get());
-                figureList.addShape(optionalCircle.get());
-            }
-            else{
-                System.out.println("No circle for this shape");
-            }
-        }
-        catch (Exception e){
-            System.out.println("Illegal Index");
+        if (optionalCircle.isEmpty()) {
+            throw new InvalidShapeForCircumscribedCircleException();
         }
 
+        System.out.println(optionalCircle.get());
+        figureList.addShape(optionalCircle.get());
 
     }
 }

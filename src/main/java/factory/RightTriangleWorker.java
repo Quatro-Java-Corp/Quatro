@@ -3,6 +3,8 @@ package factory;
 import java.util.List;
 import java.util.Map.Entry;
 
+import exceptions.InvalidArgumentsCombinationException;
+import exceptions.InvalidArgumentsNumberException;
 import factory.ShapeFactory.ArgumentType;
 import shapes.Rectangle;
 
@@ -13,7 +15,7 @@ public class RightTriangleWorker implements ShapeFactoryWorker {
 
     public Rectangle create(List<Entry<ArgumentType, Double>> args) throws Exception {
         if (args.size() != RectangleFactoryWorker.numberOfArguments) {
-            throw new Exception("Invalid number of arguments for Right Triangle");
+            throw new InvalidArgumentsNumberException(shapeName);
         }
 
         var arg1 = args.get(0);
@@ -27,7 +29,7 @@ public class RightTriangleWorker implements ShapeFactoryWorker {
             case "hypotenuse|area" -> Rectangle.withDiagonalAndSurfaceArea(arg1.getValue(), arg2.getValue());
             case "area|cathetus" -> Rectangle.withLongSideAndSurfaceArea(arg2.getValue(), arg1.getValue());
             case "area|hypotenuse" -> Rectangle.withDiagonalAndSurfaceArea(arg2.getValue(), arg1.getValue());
-            default -> throw new Exception("Unknown combination of arguments for rectangle");
+            default -> throw new InvalidArgumentsCombinationException(shapeName);
         };
     }
 }

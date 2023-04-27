@@ -3,6 +3,8 @@ package factory;
 import java.util.List;
 import java.util.Map.Entry;
 
+import exceptions.InvalidArgumentsCombinationException;
+import exceptions.InvalidArgumentsNumberException;
 import factory.ShapeFactory.ArgumentType;
 import shapes.IsoscelesTriangle;
 
@@ -13,7 +15,7 @@ public class IsoscelesTriangleFactoryWorker implements ShapeFactoryWorker {
 
     public IsoscelesTriangle create(List<Entry<ArgumentType, Double>> args) throws Exception {
         if (args.size() != RectangleFactoryWorker.numberOfArguments) {
-            throw new Exception("Invalid number of arguments for Rectangle");
+            throw new InvalidArgumentsNumberException(shapeName);
         }
 
         var arg1 = args.get(0);
@@ -32,7 +34,7 @@ public class IsoscelesTriangleFactoryWorker implements ShapeFactoryWorker {
             case "height|side" -> IsoscelesTriangle.withSideAndHeight(arg2.getValue(), arg1.getValue());
             case "height|base" -> IsoscelesTriangle.withBaseAndHeight(arg2.getValue(), arg1.getValue());
             case "height|area" -> IsoscelesTriangle.withSurfaceAreaAndHeight(arg2.getValue(), arg1.getValue());
-            default -> throw new Exception("Unknown combination of arguments for isosceles triangle");
+            default -> throw new InvalidArgumentsCombinationException(shapeName);
         };
     }
 }
