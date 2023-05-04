@@ -1,4 +1,4 @@
-package exceptions;
+package exceptions.factory;
 
 public class UnknownShapeException
         extends IllegalArgumentException {

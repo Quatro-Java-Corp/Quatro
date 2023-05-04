@@ -1,4 +1,4 @@
-package exceptions;
+package exceptions.shape;
 
 public class InvalidShapeForCircumscribedCircleException
         extends IllegalArgumentException {

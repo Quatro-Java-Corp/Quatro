@@ -1,7 +1,7 @@
 package command;
 
 import repository.ShapeRepository;
-import exceptions.RedundantArgumentException;
+import exceptions.argument.RedundantArgumentException;
 import input.InputHandler;
 
 public class CommandFactory {

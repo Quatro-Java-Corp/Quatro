@@ -2,7 +2,7 @@ package shapes;
 
 import java.util.Optional;
 
-import exceptions.NegativeArgumentValueException;
+import exceptions.argument.NegativeArgumentValueException;
 
 import static java.lang.Math.pow;
 

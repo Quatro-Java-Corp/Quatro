@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import exceptions.UnknownShapeException;
+import exceptions.factory.UnknownShapeException;
 
 public class ShapeFactory {
 

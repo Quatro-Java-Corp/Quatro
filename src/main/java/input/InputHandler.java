@@ -10,10 +10,9 @@ import factory.ShapeFactory;
 import factory.ShapeFactory.ArgumentType;
 import command.Command;
 import command.CommandFactory;
-import exceptions.InvalidArgumentTypeException;
-import exceptions.InvalidArgumentValueException;
-import exceptions.InvalidFunctionNameException;
-
+import exceptions.argument.InvalidArgumentTypeException;
+import exceptions.argument.InvalidArgumentValueException;
+import exceptions.command.InvalidFunctionNameException;
 
 public class InputHandler {
 
@@ -37,7 +36,7 @@ public class InputHandler {
         }
     }
 
-    public  CommandFactory.CommandName readCommandName(String[] args) throws Exception {
+    public CommandFactory.CommandName readCommandName(String[] args) throws Exception {
         return formatCommandName(args[0]);
     }
 

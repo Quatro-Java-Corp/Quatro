@@ -3,8 +3,8 @@ package factory;
 import java.util.List;
 import java.util.Map.Entry;
 
-import exceptions.InvalidArgumentsCombinationException;
-import exceptions.InvalidArgumentsNumberException;
+import exceptions.factory.InvalidArgumentsCombinationException;
+import exceptions.factory.InvalidArgumentsNumberException;
 import factory.ShapeFactory.ArgumentType;
 import shapes.RegularTriangle;
 
@@ -12,7 +12,6 @@ public class RegularTriangleFactoryWorker implements ShapeFactoryWorker {
 
     public static final String shapeName = "regularTriangle";
     public static final double numberOfArguments = 1;
-
 
     public RegularTriangle create(List<Entry<ArgumentType, Double>> args) throws Exception {
         if (args.size() != RegularTriangleFactoryWorker.numberOfArguments) {

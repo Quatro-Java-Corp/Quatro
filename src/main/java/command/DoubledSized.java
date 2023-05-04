@@ -1,6 +1,6 @@
 package command;
 
-import exceptions.IllegalIndexException;
+import exceptions.command.IllegalIndexException;
 import repository.ShapeRepository;
 import shapes.Shape;
 

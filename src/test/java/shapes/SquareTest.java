@@ -2,7 +2,7 @@ package shapes;
 
 import org.junit.jupiter.api.Test;
 
-import exceptions.NegativeArgumentValueException;
+import exceptions.argument.NegativeArgumentValueException;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -87,7 +87,7 @@ public class SquareTest {
     void shouldReturnCircleWithCorrectRadiusWhenProvidingCircumscribedCircle() {
         Square s = Square.withSideLength(SIDE_VALUE);
         var c = assertDoesNotThrow(s.getCircumscribedCircle()::get);
-        assertEquals(CIRCUMSCRIBED_CIRCLE_RADIUS_VALUE, c.getRadius(),DELTA);
+        assertEquals(CIRCUMSCRIBED_CIRCLE_RADIUS_VALUE, c.getRadius(), DELTA);
     }
 
     /**

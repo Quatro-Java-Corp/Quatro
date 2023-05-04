@@ -2,9 +2,9 @@ package shapes;
 
 import java.util.Optional;
 
-import exceptions.IllegalSurfaceException;
-import exceptions.IllegalTriangleSidesException;
-import exceptions.NegativeArgumentValueException;
+import exceptions.argument.NegativeArgumentValueException;
+import exceptions.factory.IllegalSurfaceException;
+import exceptions.factory.IllegalTriangleSidesException;
 import utils.Format;
 
 import static java.lang.Math.*;
@@ -83,7 +83,8 @@ public class IsoscelesTriangle implements Shape {
         if (baseLength <= 0 || surfaceArea <= 0) {
             throw new NegativeArgumentValueException();
         }
-        return new IsoscelesTriangle(sqrt((4 * pow(surfaceArea, 2) / pow(baseLength, 2)) + (pow(baseLength, 2) / 4)), baseLength);
+        return new IsoscelesTriangle(sqrt((4 * pow(surfaceArea, 2) / pow(baseLength, 2)) + (pow(baseLength, 2) / 4)),
+                baseLength);
     }
 
     public static IsoscelesTriangle withBaseAndHeight(double baseLength, double height) {

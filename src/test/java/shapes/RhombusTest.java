@@ -2,7 +2,7 @@ package shapes;
 
 import org.junit.jupiter.api.Test;
 
-import exceptions.NegativeArgumentValueException;
+import exceptions.argument.NegativeArgumentValueException;
 
 import static org.junit.jupiter.api.Assertions.*;
 

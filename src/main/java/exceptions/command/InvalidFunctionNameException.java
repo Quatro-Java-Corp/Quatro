@@ -1,4 +1,4 @@
-package exceptions;
+package exceptions.command;
 
 public class InvalidFunctionNameException
         extends IllegalArgumentException {

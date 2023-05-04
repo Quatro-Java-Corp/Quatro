@@ -1,4 +1,4 @@
-package exceptions;
+package exceptions.argument;
 
 public class InvalidArgumentTypeException
         extends IllegalArgumentException {

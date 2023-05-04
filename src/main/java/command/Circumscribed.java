@@ -6,8 +6,8 @@ import repository.ShapeRepository;
 
 import java.util.Optional;
 
-import exceptions.IllegalIndexException;
-import exceptions.InvalidShapeForCircumscribedCircleException;
+import exceptions.command.IllegalIndexException;
+import exceptions.shape.InvalidShapeForCircumscribedCircleException;
 
 class Circumscribed implements Command {
     private final ShapeRepository figureList;

@@ -1,6 +1,6 @@
 package command;
 
-import exceptions.IllegalSortArgumentException;
+import exceptions.command.IllegalSortArgumentException;
 import repository.ComparatorFactory;
 import repository.ShapeRepository;
 

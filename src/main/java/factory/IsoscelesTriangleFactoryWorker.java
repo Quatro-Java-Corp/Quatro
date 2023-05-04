@@ -3,8 +3,8 @@ package factory;
 import java.util.List;
 import java.util.Map.Entry;
 
-import exceptions.InvalidArgumentsCombinationException;
-import exceptions.InvalidArgumentsNumberException;
+import exceptions.factory.InvalidArgumentsCombinationException;
+import exceptions.factory.InvalidArgumentsNumberException;
 import factory.ShapeFactory.ArgumentType;
 import shapes.IsoscelesTriangle;
 

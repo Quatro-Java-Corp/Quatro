@@ -1,4 +1,4 @@
-package exceptions;
+package exceptions.factory;
 
 public class InvalidArgumentsNumberException
         extends IllegalArgumentException {
