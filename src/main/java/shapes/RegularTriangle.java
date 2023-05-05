@@ -36,7 +36,7 @@ public class RegularTriangle implements Shape {
         return withSurfaceArea(2 * getSurfaceArea());
     }
 
-    public RegularTriangle(double sideLength) {
+    private RegularTriangle(double sideLength) {
         this.sideLength = sideLength;
     }
 

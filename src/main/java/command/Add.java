@@ -3,14 +3,16 @@ package command;
 import shapes.Shape;
 import repository.ShapeRepository;
 import input.InputHandler;
-class Add implements Command {
-    private final ShapeRepository shapeRepo;
-    private final String[] args;
 
+import java.util.Queue;
+
+class Add implements Command {
+    private final ShapeRepository shapeRepository;
+    private final Queue<String> args;
     private final InputHandler inputHandler;
 
-    public Add(String[] args, ShapeRepository shapeRepo, InputHandler inputHandler) {
-        this.shapeRepo = shapeRepo;
+    public Add(Queue<String> args, ShapeRepository shapeRepository, InputHandler inputHandler) {
+        this.shapeRepository = shapeRepository;
         this.args = args;
         this.inputHandler = inputHandler;
     }
@@ -20,7 +22,7 @@ class Add implements Command {
         try {
             Shape shape = inputHandler.createFigureWithArguments(args);
             System.out.println(shape.toString());
-            shapeRepo.addShape(shape);
+            shapeRepository.addShape(shape);
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
