@@ -10,7 +10,7 @@ import java.util.Map.Entry;
 public class ShapeFactory {
 
     public enum ArgumentType {
-        side, diagonal, area, radius, diameter, circuit, height, base
+        side, diagonal, area, radius, diameter, circuit, height, base, cathetus, hypotenuse
     }
 
     private final Map<String, ShapeFactoryWorker> workers = new HashMap<>();
@@ -22,6 +22,7 @@ public class ShapeFactory {
         registerWorker(RectangleFactoryWorker.shapeName, new RectangleFactoryWorker());
         registerWorker(RhombusFactoryWorker.shapeName, new RhombusFactoryWorker());
         registerWorker(IsoscelesTriangleFactoryWorker.shapeName, new IsoscelesTriangleFactoryWorker());
+        registerWorker(RightTriangleWorker.shapeName, new RightTriangleWorker());
     }
 
     private void registerWorker(String shapeName, ShapeFactoryWorker worker) {
