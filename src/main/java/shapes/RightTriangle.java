@@ -40,6 +40,7 @@ public class RightTriangle implements Shape {
         return Optional.of(Circle.withRadius(getHypotenuse() / 2));
     }
 
+    @Override
     public RightTriangle getDoubledSized() {
         return withCathetusAndSurfaceArea(sqrt(2.0) * shortCathetusLength, 2 * getSurfaceArea());
     }
