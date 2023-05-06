@@ -1,63 +1,63 @@
 package input;
 
-import repository.ShapeRepository;
 import shapes.Shape;
+
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.AbstractMap.SimpleImmutableEntry;
 import java.util.Map.Entry;
+import java.util.Queue;
+
 import factory.ShapeFactory;
 import factory.ShapeFactory.ArgumentType;
 import command.Command;
 import command.CommandFactory;
 import exceptions.argument.InvalidArgumentTypeException;
 import exceptions.argument.InvalidArgumentValueException;
+import exceptions.argument.OddArgumentsException;
 import exceptions.command.InvalidFunctionNameException;
 
 public class InputHandler {
 
     private static final ShapeFactory shapeFactory = new ShapeFactory();
     private final CommandFactory commandFactory = new CommandFactory(this);
-    private final ShapeRepository figureList = new ShapeRepository();
 
     public void parseInput(String input) {
-        String[] args = input.split(" ");
-        if (args.length > 0) {
-
+        Queue<String> args = new LinkedList<>(List.of(input.split(" ")));
+        if (args.size() > 0) {
             try {
-                CommandFactory.CommandName commandName = readCommandName(args);
-                Command command = commandFactory.createCommand(commandName, args, figureList);
+                Command command = commandFactory.createCommand(
+                        parseCommand(args.poll()),
+                        args);
                 command.run();
-
             } catch (Exception e) {
                 System.out.println(e.getMessage());
             }
-
         }
     }
 
-    public CommandFactory.CommandName readCommandName(String[] args) throws Exception {
-        return formatCommandName(args[0]);
-    }
-
-    public Shape createFigureWithArguments(String[] args) throws Exception {
-        return shapeFactory.createShape(args[1], getArgumentsList(args));
-    }
-
-    private CommandFactory.CommandName formatCommandName(String commandName) throws Exception {
+    public CommandFactory.CommandName parseCommand(String command) throws InvalidFunctionNameException {
         try {
-            return CommandFactory.CommandName.valueOf(commandName.toLowerCase());
+            return CommandFactory.CommandName.valueOf(command);
         } catch (IllegalArgumentException e) {
             throw new InvalidFunctionNameException();
         }
     }
 
-    private List<Entry<ArgumentType, Double>> getArgumentsList(String[] args) throws Exception {
+    public Shape createFigureWithArguments(Queue<String> args) throws Exception {
+        return shapeFactory.createShape(args.poll(), getArgumentsList(args));
+    }
+
+    private List<Entry<ArgumentType, Double>> getArgumentsList(Queue<String> args) throws Exception {
+        if (args.size() % 2 != 0) {
+            throw new OddArgumentsException();
+        }
         List<Entry<ArgumentType, Double>> argsList = new ArrayList<>();
-        for (int i = 2; i < args.length; i += 2) {
+        while (args.size() > 1) {
             argsList.add(new SimpleImmutableEntry<>(
-                    convertStringToArgumentType(args[i]),
-                    convertStringToArgumentValue(args[i + 1])));
+                    convertStringToArgumentType(args.poll()),
+                    convertStringToArgumentValue(args.poll())));
         }
         return argsList;
     }

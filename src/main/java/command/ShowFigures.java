@@ -3,14 +3,14 @@ package command;
 import repository.ShapeRepository;
 
 public class ShowFigures implements Command {
-    private final ShapeRepository shapeRepo;
+    private final ShapeRepository shapeRepository;
 
-    public ShowFigures(ShapeRepository shapeRepo) {
-        this.shapeRepo = shapeRepo;
+    public ShowFigures(ShapeRepository shapeRepository) {
+        this.shapeRepository = shapeRepository;
     }
 
     @Override
     public void run() {
-        shapeRepo.print();
+        shapeRepository.print();
     }
 }

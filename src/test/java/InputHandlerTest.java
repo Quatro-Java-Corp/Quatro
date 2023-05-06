@@ -1,14 +1,17 @@
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import command.CommandFactory;
 import org.junit.jupiter.api.Test;
 import shapes.Rectangle;
 
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Locale;
+import java.util.Queue;
+
 import input.InputHandler;
-/**
- * Unit test for shapes.Rectangle.
- */
+
 public class InputHandlerTest {
     private final double DELTA = 1e-2;
 
@@ -24,7 +27,7 @@ public class InputHandlerTest {
      */
     @Test
     public void shouldCreateRectangleWithShortSideAndLongSideAndCalculateOtherParameters() {
-        String[] args = String.format(Locale.ENGLISH, "add rectangle side %4f side %4f", SHORT_SIDE_VALUE, LONG_SIDE_VALUE).split(" ");
+        Queue<String> args = new LinkedList<>(List.of("rectangle", "side", String.valueOf(SHORT_SIDE_VALUE), "side", String.valueOf(LONG_SIDE_VALUE)));
 
         Rectangle r = assertDoesNotThrow(() -> (Rectangle) inputHandler.createFigureWithArguments(args));
         assertEquals(r.getShortSideLength(), SHORT_SIDE_VALUE, DELTA);

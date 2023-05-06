@@ -10,18 +10,17 @@ import exceptions.command.IllegalIndexException;
 import exceptions.shape.InvalidShapeForCircumscribedCircleException;
 
 class Circumscribed implements Command {
-    private final ShapeRepository figureList;
-    private final String[] args;
+    private final ShapeRepository shapeRepository;
+    private final int index;
 
-    public Circumscribed(String[] args, ShapeRepository figureList) {
-        this.figureList = figureList;
-        this.args = args;
+    public Circumscribed(int index, ShapeRepository shapeRepository) {
+        this.shapeRepository = shapeRepository;
+        this.index = index;
     }
 
     @Override
     public void run() throws InvalidShapeForCircumscribedCircleException {
-        int index = Integer.parseInt(args[1]);
-        Shape shape = figureList.get(index).orElseThrow(IllegalIndexException::new);
+        Shape shape = shapeRepository.get(index).orElseThrow(IllegalIndexException::new);
         Optional<Circle> optionalCircle = shape.getCircumscribedCircle();
 
         if (optionalCircle.isEmpty()) {
@@ -29,7 +28,6 @@ class Circumscribed implements Command {
         }
 
         System.out.println(optionalCircle.get());
-        figureList.addShape(optionalCircle.get());
-
+        shapeRepository.addShape(optionalCircle.get());
     }
 }

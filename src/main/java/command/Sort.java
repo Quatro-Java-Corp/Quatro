@@ -4,21 +4,23 @@ import exceptions.command.IllegalSortArgumentException;
 import repository.ComparatorFactory;
 import repository.ShapeRepository;
 
+import java.util.Queue;
+
 class Sort implements Command {
-    private final ShapeRepository shapeRepo;
-    private final String[] args;
+    private final ShapeRepository shapeRepository;
+    private final Queue<String> args;
     private final ComparatorFactory comparatorFactory = new ComparatorFactory();
 
-    public Sort(String[] args, ShapeRepository shapeRepo) {
-        this.shapeRepo = shapeRepo;
+    public Sort(Queue<String> args, ShapeRepository shapeRepository) {
+        this.shapeRepository = shapeRepository;
         this.args = args;
     }
 
     @Override
     public void run() {
         try {
-            shapeRepo.sort(comparatorFactory.getComparator(ComparatorFactory.CompareBy.valueOf(args[1]),
-                    ComparatorFactory.OrderBy.valueOf(args[2])));
+            shapeRepository.sort(comparatorFactory.getComparator(ComparatorFactory.CompareBy.valueOf(args.poll()),
+                    ComparatorFactory.OrderBy.valueOf(args.poll())));
         } catch (Exception e) {
             throw new IllegalSortArgumentException();
         }
