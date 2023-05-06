@@ -2,6 +2,8 @@ package shapes;
 
 import org.junit.jupiter.api.Test;
 
+import exceptions.argument.NegativeArgumentValueException;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
@@ -18,7 +20,6 @@ public class RectangleTest {
     private final double NEGATIVE_VALUE = -13.5;
     private static final double CIRCUMSCRIBED_CIRCLE_RADIUS_VALUE = 2.5;
     private final double DOUBLED_AREA_VALUE = 2 * AREA_VALUE;
-
 
     /**
      * Short Side And Long Side
@@ -109,7 +110,8 @@ public class RectangleTest {
      */
     @Test
     public void shouldThrowExceptionAfterReceivingNegativeShortSideLength() {
-        assertThrows(Exception.class, () -> Rectangle.withShortSideAndLongSide(NEGATIVE_VALUE, LONG_SIDE_VALUE));
+        assertThrows(NegativeArgumentValueException.class,
+                () -> Rectangle.withShortSideAndLongSide(NEGATIVE_VALUE, LONG_SIDE_VALUE));
     }
 
     /**
@@ -117,7 +119,8 @@ public class RectangleTest {
      */
     @Test
     public void shouldThrowExceptionAfterReceivingNegativeShortSideLengthAndDiagonal() {
-        assertThrows(Exception.class, () -> Rectangle.withShortSideAndDiagonal(NEGATIVE_VALUE, DIAGONAL_VALUE));
+        assertThrows(NegativeArgumentValueException.class,
+                () -> Rectangle.withShortSideAndDiagonal(NEGATIVE_VALUE, DIAGONAL_VALUE));
     }
 
     /**
@@ -125,7 +128,8 @@ public class RectangleTest {
      */
     @Test
     public void shouldThrowExceptionAfterReceivingNegativeShortSideLengthAndSurfaceArea() {
-        assertThrows(Exception.class, () -> Rectangle.withShortSideAndSurfaceArea(NEGATIVE_VALUE, AREA_VALUE));
+        assertThrows(NegativeArgumentValueException.class,
+                () -> Rectangle.withShortSideAndSurfaceArea(NEGATIVE_VALUE, AREA_VALUE));
     }
 
     /**
@@ -133,7 +137,8 @@ public class RectangleTest {
      */
     @Test
     public void shouldThrowExceptionAfterReceivingNegativeLongSideLength() {
-        assertThrows(Exception.class, () -> Rectangle.withShortSideAndLongSide(SHORT_SIDE_VALUE, NEGATIVE_VALUE));
+        assertThrows(NegativeArgumentValueException.class,
+                () -> Rectangle.withShortSideAndLongSide(SHORT_SIDE_VALUE, NEGATIVE_VALUE));
     }
 
     /**
@@ -141,7 +146,8 @@ public class RectangleTest {
      */
     @Test
     public void shouldThrowExceptionAfterReceivingNegativeLongSideLengthAndDiagonal() {
-        assertThrows(Exception.class, () -> Rectangle.withLongSideAndDiagonal(NEGATIVE_VALUE, DIAGONAL_VALUE));
+        assertThrows(NegativeArgumentValueException.class,
+                () -> Rectangle.withLongSideAndDiagonal(NEGATIVE_VALUE, DIAGONAL_VALUE));
     }
 
     /**
@@ -149,7 +155,8 @@ public class RectangleTest {
      */
     @Test
     public void shouldThrowExceptionAfterReceivingNegativeLongSideLengthAndSurfaceArea() {
-        assertThrows(Exception.class, () -> Rectangle.withLongSideAndSurfaceArea(NEGATIVE_VALUE, AREA_VALUE));
+        assertThrows(NegativeArgumentValueException.class,
+                () -> Rectangle.withLongSideAndSurfaceArea(NEGATIVE_VALUE, AREA_VALUE));
     }
 
     /**
@@ -169,7 +176,7 @@ public class RectangleTest {
     void shouldReturnCircleWithCorrectRadiusWhenProvidingCircumscribedCircle() {
         Rectangle r = Rectangle.withShortSideAndLongSide(SHORT_SIDE_VALUE, LONG_SIDE_VALUE);
         var c = assertDoesNotThrow(r.getCircumscribedCircle()::get);
-        assertEquals(CIRCUMSCRIBED_CIRCLE_RADIUS_VALUE, c.getRadius(),DELTA);
+        assertEquals(CIRCUMSCRIBED_CIRCLE_RADIUS_VALUE, c.getRadius(), DELTA);
     }
 
     /**
@@ -179,7 +186,7 @@ public class RectangleTest {
     public void shouldReturnRectangleWithDoubledSurfaceArea() {
         Rectangle r = Rectangle.withShortSideAndSurfaceArea(SHORT_SIDE_VALUE, AREA_VALUE);
         Rectangle r2 = r.getDoubledSized();
-        
+
         assertEquals(r2.getSurfaceArea(), DOUBLED_AREA_VALUE, DELTA);
     }
 }

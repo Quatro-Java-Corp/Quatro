@@ -2,6 +2,8 @@ package shapes;
 
 import org.junit.jupiter.api.Test;
 
+import exceptions.argument.NegativeArgumentValueException;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
@@ -74,7 +76,7 @@ public class CircleTest {
      */
     @Test
     public void shouldThrowExceptionAfterReceivingNegativeRadius() {
-        assertThrows(Exception.class, () -> Circle.withRadius(NEGATIVE_VALUE));
+        assertThrows(NegativeArgumentValueException.class, () -> Circle.withRadius(NEGATIVE_VALUE));
     }
 
     /**
@@ -82,7 +84,7 @@ public class CircleTest {
      */
     @Test
     public void shouldThrowExceptionAfterReceivingNegativeDiameter() {
-        assertThrows(Exception.class, () -> Circle.withDiameter(NEGATIVE_VALUE));
+        assertThrows(NegativeArgumentValueException.class, () -> Circle.withDiameter(NEGATIVE_VALUE));
     }
 
     /**
@@ -90,7 +92,7 @@ public class CircleTest {
      */
     @Test
     public void shouldThrowExceptionAfterReceivingNegativeCircuit() {
-        assertThrows(Exception.class, () -> Circle.withCircuit(NEGATIVE_VALUE));
+        assertThrows(NegativeArgumentValueException.class, () -> Circle.withCircuit(NEGATIVE_VALUE));
     }
 
     /**
@@ -98,7 +100,7 @@ public class CircleTest {
      */
     @Test
     public void shouldThrowExceptionAfterReceivingNegativeSurfaceArea() {
-        assertThrows(Exception.class, () -> Circle.withSurfaceArea(NEGATIVE_VALUE));
+        assertThrows(NegativeArgumentValueException.class, () -> Circle.withSurfaceArea(NEGATIVE_VALUE));
     }
 
     @Test
@@ -115,7 +117,7 @@ public class CircleTest {
     public void shouldReturnCircleWithDoubledSurfaceArea() {
         Circle c = Circle.withSurfaceArea(AREA_VALUE);
         Circle c2 = c.getDoubledSized();
-        
+
         assertEquals(c2.getSurfaceArea(), DOUBLED_AREA_VALUE, DELTA);
     }
 }

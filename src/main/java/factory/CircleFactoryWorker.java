@@ -3,6 +3,8 @@ package factory;
 import java.util.List;
 import java.util.Map.Entry;
 
+import exceptions.factory.InvalidArgumentsCombinationException;
+import exceptions.factory.InvalidArgumentsNumberException;
 import factory.ShapeFactory.ArgumentType;
 import shapes.Circle;
 
@@ -13,7 +15,7 @@ public class CircleFactoryWorker implements ShapeFactoryWorker {
 
     public Circle create(List<Entry<ArgumentType, Double>> args) throws Exception {
         if (args.size() != CircleFactoryWorker.numberOfArguments) {
-            throw new Exception("Invalid number of arguments for Circle");
+            throw new InvalidArgumentsNumberException(shapeName);
         }
 
         var arg = args.get(0);
@@ -23,7 +25,7 @@ public class CircleFactoryWorker implements ShapeFactoryWorker {
             case circuit -> Circle.withCircuit(arg.getValue());
             case diameter -> Circle.withDiameter(arg.getValue());
             case radius -> Circle.withRadius(arg.getValue());
-            default -> throw new Exception("Unknown combination of arguments for circle");
+            default -> throw new InvalidArgumentsCombinationException(shapeName);
         };
     }
 }

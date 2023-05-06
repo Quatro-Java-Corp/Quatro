@@ -5,6 +5,9 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.Test;
 
+import exceptions.argument.NegativeArgumentValueException;
+import exceptions.factory.IllegalTriangleSidesException;
+
 /**
  * Unit test for IsoscelesTriangle.
  */
@@ -26,7 +29,7 @@ public class IsoscelesTriangleTest {
     @Test
     public void shouldCreateIsoscelesTriangleWithSideAndBaseAndCalculateOtherParameters() {
         IsoscelesTriangle t = IsoscelesTriangle.withSideAndBase(SIDE_VALUE, BASE_VALUE);
-        
+
         assertEquals(t.getSideLength(), SIDE_VALUE, DELTA);
         assertEquals(t.getBaseLength(), BASE_VALUE, DELTA);
         assertEquals(t.getHeight(), HEIGHT_VALUE, DELTA);
@@ -40,7 +43,7 @@ public class IsoscelesTriangleTest {
     @Test
     public void shouldCreateIsoscelesTriangleWithSideAndSurfaceAreaAndCalculateOtherParameters() {
         IsoscelesTriangle t = IsoscelesTriangle.withSideAndSurfaceArea(SIDE_VALUE, AREA_VALUE);
-        
+
         assertEquals(t.getSideLength(), SIDE_VALUE, DELTA);
         assertEquals(t.getBaseLength(), BASE_VALUE, DELTA);
         assertEquals(t.getHeight(), HEIGHT_VALUE, DELTA);
@@ -54,7 +57,7 @@ public class IsoscelesTriangleTest {
     @Test
     public void shouldCreateIsoscelesTriangleWithSideAndHeightAndCalculateOtherParameters() {
         IsoscelesTriangle t = IsoscelesTriangle.withSideAndHeight(SIDE_VALUE, HEIGHT_VALUE);
-        
+
         assertEquals(t.getSideLength(), SIDE_VALUE, DELTA);
         assertEquals(t.getBaseLength(), BASE_VALUE, DELTA);
         assertEquals(t.getHeight(), HEIGHT_VALUE, DELTA);
@@ -68,7 +71,7 @@ public class IsoscelesTriangleTest {
     @Test
     public void shouldCreateIsoscelesTriangleWithBaseAndSurfaceAreaAndCalculateOtherParameters() {
         IsoscelesTriangle t = IsoscelesTriangle.withBaseAndSurfaceArea(BASE_VALUE, AREA_VALUE);
-        
+
         assertEquals(t.getSideLength(), SIDE_VALUE, DELTA);
         assertEquals(t.getBaseLength(), BASE_VALUE, DELTA);
         assertEquals(t.getHeight(), HEIGHT_VALUE, DELTA);
@@ -82,7 +85,7 @@ public class IsoscelesTriangleTest {
     @Test
     public void shouldCreateIsoscelesTriangleWithBaseAndHeightAndCalculateOtherParameters() {
         IsoscelesTriangle t = IsoscelesTriangle.withBaseAndHeight(BASE_VALUE, HEIGHT_VALUE);
-        
+
         assertEquals(t.getSideLength(), SIDE_VALUE, DELTA);
         assertEquals(t.getBaseLength(), BASE_VALUE, DELTA);
         assertEquals(t.getHeight(), HEIGHT_VALUE, DELTA);
@@ -96,7 +99,7 @@ public class IsoscelesTriangleTest {
     @Test
     public void shouldCreateIsoscelesTriangleWithSurfaceAreaAndHeightAndCalculateOtherParameters() {
         IsoscelesTriangle t = IsoscelesTriangle.withSurfaceAreaAndHeight(AREA_VALUE, HEIGHT_VALUE);
-        
+
         assertEquals(t.getSideLength(), SIDE_VALUE, DELTA);
         assertEquals(t.getBaseLength(), BASE_VALUE, DELTA);
         assertEquals(t.getHeight(), HEIGHT_VALUE, DELTA);
@@ -109,7 +112,8 @@ public class IsoscelesTriangleTest {
      */
     @Test
     public void shouldThrowExceptionAfterReceivingNegativeSideLength() {
-        assertThrows(Exception.class, () -> IsoscelesTriangle.withSideAndBase(NEGATIVE_VALUE, BASE_VALUE));
+        assertThrows(NegativeArgumentValueException.class,
+                () -> IsoscelesTriangle.withSideAndBase(NEGATIVE_VALUE, BASE_VALUE));
     }
 
     /**
@@ -117,7 +121,8 @@ public class IsoscelesTriangleTest {
      */
     @Test
     public void shouldThrowExceptionAfterReceivingNegativeSideLengthAndArea() {
-        assertThrows(Exception.class, () -> IsoscelesTriangle.withSideAndSurfaceArea(NEGATIVE_VALUE, AREA_VALUE));
+        assertThrows(NegativeArgumentValueException.class,
+                () -> IsoscelesTriangle.withSideAndSurfaceArea(NEGATIVE_VALUE, AREA_VALUE));
     }
 
     /**
@@ -125,7 +130,8 @@ public class IsoscelesTriangleTest {
      */
     @Test
     public void shouldThrowExceptionAfterReceivingNegativeSideLengthAndHeight() {
-        assertThrows(Exception.class, () -> IsoscelesTriangle.withSideAndHeight(NEGATIVE_VALUE, HEIGHT_VALUE));
+        assertThrows(NegativeArgumentValueException.class,
+                () -> IsoscelesTriangle.withSideAndHeight(NEGATIVE_VALUE, HEIGHT_VALUE));
     }
 
     /**
@@ -133,7 +139,8 @@ public class IsoscelesTriangleTest {
      */
     @Test
     public void shouldThrowExceptionAfterReceivingNegativeBaseLength() {
-        assertThrows(Exception.class, () -> IsoscelesTriangle.withSideAndBase(SIDE_VALUE, NEGATIVE_VALUE));
+        assertThrows(NegativeArgumentValueException.class,
+                () -> IsoscelesTriangle.withSideAndBase(SIDE_VALUE, NEGATIVE_VALUE));
     }
 
     /**
@@ -141,7 +148,8 @@ public class IsoscelesTriangleTest {
      */
     @Test
     public void shouldThrowExceptionAfterReceivingNegativeBaseLengthAndArea() {
-        assertThrows(Exception.class, () -> IsoscelesTriangle.withBaseAndSurfaceArea(NEGATIVE_VALUE, AREA_VALUE));
+        assertThrows(NegativeArgumentValueException.class,
+                () -> IsoscelesTriangle.withBaseAndSurfaceArea(NEGATIVE_VALUE, AREA_VALUE));
     }
 
     /**
@@ -149,7 +157,8 @@ public class IsoscelesTriangleTest {
      */
     @Test
     public void shouldThrowExceptionAfterReceivingNegativeBaseLengthAndHeight() {
-        assertThrows(Exception.class, () -> IsoscelesTriangle.withBaseAndHeight(NEGATIVE_VALUE, HEIGHT_VALUE));
+        assertThrows(NegativeArgumentValueException.class,
+                () -> IsoscelesTriangle.withBaseAndHeight(NEGATIVE_VALUE, HEIGHT_VALUE));
     }
 
     /**
@@ -157,7 +166,8 @@ public class IsoscelesTriangleTest {
      */
     @Test
     public void shouldThrowExceptionAfterReceivingNegativeHeight() {
-        assertThrows(Exception.class, () -> IsoscelesTriangle.withSideAndHeight(SIDE_VALUE, NEGATIVE_VALUE));
+        assertThrows(NegativeArgumentValueException.class,
+                () -> IsoscelesTriangle.withSideAndHeight(SIDE_VALUE, NEGATIVE_VALUE));
     }
 
     /**
@@ -165,7 +175,8 @@ public class IsoscelesTriangleTest {
      */
     @Test
     public void shouldThrowExceptionAfterReceivingNegativeHeightAndBase() {
-        assertThrows(Exception.class, () -> IsoscelesTriangle.withBaseAndHeight(BASE_VALUE, NEGATIVE_VALUE));
+        assertThrows(NegativeArgumentValueException.class,
+                () -> IsoscelesTriangle.withBaseAndHeight(BASE_VALUE, NEGATIVE_VALUE));
     }
 
     /**
@@ -173,7 +184,8 @@ public class IsoscelesTriangleTest {
      */
     @Test
     public void shouldThrowExceptionAfterReceivingNegativeHeightAndArea() {
-        assertThrows(Exception.class, () -> IsoscelesTriangle.withSurfaceAreaAndHeight(AREA_VALUE, NEGATIVE_VALUE));
+        assertThrows(NegativeArgumentValueException.class,
+                () -> IsoscelesTriangle.withSurfaceAreaAndHeight(AREA_VALUE, NEGATIVE_VALUE));
     }
 
     /**
@@ -181,7 +193,8 @@ public class IsoscelesTriangleTest {
      */
     @Test
     public void shouldThrowExceptionAfterReceivingNegativeArea() {
-        assertThrows(Exception.class, () -> IsoscelesTriangle.withSideAndSurfaceArea(SIDE_VALUE, NEGATIVE_VALUE));
+        assertThrows(NegativeArgumentValueException.class,
+                () -> IsoscelesTriangle.withSideAndSurfaceArea(SIDE_VALUE, NEGATIVE_VALUE));
     }
 
     /**
@@ -189,7 +202,8 @@ public class IsoscelesTriangleTest {
      */
     @Test
     public void shouldThrowExceptionAfterReceivingNegativeAreaAndBase() {
-        assertThrows(Exception.class, () -> IsoscelesTriangle.withBaseAndSurfaceArea(BASE_VALUE, NEGATIVE_VALUE));
+        assertThrows(NegativeArgumentValueException.class,
+                () -> IsoscelesTriangle.withBaseAndSurfaceArea(BASE_VALUE, NEGATIVE_VALUE));
     }
 
     /**
@@ -197,7 +211,8 @@ public class IsoscelesTriangleTest {
      */
     @Test
     public void shouldThrowExceptionAfterReceivingNegativeAreaAndHeight() {
-        assertThrows(Exception.class, () -> IsoscelesTriangle.withSurfaceAreaAndHeight(NEGATIVE_VALUE, HEIGHT_VALUE));
+        assertThrows(NegativeArgumentValueException.class,
+                () -> IsoscelesTriangle.withSurfaceAreaAndHeight(NEGATIVE_VALUE, HEIGHT_VALUE));
     }
 
     /**
@@ -205,7 +220,8 @@ public class IsoscelesTriangleTest {
      */
     @Test
     public void shouldThrowExceptionAfterReceivingBaseTooLongForGivenSideLenght() {
-        assertThrows(Exception.class, () -> IsoscelesTriangle.withSideAndBase(SIDE_VALUE, LONG_BASE_VALUE));
+        assertThrows(IllegalTriangleSidesException.class,
+                () -> IsoscelesTriangle.withSideAndBase(SIDE_VALUE, LONG_BASE_VALUE));
     }
 
     /**
@@ -215,7 +231,7 @@ public class IsoscelesTriangleTest {
     public void shouldReturnIsoscelesTriangleWithDoubledSurfaceArea() {
         IsoscelesTriangle t = IsoscelesTriangle.withSideAndBase(SIDE_VALUE, BASE_VALUE);
         IsoscelesTriangle t2 = t.getDoubledSized();
-        
+
         assertEquals(t2.getSurfaceArea(), DOUBLED_AREA_VALUE, DELTA);
     }
 }

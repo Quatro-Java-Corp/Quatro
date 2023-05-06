@@ -2,6 +2,9 @@ package shapes;
 
 import java.util.Optional;
 
+import exceptions.argument.NegativeArgumentValueException;
+import utils.Format;
+
 public final class Square implements Shape {
 
     private final double sideLength;
@@ -40,21 +43,21 @@ public final class Square implements Shape {
 
     public static Square withSideLength(double sideLength) {
         if (sideLength <= 0) {
-            throw new IllegalArgumentException("Negative side length");
+            throw new NegativeArgumentValueException();
         }
         return new Square(sideLength);
     }
 
     public static Square withDiagonalLength(double diagonalLength) {
         if (diagonalLength <= 0) {
-            throw new IllegalArgumentException("Negative diagonal length");
+            throw new NegativeArgumentValueException();
         }
         return new Square(Math.pow(diagonalLength * diagonalLength / 2, 0.5));
     }
 
     public static Square withSurfaceArea(double surfaceArea) {
         if (surfaceArea <= 0) {
-            throw new IllegalArgumentException("Negative surface area");
+            throw new NegativeArgumentValueException();
         }
         return new Square(Math.pow(surfaceArea, 0.5));
     }
@@ -62,9 +65,9 @@ public final class Square implements Shape {
     @Override
     public String toString() {
         return "Square{" +
-                "sideLength=" + sideLength +
-                ", diagonalLength=" + getDiagonalLength() +
-                ", surfaceArea=" + getSurfaceArea() +
+                "sideLength=" + Format.format(sideLength) +
+                ", diagonalLength=" + Format.format(getDiagonalLength()) +
+                ", surfaceArea=" + Format.format(getSurfaceArea()) +
                 '}';
     }
 }

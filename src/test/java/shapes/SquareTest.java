@@ -2,6 +2,8 @@ package shapes;
 
 import org.junit.jupiter.api.Test;
 
+import exceptions.argument.NegativeArgumentValueException;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
@@ -62,7 +64,7 @@ public class SquareTest {
      */
     @Test
     public void shouldThrowExceptionAfterReceivingNegativeSideLength() {
-        assertThrows(Exception.class, () -> Square.withSideLength(NEGATIVE_VALUE));
+        assertThrows(NegativeArgumentValueException.class, () -> Square.withSideLength(NEGATIVE_VALUE));
     }
 
     /**
@@ -70,7 +72,7 @@ public class SquareTest {
      */
     @Test
     public void shouldThrowExceptionAfterReceivingNegativeDiagonaLength() {
-        assertThrows(Exception.class, () -> Square.withDiagonalLength(NEGATIVE_VALUE));
+        assertThrows(NegativeArgumentValueException.class, () -> Square.withDiagonalLength(NEGATIVE_VALUE));
     }
 
     /**
@@ -78,14 +80,14 @@ public class SquareTest {
      */
     @Test
     public void shouldThrowExceptionAfterReceivingNegativeSurfaceArea() {
-        assertThrows(Exception.class, () -> Square.withSurfaceArea(NEGATIVE_VALUE));
+        assertThrows(NegativeArgumentValueException.class, () -> Square.withSurfaceArea(NEGATIVE_VALUE));
     }
 
     @Test
     void shouldReturnCircleWithCorrectRadiusWhenProvidingCircumscribedCircle() {
         Square s = Square.withSideLength(SIDE_VALUE);
         var c = assertDoesNotThrow(s.getCircumscribedCircle()::get);
-        assertEquals(CIRCUMSCRIBED_CIRCLE_RADIUS_VALUE, c.getRadius(),DELTA);
+        assertEquals(CIRCUMSCRIBED_CIRCLE_RADIUS_VALUE, c.getRadius(), DELTA);
     }
 
     /**
@@ -95,7 +97,7 @@ public class SquareTest {
     public void shouldReturnSquareWithDoubledSurfaceArea() {
         Square s = Square.withSurfaceArea(AREA_VALUE);
         Square s2 = s.getDoubledSized();
-        
+
         assertEquals(s2.getSurfaceArea(), DOUBLED_AREA_VALUE, DELTA);
     }
 }

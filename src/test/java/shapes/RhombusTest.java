@@ -2,6 +2,8 @@ package shapes;
 
 import org.junit.jupiter.api.Test;
 
+import exceptions.argument.NegativeArgumentValueException;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
@@ -107,7 +109,7 @@ public class RhombusTest {
      */
     @Test
     public void shouldThrowExceptionAfterReceivingNegativeShortDiagonalLength() {
-        assertThrows(Exception.class,
+        assertThrows(NegativeArgumentValueException.class,
                 () -> Rhombus.withShortDiagonalAndLongDiagonal(NON_POSITIVE_VALUE, LONG_DIAGONAL_VALUE));
     }
 
@@ -116,7 +118,7 @@ public class RhombusTest {
      */
     @Test
     public void shouldThrowExceptionAfterReceivingNegativeLongDiagonalLength() {
-        assertThrows(Exception.class,
+        assertThrows(NegativeArgumentValueException.class,
                 () -> Rhombus.withShortDiagonalAndLongDiagonal(SHORT_DIAGONAL_VALUE, NON_POSITIVE_VALUE));
     }
 
@@ -146,7 +148,7 @@ public class RhombusTest {
     public void shouldReturnRhombusWithDoubledSurfaceArea() {
         Rhombus r = Rhombus.withShortDiagonalAndSurfaceArea(SHORT_DIAGONAL_VALUE, AREA_VALUE);
         Rhombus r2 = r.getDoubledSized();
-        
+
         assertEquals(r2.getSurfaceArea(), DOUBLED_AREA_VALUE, DELTA);
     }
 }

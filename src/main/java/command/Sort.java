@@ -1,5 +1,6 @@
 package command;
 
+import exceptions.command.IllegalSortArgumentException;
 import repository.ComparatorFactory;
 import repository.ShapeRepository;
 
@@ -18,14 +19,10 @@ class Sort implements Command {
     @Override
     public void run() {
         try {
-            shapeRepository.sort(comparatorFactory.getComparator(
-                            ComparatorFactory.CompareBy.valueOf(args.poll()),
-                            ComparatorFactory.OrderBy.valueOf(args.poll())
-                    )
-            );
-            shapeRepository.print();
+            shapeRepository.sort(comparatorFactory.getComparator(ComparatorFactory.CompareBy.valueOf(args.poll()),
+                    ComparatorFactory.OrderBy.valueOf(args.poll())));
         } catch (Exception e) {
-            System.out.println("Wrong sort arguments");
+            throw new IllegalSortArgumentException();
         }
     }
 }

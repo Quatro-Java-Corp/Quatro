@@ -3,6 +3,8 @@ package factory;
 import java.util.List;
 import java.util.Map.Entry;
 
+import exceptions.factory.InvalidArgumentsCombinationException;
+import exceptions.factory.InvalidArgumentsNumberException;
 import factory.ShapeFactory.ArgumentType;
 import shapes.Square;
 
@@ -13,7 +15,7 @@ public class SquareFactoryWorker implements ShapeFactoryWorker {
 
     public Square create(List<Entry<ArgumentType, Double>> args) throws Exception {
         if (args.size() != SquareFactoryWorker.numberOfArguments) {
-            throw new Exception("Invalid number of arguments for square");
+            throw new InvalidArgumentsNumberException(shapeName);
         }
 
         var arg = args.get(0);
@@ -22,7 +24,7 @@ public class SquareFactoryWorker implements ShapeFactoryWorker {
             case area -> Square.withSurfaceArea(arg.getValue());
             case diagonal -> Square.withDiagonalLength(arg.getValue());
             case side -> Square.withSideLength(arg.getValue());
-            default -> throw new Exception("Unknown combination of arguments for square");
+            default -> throw new InvalidArgumentsCombinationException(shapeName);
         };
     }
 }

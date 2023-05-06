@@ -13,18 +13,15 @@ import factory.ShapeFactory;
 import factory.ShapeFactory.ArgumentType;
 import command.Command;
 import command.CommandFactory;
-
+import exceptions.argument.InvalidArgumentTypeException;
+import exceptions.argument.InvalidArgumentValueException;
+import exceptions.argument.OddArgumentsException;
+import exceptions.command.InvalidFunctionNameException;
 
 public class InputHandler {
 
     private static final ShapeFactory shapeFactory = new ShapeFactory();
     private final CommandFactory commandFactory = new CommandFactory(this);
-
-    private static final String INVALID_ARGUMENT_VALUE = "Value must be a positive number.";
-    private static final String INVALID_ARGUMENT_TYPE = "Unknown argument name";
-    private static final String UNKNOWN_FUNCTION = "Unknown function";
-    private static final String ODD_NUMBER_OF_ARGUMENTS = "Odd number of arguments";
-
 
     public void parseInput(String input) {
         Queue<String> args = new LinkedList<>(List.of(input.split(" ")));
@@ -32,8 +29,7 @@ public class InputHandler {
             try {
                 Command command = commandFactory.createCommand(
                         parseCommand(args.poll()),
-                        args
-                );
+                        args);
                 command.run();
             } catch (Exception e) {
                 System.out.println(e.getMessage());
@@ -41,11 +37,11 @@ public class InputHandler {
         }
     }
 
-    public CommandFactory.CommandName parseCommand(String command) throws Exception {
+    public CommandFactory.CommandName parseCommand(String command) throws InvalidFunctionNameException {
         try {
             return CommandFactory.CommandName.valueOf(command);
         } catch (IllegalArgumentException e) {
-            throw new Exception(UNKNOWN_FUNCTION);
+            throw new InvalidFunctionNameException();
         }
     }
 
@@ -55,7 +51,7 @@ public class InputHandler {
 
     private List<Entry<ArgumentType, Double>> getArgumentsList(Queue<String> args) throws Exception {
         if (args.size() % 2 != 0) {
-            throw new Exception(ODD_NUMBER_OF_ARGUMENTS);
+            throw new OddArgumentsException();
         }
         List<Entry<ArgumentType, Double>> argsList = new ArrayList<>();
         while (args.size() > 1) {
@@ -70,7 +66,7 @@ public class InputHandler {
         try {
             return ShapeFactory.ArgumentType.valueOf(s.toLowerCase());
         } catch (IllegalArgumentException e) {
-            throw new Exception(INVALID_ARGUMENT_TYPE);
+            throw new InvalidArgumentTypeException();
         }
     }
 
@@ -82,7 +78,7 @@ public class InputHandler {
             }
             return val;
         } catch (NumberFormatException e) {
-            throw new Exception(INVALID_ARGUMENT_VALUE);
+            throw new InvalidArgumentValueException();
         }
     }
 }
