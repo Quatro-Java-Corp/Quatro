@@ -48,6 +48,11 @@ public class RightTriangle implements Shape {
         return withCathetusAndSurfaceArea(sqrt(2.0) * shortCathetusLength, 2 * getSurfaceArea());
     }
 
+    @Override
+    public int getVertexCount() {
+        return 3;
+    }
+
     private RightTriangle(double shortCathetusLength, double longCathetusLength) {
         if (shortCathetusLength > longCathetusLength) {
             this.shortCathetusLength = longCathetusLength;

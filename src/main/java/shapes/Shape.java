@@ -10,4 +10,6 @@ public interface Shape {
     Optional<Circle> getCircumscribedCircle();
 
     Shape getDoubledSized();
+
+    int getVertexCount();
 }
