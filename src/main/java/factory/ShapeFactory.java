@@ -31,7 +31,7 @@ public class ShapeFactory {
         workers.put(shapeName, worker);
     }
 
-    public Shape createShape(String shapeName, List<Entry<ArgumentType, Double>> args) throws Exception {
+    public Shape createShape(String shapeName, List<Entry<ArgumentType, Double>> args) {
         if (workers.containsKey(shapeName)) {
             return workers.get(shapeName).create(args);
         }

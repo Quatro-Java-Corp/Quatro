@@ -13,7 +13,7 @@ public class IsoscelesTriangleFactoryWorker implements ShapeFactoryWorker {
     public static final String shapeName = "isoscelesTriangle";
     public static final double numberOfArguments = 2;
 
-    public IsoscelesTriangle create(List<Entry<ArgumentType, Double>> args) throws Exception {
+    public IsoscelesTriangle create(List<Entry<ArgumentType, Double>> args) {
         if (args.size() != RectangleFactoryWorker.numberOfArguments) {
             throw new InvalidArgumentsNumberException(shapeName);
         }

@@ -13,7 +13,7 @@ public class CircleFactoryWorker implements ShapeFactoryWorker {
     public static final String shapeName = "circle";
     public static final double numberOfArguments = 1;
 
-    public Circle create(List<Entry<ArgumentType, Double>> args) throws Exception {
+    public Circle create(List<Entry<ArgumentType, Double>> args) {
         if (args.size() != CircleFactoryWorker.numberOfArguments) {
             throw new InvalidArgumentsNumberException(shapeName);
         }

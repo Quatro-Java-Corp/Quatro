@@ -13,7 +13,7 @@ public class RectangleFactoryWorker implements ShapeFactoryWorker {
     public static final String shapeName = "rectangle";
     public static final double numberOfArguments = 2;
 
-    public Rectangle create(List<Entry<ArgumentType, Double>> args) throws Exception {
+    public Rectangle create(List<Entry<ArgumentType, Double>> args) {
         if (args.size() != RectangleFactoryWorker.numberOfArguments) {
             throw new InvalidArgumentsNumberException(shapeName);
         }

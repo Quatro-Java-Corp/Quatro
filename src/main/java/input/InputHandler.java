@@ -37,7 +37,7 @@ public class InputHandler {
         }
     }
 
-    public CommandFactory.CommandName parseCommand(String command) throws InvalidFunctionNameException {
+    public CommandFactory.CommandName parseCommand(String command) {
         try {
             return CommandFactory.CommandName.valueOf(command);
         } catch (IllegalArgumentException e) {
@@ -45,11 +45,11 @@ public class InputHandler {
         }
     }
 
-    public Shape createFigureWithArguments(Queue<String> args) throws Exception {
+    public Shape createFigureWithArguments(Queue<String> args) {
         return shapeFactory.createShape(args.poll(), getArgumentsList(args));
     }
 
-    private List<Entry<ArgumentType, Double>> getArgumentsList(Queue<String> args) throws Exception {
+    private List<Entry<ArgumentType, Double>> getArgumentsList(Queue<String> args) {
         if (args.size() % 2 != 0) {
             throw new OddArgumentsException();
         }
@@ -62,7 +62,7 @@ public class InputHandler {
         return argsList;
     }
 
-    private ShapeFactory.ArgumentType convertStringToArgumentType(String s) throws Exception {
+    private ShapeFactory.ArgumentType convertStringToArgumentType(String s) {
         try {
             return ShapeFactory.ArgumentType.valueOf(s.toLowerCase());
         } catch (IllegalArgumentException e) {
@@ -70,7 +70,7 @@ public class InputHandler {
         }
     }
 
-    private Double convertStringToArgumentValue(String s) throws Exception {
+    private Double convertStringToArgumentValue(String s) {
         try {
             double val = Double.parseDouble(s);
             if (val <= 0) {

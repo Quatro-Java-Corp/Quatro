@@ -19,7 +19,7 @@ class Circumscribed implements Command {
     }
 
     @Override
-    public void run() throws InvalidShapeForCircumscribedCircleException {
+    public void run() {
         Shape shape = shapeRepository.get(index).orElseThrow(IllegalIndexException::new);
         Optional<Circle> optionalCircle = shape.getCircumscribedCircle();
 
