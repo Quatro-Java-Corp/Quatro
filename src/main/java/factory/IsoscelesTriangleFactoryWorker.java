@@ -10,7 +10,7 @@ import shapes.IsoscelesTriangle;
 
 public class IsoscelesTriangleFactoryWorker implements ShapeFactoryWorker {
 
-    public static final String shapeName = "isoscelesTriangle";
+    public static final String shapeName = "isoscelestriangle";
     public static final double numberOfArguments = 2;
 
     public IsoscelesTriangle create(List<Entry<ArgumentType, Double>> args) {
