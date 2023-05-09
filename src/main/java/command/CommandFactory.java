@@ -9,7 +9,7 @@ import java.util.Queue;
 
 public class CommandFactory {
     public enum CommandName {
-        exit, add, showfigures, sort, circumscribed, doubled
+        exit, add, showfigures, sort, circumscribed, doubled, remove
     }
 
     private final ShapeRepository shapeRepository = new ShapeRepository();
@@ -19,7 +19,7 @@ public class CommandFactory {
         this.inputHandler = inputHandler;
     }
 
-    public Command createCommand(CommandName command, Queue<String> args) throws Exception {
+    public Command createCommand(CommandName command, Queue<String> args) {
 
         return switch (command) {
             case exit -> new Exit();
@@ -28,11 +28,12 @@ public class CommandFactory {
             case sort -> createSort(args);
             case circumscribed -> createCircumscribed(args);
             case doubled -> createDoubleSized(args);
+            case remove -> createRemove(args);
         };
 
     }
 
-    private ShowFigures createShow(Queue<String> args) throws Exception {
+    private ShowFigures createShow(Queue<String> args) {
         if (!args.isEmpty()) {
             throw new RedundantArgumentException();
         } else {
@@ -40,7 +41,7 @@ public class CommandFactory {
         }
     }
 
-    private Circumscribed createCircumscribed(Queue<String> args) throws Exception {
+    private Circumscribed createCircumscribed(Queue<String> args) {
         if (args.size() == 0) {
             throw new NotEnoughArgumentException();
         } else if (args.size() > 1) {
@@ -50,7 +51,7 @@ public class CommandFactory {
         }
     }
 
-    private DoubleSized createDoubleSized(Queue<String> args) throws Exception {
+    private DoubleSized createDoubleSized(Queue<String> args) {
         if (args.size() == 0) {
             throw new NotEnoughArgumentException();
         } else if (args.size() > 1) {
@@ -60,13 +61,23 @@ public class CommandFactory {
         }
     }
 
-    private Sort createSort(Queue<String> args) throws Exception {
+    private Sort createSort(Queue<String> args) {
         if (args.size() < 2) {
             throw new NotEnoughArgumentException();
         } else if (args.size() > 2) {
             throw new RedundantArgumentException();
         } else {
             return new Sort(args, shapeRepository);
+        }
+    }
+
+    private Remove createRemove(Queue<String> args) {
+        if (args.size() == 0) {
+            throw new NotEnoughArgumentException();
+        } else if (args.size() > 1) {
+            throw new RedundantArgumentException();
+        } else {
+            return new Remove(Integer.parseInt(args.poll()), shapeRepository);
         }
     }
 }
