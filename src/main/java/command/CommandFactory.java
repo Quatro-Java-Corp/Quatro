@@ -1,5 +1,6 @@
 package command;
 
+import exceptions.argument.OddArgumentsException;
 import repository.ShapeRepository;
 import exceptions.argument.NotEnoughArgumentException;
 import exceptions.argument.RedundantArgumentException;
@@ -62,9 +63,12 @@ public class CommandFactory {
     }
 
     private Sort createSort(Queue<String> args) {
+        if (args.size() % 2 == 1) {
+            throw new OddArgumentsException();
+        }
         if (args.size() < 2) {
             throw new NotEnoughArgumentException();
-        } else if (args.size() > 2) {
+        } else if (args.size() > 4) {
             throw new RedundantArgumentException();
         } else {
             return new Sort(args, shapeRepository);

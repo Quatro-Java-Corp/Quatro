@@ -30,7 +30,7 @@ public class Circle implements Shape {
 
     @Override
     public int getVertexCount() {
-        return Integer.MAX_VALUE;
+        return Shape.INFINITY_VERTEX_COUNT;
     }
 
     public double getDiameter() {
