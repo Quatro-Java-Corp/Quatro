@@ -4,7 +4,7 @@ import java.util.Optional;
 
 import exceptions.argument.NegativeArgumentValueException;
 import exceptions.factory.IllegalSurfaceException;
-import exceptions.factory.IllegalTriangleSidesException;
+import exceptions.shape.IllegalTriangleSidesException;
 import utils.Format;
 
 import static java.lang.Math.*;

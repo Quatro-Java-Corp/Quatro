@@ -42,6 +42,11 @@ public class Ellipse implements Shape {
         return new Ellipse(doubledSemiMinorAxis, doubledSemiMajorAxis);
     }
 
+    @Override
+    public int getVertexCount() {
+        return Shape.INFINITY_VERTEX_COUNT;
+    }
+
     private Ellipse(double semiMinorAxis, double semiMajorAxis) {
         if (semiMinorAxis > semiMajorAxis) {
             this.semiMinorAxis = semiMajorAxis;

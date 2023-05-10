@@ -3,6 +3,7 @@ package shapes;
 import java.util.Optional;
 
 import exceptions.argument.NegativeArgumentValueException;
+import exceptions.shape.IllegalTriangleSidesException;
 import utils.Format;
 
 import static java.lang.Math.*;
@@ -73,6 +74,9 @@ public class RightTriangle implements Shape {
     public static RightTriangle withCathetusAndHypotenuse(double cathetusLength, double hypotenuseLength) {
         if (cathetusLength <= 0 || hypotenuseLength <= 0) {
             throw new NegativeArgumentValueException();
+        }
+        if (cathetusLength >= hypotenuseLength) {
+            throw new IllegalTriangleSidesException();
         }
         return new RightTriangle(cathetusLength, sqrt(pow(hypotenuseLength, 2) - pow(cathetusLength, 2)));
     }

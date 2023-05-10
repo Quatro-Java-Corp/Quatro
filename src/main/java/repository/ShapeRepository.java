@@ -1,5 +1,6 @@
 package repository;
 
+import exceptions.command.IllegalIndexException;
 import shapes.Shape;
 
 import java.util.Comparator;
@@ -29,6 +30,8 @@ public class ShapeRepository {
     public void remove(int index) {
         if (isIndexCorrect(index)) {
             shapes.remove(index);
+        } else {
+            throw new IllegalIndexException();
         }
     }
 

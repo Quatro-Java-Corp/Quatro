@@ -12,7 +12,7 @@ import exceptions.factory.UnknownShapeException;
 public class ShapeFactory {
 
     public enum ArgumentType {
-        side, diagonal, area, radius, diameter, circuit, height, base, cathetus, hypotenuse, semiMinorAxis, semiMajorAxis
+        side, diagonal, area, radius, diameter, circuit, height, base, cathetus, hypotenuse, semiminoraxis, semimajoraxis
     }
 
     private final Map<String, ShapeFactoryWorker> workers = new HashMap<>();
