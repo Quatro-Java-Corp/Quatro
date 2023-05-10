@@ -151,3 +151,29 @@ Możliwe wejście: (dowolna dwójka)
 * Długość przyprostokątnej 2
 * Długość przeciwprostokątnej
 * Pole powierzchni
+
+## Pracownia 6
+
+### Wymagania ogólne
+
+Program ma umożliwić rozwiązywanie podstawowych zadań geometrycznych dla elipsy
+* Program ma umożliwiać opcję sortowania dwupoziomowego wprowadzonych figur:
+  * Drugi poziom tak jak do tej pory
+  * Pierwszy poziom rosnąco i malejąco po liczbie wierzchołków
+* Program ma umożliwiać konfigurację zaokrągleń
+  * Domyślna wartość: 2 miejsca po przecinku
+  * Zaokrąglenia nie zmieniają wartości właściwości figur (ani nie wpływają na wartości wprowadzane / wyliczane), wpływają tylko i wyłącznie na sposób ich wyświetlania
+* Użytkownik może wybrać figurę z listy i wykonać na niej akcję: usuń z listy
+
+#### Elipsa
+Charakterystyka figury:
+* Półoś wielka
+* Półoś mała
+* Pole powierzchni
+
+Możliwe wejście: (dowolna dwójka)
+* Półoś wielka
+* Półoś mała
+* Pole powierzchni
+
+Obwód elipsy liczymy pierwszym przybliżeniem całki eliptycznej.
