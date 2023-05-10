@@ -32,7 +32,7 @@ public class Ellipse implements Shape {
 
     @Override
     public Optional<Circle> getCircumscribedCircle() {
-        return Optional.of(Circle.withRadius(semiMajorAxis / 2));
+        return Optional.of(Circle.withRadius(semiMajorAxis));
     }
 
     @Override
