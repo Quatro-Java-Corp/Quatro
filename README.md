@@ -196,6 +196,7 @@ Charakterystyka figury:
 * Ramię
 * Wysokość
 * Pole powierzchni
+
 Możliwe wejście: (dowolna trójka)
 * Podstawa 1
 * Podstawa 2
