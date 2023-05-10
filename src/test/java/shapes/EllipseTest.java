@@ -17,7 +17,7 @@ public class EllipseTest {
     private final double AREA_VALUE = 324.589352968;
     private final double CIRCUIT_VALUE = 66.089;
     private final double NEGATIVE_VALUE = -5.4;
-    private final double CIRCUMSCRIBED_CIRCLE_RADIUS_VALUE = 6.3;
+    private final double CIRCUMSCRIBED_CIRCLE_RADIUS_VALUE = 12.6;
     private final double DOUBLED_SEMI_MINOR_AXIS_VALUE = SEMI_MINOR_AXIS_VALUE * Math.sqrt(2);
     private final double DOUBLED_SEMI_MAJOR_AXIS_VALUE = SEMI_MAJOR_AXIS_VALUE * Math.sqrt(2);
     private final double DOUBLED_AREA_VALUE = 2 * AREA_VALUE;
