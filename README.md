@@ -177,3 +177,29 @@ Możliwe wejście: (dowolna dwójka)
 * Pole powierzchni
 
 Obwód elipsy liczymy pierwszym przybliżeniem całki eliptycznej.
+
+
+## Pracownia 7
+
+### Wymagania ogólne
+Program ma umożliwić rozwiązywanie podstawowych zadań geometrycznych dla
+trapezu równoramiennego
+* Program ma umożliwić asynchroniczne zapisanie wszystkich przechowywanych figur do pliku
+* Opis każdej figury w jednej linii !
+* Wycofujemy się z dwupoziomowego sortowania figur
+* Sortowanie po liczbie wierzchołków dodajemy jako kolejną możliwość sposobu sortowania
+
+#### Trapez równoramienny
+Charakterystyka figury:
+* Podstawa 1
+* Podstawa 2
+* Ramię
+* Wysokość
+* Pole powierzchni
+Możliwe wejście: (dowolna trójka)
+* Podstawa 1
+* Podstawa 2
+* Ramię
+* Wysokość
+* Pole powierzchni
+2 z 10 przypadków: (podstawa 1-2, ramię, pole powierzchni) nie muszą być rozpatrywane
