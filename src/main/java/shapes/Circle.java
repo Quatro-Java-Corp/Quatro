@@ -6,7 +6,6 @@ import exceptions.argument.NegativeArgumentValueException;
 import utils.Format;
 
 public class Circle implements Shape {
-
     private final double radius;
 
     @Override
@@ -27,6 +26,11 @@ public class Circle implements Shape {
     @Override
     public Circle getDoubledSized() {
         return withSurfaceArea(2 * getSurfaceArea());
+    }
+
+    @Override
+    public int getVertexCount() {
+        return Shape.INFINITY_VERTEX_COUNT;
     }
 
     public double getDiameter() {

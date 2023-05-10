@@ -14,7 +14,7 @@ public class RightTriangleWorker implements ShapeFactoryWorker {
     public static final String shapeName = "righttriangle";
     public static final double numberOfArguments = 2;
 
-    public RightTriangle create(List<Entry<ArgumentType, Double>> args) throws Exception {
+    public RightTriangle create(List<Entry<ArgumentType, Double>> args) {
         if (args.size() != numberOfArguments) {
             throw new InvalidArgumentsNumberException(shapeName);
         }

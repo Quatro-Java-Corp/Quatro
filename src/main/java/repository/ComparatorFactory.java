@@ -5,7 +5,7 @@ import java.util.Comparator;
 public class ComparatorFactory {
 
     public enum CompareBy {
-        area, circuit, date
+        area, circuit, date, vertex
     }
 
     public enum OrderBy {
@@ -17,6 +17,7 @@ public class ComparatorFactory {
             case area -> Comparator.comparingDouble(record -> record.getShape().getSurfaceArea());
             case circuit -> Comparator.comparingDouble(record -> record.getShape().getCircuit());
             case date -> Comparator.comparing(ShapeRecord::getCreationDate);
+            case vertex -> Comparator.comparingInt(record -> record.getShape().getVertexCount());
         };
         if (order == OrderBy.descending) {
             return comparator.reversed();

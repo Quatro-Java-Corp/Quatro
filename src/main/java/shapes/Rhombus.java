@@ -44,6 +44,11 @@ public class Rhombus implements Shape {
         return withShortDiagonalAndSurfaceArea(sqrt(2.0) * shortDiagonalLength, 2 * getSurfaceArea());
     }
 
+    @Override
+    public int getVertexCount() {
+        return 4;
+    }
+
     private Rhombus(double shortDiagonalLength, double longDiagonalLength) {
         if (shortDiagonalLength > longDiagonalLength) {
             this.shortDiagonalLength = longDiagonalLength;

@@ -10,10 +10,10 @@ import shapes.RegularTriangle;
 
 public class RegularTriangleFactoryWorker implements ShapeFactoryWorker {
 
-    public static final String shapeName = "regularTriangle";
+    public static final String shapeName = "regulartriangle";
     public static final double numberOfArguments = 1;
 
-    public RegularTriangle create(List<Entry<ArgumentType, Double>> args) throws Exception {
+    public RegularTriangle create(List<Entry<ArgumentType, Double>> args) {
         if (args.size() != RegularTriangleFactoryWorker.numberOfArguments) {
             throw new InvalidArgumentsNumberException(shapeName);
         }

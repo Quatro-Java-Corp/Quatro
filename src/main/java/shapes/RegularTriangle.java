@@ -38,6 +38,11 @@ public class RegularTriangle implements Shape {
         return withSurfaceArea(2 * getSurfaceArea());
     }
 
+    @Override
+    public int getVertexCount() {
+        return 3;
+    }
+
     private RegularTriangle(double sideLength) {
         this.sideLength = sideLength;
     }

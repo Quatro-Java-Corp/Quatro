@@ -46,6 +46,11 @@ public class IsoscelesTriangle implements Shape {
         return withBaseAndSurfaceArea(sqrt(2.0) * baseLength, 2 * getSurfaceArea());
     }
 
+    @Override
+    public int getVertexCount() {
+        return 3;
+    }
+
     private IsoscelesTriangle(double sideLength, double baseLength) {
         if ((2 * sideLength) <= baseLength) {
             throw new IllegalTriangleSidesException();

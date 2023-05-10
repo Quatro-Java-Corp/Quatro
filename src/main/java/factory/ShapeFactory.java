@@ -31,9 +31,9 @@ public class ShapeFactory {
         workers.put(shapeName, worker);
     }
 
-    public Shape createShape(String shapeName, List<Entry<ArgumentType, Double>> args) throws Exception {
-        if (workers.containsKey(shapeName)) {
-            return workers.get(shapeName).create(args);
+    public Shape createShape(String shapeName, List<Entry<ArgumentType, Double>> args) {
+        if (workers.containsKey(shapeName.toLowerCase())) {
+            return workers.get(shapeName.toLowerCase()).create(args);
         }
         throw new UnknownShapeException(shapeName);
     }

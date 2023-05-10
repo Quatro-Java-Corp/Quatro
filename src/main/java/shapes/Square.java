@@ -41,6 +41,11 @@ public final class Square implements Shape {
         return withSurfaceArea(2 * getSurfaceArea());
     }
 
+    @Override
+    public int getVertexCount() {
+        return 4;
+    }
+
     public static Square withSideLength(double sideLength) {
         if (sideLength <= 0) {
             throw new NegativeArgumentValueException();

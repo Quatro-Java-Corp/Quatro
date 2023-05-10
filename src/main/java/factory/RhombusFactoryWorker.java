@@ -17,7 +17,7 @@ public class RhombusFactoryWorker implements ShapeFactoryWorker {
 
     private static final double DELTA = 0.0001;
 
-    public Shape create(List<Entry<ArgumentType, Double>> args) throws Exception {
+    public Shape create(List<Entry<ArgumentType, Double>> args) {
         if (args.size() != RhombusFactoryWorker.numberOfArguments) {
             throw new InvalidArgumentsNumberException(shapeName);
         }

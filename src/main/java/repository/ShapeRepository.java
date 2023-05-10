@@ -20,10 +20,20 @@ public class ShapeRepository {
     }
 
     public Optional<Shape> get(int index) {
-        if (index < 0 || index >= shapes.size()) {
-            return Optional.empty();
+        if (isIndexCorrect(index)) {
+            return Optional.of(shapes.get(index).getShape());
         }
-        return Optional.of(shapes.get(index).getShape());
+        return Optional.empty();
+    }
+
+    public void remove(int index) {
+        if (isIndexCorrect(index)) {
+            shapes.remove(index);
+        }
+    }
+
+    private boolean isIndexCorrect(int index) {
+        return index >= 0 && index < shapes.size();
     }
 
     public void print() {

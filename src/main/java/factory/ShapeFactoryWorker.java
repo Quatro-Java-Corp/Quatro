@@ -7,5 +7,5 @@ import factory.ShapeFactory.ArgumentType;
 import shapes.Shape;
 
 public interface ShapeFactoryWorker {
-    Shape create(List<Entry<ArgumentType, Double>> args) throws Exception;
+    Shape create(List<Entry<ArgumentType, Double>> args);
 }
