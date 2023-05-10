@@ -4,7 +4,6 @@ import exceptions.command.IllegalSortArgumentException;
 import repository.ComparatorFactory;
 import repository.ShapeRepository;
 
-import java.util.Comparator;
 import java.util.Queue;
 
 class Sort implements Command {

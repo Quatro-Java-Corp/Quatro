@@ -6,7 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import org.junit.jupiter.api.Test;
 
 import exceptions.argument.NegativeArgumentValueException;
-import exceptions.factory.IllegalTriangleSidesException;
+import exceptions.shape.IllegalTriangleSidesException;
 
 /**
  * Unit test for IsoscelesTriangle.
