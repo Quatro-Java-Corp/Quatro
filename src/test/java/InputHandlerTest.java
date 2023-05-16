@@ -11,6 +11,7 @@ import java.util.Locale;
 import java.util.Queue;
 
 import input.InputHandler;
+import repository.ShapeRepository;
 
 public class InputHandlerTest {
     private final double DELTA = 1e-2;
@@ -20,7 +21,8 @@ public class InputHandlerTest {
     private final double DIAGONAL_VALUE = 5;
     private final double AREA_VALUE = 12;
 
-    private InputHandler inputHandler = new InputHandler();
+    private ShapeRepository shapeRepository = new ShapeRepository();
+    private InputHandler inputHandler = new InputHandler(shapeRepository);
 
     /**
      * Short Side And Long Side
