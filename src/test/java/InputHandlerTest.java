@@ -1,5 +1,7 @@
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import command.CommandFactory;
 import org.junit.jupiter.api.Test;
@@ -12,6 +14,8 @@ import java.util.Queue;
 
 import input.InputHandler;
 import repository.ShapeRepository;
+
+import exceptions.command.IllegalIndexException;
 
 public class InputHandlerTest {
     private final double DELTA = 1e-2;
@@ -230,5 +234,59 @@ public class InputHandlerTest {
         assertEquals(t.getHypotenuse(), RIGHT_TRIANGLE_HYPOTENUSE_LENGTH, DELTA);
         assertEquals(t.getSurfaceArea(), RIGHT_TRIANGLE_AREA_VALUE, DELTA);
         assertEquals(t.getCircuit(), RIGHT_TRIANGLE_CIRCUIT_VALUE, DELTA);
+    }
+
+    /**
+     * Remove shape
+    */
+    @Test
+    public void shouldRemoveShape() {
+        Square s = Square.withSideLength(SQUARE_SIDE_VALUE);
+        Circle c = Circle.withCircuit(CIRCLE_CIRCUIT_VALUE);
+        Rectangle r = Rectangle.withDiagonalAndSurfaceArea(RECTANGLE_DIAGONAL_VALUE, RECTANGLE_AREA_VALUE);
+        ShapeRepository shapeRepository = new ShapeRepository();
+        shapeRepository.addShape(s);
+        shapeRepository.addShape(c);
+        shapeRepository.addShape(r);
+        InputHandler inputHandler = new InputHandler(shapeRepository);
+
+        Square s2 = (Square) shapeRepository.get(0).get();
+        Circle c2 = (Circle) shapeRepository.get(1).get();
+        Rectangle r2 = (Rectangle) shapeRepository.get(2).get();
+        assertEquals(s, s2);
+        assertEquals(c, c2);
+        assertEquals(r, r2);
+
+        inputHandler.parseInput("remove 1");
+
+        Square s3 = (Square) shapeRepository.get(0).get();
+        Rectangle r3 = (Rectangle) shapeRepository.get(1).get();
+        assertEquals(s, s3);
+        assertEquals(r, r3);
+    }
+
+    /**
+     * Remove shape with wrong index
+    */
+    @Test
+    public void shouldNotRemoveShape() {
+        Square s = Square.withSideLength(SQUARE_SIDE_VALUE);
+        Circle c = Circle.withCircuit(CIRCLE_CIRCUIT_VALUE);
+        ShapeRepository shapeRepository = new ShapeRepository();
+        shapeRepository.addShape(s);
+        shapeRepository.addShape(c);
+        InputHandler inputHandler = new InputHandler(shapeRepository);
+
+        Square s2 = (Square) shapeRepository.get(0).get();
+        Circle c2 = (Circle) shapeRepository.get(1).get();
+        assertEquals(s, s2);
+        assertEquals(c, c2);
+
+        inputHandler.parseInput("remove 10");
+
+        Square s3 = (Square) shapeRepository.get(0).get();
+        Circle c3 = (Circle) shapeRepository.get(1).get();
+        assertEquals(s, s3);
+        assertEquals(c, c3);
     }
 }
