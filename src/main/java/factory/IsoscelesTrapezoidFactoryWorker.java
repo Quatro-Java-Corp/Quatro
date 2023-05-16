@@ -21,6 +21,7 @@ public class IsoscelesTrapezoidFactoryWorker implements ShapeFactoryWorker {
         var arg1 = args.get(0);
         var arg2 = args.get(1);
         var arg3 = args.get(2);
+
         return switch (arg1.getKey().toString() + "|" + arg2.getKey().toString() + "|" + arg3.getKey().toString() ){
             case "shortbase|longbase|side" -> IsoscelesTrapezoid.withTwoBaseAndSide(arg1.getValue(), arg2.getValue(), arg3.getValue());
             case "shortbase|longbase|height" -> IsoscelesTrapezoid.withTwoBaseAndHeight(arg1.getValue(), arg2.getValue(), arg3.getValue());

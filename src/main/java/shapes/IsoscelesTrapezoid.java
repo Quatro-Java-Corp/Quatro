@@ -76,26 +76,30 @@ public class IsoscelesTrapezoid implements Shape{
     @Override
     public double getSurfaceArea() {
         return (shortBaseLength+longBaseLength)/2 * height;
-    } //done
+    }
 
     public double getSide() {
         return sqrt( pow((longBaseLength-shortBaseLength)/2,2) + pow(height,2) );
-    } //done
+    }
     @Override
     public double getCircuit() {
         return shortBaseLength + longBaseLength + 2 * getSide();
-    } //done
+    }
 
-    public double getShortBaseLength() {return shortBaseLength;}
-    public double getLongBaseLength() {return longBaseLength;}
-    public double getHeight() {return height;}
+    public double getShortBaseLength() { return shortBaseLength; }
+
+    public double getLongBaseLength() { return longBaseLength; }
+
+    public double getHeight() { return height; }
 
     @Override
     public Optional<Circle> getCircumscribedCircle() {
-        if (shortBaseLength+longBaseLength != 2* getSide())
+        if (shortBaseLength+longBaseLength != 2* getSide()) {
             return Optional.empty();
-        else
+        }
+        else {
             return Optional.of(Circle.withRadius(height/2));
+        }
     }
 
     @Override
@@ -114,7 +118,7 @@ public class IsoscelesTrapezoid implements Shape{
                 "shortBaseLength=" + Format.format(shortBaseLength) +
                 ", longBaseLength=" + Format.format(longBaseLength) +
                 ", height=" + Format.format(getHeight()) +
-                ", SideLength=" + Format.format(getSurfaceArea()) +
+                ", SideLength=" + Format.format(getSide()) +
                 ", surfaceArea=" + Format.format(getSurfaceArea()) +
                 '}';
     }
