@@ -7,10 +7,10 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 
-public class SaveToFile implements Command {
+public class Save implements Command {
     private final ShapeRepository shapeRepository;
     private Object lock = new Object();
-    public SaveToFile(ShapeRepository shapeRepository) {
+    public Save(ShapeRepository shapeRepository) {
         this.shapeRepository = shapeRepository;
     }
     private PrintWriter writer;
