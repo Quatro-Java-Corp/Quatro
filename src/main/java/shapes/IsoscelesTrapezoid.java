@@ -1,6 +1,8 @@
 package shapes;
 
 import exceptions.argument.NegativeArgumentValueException;
+import exceptions.shape.IsoscelesTrapezoidHeightShorterThenSideException;
+import exceptions.shape.IsoscelesTrapezoidTooShortBaseException;
 import utils.Format;
 
 import java.util.Optional;
@@ -41,13 +43,14 @@ public class IsoscelesTrapezoid implements Shape{
         if (shortBaseLength <= 0 || longBaseLength <= 0 || surfaceArea <= 0) {
             throw new NegativeArgumentValueException();
         }
-        return new IsoscelesTrapezoid(shortBaseLength,longBaseLength, surfaceArea / ( ( longBaseLength - shortBaseLength) / 2)  );
+        return new IsoscelesTrapezoid(shortBaseLength,longBaseLength, surfaceArea / ( ( longBaseLength + shortBaseLength) / 2)  );
     }
 
     public static IsoscelesTrapezoid withShortBaseAndSideAndHeight(double shortBaseLength, double sideLength, double height){
         if (shortBaseLength <= 0 || sideLength <= 0 || height <= 0) {
             throw new NegativeArgumentValueException();
         }
+        if(sideLength <= height ) throw new IsoscelesTrapezoidHeightShorterThenSideException();
         return new IsoscelesTrapezoid(shortBaseLength, shortBaseLength + 2 * sqrt( pow(sideLength,2) - pow(height,2) ) , height );
     }
 
@@ -55,6 +58,8 @@ public class IsoscelesTrapezoid implements Shape{
         if (longBaseLength <= 0 || sideLength <= 0 || height <= 0) {
             throw new NegativeArgumentValueException();
         }
+        if(sideLength <= height ) throw new IsoscelesTrapezoidHeightShorterThenSideException();
+        if(longBaseLength  <= 2 * sqrt( pow(sideLength,2) - pow(height,2) )) throw new IsoscelesTrapezoidTooShortBaseException();
         return new IsoscelesTrapezoid(longBaseLength - 2 * sqrt( pow(sideLength,2) - pow(height,2) ) ,longBaseLength, height );
     }
 
@@ -69,6 +74,7 @@ public class IsoscelesTrapezoid implements Shape{
         if (sideLength <= 0 || height <= 0 || surfaceArea <= 0) {
             throw new NegativeArgumentValueException();
         }
+        if(sideLength <= height ) throw new IsoscelesTrapezoidHeightShorterThenSideException();
         double x = sqrt( pow(sideLength,2) -  pow(height,2) );
         return new IsoscelesTrapezoid(surfaceArea/height - x, surfaceArea/height + x, height );
     }
