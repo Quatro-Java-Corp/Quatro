@@ -331,4 +331,35 @@ public class InputHandlerTest {
         assertEquals(s, s3);
         assertEquals(c.getRadius(), SQUARE_CIRCUMSCRIBED_CIRCLE_RADIUS_VALUE, DELTA);
     }
+
+    /**
+     * Sort shapes
+    */
+    @Test
+    public void shouldSortShapes() {
+        Circle c = Circle.withCircuit(CIRCLE_CIRCUIT_VALUE);
+        Square s = Square.withSideLength(SQUARE_SIDE_VALUE);
+        Rectangle r = Rectangle.withDiagonalAndSurfaceArea(RECTANGLE_DIAGONAL_VALUE, RECTANGLE_AREA_VALUE);
+        ShapeRepository shapeRepository = new ShapeRepository();
+        shapeRepository.addShape(c);
+        shapeRepository.addShape(s);
+        shapeRepository.addShape(r);
+        InputHandler inputHandler = new InputHandler(shapeRepository);
+
+        Circle c2 = (Circle) shapeRepository.get(0).get();
+        Square s2 = (Square) shapeRepository.get(1).get();
+        Rectangle r2 = (Rectangle) shapeRepository.get(2).get();
+        assertEquals(c, c2);
+        assertEquals(s, s2);
+        assertEquals(r, r2);
+
+        inputHandler.parseInput("sort area ascending");
+
+        Rectangle r3 = (Rectangle) shapeRepository.get(0).get();
+        Square s3 = (Square) shapeRepository.get(1).get();
+        Circle c3 = (Circle) shapeRepository.get(2).get();
+        assertEquals(r, r3);
+        assertEquals(s, s3);
+        assertEquals(c, c3);
+    }
 }
