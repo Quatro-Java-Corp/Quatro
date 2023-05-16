@@ -289,4 +289,25 @@ public class InputHandlerTest {
         assertEquals(s, s3);
         assertEquals(c, c3);
     }
+
+    /**
+     * Double sized shape
+    */
+    @Test
+    public void shouldAddDoubledSizedShape() {
+        Square s = Square.withSideLength(SQUARE_SIDE_VALUE);
+        ShapeRepository shapeRepository = new ShapeRepository();
+        shapeRepository.addShape(s);
+        InputHandler inputHandler = new InputHandler(shapeRepository);
+
+        Square s2 = (Square) shapeRepository.get(0).get();
+        assertEquals(s, s2);
+
+        inputHandler.parseInput("doubled 0");
+
+        Square s3 = (Square) shapeRepository.get(0).get();
+        Square sDoubled = (Square) shapeRepository.get(1).get();
+        assertEquals(s, s3);
+        assertEquals(sDoubled.getSurfaceArea(), SQUARE_DOUBLED_AREA_VALUE, DELTA);
+    }
 }
