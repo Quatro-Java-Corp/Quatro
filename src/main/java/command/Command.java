@@ -1,5 +1,5 @@
 package command;
 
-public interface Command  {
+public interface Command {
     void run();
 }
