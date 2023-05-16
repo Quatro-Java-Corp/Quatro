@@ -10,7 +10,7 @@ import java.util.Queue;
 
 public class CommandFactory {
     public enum CommandName {
-        exit, add, showfigures, sort, circumscribed, doubled, remove
+        exit, add, showfigures, sort, circumscribed, doubled, remove, save
     }
 
     private final ShapeRepository shapeRepository = new ShapeRepository();
@@ -30,6 +30,7 @@ public class CommandFactory {
             case circumscribed -> createCircumscribed(args);
             case doubled -> createDoubleSized(args);
             case remove -> createRemove(args);
+            case save -> new SaveToFile(shapeRepository);
         };
 
     }
