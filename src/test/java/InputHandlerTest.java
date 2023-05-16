@@ -310,4 +310,25 @@ public class InputHandlerTest {
         assertEquals(s, s3);
         assertEquals(sDoubled.getSurfaceArea(), SQUARE_DOUBLED_AREA_VALUE, DELTA);
     }
+
+    /**
+     * Circumscribed circle for shape
+    */
+    @Test
+    public void shouldAddCircumscribedCircleForShape() {
+        Square s = Square.withSideLength(SQUARE_SIDE_VALUE);
+        ShapeRepository shapeRepository = new ShapeRepository();
+        shapeRepository.addShape(s);
+        InputHandler inputHandler = new InputHandler(shapeRepository);
+
+        Square s2 = (Square) shapeRepository.get(0).get();
+        assertEquals(s, s2);
+
+        inputHandler.parseInput("circumscribed 0");
+
+        Square s3 = (Square) shapeRepository.get(0).get();
+        Circle c = (Circle) shapeRepository.get(1).get();
+        assertEquals(s, s3);
+        assertEquals(c.getRadius(), SQUARE_CIRCUMSCRIBED_CIRCLE_RADIUS_VALUE, DELTA);
+    }
 }
