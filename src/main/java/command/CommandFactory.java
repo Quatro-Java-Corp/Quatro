@@ -30,7 +30,7 @@ public class CommandFactory {
             case circumscribed -> createCircumscribed(args);
             case doubled -> createDoubleSized(args);
             case remove -> createRemove(args);
-            case save -> new SaveToFile(shapeRepository);
+            case save -> new Save(shapeRepository);
         };
 
     }
