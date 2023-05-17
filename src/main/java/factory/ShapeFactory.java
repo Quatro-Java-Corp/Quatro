@@ -12,7 +12,7 @@ import exceptions.factory.UnknownShapeException;
 public class ShapeFactory {
 
     public enum ArgumentType {
-        side, diagonal, area, radius, diameter, circuit, height, base, cathetus, hypotenuse, semiminoraxis, semimajoraxis
+        side, diagonal, area, radius, diameter, circuit, height, base, cathetus, hypotenuse, semiminoraxis, semimajoraxis, shortbase, longbase
     }
 
     private final Map<String, ShapeFactoryWorker> workers = new HashMap<>();
@@ -26,6 +26,7 @@ public class ShapeFactory {
         registerWorker(IsoscelesTriangleFactoryWorker.shapeName, new IsoscelesTriangleFactoryWorker());
         registerWorker(RightTriangleWorker.shapeName, new RightTriangleWorker());
         registerWorker(EllipseFactoryWorker.shapeName, new EllipseFactoryWorker());
+        registerWorker(IsoscelesTrapezoidFactoryWorker.shapeName, new IsoscelesTrapezoidFactoryWorker());
     }
 
     private void registerWorker(String shapeName, ShapeFactoryWorker worker) {

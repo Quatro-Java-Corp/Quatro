@@ -38,7 +38,9 @@ public class ShapeRepository {
     private boolean isIndexCorrect(int index) {
         return index >= 0 && index < shapes.size();
     }
-
+    public int length(){
+        return shapes.size();
+    }
     public void print() {
         IntStream.range(0, shapes.size())
                 .mapToObj(i -> i + ". " + shapes.get(i).getShape() + " | " + shapes.get(i).getCreationDate())
