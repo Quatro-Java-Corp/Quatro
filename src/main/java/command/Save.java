@@ -9,11 +9,11 @@ import java.io.PrintWriter;
 
 public class Save implements Command {
     private final ShapeRepository shapeRepository;
-    private Object lock = new Object();
+
     public Save(ShapeRepository shapeRepository) {
         this.shapeRepository = shapeRepository;
     }
-    private PrintWriter writer;
+
     private Runnable saveToFile(String filename) {
         return () -> {
 
