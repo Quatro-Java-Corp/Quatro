@@ -12,11 +12,12 @@ public class CommandFactory {
         exit, add, showfigures, sort, circumscribed, doubled, remove, save
     }
 
-    private final ShapeRepository shapeRepository = new ShapeRepository();
+    private final ShapeRepository shapeRepository;
     private final InputHandler inputHandler;
 
-    public CommandFactory(InputHandler inputHandler) {
+    public CommandFactory(InputHandler inputHandler, ShapeRepository shapeRepository) {
         this.inputHandler = inputHandler;
+        this.shapeRepository = shapeRepository;
     }
 
     public Command createCommand(CommandName command, Queue<String> args) {

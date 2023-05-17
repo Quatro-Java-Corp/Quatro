@@ -11,6 +11,7 @@ import java.util.Queue;
 
 import factory.ShapeFactory;
 import factory.ShapeFactory.ArgumentType;
+import repository.ShapeRepository;
 import command.Command;
 import command.CommandFactory;
 import exceptions.argument.InvalidArgumentTypeException;
@@ -21,7 +22,11 @@ import exceptions.command.InvalidFunctionNameException;
 public class InputHandler {
 
     private static final ShapeFactory shapeFactory = new ShapeFactory();
-    private final CommandFactory commandFactory = new CommandFactory(this);
+    private final CommandFactory commandFactory;
+
+    public InputHandler(ShapeRepository shapeRepository) {
+        this.commandFactory = new CommandFactory(this, shapeRepository);
+    }
 
     public void parseInput(String input) {
         Queue<String> args = new LinkedList<>(List.of(input.split(" ")));
