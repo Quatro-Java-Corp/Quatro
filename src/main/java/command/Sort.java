@@ -19,22 +19,9 @@ class Sort implements Command {
     @Override
     public void run() {
         try {
-            if (args.size() == 2) {
-                shapeRepository.sort(comparatorFactory.getComparator(
-                        ComparatorFactory.CompareBy.valueOf(args.poll()),
-                        ComparatorFactory.OrderBy.valueOf(args.poll())));
-            }
-            if (args.size() == 4) {
-                shapeRepository.sort(comparatorFactory.getComparator(
-                                        ComparatorFactory.CompareBy.valueOf(args.poll()),
-                                        ComparatorFactory.OrderBy.valueOf(args.poll())
-                                )
-                                .thenComparing(comparatorFactory.getComparator(
-                                        ComparatorFactory.CompareBy.valueOf(args.poll()),
-                                        ComparatorFactory.OrderBy.valueOf(args.poll()))
-                                )
-                );
-            }
+            shapeRepository.sort(comparatorFactory.getComparator(
+                    ComparatorFactory.CompareBy.valueOf(args.poll()),
+                    ComparatorFactory.OrderBy.valueOf(args.poll())));
         } catch (Exception e) {
             throw new IllegalSortArgumentException();
         }
