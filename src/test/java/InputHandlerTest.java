@@ -1,21 +1,11 @@
-import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-
-import command.CommandFactory;
+import input.InputHandler;
 import org.junit.jupiter.api.Test;
+import repository.ShapeRepository;
 import shapes.*;
 
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Locale;
-import java.util.Queue;
 
-import input.InputHandler;
-import repository.ShapeRepository;
-
-import exceptions.command.IllegalIndexException;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class InputHandlerTest {
     private final double DELTA = 1e-2;
@@ -25,7 +15,6 @@ public class InputHandlerTest {
     private final double SQUARE_DIAGONAL_VALUE = 24.465894629;
     private final double SQUARE_AREA_VALUE = 299.29;
     private final double SQUARE_CIRCUIT_VALUE = 69.2;
-    private final double SQUARE_NEGATIVE_VALUE = -13.5;
     private final double SQUARE_CIRCUMSCRIBED_CIRCLE_RADIUS_VALUE = 12.23;
     private final double SQUARE_DOUBLED_AREA_VALUE = 2 * SQUARE_AREA_VALUE;
 
@@ -34,19 +23,12 @@ public class InputHandlerTest {
     private final double CIRCLE_DIAMETER_VALUE = 34.6;
     private final double CIRCLE_CIRCUIT_VALUE = 108.699105814;
     private final double CIRCLE_AREA_VALUE = 940.247265293;
-    private final double CIRCLE_NEGATIVE_VALUE = -13.5;
-    private final double CIRCLE_DOUBLED_AREA_VALUE = 2 * CIRCLE_AREA_VALUE;
 
     // Ellipse data
     private final double ELLIPSE_SEMI_MINOR_AXIS_VALUE = 8.2;
     private final double ELLIPSE_SEMI_MAJOR_AXIS_VALUE = 12.6;
     private final double ELLIPSE_AREA_VALUE = 324.589352968;
     private final double ELLIPSE_CIRCUIT_VALUE = 66.089;
-    private final double ELLIPSE_NEGATIVE_VALUE = -5.4;
-    private final double ELLIPSE_CIRCUMSCRIBED_CIRCLE_RADIUS_VALUE = 12.6;
-    private final double ELLIPSE_DOUBLED_SEMI_MINOR_AXIS_VALUE = ELLIPSE_SEMI_MINOR_AXIS_VALUE * Math.sqrt(2);
-    private final double ELLIPSE_DOUBLED_SEMI_MAJOR_AXIS_VALUE = ELLIPSE_SEMI_MAJOR_AXIS_VALUE * Math.sqrt(2);
-    private final double ELLIPSE_DOUBLED_AREA_VALUE = 2 * ELLIPSE_AREA_VALUE;
 
     // IsoscelesTriangle data
     private final double ISOSCELES_TRIANGLE_SIDE_VALUE = 10;
@@ -54,9 +36,6 @@ public class InputHandlerTest {
     private final double ISOSCELES_TRIANGLE_HEIGHT_VALUE = 9.7979589711327;
     private final double ISOSCELES_TRIANGLE_AREA_VALUE = 19.595917942265;
     private final double ISOSCELES_TRIANGLE_CIRCUIT_VALUE = 24;
-    private final double ISOSCELES_TRIANGLE_NEGATIVE_VALUE = -13.5;
-    private final double ISOSCELES_TRIANGLE_LONG_BASE_VALUE = 200;
-    private final double ISOSCELES_TRIANGLE_DOUBLED_AREA_VALUE = 2 * ISOSCELES_TRIANGLE_AREA_VALUE;
 
     // Rectangle data
     private final double RECTANGLE_LONG_SIDE_VALUE = 4;
@@ -64,18 +43,12 @@ public class InputHandlerTest {
     private final double RECTANGLE_DIAGONAL_VALUE = 5;
     private final double RECTANGLE_AREA_VALUE = 12;
     private final double RECTANGLE_CIRCUIT_VALUE = 14;
-    private final double RECTANGLE_NEGATIVE_VALUE = -13.5;
-    private final double RECTANGLE_CIRCUMSCRIBED_CIRCLE_RADIUS_VALUE = 2.5;
-    private final double RECTANGLE_DOUBLED_AREA_VALUE = 2 * RECTANGLE_AREA_VALUE;
 
     // Regular Triangle data
     private final double REGULAR_TRIANGLE_SIDE_VALUE = 19.2;
     private final double REGULAR_TRIANGLE_HEIGHT_VALUE = 16.6276877;
     private final double REGULAR_TRIANGLE_AREA_VALUE = 159.625802;
     private final double REGULAR_TRIANGLE_CIRCUIT_VALUE = 57.6;
-    private final double REGULAR_TRIANGLE_NEGATIVE_VALUE = -13.592;
-    private final double REGULAR_TRIANGLE_CIRCUMSCRIBED_CIRCLE_RADIUS_VALUE = 11.08515;
-    private final double REGULAR_TRIANGLE_DOUBLED_AREA_VALUE = 2 * REGULAR_TRIANGLE_AREA_VALUE;
 
     // Rhombus data
     private final double RHOMBUS_SIDE_VALUE = 5;
@@ -83,8 +56,6 @@ public class InputHandlerTest {
     private final double RHOMBUS_SHORT_DIAGONAL_VALUE = 6;
     private final double RHOMBUS_AREA_VALUE = 24;
     private final double RHOMBUS_CIRCUIT_VALUE = 20;
-    private final double RHOMBUS_NON_POSITIVE_VALUE = 0;
-    private final double RHOMBUS_DOUBLED_AREA_VALUE = 2 * RHOMBUS_AREA_VALUE;
 
     // Right Triangle data
     private final double RIGHT_TRIANGLE_SHORT_CATHETUS_LENGTH = 3;
@@ -92,9 +63,6 @@ public class InputHandlerTest {
     private final double RIGHT_TRIANGLE_HYPOTENUSE_LENGTH = 5;
     private final double RIGHT_TRIANGLE_AREA_VALUE = 6;
     private final double RIGHT_TRIANGLE_CIRCUIT_VALUE = 12;
-    private final double RIGHT_TRIANGLE_NEGATIVE_VALUE = -13.592;
-    private final double RIGHT_TRIANGLE_CIRCUMSCRIBED_CIRCLE_RADIUS_VALUE = 2.5;
-    private final double RIGHT_TRIANGLE_DOUBLED_AREA_VALUE = 12;
 
     /**
      * Square with side length
@@ -105,7 +73,7 @@ public class InputHandlerTest {
         InputHandler inputHandler = new InputHandler(shapeRepository);
 
         inputHandler.parseInput(String.format(Locale.US, "add square side %f", SQUARE_SIDE_VALUE));
-        
+
         Square s = (Square) shapeRepository.get(0).get();
         assertEquals(s.getSideLength(), SQUARE_SIDE_VALUE, DELTA);
         assertEquals(s.getDiagonalLength(), SQUARE_DIAGONAL_VALUE, DELTA);
