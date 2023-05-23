@@ -27,6 +27,7 @@ public class ShapeFactory {
         registerWorker(RightTriangleWorker.shapeName, new RightTriangleWorker());
         registerWorker(EllipseFactoryWorker.shapeName, new EllipseFactoryWorker());
         registerWorker(IsoscelesTrapezoidFactoryWorker.shapeName, new IsoscelesTrapezoidFactoryWorker());
+        registerWorker(TriangleFactoryWorker.shapeName, new TriangleFactoryWorker());
     }
 
     private void registerWorker(String shapeName, ShapeFactoryWorker worker) {
