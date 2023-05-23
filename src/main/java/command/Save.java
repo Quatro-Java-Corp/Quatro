@@ -1,30 +1,30 @@
 package command;
 
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.PropertyAccessor;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import repository.ShapeRepository;
-import shapes.Shape;
 
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.Optional;
 
 public class Save implements Command {
     private final ShapeRepository shapeRepository;
+    private final String filename;
+    private final ObjectMapper objectMapper = new ObjectMapper();
 
-    public Save(ShapeRepository shapeRepository) {
+    public Save(String filename, ShapeRepository shapeRepository) {
         this.shapeRepository = shapeRepository;
+        this.filename = filename;
+        objectMapper.setVisibility(PropertyAccessor.ALL, JsonAutoDetect.Visibility.NONE);
+        objectMapper.setVisibility(PropertyAccessor.FIELD, JsonAutoDetect.Visibility.ANY);
     }
 
     private Runnable saveToFile(String filename) {
         return () -> {
-            try (FileWriter writer = new FileWriter(filename + ".txt", true)) {
-                int i = 1;
-                Optional<Shape> optionalShape = shapeRepository.get(0);
-                while (optionalShape.isPresent()) {
-                    writer.write(optionalShape.get() + "\n");
-                    optionalShape = shapeRepository.get(i);
-                    i += 1;
-                }
-                System.out.println("Shapes saved in " + filename + ".txt");
+            try (FileWriter writer = new FileWriter(filename + ".json")) {
+                objectMapper.writeValue(writer, shapeRepository);
+                System.out.println("Shapes saved in " + filename + ".json");
             } catch (IOException e) {
                 System.out.println(e.getMessage());
             }
@@ -34,7 +34,7 @@ public class Save implements Command {
     @Override
     public void run() {
         try {
-            new Thread(saveToFile("shapes")).start();
+            new Thread(saveToFile(filename)).start();
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
