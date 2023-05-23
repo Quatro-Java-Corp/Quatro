@@ -90,6 +90,8 @@ public class CommandFactory {
             throw new RedundantArgumentException();
         } else {
             return new Precision(Integer.parseInt(args.poll()));
+        }
+    }
 
     public Save createSave(Queue<String> args) {
         if (args.size() == 0) {
