@@ -3,6 +3,7 @@ package commands;
 import input.InputHandler;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.Test;
 import repository.ShapeRepository;
@@ -43,6 +44,17 @@ public class PrecisionTest {
 
         inputHandler.parseInput("precision 2");
         assertEquals(LONG_DOUBLE_PRECISION_STANDARD, Format.format(LONG_DOUBLE));
+    }
+
+    /**
+     * Checking not changing precision
+     */
+    @Test
+    public void shouldThrowNotChangePrecisionAfterReceivingNonNumericArgument() {
+        inputHandler.parseInput("precision 1");
+        assertEquals(LONG_DOUBLE_PRECISION_ONE, Format.format(LONG_DOUBLE));
+        inputHandler.parseInput("precision re");
+        assertEquals(LONG_DOUBLE_PRECISION_ONE, Format.format(LONG_DOUBLE));
 
     }
 }

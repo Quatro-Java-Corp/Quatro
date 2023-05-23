@@ -3,6 +3,7 @@ package command;
 import repository.ShapeRepository;
 import exceptions.argument.NotEnoughArgumentException;
 import exceptions.argument.RedundantArgumentException;
+import exceptions.command.IllegallPrecisionNumberException;
 import input.InputHandler;
 
 import java.util.Queue;
@@ -90,7 +91,7 @@ public class CommandFactory {
         } else if (args.size() > 2) {
             throw new RedundantArgumentException();
         } else {
-            return new Precision(args);
+            return new Precision(Integer.parseInt(args.poll()));
         }
     }
 }

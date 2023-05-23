@@ -2,24 +2,16 @@ package command;
 
 import utils.Format;
 
-import java.util.Queue;
-
-import exceptions.command.IllegallPrecisionNumberException;
-
 class Precision implements Command {
 
-    private String precision;
+    private int precision;
 
-    public Precision(Queue<String> args) {
-        this.precision = args.poll();
+    public Precision(int precision) {
+        this.precision = precision;
     }
 
     @Override
     public void run() {
-        try {
-            Format.setPrecision(Integer.valueOf(precision));
-        } catch (Exception e) {
-            throw new IllegallPrecisionNumberException();
-        }
+        Format.setPrecision(precision);
     }
 }
