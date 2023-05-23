@@ -10,10 +10,12 @@ import java.io.IOException;
 
 public class Save implements Command {
     private final ShapeRepository shapeRepository;
+    private final String filename;
     private final ObjectMapper objectMapper = new ObjectMapper();
 
-    public Save(ShapeRepository shapeRepository) {
+    public Save(String filename, ShapeRepository shapeRepository) {
         this.shapeRepository = shapeRepository;
+        this.filename = filename;
         objectMapper.setVisibility(PropertyAccessor.ALL, JsonAutoDetect.Visibility.NONE);
         objectMapper.setVisibility(PropertyAccessor.FIELD, JsonAutoDetect.Visibility.ANY);
     }
@@ -32,7 +34,7 @@ public class Save implements Command {
     @Override
     public void run() {
         try {
-            new Thread(saveToFile("shapes")).start();
+            new Thread(saveToFile(filename)).start();
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }

@@ -21,7 +21,6 @@ public class CommandFactory {
     }
 
     public Command createCommand(CommandName command, Queue<String> args) {
-
         return switch (command) {
             case exit -> new Exit();
             case add -> new Add(args, shapeRepository, inputHandler);
@@ -30,9 +29,8 @@ public class CommandFactory {
             case circumscribed -> createCircumscribed(args);
             case doubled -> createDoubleSized(args);
             case remove -> createRemove(args);
-            case save -> new Save(shapeRepository);
+            case save -> createSave(args);
         };
-
     }
 
     private ShowFigures createShow(Queue<String> args) {
@@ -80,6 +78,16 @@ public class CommandFactory {
             throw new RedundantArgumentException();
         } else {
             return new Remove(Integer.parseInt(args.poll()), shapeRepository);
+        }
+    }
+
+    public Save createSave(Queue<String> args) {
+        if (args.size() == 0) {
+            throw new NotEnoughArgumentException();
+        } else if (args.size() > 1) {
+            throw new RedundantArgumentException();
+        } else {
+            return new Save(args.poll(), shapeRepository);
         }
     }
 }

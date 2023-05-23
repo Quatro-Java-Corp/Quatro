@@ -349,7 +349,7 @@ public class InputHandlerTest {
         shapeRepository.addShape(r);
         InputHandler inputHandler = new InputHandler(shapeRepository);
 
-        inputHandler.parseInput("save");
+        inputHandler.parseInput("save " + filename);
 
         assertDoesNotThrow(() -> TimeUnit.SECONDS.sleep(10));
 
