@@ -3,8 +3,13 @@ import org.junit.jupiter.api.Test;
 import repository.ShapeRepository;
 import shapes.*;
 
+import java.io.File;
+import java.io.FileReader;
 import java.util.Locale;
+import java.util.Scanner;
+import java.util.concurrent.TimeUnit;
 
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class InputHandlerTest {
@@ -170,7 +175,7 @@ public class InputHandlerTest {
 
     /**
      * Rhombus with long diagonal and short diagonal
-    */
+     */
     @Test
     public void shouldCreateRhombusWithDiagonals() {
         ShapeRepository shapeRepository = new ShapeRepository();
@@ -188,7 +193,7 @@ public class InputHandlerTest {
 
     /**
      * RightTriangle with short cathetus, long cathetus
-    */
+     */
     @Test
     public void shouldCreateRightTriangleWithValues() {
         ShapeRepository shapeRepository = new ShapeRepository();
@@ -206,7 +211,7 @@ public class InputHandlerTest {
 
     /**
      * Remove shape
-    */
+     */
     @Test
     public void shouldRemoveShape() {
         Square s = Square.withSideLength(SQUARE_SIDE_VALUE);
@@ -235,7 +240,7 @@ public class InputHandlerTest {
 
     /**
      * Remove shape with wrong index
-    */
+     */
     @Test
     public void shouldNotRemoveShape() {
         Square s = Square.withSideLength(SQUARE_SIDE_VALUE);
@@ -260,7 +265,7 @@ public class InputHandlerTest {
 
     /**
      * Double sized shape
-    */
+     */
     @Test
     public void shouldAddDoubledSizedShape() {
         Square s = Square.withSideLength(SQUARE_SIDE_VALUE);
@@ -281,7 +286,7 @@ public class InputHandlerTest {
 
     /**
      * Circumscribed circle for shape
-    */
+     */
     @Test
     public void shouldAddCircumscribedCircleForShape() {
         Square s = Square.withSideLength(SQUARE_SIDE_VALUE);
@@ -302,7 +307,7 @@ public class InputHandlerTest {
 
     /**
      * Sort shapes
-    */
+     */
     @Test
     public void shouldSortShapes() {
         Circle c = Circle.withCircuit(CIRCLE_CIRCUIT_VALUE);
@@ -329,5 +334,28 @@ public class InputHandlerTest {
         assertEquals(r, r3);
         assertEquals(s, s3);
         assertEquals(c, c3);
+    }
+
+    @Test
+    void shouldSaveShapeRepository() {
+        String filename = "shapes";
+
+        Circle c = Circle.withCircuit(CIRCLE_CIRCUIT_VALUE);
+        Square s = Square.withSideLength(SQUARE_SIDE_VALUE);
+        Rectangle r = Rectangle.withDiagonalAndSurfaceArea(RECTANGLE_DIAGONAL_VALUE, RECTANGLE_AREA_VALUE);
+        ShapeRepository shapeRepository = new ShapeRepository();
+        shapeRepository.addShape(c);
+        shapeRepository.addShape(s);
+        shapeRepository.addShape(r);
+        InputHandler inputHandler = new InputHandler(shapeRepository);
+
+        inputHandler.parseInput("save");
+
+        assertDoesNotThrow(() -> TimeUnit.SECONDS.sleep(10));
+
+        String json = assertDoesNotThrow(() -> new Scanner(new File(filename + ".json")).nextLine());
+        String expected = "{\"shapes\":[{\"shape\":{\"shape\":\"Circle\",\"radius\":17.29999999996708}},{\"shape\":{\"shape\":\"Square\",\"sideLength\":17.3}},{\"shape\":{\"shape\":\"Rectangle\",\"shortSideLength\":3.0,\"longSideLength\":4.0}}]}";
+
+        assertEquals(json, expected);
     }
 }
