@@ -9,6 +9,17 @@ import static java.lang.Math.*;
 public class Triangle implements Shape {
     private final double sideA,sideB,sideC;
 
+    public double getSideA() {
+        return sideA;
+    }
+
+    public double getSideB() {
+        return sideB;
+    }
+
+    public double getSideC() {
+        return sideC;
+    }
 
     public Triangle(double sideA, double sideB, double sideC) {
         if ((sideA > sideC + sideB)||(sideB > sideC + sideA)||(sideC > sideA + sideB) )
