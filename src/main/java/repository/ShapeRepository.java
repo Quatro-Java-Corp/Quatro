@@ -3,14 +3,11 @@ package repository;
 import exceptions.command.IllegalIndexException;
 import shapes.Shape;
 
-import java.util.Comparator;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 import java.util.stream.IntStream;
 
 public class ShapeRepository {
-    private final List<ShapeRecord> shapes = new LinkedList<>();
+    private final List<ShapeRecord> shapes = new ArrayList<>();
 
     public void addShape(Shape shape) {
         shapes.add(new ShapeRecord(shape));
@@ -38,9 +35,7 @@ public class ShapeRepository {
     private boolean isIndexCorrect(int index) {
         return index >= 0 && index < shapes.size();
     }
-    public int length(){
-        return shapes.size();
-    }
+
     public void print() {
         IntStream.range(0, shapes.size())
                 .mapToObj(i -> i + ". " + shapes.get(i).getShape() + " | " + shapes.get(i).getCreationDate())
