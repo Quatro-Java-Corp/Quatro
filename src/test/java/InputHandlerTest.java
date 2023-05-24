@@ -69,6 +69,17 @@ public class InputHandlerTest {
     private final double RIGHT_TRIANGLE_AREA_VALUE = 6;
     private final double RIGHT_TRIANGLE_CIRCUIT_VALUE = 12;
 
+    // Triangle data
+    private final double TRIANGLE_SIDE_A_VALUE = 10;
+    private final double TRIANGLE_SIDE_B_VALUE = 12;
+    private final double TRIANGLE_SIDE_C_VALUE = 13;
+    private final double TRIANGLE_AREA_VALUE = 56.99506557589;
+    private final double TRIANGLE_CIRCUIT_VALUE = 35;
+    private final double TRIANGLE_CIRCUMSCRIBED_CIRCLE_RADIUS_VALUE = 6.842697;
+    private final double TRIANGLE_NEGATIVE_VALUE = -13.5;
+    private final double TRIANGLE_LONG_SIDE_VALUE = 200;
+    private final double TRIANGLE_DOUBLED_AREA_VALUE = 2 * TRIANGLE_AREA_VALUE;
+
     /**
      * Square with side length
      */
@@ -192,7 +203,43 @@ public class InputHandlerTest {
     }
 
     /**
-     * RightTriangle with short cathetus, long cathetus
+     * RightTriangle with short cathetus, long cathetus, hypotenuse using triangle command
+     */
+    @Test
+    public void shouldCreateRightTriangleWithValuesUsingTriangle() {
+        ShapeRepository shapeRepository = new ShapeRepository();
+        InputHandler inputHandler = new InputHandler(shapeRepository);
+
+        inputHandler.parseInput(String.format(Locale.US, "add triangle side %f side %f side %f", RIGHT_TRIANGLE_SHORT_CATHETUS_LENGTH, RIGHT_TRIANGLE_LONG_CATHETUS_LENGTH, RIGHT_TRIANGLE_HYPOTENUSE_LENGTH));
+
+        RightTriangle t = (RightTriangle) shapeRepository.get(0).get();
+        assertEquals(t.getShortCathetusLength(), RIGHT_TRIANGLE_SHORT_CATHETUS_LENGTH, DELTA);
+        assertEquals(t.getLongCathetusLength(), RIGHT_TRIANGLE_LONG_CATHETUS_LENGTH, DELTA);
+        assertEquals(t.getHypotenuse(), RIGHT_TRIANGLE_HYPOTENUSE_LENGTH, DELTA);
+        assertEquals(t.getSurfaceArea(), RIGHT_TRIANGLE_AREA_VALUE, DELTA);
+        assertEquals(t.getCircuit(), RIGHT_TRIANGLE_CIRCUIT_VALUE, DELTA);
+    }
+
+    /**
+     * Triangle with sides length
+     */
+    @Test
+    public void shouldCreateTriangleWithValues() {
+        ShapeRepository shapeRepository = new ShapeRepository();
+        InputHandler inputHandler = new InputHandler(shapeRepository);
+
+        inputHandler.parseInput(String.format(Locale.US, "add triangle side %f side %f side %f", TRIANGLE_SIDE_A_VALUE, TRIANGLE_SIDE_B_VALUE, TRIANGLE_SIDE_C_VALUE));
+
+        Triangle t = (Triangle) shapeRepository.get(0).get();
+        assertEquals(t.getSideA(), TRIANGLE_SIDE_A_VALUE, DELTA);
+        assertEquals(t.getSideB(), TRIANGLE_SIDE_B_VALUE, DELTA);
+        assertEquals(t.getSideC(), TRIANGLE_SIDE_C_VALUE, DELTA);
+        assertEquals(t.getSurfaceArea(), TRIANGLE_AREA_VALUE, DELTA);
+        assertEquals(t.getCircuit(), TRIANGLE_CIRCUIT_VALUE, DELTA);
+    }
+
+    /**
+     * RightTriangle with short cathetus, long cathetus, 
      */
     @Test
     public void shouldCreateRightTriangleWithValues() {
@@ -207,6 +254,41 @@ public class InputHandlerTest {
         assertEquals(t.getHypotenuse(), RIGHT_TRIANGLE_HYPOTENUSE_LENGTH, DELTA);
         assertEquals(t.getSurfaceArea(), RIGHT_TRIANGLE_AREA_VALUE, DELTA);
         assertEquals(t.getCircuit(), RIGHT_TRIANGLE_CIRCUIT_VALUE, DELTA);
+    }
+
+    /**
+     * IsoscelesTriangle with sides and base using Triangle command
+     */
+    @Test
+    public void shouldCreateIsoscelesTriangleWithSidesAndBaseUsingTriangle() {
+        ShapeRepository shapeRepository = new ShapeRepository();
+        InputHandler inputHandler = new InputHandler(shapeRepository);
+
+        inputHandler.parseInput(String.format(Locale.US, "add triangle side %f side %f side %f", ISOSCELES_TRIANGLE_SIDE_VALUE, ISOSCELES_TRIANGLE_BASE_VALUE, ISOSCELES_TRIANGLE_SIDE_VALUE));
+
+        IsoscelesTriangle t = (IsoscelesTriangle) shapeRepository.get(0).get();
+        assertEquals(t.getSideLength(), ISOSCELES_TRIANGLE_SIDE_VALUE, DELTA);
+        assertEquals(t.getBaseLength(), ISOSCELES_TRIANGLE_BASE_VALUE, DELTA);
+        assertEquals(t.getHeight(), ISOSCELES_TRIANGLE_HEIGHT_VALUE, DELTA);
+        assertEquals(t.getCircuit(), ISOSCELES_TRIANGLE_CIRCUIT_VALUE, DELTA);
+        assertEquals(t.getSurfaceArea(), ISOSCELES_TRIANGLE_AREA_VALUE, DELTA);
+    }
+
+    /**
+     * RegularTriangle with sides using Triangle command
+     */
+    @Test
+    public void shouldCreateRegularTriangleWithSidesUsingTriangle() {
+        ShapeRepository shapeRepository = new ShapeRepository();
+        InputHandler inputHandler = new InputHandler(shapeRepository);
+
+        inputHandler.parseInput(String.format(Locale.US, "add triangle side %f side %f side %f", REGULAR_TRIANGLE_SIDE_VALUE, REGULAR_TRIANGLE_SIDE_VALUE, REGULAR_TRIANGLE_SIDE_VALUE));
+
+        RegularTriangle t = (RegularTriangle) shapeRepository.get(0).get();
+        assertEquals(t.getSideLength(), REGULAR_TRIANGLE_SIDE_VALUE, DELTA);
+        assertEquals(t.getHeight(), REGULAR_TRIANGLE_HEIGHT_VALUE, DELTA);
+        assertEquals(t.getSurfaceArea(), REGULAR_TRIANGLE_AREA_VALUE, DELTA);
+        assertEquals(t.getCircuit(), REGULAR_TRIANGLE_CIRCUIT_VALUE, DELTA);
     }
 
     /**
