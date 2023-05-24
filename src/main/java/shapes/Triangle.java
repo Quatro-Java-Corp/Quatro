@@ -1,5 +1,6 @@
 package shapes;
 
+import exceptions.argument.NegativeArgumentValueException;
 import exceptions.shape.IllegalTriangleSidesException;
 import utils.Format;
 
@@ -22,6 +23,8 @@ public class Triangle implements Shape {
     }
 
     public Triangle(double sideA, double sideB, double sideC) {
+        if ((sideA <= 0) || (sideB <= 0) || (sideC <= 0))
+            throw new NegativeArgumentValueException();
         if ((sideA > sideC + sideB)||(sideB > sideC + sideA)||(sideC > sideA + sideB) )
             throw new IllegalTriangleSidesException();
         this.sideA = sideA;
@@ -56,7 +59,7 @@ public class Triangle implements Shape {
     }
 
     @Override
-    public Shape getDoubledSized() {
+    public Triangle getDoubledSized() {
         return new Triangle(sqrt(2)*sideA,sqrt(2)*sideB,sqrt(2)*sideC);
     }
 
