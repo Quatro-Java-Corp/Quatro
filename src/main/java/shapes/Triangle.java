@@ -5,10 +5,11 @@ import exceptions.shape.IllegalTriangleSidesException;
 import utils.Format;
 
 import java.util.Optional;
+
 import static java.lang.Math.*;
 
 public class Triangle implements Shape {
-    private final double sideA,sideB,sideC;
+    private final double sideA, sideB, sideC;
 
     public double getSideA() {
         return sideA;
@@ -25,8 +26,9 @@ public class Triangle implements Shape {
     public Triangle(double sideA, double sideB, double sideC) {
         if ((sideA <= 0) || (sideB <= 0) || (sideC <= 0))
             throw new NegativeArgumentValueException();
-        if ((sideA > sideC + sideB)||(sideB > sideC + sideA)||(sideC > sideA + sideB) )
+        if ((sideA > sideC + sideB) || (sideB > sideC + sideA) || (sideC > sideA + sideB)) {
             throw new IllegalTriangleSidesException();
+        }
         this.sideA = sideA;
         this.sideB = sideB;
         this.sideC = sideC;
@@ -35,16 +37,18 @@ public class Triangle implements Shape {
     @Override
     public String toString() {
         return "Triangle{" +
-                "sideA=" + sideA +
-                ", sideB=" + sideB +
-                ", sideC=" + sideC +
+                "sideA=" + Format.format(sideA) +
+                ", sideB=" + Format.format(sideB) +
+                ", sideC=" + Format.format(sideC) +
+                ", circuit=" + Format.format(getCircuit()) +
+                ", surfaceArea=" + Format.format(getSurfaceArea()) +
                 '}';
     }
 
     @Override
     public double getSurfaceArea() {
-        double p = (sideA + sideB + sideC )/2;
-        return sqrt(p*(p-sideA)*(p-sideB)*(p-sideC));
+        double p = (sideA + sideB + sideC) / 2;
+        return sqrt(p * (p - sideA) * (p - sideB) * (p - sideC));
     }
 
     @Override
@@ -54,13 +58,12 @@ public class Triangle implements Shape {
 
     @Override
     public Optional<Circle> getCircumscribedCircle() {
-        double p = (sideA + sideB + sideC )/2;
-        return Optional.of(Circle.withRadius(sideA * sideB * sideC / (4*getSurfaceArea())));
+        return Optional.of(Circle.withRadius(sideA * sideB * sideC / (4 * getSurfaceArea())));
     }
 
     @Override
-    public Triangle getDoubledSized() {
-        return new Triangle(sqrt(2)*sideA,sqrt(2)*sideB,sqrt(2)*sideC);
+    public Shape getDoubledSized() {
+        return new Triangle(sqrt(2) * sideA, sqrt(2) * sideB, sqrt(2) * sideC);
     }
 
     @Override
