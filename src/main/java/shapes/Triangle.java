@@ -62,7 +62,7 @@ public class Triangle implements Shape {
     }
 
     @Override
-    public Shape getDoubledSized() {
+    public Triangle getDoubledSized() {
         return new Triangle(sqrt(2) * sideA, sqrt(2) * sideB, sqrt(2) * sideC);
     }
 
