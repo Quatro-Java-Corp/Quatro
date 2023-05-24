@@ -6,8 +6,8 @@ import exceptions.command.IllegallPrecisionNumberException;
 
 public class Format {
 
-    private static String basePattern = "0";
-    private static String doublePattern = "0.";
+    private static final String basePattern = "0";
+    private static final String doublePattern = "0.";
 
     private static DecimalFormat df = new DecimalFormat("0.00");
 

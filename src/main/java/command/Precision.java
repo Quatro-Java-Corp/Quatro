@@ -3,8 +3,7 @@ package command;
 import utils.Format;
 
 class Precision implements Command {
-
-    private int precision;
+    private final int precision;
 
     public Precision(int precision) {
         this.precision = precision;
