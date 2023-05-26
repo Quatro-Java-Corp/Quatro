@@ -13,9 +13,7 @@ class ChangeLanguage implements Command {
 
     @Override
     public void run() {
-        System.out.println(language);
         ActiveLanguage.language = language;
-        System.out.println(ActiveLanguage.language);
 
     }
 }
