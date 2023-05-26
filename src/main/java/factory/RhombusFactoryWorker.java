@@ -11,7 +11,6 @@ import shapes.Shape;
 import shapes.Square;
 
 public class RhombusFactoryWorker implements ShapeFactoryWorker {
-
     public static final String shapeName = "rhombus";
     public static final double numberOfArguments = 2;
 

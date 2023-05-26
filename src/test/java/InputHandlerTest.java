@@ -4,7 +4,6 @@ import repository.ShapeRepository;
 import shapes.*;
 
 import java.io.File;
-import java.io.FileReader;
 import java.util.Locale;
 import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
@@ -231,9 +230,9 @@ public class InputHandlerTest {
         inputHandler.parseInput(String.format(Locale.US, "add triangle side %f side %f side %f", TRIANGLE_SIDE_A_VALUE, TRIANGLE_SIDE_B_VALUE, TRIANGLE_SIDE_C_VALUE));
 
         Triangle t = (Triangle) shapeRepository.get(0).get();
-        assertEquals(t.getSideA(), TRIANGLE_SIDE_A_VALUE, DELTA);
-        assertEquals(t.getSideB(), TRIANGLE_SIDE_B_VALUE, DELTA);
-        assertEquals(t.getSideC(), TRIANGLE_SIDE_C_VALUE, DELTA);
+        assertEquals(t.getShortSide(), TRIANGLE_SIDE_A_VALUE, DELTA);
+        assertEquals(t.getMediumSide(), TRIANGLE_SIDE_B_VALUE, DELTA);
+        assertEquals(t.getLongSide(), TRIANGLE_SIDE_C_VALUE, DELTA);
         assertEquals(t.getSurfaceArea(), TRIANGLE_AREA_VALUE, DELTA);
         assertEquals(t.getCircuit(), TRIANGLE_CIRCUIT_VALUE, DELTA);
     }

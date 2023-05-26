@@ -31,9 +31,9 @@ public class TriangleTest {
     public void shouldCreateValidTriangleAndCalculateOtherParameters() {
         Triangle t = new Triangle(SIDE_A_VALUE, SIDE_B_VALUE, SIDE_C_VALUE);
 
-        assertEquals(t.getSideA(), SIDE_A_VALUE, DELTA);
-        assertEquals(t.getSideB(), SIDE_B_VALUE, DELTA);
-        assertEquals(t.getSideC(), SIDE_C_VALUE, DELTA);
+        assertEquals(t.getShortSide(), SIDE_A_VALUE, DELTA);
+        assertEquals(t.getMediumSide(), SIDE_B_VALUE, DELTA);
+        assertEquals(t.getLongSide(), SIDE_C_VALUE, DELTA);
         assertEquals(t.getSurfaceArea(), AREA_VALUE, DELTA);
         assertEquals(t.getCircuit(), CIRCUIT_VALUE, DELTA);
     }
