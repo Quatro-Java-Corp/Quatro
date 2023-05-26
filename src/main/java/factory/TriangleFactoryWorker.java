@@ -7,14 +7,13 @@ import shapes.*;
 import java.util.List;
 import java.util.Map;
 
-import static java.lang.Math.abs;
 import static java.lang.Math.pow;
+import static utils.CompareDouble.doubleEquals;
 
 public class TriangleFactoryWorker implements ShapeFactoryWorker {
     public static final String shapeName = "triangle";
     public static final double numberOfArguments = 3;
 
-    private static final double DELTA = 0.0001;
 
     public Shape create(List<Map.Entry<ShapeFactory.ArgumentType, Double>> args) {
         if (args.size() != numberOfArguments) {
@@ -33,22 +32,19 @@ public class TriangleFactoryWorker implements ShapeFactoryWorker {
     }
 
     private Shape convertTriangleIfPossible(Triangle triangle) {
-        if (equals(triangle.getShortSide(), triangle.getMediumSide()) && equals(triangle.getShortSide(), triangle.getLongSide())) {
+        if (doubleEquals(triangle.getShortSide(), triangle.getMediumSide()) && doubleEquals(triangle.getShortSide(), triangle.getLongSide())) {
             return RegularTriangle.withSide(triangle.getLongSide());
         }
-        if (equals(pow(triangle.getLongSide(), 2), pow(triangle.getMediumSide(), 2) + pow(triangle.getShortSide(), 2))) {
+        if (doubleEquals(pow(triangle.getLongSide(), 2), pow(triangle.getMediumSide(), 2) + pow(triangle.getShortSide(), 2))) {
             return RightTriangle.withCatheti(triangle.getShortSide(), triangle.getMediumSide());
         }
-        if (equals(triangle.getLongSide(), triangle.getMediumSide())) {
+        if (doubleEquals(triangle.getLongSide(), triangle.getMediumSide())) {
             return IsoscelesTriangle.withSideAndBase(triangle.getLongSide(), triangle.getShortSide());
         }
-        if (equals(triangle.getShortSide(), triangle.getMediumSide())) {
+        if (doubleEquals(triangle.getShortSide(), triangle.getMediumSide())) {
             return IsoscelesTriangle.withSideAndBase(triangle.getShortSide(), triangle.getLongSide());
         }
         return triangle;
     }
 
-    private boolean equals(double a, double b) {
-        return abs(a - b) < DELTA;
-    }
 }
