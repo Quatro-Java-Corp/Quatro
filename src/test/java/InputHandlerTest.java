@@ -74,10 +74,6 @@ public class InputHandlerTest {
     private final double TRIANGLE_SIDE_C_VALUE = 13;
     private final double TRIANGLE_AREA_VALUE = 56.99506557589;
     private final double TRIANGLE_CIRCUIT_VALUE = 35;
-    private final double TRIANGLE_CIRCUMSCRIBED_CIRCLE_RADIUS_VALUE = 6.842697;
-    private final double TRIANGLE_NEGATIVE_VALUE = -13.5;
-    private final double TRIANGLE_LONG_SIDE_VALUE = 200;
-    private final double TRIANGLE_DOUBLED_AREA_VALUE = 2 * TRIANGLE_AREA_VALUE;
 
     /**
      * Square with side length
@@ -131,6 +127,22 @@ public class InputHandlerTest {
     }
 
     /**
+     * Circle with values using Ellipse command
+     */
+    @Test
+    public void shouldCreateCircleWithValuesUsingEllipseCommand() {
+        ShapeRepository shapeRepository = new ShapeRepository();
+        InputHandler inputHandler = new InputHandler(shapeRepository);
+
+        inputHandler.parseInput(String.format(Locale.US, "add ellipse semimajoraxis %f semiminoraxis %f", CIRCLE_RADIUS_VALUE, CIRCLE_RADIUS_VALUE));
+
+        Circle c = (Circle) shapeRepository.get(0).get();
+        assertEquals(c.getRadius(), CIRCLE_RADIUS_VALUE, DELTA);
+        assertEquals(c.getCircuit(), CIRCLE_CIRCUIT_VALUE, DELTA);
+        assertEquals(c.getSurfaceArea(), CIRCLE_AREA_VALUE, DELTA);
+    }
+
+    /**
      * IsoscelesTriangle with side and base
      */
     @Test
@@ -164,6 +176,23 @@ public class InputHandlerTest {
         assertEquals(r.getDiagonalLength(), RECTANGLE_DIAGONAL_VALUE, DELTA);
         assertEquals(r.getSurfaceArea(), RECTANGLE_AREA_VALUE, DELTA);
         assertEquals(r.getCircuit(), RECTANGLE_CIRCUIT_VALUE, DELTA);
+    }
+
+    /**
+     * Square with values
+     */
+    @Test
+    public void shouldCreateSquareWithValuesUsingRectangleCommand() {
+        ShapeRepository shapeRepository = new ShapeRepository();
+        InputHandler inputHandler = new InputHandler(shapeRepository);
+
+        inputHandler.parseInput(String.format(Locale.US, "add rectangle side %f side %f", SQUARE_SIDE_VALUE, SQUARE_SIDE_VALUE));
+
+        Square s = (Square) shapeRepository.get(0).get();
+        assertEquals(s.getSideLength(), SQUARE_SIDE_VALUE, DELTA);
+        assertEquals(s.getDiagonalLength(), SQUARE_DIAGONAL_VALUE, DELTA);
+        assertEquals(s.getSurfaceArea(), SQUARE_AREA_VALUE, DELTA);
+        assertEquals(s.getCircuit(), SQUARE_CIRCUIT_VALUE, DELTA);
     }
 
     /**
@@ -202,6 +231,24 @@ public class InputHandlerTest {
     }
 
     /**
+     * Square with values
+     */
+    @Test
+    public void shouldCreateSquareWithValuesUsingRhombusCommand() {
+        ShapeRepository shapeRepository = new ShapeRepository();
+        InputHandler inputHandler = new InputHandler(shapeRepository);
+
+        inputHandler.parseInput(String.format(Locale.US, "add rhombus side %f diagonal %f", SQUARE_SIDE_VALUE, SQUARE_DIAGONAL_VALUE));
+
+        Square s = (Square) shapeRepository.get(0).get();
+        assertEquals(s.getSideLength(), SQUARE_SIDE_VALUE, DELTA);
+        assertEquals(s.getDiagonalLength(), SQUARE_DIAGONAL_VALUE, DELTA);
+        assertEquals(s.getSurfaceArea(), SQUARE_AREA_VALUE, DELTA);
+        assertEquals(s.getCircuit(), SQUARE_CIRCUIT_VALUE, DELTA);
+    }
+
+
+    /**
      * RightTriangle with short cathetus, long cathetus, hypotenuse using triangle command
      */
     @Test
@@ -238,7 +285,7 @@ public class InputHandlerTest {
     }
 
     /**
-     * RightTriangle with short cathetus, long cathetus, 
+     * RightTriangle with short cathetus, long cathetus,
      */
     @Test
     public void shouldCreateRightTriangleWithValues() {
