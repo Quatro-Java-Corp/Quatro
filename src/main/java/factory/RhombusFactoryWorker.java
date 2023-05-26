@@ -24,7 +24,7 @@ public class RhombusFactoryWorker implements ShapeFactoryWorker {
         var arg1 = args.get(0);
         var arg2 = args.get(1);
 
-        return convertRhombusToSquareIfPossible(switch (arg1.getKey().toString() + "|" + arg2.getKey().toString()) {
+        return convertIfPossible(switch (arg1.getKey().toString() + "|" + arg2.getKey().toString()) {
             case "diagonal|diagonal" -> Rhombus.withShortDiagonalAndLongDiagonal(arg1.getValue(), arg2.getValue());
             case "diagonal|side" -> Rhombus.withShortDiagonalAndSide(arg1.getValue(), arg2.getValue());
             case "diagonal|area" -> Rhombus.withShortDiagonalAndSurfaceArea(arg1.getValue(), arg2.getValue());
@@ -36,7 +36,7 @@ public class RhombusFactoryWorker implements ShapeFactoryWorker {
         });
     }
 
-    private Shape convertRhombusToSquareIfPossible(Rhombus rhombus) {
+    private Shape convertIfPossible(Rhombus rhombus) {
         if (rhombus.getLongDiagonalLength() - rhombus.getShortDiagonalLength() < DELTA) {
             return Square.withDiagonalLength(rhombus.getShortDiagonalLength());
         }

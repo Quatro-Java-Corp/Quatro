@@ -25,13 +25,13 @@ public class TriangleFactoryWorker implements ShapeFactoryWorker {
         var arg3 = args.get(2);
 
         if (arg1.getKey().toString().equals("side") && arg2.getKey().toString().equals("side") && arg3.getKey().toString().equals("side")) {
-            return convertTriangleIfPossible(new Triangle(arg1.getValue(), arg2.getValue(), arg3.getValue()));
+            return convertIfPossible(new Triangle(arg1.getValue(), arg2.getValue(), arg3.getValue()));
         } else {
             throw new InvalidArgumentsCombinationException(shapeName);
         }
     }
 
-    private Shape convertTriangleIfPossible(Triangle triangle) {
+    private Shape convertIfPossible(Triangle triangle) {
         if (doubleEquals(triangle.getShortSide(), triangle.getMediumSide()) && doubleEquals(triangle.getShortSide(), triangle.getLongSide())) {
             return RegularTriangle.withSide(triangle.getLongSide());
         }
