@@ -75,6 +75,14 @@ public class InputHandlerTest {
     private final double TRIANGLE_AREA_VALUE = 56.99506557589;
     private final double TRIANGLE_CIRCUIT_VALUE = 35;
 
+    //Isosceles Trapezoid data
+    private final double ISOSCELES_TRAPEZOID_SIDE_VALUE = 5;
+    private final double ISOSCELES_TRAPEZOID_SHORT_BASE_VALUE = 7;
+    private final double ISOSCELES_TRAPEZOID_LONG_BASE_VALUE = 13;
+    private final double ISOSCELES_TRAPEZOID_HEIGHT_VALUE = 4;
+    private final double ISOSCELES_TRAPEZOID_AREA_VALUE = 40;
+    private final double ISOSCELES_TRAPEZOID_CIRCUIT_VALUE = 30;
+
     /**
      * Square with side length
      */
@@ -364,6 +372,63 @@ public class InputHandlerTest {
         Rectangle r3 = (Rectangle) shapeRepository.get(1).get();
         assertEquals(s, s3);
         assertEquals(r, r3);
+    }
+
+    /**
+     * Should create IsoscelesTrapezoid with bases and side
+     */
+    @Test
+    public void shouldCreateIsoscelesTrapezoidWithValues() {
+        ShapeRepository shapeRepository = new ShapeRepository();
+        InputHandler inputHandler = new InputHandler(shapeRepository);
+
+        inputHandler.parseInput(String.format(Locale.US, "add isoscelestrapezoid shortbase %f longbase %f side %f",
+                ISOSCELES_TRAPEZOID_SHORT_BASE_VALUE, ISOSCELES_TRAPEZOID_LONG_BASE_VALUE, ISOSCELES_TRAPEZOID_SIDE_VALUE));
+
+        IsoscelesTrapezoid t = (IsoscelesTrapezoid) shapeRepository.get(0).get();
+        assertEquals(t.getShortBaseLength(), ISOSCELES_TRAPEZOID_SHORT_BASE_VALUE, DELTA);
+        assertEquals(t.getLongBaseLength(), ISOSCELES_TRAPEZOID_LONG_BASE_VALUE, DELTA);
+        assertEquals(t.getSide(), ISOSCELES_TRAPEZOID_SIDE_VALUE, DELTA);
+        assertEquals(t.getHeight(), ISOSCELES_TRAPEZOID_HEIGHT_VALUE, DELTA);
+        assertEquals(t.getSurfaceArea(), ISOSCELES_TRAPEZOID_AREA_VALUE, DELTA);
+        assertEquals(t.getCircuit(), ISOSCELES_TRAPEZOID_CIRCUIT_VALUE, DELTA);
+    }
+
+    /**
+     * Rectangle with long side, short side
+     */
+    @Test
+    public void shouldCreateRectangleWithValuesUsingIsoscelesTrapezoidCommand() {
+        ShapeRepository shapeRepository = new ShapeRepository();
+        InputHandler inputHandler = new InputHandler(shapeRepository);
+
+        inputHandler.parseInput(String.format(Locale.US, "add isoscelestrapezoid shortbase %f longbase %f side %f",
+                RECTANGLE_LONG_SIDE_VALUE, RECTANGLE_LONG_SIDE_VALUE, RECTANGLE_SHORT_SIDE_VALUE));
+
+        Rectangle r = (Rectangle) shapeRepository.get(0).get();
+        assertEquals(r.getLongSideLength(), RECTANGLE_LONG_SIDE_VALUE, DELTA);
+        assertEquals(r.getShortSideLength(), RECTANGLE_SHORT_SIDE_VALUE, DELTA);
+        assertEquals(r.getDiagonalLength(), RECTANGLE_DIAGONAL_VALUE, DELTA);
+        assertEquals(r.getSurfaceArea(), RECTANGLE_AREA_VALUE, DELTA);
+        assertEquals(r.getCircuit(), RECTANGLE_CIRCUIT_VALUE, DELTA);
+    }
+
+    /**
+     * Square with values
+     */
+    @Test
+    public void shouldCreateSquareWithValuesUsingIsoscelesTrapezoidCommand() {
+        ShapeRepository shapeRepository = new ShapeRepository();
+        InputHandler inputHandler = new InputHandler(shapeRepository);
+
+        inputHandler.parseInput(String.format(Locale.US, "add isoscelestrapezoid shortbase %f longbase %f side %f",
+                SQUARE_SIDE_VALUE, SQUARE_SIDE_VALUE, SQUARE_SIDE_VALUE));
+
+        Square s = (Square) shapeRepository.get(0).get();
+        assertEquals(s.getSideLength(), SQUARE_SIDE_VALUE, DELTA);
+        assertEquals(s.getDiagonalLength(), SQUARE_DIAGONAL_VALUE, DELTA);
+        assertEquals(s.getSurfaceArea(), SQUARE_AREA_VALUE, DELTA);
+        assertEquals(s.getCircuit(), SQUARE_CIRCUIT_VALUE, DELTA);
     }
 
     /**
