@@ -12,7 +12,8 @@ import exceptions.factory.UnknownShapeException;
 public class ShapeFactory {
 
     public enum ArgumentType {
-        side, diagonal, area, radius, diameter, circuit, height, base, cathetus, hypotenuse, semiminoraxis, semimajoraxis, shortbase, longbase
+        side, diagonal, area, radius, diameter, circuit, height, base, cathetus, hypotenuse, semiminoraxis,
+        semimajoraxis, shortbase, longbase
     }
 
     private final Map<String, ShapeFactoryWorker> workers = new HashMap<>();
@@ -34,8 +35,8 @@ public class ShapeFactory {
     }
 
     public Shape createShape(String shapeName, List<Entry<ArgumentType, Double>> args) {
-        if (workers.containsKey(shapeName.toLowerCase())) {
-            return workers.get(shapeName.toLowerCase()).create(args);
+        if (workers.containsKey(shapeName)) {
+            return workers.get(shapeName).create(args);
         }
         throw new UnknownShapeException(shapeName);
     }

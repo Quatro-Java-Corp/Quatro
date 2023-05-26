@@ -1,16 +1,16 @@
 package command;
 
 import repository.ShapeRepository;
+import utils.ActiveLanguage;
 import exceptions.argument.NotEnoughArgumentException;
 import exceptions.argument.RedundantArgumentException;
-import exceptions.command.IllegallPrecisionNumberException;
 import input.InputHandler;
 
 import java.util.Queue;
 
 public class CommandFactory {
     public enum CommandName {
-        exit, add, showfigures, sort, circumscribed, doubled, remove, save, precision
+        exit, add, showfigures, sort, circumscribed, doubled, remove, save, precision, language
     }
 
     private final ShapeRepository shapeRepository;
@@ -32,6 +32,7 @@ public class CommandFactory {
             case remove -> createRemove(args);
             case precision -> createPrecision(args);
             case save -> createSave(args);
+            case language -> createChangeLanguage(args);
         };
     }
 
@@ -100,6 +101,16 @@ public class CommandFactory {
             throw new RedundantArgumentException();
         } else {
             return new Save(args.poll(), shapeRepository);
+        }
+    }
+
+    public ChangeLanguage createChangeLanguage(Queue<String> args) {
+        if (args.size() == 0) {
+            throw new NotEnoughArgumentException();
+        } else if (args.size() > 1) {
+            throw new RedundantArgumentException();
+        } else {
+            return new ChangeLanguage(ActiveLanguage.Language.valueOf(args.poll()));
         }
     }
 }

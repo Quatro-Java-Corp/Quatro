@@ -6,6 +6,6 @@ public class NegativeArgumentValueException
     private static final String MESS_ENG = "Values must be non-negative";
 
     public NegativeArgumentValueException() {
-        super(MESS_ENG);
+        super(ActiveLanguage.language == ActiveLanguage.Language.ENG ? MESS_ENG : MESS_PL);
     }
 }

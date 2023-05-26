@@ -6,7 +6,6 @@ import java.util.Map.Entry;
 import exceptions.factory.InvalidArgumentsCombinationException;
 import exceptions.factory.InvalidArgumentsNumberException;
 import factory.ShapeFactory.ArgumentType;
-import shapes.Rectangle;
 import shapes.RightTriangle;
 
 public class RightTriangleWorker implements ShapeFactoryWorker {

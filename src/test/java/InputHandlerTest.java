@@ -4,7 +4,6 @@ import repository.ShapeRepository;
 import shapes.*;
 
 import java.io.File;
-import java.io.FileReader;
 import java.util.Locale;
 import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
@@ -111,7 +110,8 @@ public class InputHandlerTest {
         ShapeRepository shapeRepository = new ShapeRepository();
         InputHandler inputHandler = new InputHandler(shapeRepository);
 
-        inputHandler.parseInput(String.format(Locale.US, "add ellipse semimajoraxis %f semiminoraxis %f", ELLIPSE_SEMI_MAJOR_AXIS_VALUE, ELLIPSE_SEMI_MINOR_AXIS_VALUE));
+        inputHandler.parseInput(String.format(Locale.US, "add ellipse semimajoraxis %f semiminoraxis %f",
+                ELLIPSE_SEMI_MAJOR_AXIS_VALUE, ELLIPSE_SEMI_MINOR_AXIS_VALUE));
 
         Ellipse e = (Ellipse) shapeRepository.get(0).get();
         assertEquals(e.getSemiMajorAxis(), ELLIPSE_SEMI_MAJOR_AXIS_VALUE, DELTA);
@@ -128,7 +128,8 @@ public class InputHandlerTest {
         ShapeRepository shapeRepository = new ShapeRepository();
         InputHandler inputHandler = new InputHandler(shapeRepository);
 
-        inputHandler.parseInput(String.format(Locale.US, "add isoscelestriangle side %f base %f", ISOSCELES_TRIANGLE_SIDE_VALUE, ISOSCELES_TRIANGLE_BASE_VALUE));
+        inputHandler.parseInput(String.format(Locale.US, "add isoscelestriangle side %f base %f",
+                ISOSCELES_TRIANGLE_SIDE_VALUE, ISOSCELES_TRIANGLE_BASE_VALUE));
 
         IsoscelesTriangle t = (IsoscelesTriangle) shapeRepository.get(0).get();
         assertEquals(t.getSideLength(), ISOSCELES_TRIANGLE_SIDE_VALUE, DELTA);
@@ -146,7 +147,8 @@ public class InputHandlerTest {
         ShapeRepository shapeRepository = new ShapeRepository();
         InputHandler inputHandler = new InputHandler(shapeRepository);
 
-        inputHandler.parseInput(String.format(Locale.US, "add rectangle side %f side %f", RECTANGLE_LONG_SIDE_VALUE, RECTANGLE_SHORT_SIDE_VALUE));
+        inputHandler.parseInput(String.format(Locale.US, "add rectangle side %f side %f", RECTANGLE_LONG_SIDE_VALUE,
+                RECTANGLE_SHORT_SIDE_VALUE));
 
         Rectangle r = (Rectangle) shapeRepository.get(0).get();
         assertEquals(r.getLongSideLength(), RECTANGLE_LONG_SIDE_VALUE, DELTA);
@@ -181,7 +183,8 @@ public class InputHandlerTest {
         ShapeRepository shapeRepository = new ShapeRepository();
         InputHandler inputHandler = new InputHandler(shapeRepository);
 
-        inputHandler.parseInput(String.format(Locale.US, "add rhombus diagonal %f diagonal %f", RHOMBUS_LONG_DIAGONAL_VALUE, RHOMBUS_SHORT_DIAGONAL_VALUE));
+        inputHandler.parseInput(String.format(Locale.US, "add rhombus diagonal %f diagonal %f",
+                RHOMBUS_LONG_DIAGONAL_VALUE, RHOMBUS_SHORT_DIAGONAL_VALUE));
 
         Rhombus r = (Rhombus) shapeRepository.get(0).get();
         assertEquals(r.getSideLength(), RHOMBUS_SIDE_VALUE, DELTA);
@@ -199,7 +202,8 @@ public class InputHandlerTest {
         ShapeRepository shapeRepository = new ShapeRepository();
         InputHandler inputHandler = new InputHandler(shapeRepository);
 
-        inputHandler.parseInput(String.format(Locale.US, "add righttriangle cathetus %f cathetus %f", RIGHT_TRIANGLE_SHORT_CATHETUS_LENGTH, RIGHT_TRIANGLE_LONG_CATHETUS_LENGTH));
+        inputHandler.parseInput(String.format(Locale.US, "add righttriangle cathetus %f cathetus %f",
+                RIGHT_TRIANGLE_SHORT_CATHETUS_LENGTH, RIGHT_TRIANGLE_LONG_CATHETUS_LENGTH));
 
         RightTriangle t = (RightTriangle) shapeRepository.get(0).get();
         assertEquals(t.getShortCathetusLength(), RIGHT_TRIANGLE_SHORT_CATHETUS_LENGTH, DELTA);
