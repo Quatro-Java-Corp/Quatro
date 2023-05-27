@@ -9,7 +9,7 @@ public class UnknownShapeException
     private static final String MESS_PL = " nie jest dostępnym kształtem";
 
     public UnknownShapeException(String shapeName) {
-        super(shapeName.substring(0, 1).toUpperCase()
+        super(Character.toUpperCase(shapeName.charAt(0))
                 + shapeName.substring(1)
                 + (ActiveLanguage.language == ActiveLanguage.Language.ENG ? MESS_ENG : MESS_PL));
     }

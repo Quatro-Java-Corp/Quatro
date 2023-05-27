@@ -24,7 +24,7 @@ public class Parser {
             Map.entry("precyzja", CommandName.precision),
             Map.entry("jezyk", CommandName.language));
 
-    public static final Map<String, ArgumentType> ArgumentTypeDictionaryPL = Map.ofEntries(
+    private static final Map<String, ArgumentType> ArgumentTypeDictionaryPL = Map.ofEntries(
             Map.entry("bok", ArgumentType.side),
             Map.entry("przekątna", ArgumentType.diagonal),
             Map.entry("powierzchnia", ArgumentType.area),
@@ -40,7 +40,7 @@ public class Parser {
             Map.entry("dlugapodstawa", ArgumentType.shortbase),
             Map.entry("krótkapodstawa", ArgumentType.longbase));
 
-    public static final Map<String, String> ShapeNameDictionaryPL = Map.ofEntries(
+    private static final Map<String, String> ShapeNameDictionaryPL = Map.ofEntries(
             Map.entry("koło", "circle"),
             Map.entry("elipsa", "ellipse"),
             Map.entry("trapezrównoramienny", "isoscelestrapezoid"),

@@ -14,9 +14,6 @@ import utils.ActiveLanguage;
 public class LanguageTest {
     private final double DELTA = 1e-2;
 
-    private ShapeRepository shapeRepository = new ShapeRepository();
-    private InputHandler inputHandler = new InputHandler(shapeRepository);
-
     // Square data
     private final double SQUARE_SIDE_VALUE = 17.3;
     private final double SQUARE_DIAGONAL_VALUE = 24.465894629;
@@ -28,7 +25,9 @@ public class LanguageTest {
      */
     @Test
     public void shouldChangeLanguage() {
-        ActiveLanguage.language = ActiveLanguage.Language.ENG;
+        ShapeRepository shapeRepository = new ShapeRepository();
+        InputHandler inputHandler = new InputHandler(shapeRepository);
+
         assertEquals(ActiveLanguage.language, ActiveLanguage.Language.ENG);
 
         inputHandler.parseInput("language PL");
@@ -43,11 +42,11 @@ public class LanguageTest {
      */
     @Test
     public void shouldCreateSquareWithSideWithPLCommand() {
-        inputHandler.parseInput("language PL");
-        assertEquals(ActiveLanguage.language, ActiveLanguage.Language.PL);
-
         ShapeRepository shapeRepository = new ShapeRepository();
         InputHandler inputHandler = new InputHandler(shapeRepository);
+
+        inputHandler.parseInput("language PL");
+        assertEquals(ActiveLanguage.language, ActiveLanguage.Language.PL);
 
         inputHandler.parseInput(String.format(Locale.US, "dodaj kwadrat bok %f", SQUARE_SIDE_VALUE));
 
