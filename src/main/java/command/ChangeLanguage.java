@@ -14,6 +14,5 @@ class ChangeLanguage implements Command {
     @Override
     public void run() {
         Dictionary.activeLanguage = language;
-
     }
 }
