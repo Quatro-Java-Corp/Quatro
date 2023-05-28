@@ -74,7 +74,8 @@ public class RegularTriangle implements Shape {
         return "RegularTriangle{" +
                 Format.parameterToString("side", sideLength) + ", " +
                 Format.parameterToString("height", getHeight()) + ", " +
-                Format.parameterToString("area", getSurfaceArea()) +
+                Format.parameterToString("area", getSurfaceArea()) + ", " +
+                Format.parameterToString("circut", getCircuit()) +
                 '}';
     }
 }

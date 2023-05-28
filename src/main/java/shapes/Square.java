@@ -72,7 +72,8 @@ public final class Square implements Shape {
         return "Square{" +
                 Format.parameterToString("side", sideLength) + ", " +
                 Format.parameterToString("diagonal", getDiagonalLength()) + ", " +
-                Format.parameterToString("area", getSurfaceArea()) +
+                Format.parameterToString("area", getSurfaceArea()) + ", " +
+                Format.parameterToString("circut", getCircuit()) +
                 '}';
     }
 }

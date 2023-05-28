@@ -1,13 +1,14 @@
 package shapes;
 
+import static java.lang.Math.pow;
+import static java.lang.Math.sqrt;
+
 import java.util.Optional;
 
 import exceptions.argument.NegativeArgumentValueException;
 import exceptions.factory.IllegalSurfaceException;
 import exceptions.shape.IllegalTriangleSidesException;
 import utils.Format;
-
-import static java.lang.Math.*;
 
 public class IsoscelesTriangle implements Shape {
 
@@ -113,7 +114,8 @@ public class IsoscelesTriangle implements Shape {
                 Format.parameterToString("side", sideLength) + ", " +
                 Format.parameterToString("base", baseLength) + ", " +
                 Format.parameterToString("area", getSurfaceArea()) + ", " +
-                Format.parameterToString("height", getHeight()) +
+                Format.parameterToString("height", getHeight()) + ", " +
+                Format.parameterToString("circut", getCircuit()) +
                 '}';
     }
 }

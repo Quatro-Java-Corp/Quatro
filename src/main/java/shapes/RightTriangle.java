@@ -104,6 +104,7 @@ public class RightTriangle implements Shape {
                 Format.parameterToString("hypotenuse", getHypotenuse()) + ", " +
                 Format.parameterToString("height", getHeight()) + ", " +
                 Format.parameterToString("area", getSurfaceArea()) + ", " +
+                Format.parameterToString("circut", getCircuit()) +
                 '}';
     }
 }

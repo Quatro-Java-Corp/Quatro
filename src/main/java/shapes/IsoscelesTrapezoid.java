@@ -1,13 +1,14 @@
 package shapes;
 
+import static java.lang.Math.pow;
+import static java.lang.Math.sqrt;
+
+import java.util.Optional;
+
 import exceptions.argument.NegativeArgumentValueException;
 import exceptions.shape.IsoscelesTrapezoidHeightShorterThenSideException;
 import exceptions.shape.IsoscelesTrapezoidTooShortBaseException;
 import utils.Format;
-
-import java.util.Optional;
-
-import static java.lang.Math.*;
 
 public class IsoscelesTrapezoid implements Shape {
     private final double shortBaseLength;
@@ -149,7 +150,8 @@ public class IsoscelesTrapezoid implements Shape {
                 Format.parameterToString("longbase", longBaseLength) + ", " +
                 Format.parameterToString("height", getHeight()) + ", " +
                 Format.parameterToString("side", getSide()) + ", " +
-                Format.parameterToString("area", getSurfaceArea()) +
+                Format.parameterToString("area", getSurfaceArea()) + ", " +
+                Format.parameterToString("circut", getCircuit()) +
                 '}';
     }
 }

@@ -27,6 +27,7 @@ public class LanguageTest {
     public void shouldChangeLanguage() {
         ShapeRepository shapeRepository = new ShapeRepository();
         InputHandler inputHandler = new InputHandler(shapeRepository);
+        Dictionary.activeLanguage = Dictionary.Language.ENG;
 
         assertEquals(Dictionary.activeLanguage, Dictionary.Language.ENG);
 

@@ -79,7 +79,8 @@ public class Circle implements Shape {
                 Format.parameterToString("circuit", getCircuit()) + ", " +
                 Format.parameterToString("diameter", getDiameter()) + ", " +
                 Format.parameterToString("radius", radius) + ", " +
-                Format.parameterToString("area", getSurfaceArea()) +
+                Format.parameterToString("area", getSurfaceArea()) + ", " +
+                Format.parameterToString("circut", getCircuit()) +
                 '}';
     }
 }

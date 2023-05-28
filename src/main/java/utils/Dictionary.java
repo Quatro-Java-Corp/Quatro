@@ -1,6 +1,7 @@
 package utils;
 
 import java.util.Map;
+import java.util.stream.Collectors;
 
 import exceptions.factory.UnknownNameException;
 
@@ -12,7 +13,7 @@ public class Dictionary {
 
     public static Language activeLanguage = Language.ENG;
 
-    private static final Map<String, String> dictionary = Map.ofEntries(
+    private static final Map<String, String> dictionaryPL = Map.ofEntries(
             Map.entry("zakończ", "exit"),
             Map.entry("pokaż", "showfigures"),
             Map.entry("sortuj", "sort"),
@@ -53,10 +54,13 @@ public class Dictionary {
             Map.entry("trójkątprostokątny", "righttriangle"),
             Map.entry("kwadrat", "square"));
 
+    private static final Map<String, String> dictionaryENG = dictionaryPL.entrySet().stream()
+            .collect(Collectors.toMap(Map.Entry::getValue, Map.Entry::getKey));
+
     public static String toENG(String word) {
         try {
             return switch (activeLanguage) {
-                case PL -> dictionary.get(word);
+                case PL -> dictionaryPL.get(word);
                 default -> word;
             };
         } catch (Exception e) {
@@ -67,20 +71,11 @@ public class Dictionary {
     public static String fromENG(String word) {
         try {
             return switch (activeLanguage) {
-                case PL -> translate(dictionary, word);
+                case PL -> dictionaryENG.get(word);
                 default -> word;
             };
         } catch (Exception e) {
             throw new UnknownNameException(word);
         }
-    }
-
-    private static String translate(Map<String, String> map, String word) {
-        for (var entry : map.entrySet()) {
-            if (entry.getValue().equals(word)) {
-                return entry.getKey();
-            }
-        }
-        throw new UnknownNameException(word);
     }
 }

@@ -108,7 +108,8 @@ public class Rhombus implements Shape {
                 Format.parameterToString("side", getSideLength()) + ", " +
                 Format.parameterToString("shortdiagonal", shortDiagonalLength) + ", " +
                 Format.parameterToString("longdiagonal", longDiagonalLength) + ", " +
-                Format.parameterToString("area", getSurfaceArea()) +
+                Format.parameterToString("area", getSurfaceArea()) + ", " +
+                Format.parameterToString("circut", getCircuit()) +
                 '}';
     }
 }
