@@ -24,7 +24,7 @@ public class ShapeFactory {
         registerWorker(RectangleFactoryWorker.shapeName, new RectangleFactoryWorker());
         registerWorker(RhombusFactoryWorker.shapeName, new RhombusFactoryWorker());
         registerWorker(IsoscelesTriangleFactoryWorker.shapeName, new IsoscelesTriangleFactoryWorker());
-        registerWorker(RightTriangleWorker.shapeName, new RightTriangleWorker());
+        registerWorker(RightTriangleFactoryWorker.shapeName, new RightTriangleFactoryWorker());
         registerWorker(EllipseFactoryWorker.shapeName, new EllipseFactoryWorker());
         registerWorker(IsoscelesTrapezoidFactoryWorker.shapeName, new IsoscelesTrapezoidFactoryWorker());
         registerWorker(TriangleFactoryWorker.shapeName, new TriangleFactoryWorker());

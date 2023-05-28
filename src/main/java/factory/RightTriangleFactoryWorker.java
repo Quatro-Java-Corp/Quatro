@@ -6,10 +6,9 @@ import java.util.Map.Entry;
 import exceptions.factory.InvalidArgumentsCombinationException;
 import exceptions.factory.InvalidArgumentsNumberException;
 import factory.ShapeFactory.ArgumentType;
-import shapes.Rectangle;
 import shapes.RightTriangle;
 
-public class RightTriangleWorker implements ShapeFactoryWorker {
+public class RightTriangleFactoryWorker implements ShapeFactoryWorker {
 
     public static final String shapeName = "righttriangle";
     public static final double numberOfArguments = 2;

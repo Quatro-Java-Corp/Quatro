@@ -255,7 +255,6 @@ public class InputHandlerTest {
         assertEquals(s.getCircuit(), SQUARE_CIRCUIT_VALUE, DELTA);
     }
 
-
     /**
      * RightTriangle with short cathetus, long cathetus, hypotenuse using triangle command
      */

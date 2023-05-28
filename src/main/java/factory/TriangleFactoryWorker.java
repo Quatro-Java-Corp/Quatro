@@ -14,7 +14,6 @@ public class TriangleFactoryWorker implements ShapeFactoryWorker {
     public static final String shapeName = "triangle";
     public static final double numberOfArguments = 3;
 
-
     public Shape create(List<Map.Entry<ShapeFactory.ArgumentType, Double>> args) {
         if (args.size() != numberOfArguments) {
             throw new InvalidArgumentsNumberException(shapeName);
