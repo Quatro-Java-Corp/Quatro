@@ -133,12 +133,14 @@ Możliwe wejście: (dowolna dwójka)
 
 ### Wymagania ogólne
 
-Program ma umożliwić rozwiązywanie podstawowych zadań geometrycznych dla trójkąta prostokątnego
-* Program ma przechowywać informację kiedy dana figura została utworzona i zapewnić dodatkowo sortowanie wyników po dacie (rosnąco / malejąco)
+* Program ma umożliwić rozwiązywanie podstawowych zadań geometrycznych dla trójkąta prostokątnego
+* Program ma przechowywać informację kiedy dana figura została utworzona i zapewnić dodatkowo sortowanie wyników po
+  dacie (rosnąco / malejąco)
 * Użytkownik może wybrać figurę z listy i wykonać na niej akcję: podwojenie
 * Zwraca figurę tego samego typu z 2 razy większym polem powierzchni zachowując proporcje
 
 #### Trójkąt prostokątny
+
 * Charakterystyka figury:
 * Długość przyprostokątnej 1
 * Długość przyprostokątnej 2
@@ -156,41 +158,46 @@ Możliwe wejście: (dowolna dwójka)
 
 ### Wymagania ogólne
 
-Program ma umożliwić rozwiązywanie podstawowych zadań geometrycznych dla elipsy
+* Program ma umożliwić rozwiązywanie podstawowych zadań geometrycznych dla elipsy
 * Program ma umożliwiać opcję sortowania dwupoziomowego wprowadzonych figur:
-  * Drugi poziom tak jak do tej pory
-  * Pierwszy poziom rosnąco i malejąco po liczbie wierzchołków
+    * Drugi poziom tak jak do tej pory
+    * Pierwszy poziom rosnąco i malejąco po liczbie wierzchołków
 * Program ma umożliwiać konfigurację zaokrągleń
-  * Domyślna wartość: 2 miejsca po przecinku
-  * Zaokrąglenia nie zmieniają wartości właściwości figur (ani nie wpływają na wartości wprowadzane / wyliczane), wpływają tylko i wyłącznie na sposób ich wyświetlania
+    * Domyślna wartość: 2 miejsca po przecinku
+    * Zaokrąglenia nie zmieniają wartości właściwości figur (ani nie wpływają na wartości wprowadzane / wyliczane),
+      wpływają tylko i wyłącznie na sposób ich wyświetlania
 * Użytkownik może wybrać figurę z listy i wykonać na niej akcję: usuń z listy
 
 #### Elipsa
+
 Charakterystyka figury:
+
 * Półoś wielka
 * Półoś mała
 * Pole powierzchni
 
 Możliwe wejście: (dowolna dwójka)
+
 * Półoś wielka
 * Półoś mała
 * Pole powierzchni
 
 Obwód elipsy liczymy pierwszym przybliżeniem całki eliptycznej.
 
-
 ## Pracownia 7
 
 ### Wymagania ogólne
-Program ma umożliwić rozwiązywanie podstawowych zadań geometrycznych dla
-trapezu równoramiennego
+
+* Program ma umożliwić rozwiązywanie podstawowych zadań geometrycznych dla trapezu równoramiennego
 * Program ma umożliwić asynchroniczne zapisanie wszystkich przechowywanych figur do pliku
 * Opis każdej figury w jednej linii !
 * Wycofujemy się z dwupoziomowego sortowania figur
 * Sortowanie po liczbie wierzchołków dodajemy jako kolejną możliwość sposobu sortowania
 
 #### Trapez równoramienny
+
 Charakterystyka figury:
+
 * Podstawa 1
 * Podstawa 2
 * Ramię
@@ -198,9 +205,60 @@ Charakterystyka figury:
 * Pole powierzchni
 
 Możliwe wejście: (dowolna trójka)
+
 * Podstawa 1
 * Podstawa 2
 * Ramię
 * Wysokość
 * Pole powierzchni
-2 z 10 przypadków: (podstawa 1-2, ramię, pole powierzchni) nie muszą być rozpatrywane
+  2 z 10 przypadków: (podstawa 1-2, ramię, pole powierzchni) nie muszą być rozpatrywane
+
+## Pracownia 8
+
+### Wymagania ogólne
+
+* Program ma umożliwić rozwiązywanie podstawowych zadań geometrycznych dla trójkąta dowolnego
+* Program ma umożliwić zmianę domyślnej wartości zaokrąglenia wyświetlanych liczb
+    * Wpływa to tylko i wyłącznie na sposób wyświetlania
+    * Nie ma potrzeby stosowania precyzyjniejszego typu niż double
+* Figury mają być zapisywane do pliku w formacie json
+
+#### Trójkąt dowolny
+
+Charakterystyka figury:
+
+* Długość boku a
+* Długość boku b
+* Długość boku c
+* Pole powierzchni
+
+Możliwe wejście:
+
+* 1 rodzaj wejścia: długości 3 boków
+    * Możliwe, że to jest dobry moment aby pomyśleć nad strukturą klas trójkątów i przenieść część logiki wyżej?
+
+## Pracownia 9
+
+### Wymagania ogólne
+
+* Program ma umożliwić rozwiązywanie podstawowych zadań geometrycznych dla sześiokąta foremnego
+* Program ma umożliwić zmianę wersji językowej na polską lub angielską
+    * W przypadku sterowania poleceniami ma to być konfigurowalna jednojęzyczność, a nie dwujęzyczność
+    * Json do pliku nie musi być tłumaczony
+* Program ma uniemożliwić dodawanie dubli
+    * We wszystkich sposobach tworzenia figur
+    * Wyświetlamy komunikat, że dodanie figury się nie powiodło, bo taka już istnieje wraz z datą utworzenia
+
+#### Sześciokąt foremny
+
+Charakterystyka figury:
+
+* Długość boku
+* Pole powierzchni
+* Obwód
+
+Możliwe wejście:
+
+* Długość boku
+* Pole powierzchni
+* Obwód
