@@ -1,6 +1,6 @@
 package exceptions.argument;
 
-import utils.ActiveLanguage;
+import utils.Dictionary;
 
 public class OddArgumentsException
         extends IllegalArgumentException {
@@ -9,6 +9,6 @@ public class OddArgumentsException
     private static final String MESS_PL = "Nieparzysta liczba argumentów";
 
     public OddArgumentsException() {
-        super(ActiveLanguage.language == ActiveLanguage.Language.ENG ? MESS_ENG : MESS_PL);
+        super(Dictionary.activeLanguage == Dictionary.Language.ENG ? MESS_ENG : MESS_PL);
     }
 }

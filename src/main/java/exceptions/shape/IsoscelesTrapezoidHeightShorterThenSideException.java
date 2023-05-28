@@ -1,6 +1,6 @@
 package exceptions.shape;
 
-import utils.ActiveLanguage;
+import utils.Dictionary;
 
 public class IsoscelesTrapezoidHeightShorterThenSideException extends IllegalArgumentException {
 
@@ -8,6 +8,6 @@ public class IsoscelesTrapezoidHeightShorterThenSideException extends IllegalArg
     private static final String MESS_PL = "Bok nie może być krótszy ani równy wysokości";
 
     public IsoscelesTrapezoidHeightShorterThenSideException() {
-        super(ActiveLanguage.language == ActiveLanguage.Language.ENG ? MESS_ENG : MESS_PL);
+        super(Dictionary.activeLanguage == Dictionary.Language.ENG ? MESS_ENG : MESS_PL);
     }
 }

@@ -1,6 +1,6 @@
 package exceptions.argument;
 
-import utils.ActiveLanguage;
+import utils.Dictionary;
 
 public class NegativeArgumentValueException
         extends IllegalArgumentException {
@@ -9,6 +9,6 @@ public class NegativeArgumentValueException
     private static final String MESS_PL = "Wartości nie mogą być ujemne";
 
     public NegativeArgumentValueException() {
-        super(ActiveLanguage.language == ActiveLanguage.Language.ENG ? MESS_ENG : MESS_PL);
+        super(Dictionary.activeLanguage == Dictionary.Language.ENG ? MESS_ENG : MESS_PL);
     }
 }

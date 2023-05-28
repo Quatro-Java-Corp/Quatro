@@ -1,7 +1,7 @@
 package command;
 
 import repository.ShapeRepository;
-import utils.ActiveLanguage;
+import utils.Dictionary;
 import exceptions.argument.NotEnoughArgumentException;
 import exceptions.argument.RedundantArgumentException;
 import input.InputHandler;
@@ -110,7 +110,7 @@ public class CommandFactory {
         } else if (args.size() > 1) {
             throw new RedundantArgumentException();
         } else {
-            return new ChangeLanguage(ActiveLanguage.Language.valueOf(args.poll()));
+            return new ChangeLanguage(Dictionary.Language.valueOf(args.poll()));
         }
     }
 }

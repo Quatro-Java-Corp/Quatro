@@ -1,6 +1,6 @@
 package exceptions.shape;
 
-import utils.ActiveLanguage;
+import utils.Dictionary;
 
 public class IsoscelesTrapezoidTooShortBaseException extends IllegalArgumentException {
 
@@ -8,6 +8,6 @@ public class IsoscelesTrapezoidTooShortBaseException extends IllegalArgumentExce
     private static final String MESS_PL = "Podstawa jest za krótka dla innych argumentów";
 
     public IsoscelesTrapezoidTooShortBaseException() {
-        super(ActiveLanguage.language == ActiveLanguage.Language.ENG ? MESS_ENG : MESS_PL);
+        super(Dictionary.activeLanguage == Dictionary.Language.ENG ? MESS_ENG : MESS_PL);
     }
 }

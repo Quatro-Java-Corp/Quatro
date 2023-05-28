@@ -70,9 +70,9 @@ public final class Square implements Shape {
     @Override
     public String toString() {
         return "Square{" +
-                "sideLength=" + Format.format(sideLength) +
-                ", diagonalLength=" + Format.format(getDiagonalLength()) +
-                ", surfaceArea=" + Format.format(getSurfaceArea()) +
+                Format.parameterToString("side", sideLength) + ", " +
+                Format.parameterToString("diagonal", getDiagonalLength()) + ", " +
+                Format.parameterToString("area", getSurfaceArea()) +
                 '}';
     }
 }

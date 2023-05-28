@@ -1,6 +1,6 @@
 package exceptions.argument;
 
-import utils.ActiveLanguage;
+import utils.Dictionary;
 
 public class RedundantArgumentException
         extends IllegalArgumentException {
@@ -9,6 +9,6 @@ public class RedundantArgumentException
     private static final String MESS_PL = "Ta funkcja nie potrzebuje żadnych argumentów";
 
     public RedundantArgumentException() {
-        super(ActiveLanguage.language == ActiveLanguage.Language.ENG ? MESS_ENG : MESS_PL);
+        super(Dictionary.activeLanguage == Dictionary.Language.ENG ? MESS_ENG : MESS_PL);
     }
 }

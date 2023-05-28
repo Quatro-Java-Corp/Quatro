@@ -1,6 +1,6 @@
 package exceptions.command;
 
-import utils.ActiveLanguage;
+import utils.Dictionary;
 
 public class IllegalIndexException
         extends IllegalArgumentException {
@@ -9,6 +9,6 @@ public class IllegalIndexException
     private static final String MESS_PL = "Nielegalny indeks";
 
     public IllegalIndexException() {
-        super(ActiveLanguage.language == ActiveLanguage.Language.ENG ? MESS_ENG : MESS_PL);
+        super(Dictionary.activeLanguage == Dictionary.Language.ENG ? MESS_ENG : MESS_PL);
     }
 }

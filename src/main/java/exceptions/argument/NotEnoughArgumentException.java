@@ -1,6 +1,6 @@
 package exceptions.argument;
 
-import utils.ActiveLanguage;
+import utils.Dictionary;
 
 public class NotEnoughArgumentException
         extends IllegalArgumentException {
@@ -9,6 +9,6 @@ public class NotEnoughArgumentException
     private static final String MESS_PL = "Za mało argumentów";
 
     public NotEnoughArgumentException() {
-        super(ActiveLanguage.language == ActiveLanguage.Language.ENG ? MESS_ENG : MESS_PL);
+        super(Dictionary.activeLanguage == Dictionary.Language.ENG ? MESS_ENG : MESS_PL);
     }
 }

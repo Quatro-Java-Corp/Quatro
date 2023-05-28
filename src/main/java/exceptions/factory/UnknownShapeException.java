@@ -1,6 +1,6 @@
 package exceptions.factory;
 
-import utils.ActiveLanguage;
+import utils.Dictionary;
 
 public class UnknownShapeException
         extends IllegalArgumentException {
@@ -11,6 +11,6 @@ public class UnknownShapeException
     public UnknownShapeException(String shapeName) {
         super(Character.toUpperCase(shapeName.charAt(0))
                 + shapeName.substring(1)
-                + (ActiveLanguage.language == ActiveLanguage.Language.ENG ? MESS_ENG : MESS_PL));
+                + (Dictionary.activeLanguage == Dictionary.Language.ENG ? MESS_ENG : MESS_PL));
     }
 }

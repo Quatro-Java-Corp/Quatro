@@ -9,7 +9,7 @@ import java.util.Locale;
 import org.junit.jupiter.api.Test;
 import repository.ShapeRepository;
 import shapes.Square;
-import utils.ActiveLanguage;
+import utils.Dictionary;
 
 public class LanguageTest {
     private final double DELTA = 1e-2;
@@ -28,13 +28,13 @@ public class LanguageTest {
         ShapeRepository shapeRepository = new ShapeRepository();
         InputHandler inputHandler = new InputHandler(shapeRepository);
 
-        assertEquals(ActiveLanguage.language, ActiveLanguage.Language.ENG);
+        assertEquals(Dictionary.activeLanguage, Dictionary.Language.ENG);
 
         inputHandler.parseInput("language PL");
-        assertEquals(ActiveLanguage.language, ActiveLanguage.Language.PL);
+        assertEquals(Dictionary.activeLanguage, Dictionary.Language.PL);
 
         inputHandler.parseInput("jezyk ENG");
-        assertEquals(ActiveLanguage.language, ActiveLanguage.Language.ENG);
+        assertEquals(Dictionary.activeLanguage, Dictionary.Language.ENG);
     }
 
     /**
@@ -46,7 +46,7 @@ public class LanguageTest {
         InputHandler inputHandler = new InputHandler(shapeRepository);
 
         inputHandler.parseInput("language PL");
-        assertEquals(ActiveLanguage.language, ActiveLanguage.Language.PL);
+        assertEquals(Dictionary.activeLanguage, Dictionary.Language.PL);
 
         inputHandler.parseInput(String.format(Locale.US, "dodaj kwadrat bok %f", SQUARE_SIDE_VALUE));
 
@@ -57,6 +57,6 @@ public class LanguageTest {
         assertEquals(s.getCircuit(), SQUARE_CIRCUIT_VALUE, DELTA);
 
         inputHandler.parseInput("jezyk ENG");
-        assertEquals(ActiveLanguage.language, ActiveLanguage.Language.ENG);
+        assertEquals(Dictionary.activeLanguage, Dictionary.Language.ENG);
     }
 }

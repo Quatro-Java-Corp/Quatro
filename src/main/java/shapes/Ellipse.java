@@ -83,9 +83,9 @@ public class Ellipse implements Shape {
     @Override
     public String toString() {
         return "Ellipse{" +
-                "semiMinorAxis=" + Format.format(semiMinorAxis) +
-                ", semiMajorAxis=" + Format.format(semiMajorAxis) +
-                ", surfaceArea=" + Format.format(getSurfaceArea()) +
+                Format.parameterToString("semiminoraxis", semiMinorAxis) + ", " +
+                Format.parameterToString("semimajoraxis", semiMajorAxis) + ", " +
+                Format.parameterToString("area", getSurfaceArea()) +
                 '}';
     }
 }

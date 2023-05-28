@@ -1,6 +1,6 @@
 package exceptions.shape;
 
-import utils.ActiveLanguage;
+import utils.Dictionary;
 
 public class InvalidShapeForCircumscribedCircleException
         extends IllegalArgumentException {
@@ -9,6 +9,6 @@ public class InvalidShapeForCircumscribedCircleException
     private static final String MESS_PL = "Brak okręgu opisanego dla tego kształtu";
 
     public InvalidShapeForCircumscribedCircleException() {
-        super(ActiveLanguage.language == ActiveLanguage.Language.ENG ? MESS_ENG : MESS_PL);
+        super(Dictionary.activeLanguage == Dictionary.Language.ENG ? MESS_ENG : MESS_PL);
     }
 }

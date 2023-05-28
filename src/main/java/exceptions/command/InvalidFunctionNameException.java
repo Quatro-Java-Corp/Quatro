@@ -1,6 +1,6 @@
 package exceptions.command;
 
-import utils.ActiveLanguage;
+import utils.Dictionary;
 
 public class InvalidFunctionNameException
         extends IllegalArgumentException {
@@ -9,6 +9,6 @@ public class InvalidFunctionNameException
     private static final String MESS_PL = "Nieznana funkcja";
 
     public InvalidFunctionNameException() {
-        super(ActiveLanguage.language == ActiveLanguage.Language.ENG ? MESS_ENG : MESS_PL);
+        super(Dictionary.activeLanguage == Dictionary.Language.ENG ? MESS_ENG : MESS_PL);
     }
 }

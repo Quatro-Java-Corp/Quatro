@@ -1,6 +1,6 @@
 package exceptions.factory;
 
-import utils.ActiveLanguage;
+import utils.Dictionary;
 
 public class InvalidArgumentsCombinationException
         extends IllegalArgumentException {
@@ -9,6 +9,6 @@ public class InvalidArgumentsCombinationException
     private static final String MESS_PL = "Nieprawidłowa kombinacja argumentów dla ";
 
     public InvalidArgumentsCombinationException(String shapeName) {
-        super((ActiveLanguage.language == ActiveLanguage.Language.ENG ? MESS_ENG : MESS_PL) + shapeName);
+        super((Dictionary.activeLanguage == Dictionary.Language.ENG ? MESS_ENG : MESS_PL) + shapeName);
     }
 }

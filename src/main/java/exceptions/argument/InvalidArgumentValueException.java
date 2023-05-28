@@ -1,6 +1,6 @@
 package exceptions.argument;
 
-import utils.ActiveLanguage;
+import utils.Dictionary;
 
 public class InvalidArgumentValueException
         extends IllegalArgumentException {
@@ -9,6 +9,6 @@ public class InvalidArgumentValueException
     private static final String MESS_PL = "Wartość musi być liczbą dodatnią";
 
     public InvalidArgumentValueException() {
-        super(ActiveLanguage.language == ActiveLanguage.Language.ENG ? MESS_ENG : MESS_PL);
+        super(Dictionary.activeLanguage == Dictionary.Language.ENG ? MESS_ENG : MESS_PL);
     }
 }

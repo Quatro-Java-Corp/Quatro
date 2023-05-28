@@ -105,10 +105,10 @@ public class Rectangle implements Shape {
     @Override
     public String toString() {
         return "Rectangle{" +
-                "shortSideLength=" + Format.format(shortSideLength) +
-                ", longSideLength=" + Format.format(longSideLength) +
-                ", diagonalLength=" + Format.format(getDiagonalLength()) +
-                ", surfaceArea=" + Format.format(getSurfaceArea()) +
+                Format.parameterToString("shortside", shortSideLength) + ", " +
+                Format.parameterToString("longside", longSideLength) + ", " +
+                Format.parameterToString("diagonal", getDiagonalLength()) + ", " +
+                Format.parameterToString("area", getSurfaceArea()) +
                 '}';
     }
 }

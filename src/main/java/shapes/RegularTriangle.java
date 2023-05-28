@@ -3,6 +3,7 @@ package shapes;
 import java.util.Optional;
 
 import exceptions.argument.NegativeArgumentValueException;
+import utils.Format;
 
 import static java.lang.Math.pow;
 
@@ -71,9 +72,9 @@ public class RegularTriangle implements Shape {
     @Override
     public String toString() {
         return "RegularTriangle{" +
-                "sideLength=" + sideLength +
-                ", height=" + getHeight() +
-                ", surfaceArea=" + getSurfaceArea() +
+                Format.parameterToString("side", sideLength) + ", " +
+                Format.parameterToString("height", getHeight()) + ", " +
+                Format.parameterToString("area", getSurfaceArea()) +
                 '}';
     }
 }

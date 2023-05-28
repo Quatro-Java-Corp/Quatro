@@ -110,10 +110,10 @@ public class IsoscelesTriangle implements Shape {
     @Override
     public String toString() {
         return "IsoscelesTriangle{" +
-                "sideLength=" + Format.format(sideLength) +
-                ", baseLength=" + Format.format(baseLength) +
-                ", surfaceArea=" + Format.format(getSurfaceArea()) +
-                ", height=" + Format.format(getHeight()) +
+                Format.parameterToString("side", sideLength) + ", " +
+                Format.parameterToString("base", baseLength) + ", " +
+                Format.parameterToString("area", getSurfaceArea()) + ", " +
+                Format.parameterToString("height", getHeight()) +
                 '}';
     }
 }

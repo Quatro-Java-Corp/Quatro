@@ -1,6 +1,6 @@
 package exceptions.command;
 
-import utils.ActiveLanguage;
+import utils.Dictionary;
 
 public class IllegallPrecisionNumberException
         extends IllegalArgumentException {
@@ -9,6 +9,6 @@ public class IllegallPrecisionNumberException
     private static final String MESS_PL = "Funkcja precyzji powinna otrzymać jako argument nieujemną liczbę całkowitą";
 
     public IllegallPrecisionNumberException() {
-        super(ActiveLanguage.language == ActiveLanguage.Language.ENG ? MESS_ENG : MESS_PL);
+        super(Dictionary.activeLanguage == Dictionary.Language.ENG ? MESS_ENG : MESS_PL);
     }
 }

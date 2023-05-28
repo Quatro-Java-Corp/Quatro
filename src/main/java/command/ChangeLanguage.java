@@ -1,7 +1,7 @@
 package command;
 
-import utils.ActiveLanguage;
-import utils.ActiveLanguage.Language;
+import utils.Dictionary;
+import utils.Dictionary.Language;
 
 class ChangeLanguage implements Command {
 
@@ -13,7 +13,7 @@ class ChangeLanguage implements Command {
 
     @Override
     public void run() {
-        ActiveLanguage.language = language;
+        Dictionary.activeLanguage = language;
 
     }
 }

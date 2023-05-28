@@ -1,6 +1,6 @@
 package exceptions.command;
 
-import utils.ActiveLanguage;
+import utils.Dictionary;
 
 public class IllegalSortArgumentException
         extends IllegalArgumentException {
@@ -9,6 +9,6 @@ public class IllegalSortArgumentException
     private static final String MESS_PL = "Błędne argumenty sortowania";
 
     public IllegalSortArgumentException() {
-        super(ActiveLanguage.language == ActiveLanguage.Language.ENG ? MESS_ENG : MESS_PL);
+        super(Dictionary.activeLanguage == Dictionary.Language.ENG ? MESS_ENG : MESS_PL);
     }
 }
