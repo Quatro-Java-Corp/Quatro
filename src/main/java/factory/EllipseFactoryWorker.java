@@ -19,7 +19,7 @@ public class EllipseFactoryWorker implements ShapeFactoryWorker {
     public static final double numberOfArguments = 2;
 
     public Shape create(List<Entry<ArgumentType, Double>> args) {
-        if (args.size() != EllipseFactoryWorker.numberOfArguments) {
+        if (args.size() != numberOfArguments) {
             throw new InvalidArgumentsNumberException(shapeName);
         }
 

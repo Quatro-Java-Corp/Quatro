@@ -221,6 +221,23 @@ public class InputHandlerTest {
     }
 
     /**
+     * RegularTriangle with values using IsoscelesTriangle
+     */
+    @Test
+    public void shouldCreateRegularTriangleWithValuesUsingIsoscelesTriangleCommand() {
+        ShapeRepository shapeRepository = new ShapeRepository();
+        InputHandler inputHandler = new InputHandler(shapeRepository);
+
+        inputHandler.parseInput(String.format(Locale.US, "add isoscelestriangle side %f base %f", REGULAR_TRIANGLE_SIDE_VALUE, REGULAR_TRIANGLE_SIDE_VALUE));
+
+        RegularTriangle t = (RegularTriangle) shapeRepository.get(0).get();
+        assertEquals(t.getSideLength(), REGULAR_TRIANGLE_SIDE_VALUE, DELTA);
+        assertEquals(t.getHeight(), REGULAR_TRIANGLE_HEIGHT_VALUE, DELTA);
+        assertEquals(t.getSurfaceArea(), REGULAR_TRIANGLE_AREA_VALUE, DELTA);
+        assertEquals(t.getCircuit(), REGULAR_TRIANGLE_CIRCUIT_VALUE, DELTA);
+    }
+
+    /**
      * Rhombus with long diagonal and short diagonal
      */
     @Test

@@ -18,7 +18,7 @@ public class RectangleFactoryWorker implements ShapeFactoryWorker {
     public static final double numberOfArguments = 2;
 
     public Shape create(List<Entry<ArgumentType, Double>> args) {
-        if (args.size() != RectangleFactoryWorker.numberOfArguments) {
+        if (args.size() != numberOfArguments) {
             throw new InvalidArgumentsNumberException(shapeName);
         }
 

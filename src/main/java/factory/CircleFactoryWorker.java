@@ -14,7 +14,7 @@ public class CircleFactoryWorker implements ShapeFactoryWorker {
     public static final double numberOfArguments = 1;
 
     public Circle create(List<Entry<ArgumentType, Double>> args) {
-        if (args.size() != CircleFactoryWorker.numberOfArguments) {
+        if (args.size() != numberOfArguments) {
             throw new InvalidArgumentsNumberException(shapeName);
         }
 
