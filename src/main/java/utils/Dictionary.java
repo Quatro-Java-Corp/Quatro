@@ -13,7 +13,7 @@ public class Dictionary {
 
     public static Language activeLanguage = Language.ENG;
 
-    private static final Map<String, String> dictionaryPL = Map.ofEntries(
+    private static final Map<String, String> dictionaryFromPL = Map.ofEntries(
             Map.entry("zakończ", "exit"),
             Map.entry("pokaż", "showfigures"),
             Map.entry("sortuj", "sort"),
@@ -54,13 +54,13 @@ public class Dictionary {
             Map.entry("trójkątprostokątny", "righttriangle"),
             Map.entry("kwadrat", "square"));
 
-    private static final Map<String, String> dictionaryENG = dictionaryPL.entrySet().stream()
+    private static final Map<String, String> dictionaryFromENG = dictionaryFromPL.entrySet().stream()
             .collect(Collectors.toMap(Map.Entry::getValue, Map.Entry::getKey));
 
     public static String toENG(String word) {
         try {
             return switch (activeLanguage) {
-                case PL -> dictionaryPL.get(word);
+                case PL -> dictionaryFromPL.get(word);
                 default -> word;
             };
         } catch (Exception e) {
@@ -71,7 +71,7 @@ public class Dictionary {
     public static String fromENG(String word) {
         try {
             return switch (activeLanguage) {
-                case PL -> dictionaryENG.get(word);
+                case PL -> dictionaryFromENG.get(word);
                 default -> word;
             };
         } catch (Exception e) {
