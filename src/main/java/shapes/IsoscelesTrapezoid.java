@@ -1,14 +1,16 @@
 package shapes;
 
-import static java.lang.Math.pow;
-import static java.lang.Math.sqrt;
-
-import java.util.Optional;
-
 import exceptions.argument.NegativeArgumentValueException;
 import exceptions.shape.IsoscelesTrapezoidHeightShorterThenSideException;
 import exceptions.shape.IsoscelesTrapezoidTooShortBaseException;
+import utils.CompareDouble;
 import utils.Format;
+
+import java.util.Objects;
+import java.util.Optional;
+
+import static java.lang.Math.pow;
+import static java.lang.Math.sqrt;
 
 public class IsoscelesTrapezoid implements Shape {
     private final double shortBaseLength;
@@ -153,5 +155,20 @@ public class IsoscelesTrapezoid implements Shape {
                 Format.parameterToString("area", getSurfaceArea()) + ", " +
                 Format.parameterToString("circut", getCircuit()) +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        IsoscelesTrapezoid that = (IsoscelesTrapezoid) o;
+        return CompareDouble.doubleEquals(that.shortBaseLength, shortBaseLength) &&
+                CompareDouble.doubleEquals(that.longBaseLength, longBaseLength) &&
+                CompareDouble.doubleEquals(that.height, height);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(shortBaseLength, longBaseLength, height);
     }
 }

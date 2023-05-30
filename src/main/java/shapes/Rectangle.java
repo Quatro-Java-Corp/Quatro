@@ -4,9 +4,11 @@ import static java.lang.Math.abs;
 import static java.lang.Math.pow;
 import static java.lang.Math.sqrt;
 
+import java.util.Objects;
 import java.util.Optional;
 
 import exceptions.argument.NegativeArgumentValueException;
+import utils.CompareDouble;
 import utils.Format;
 
 public class Rectangle implements Shape {
@@ -113,5 +115,18 @@ public class Rectangle implements Shape {
                 Format.parameterToString("area", getSurfaceArea()) + ", " +
                 Format.parameterToString("circut", getCircuit()) +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Rectangle rectangle = (Rectangle) o;
+        return CompareDouble.doubleEquals(rectangle.shortSideLength, shortSideLength) && CompareDouble.doubleEquals(rectangle.longSideLength, longSideLength);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(shortSideLength, longSideLength);
     }
 }

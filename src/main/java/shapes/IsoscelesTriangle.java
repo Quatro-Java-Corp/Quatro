@@ -3,11 +3,13 @@ package shapes;
 import static java.lang.Math.pow;
 import static java.lang.Math.sqrt;
 
+import java.util.Objects;
 import java.util.Optional;
 
 import exceptions.argument.NegativeArgumentValueException;
 import exceptions.factory.IllegalSurfaceException;
 import exceptions.shape.IllegalTriangleSidesException;
+import utils.CompareDouble;
 import utils.Format;
 
 public class IsoscelesTriangle implements Shape {
@@ -117,5 +119,18 @@ public class IsoscelesTriangle implements Shape {
                 Format.parameterToString("height", getHeight()) + ", " +
                 Format.parameterToString("circut", getCircuit()) +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        IsoscelesTriangle that = (IsoscelesTriangle) o;
+        return CompareDouble.doubleEquals(that.sideLength, sideLength) && CompareDouble.doubleEquals(that.baseLength, baseLength);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(sideLength, baseLength);
     }
 }
