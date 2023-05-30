@@ -1,9 +1,11 @@
 package shapes;
 
+import java.util.Objects;
 import java.util.Optional;
 
 import exceptions.argument.NegativeArgumentValueException;
 import utils.Format;
+import utils.CompareDouble;
 
 import static java.lang.Math.sqrt;
 
@@ -72,5 +74,18 @@ public class RegularHexagon implements Shape {
                 Format.parameterToString("area", getSurfaceArea()) + ", " +
                 Format.parameterToString("circut", getCircuit()) +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        RegularHexagon that = (RegularHexagon) o;
+        return CompareDouble.doubleEquals(that.sideLength, sideLength);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(sideLength);
     }
 }
