@@ -1,11 +1,12 @@
 package shapes;
 
+import static java.lang.Math.PI;
+import static java.lang.Math.sqrt;
+
 import java.util.Optional;
 
 import exceptions.argument.NegativeArgumentValueException;
 import utils.Format;
-
-import static java.lang.Math.*;
 
 public class Ellipse implements Shape {
 
@@ -83,9 +84,10 @@ public class Ellipse implements Shape {
     @Override
     public String toString() {
         return "Ellipse{" +
-                "semiMinorAxis=" + Format.format(semiMinorAxis) +
-                ", semiMajorAxis=" + Format.format(semiMajorAxis) +
-                ", surfaceArea=" + Format.format(getSurfaceArea()) +
+                Format.parameterToString("semiminoraxis", semiMinorAxis) + ", " +
+                Format.parameterToString("semimajoraxis", semiMajorAxis) + ", " +
+                Format.parameterToString("area", getSurfaceArea()) + ", " +
+                Format.parameterToString("circut", getCircuit()) +
                 '}';
     }
 }

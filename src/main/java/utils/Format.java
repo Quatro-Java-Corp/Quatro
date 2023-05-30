@@ -26,4 +26,8 @@ public class Format {
             df = new DecimalFormat(doublePattern + basePattern.repeat(k));
         }
     }
+
+    public static String parameterToString(String name, Double value) {
+        return Dictionary.fromENG(name) + "=" + format(value);
+    }
 }

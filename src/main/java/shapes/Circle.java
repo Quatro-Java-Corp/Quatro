@@ -76,10 +76,10 @@ public class Circle implements Shape {
     @Override
     public String toString() {
         return "Circle{" +
-                "circuit=" + Format.format(getCircuit()) +
-                ", diameter=" + Format.format(getDiameter()) +
-                ", radius=" + Format.format(radius) +
-                ", surfaceArea=" + Format.format(getSurfaceArea()) +
+                Format.parameterToString("circuit", getCircuit()) + ", " +
+                Format.parameterToString("diameter", getDiameter()) + ", " +
+                Format.parameterToString("radius", radius) + ", " +
+                Format.parameterToString("area", getSurfaceArea()) + ", " +
                 '}';
     }
 }

@@ -1,11 +1,13 @@
 package shapes;
 
+import static java.lang.Math.abs;
+import static java.lang.Math.pow;
+import static java.lang.Math.sqrt;
+
 import java.util.Optional;
 
 import exceptions.argument.NegativeArgumentValueException;
 import utils.Format;
-
-import static java.lang.Math.*;
 
 public class Rectangle implements Shape {
 
@@ -105,10 +107,11 @@ public class Rectangle implements Shape {
     @Override
     public String toString() {
         return "Rectangle{" +
-                "shortSideLength=" + Format.format(shortSideLength) +
-                ", longSideLength=" + Format.format(longSideLength) +
-                ", diagonalLength=" + Format.format(getDiagonalLength()) +
-                ", surfaceArea=" + Format.format(getSurfaceArea()) +
+                Format.parameterToString("shortside", shortSideLength) + ", " +
+                Format.parameterToString("longside", longSideLength) + ", " +
+                Format.parameterToString("diagonal", getDiagonalLength()) + ", " +
+                Format.parameterToString("area", getSurfaceArea()) + ", " +
+                Format.parameterToString("circut", getCircuit()) +
                 '}';
     }
 }

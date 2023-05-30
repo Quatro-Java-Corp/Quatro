@@ -99,11 +99,12 @@ public class RightTriangle implements Shape {
     @Override
     public String toString() {
         return "RightTriangle{" +
-                "shortCathetusLength=" + Format.format(shortCathetusLength) +
-                ", longCathetusLength=" + Format.format(longCathetusLength) +
-                ", hypotenuseLength=" + Format.format(getHypotenuse()) +
-                ", surfaceArea=" + Format.format(getSurfaceArea()) +
-                ", height=" + Format.format(getHeight()) +
+                Format.parameterToString("shortcathetus", shortCathetusLength) + ", " +
+                Format.parameterToString("longcathetus", longCathetusLength) + ", " +
+                Format.parameterToString("hypotenuse", getHypotenuse()) + ", " +
+                Format.parameterToString("height", getHeight()) + ", " +
+                Format.parameterToString("area", getSurfaceArea()) + ", " +
+                Format.parameterToString("circut", getCircuit()) +
                 '}';
     }
 }

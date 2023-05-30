@@ -1,11 +1,16 @@
 package exceptions.factory;
 
+import utils.Dictionary;
+
 public class UnknownShapeException
         extends IllegalArgumentException {
 
     private static final String MESS_ENG = " is not avaliable shape";
+    private static final String MESS_PL = " nie jest dostępnym kształtem";
 
     public UnknownShapeException(String shapeName) {
-        super(shapeName.substring(0, 1).toUpperCase() + shapeName.substring(1) + MESS_ENG);
+        super(Character.toUpperCase(shapeName.charAt(0))
+                + shapeName.substring(1)
+                + (Dictionary.activeLanguage == Dictionary.Language.ENG ? MESS_ENG : MESS_PL));
     }
 }

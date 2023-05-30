@@ -105,10 +105,11 @@ public class Rhombus implements Shape {
     @Override
     public String toString() {
         return "Rhombus{" +
-                "sideLength=" + Format.format(getSideLength()) +
-                ", shortDiagonalLength=" + Format.format(shortDiagonalLength) +
-                ", longDiagonalLength=" + Format.format(longDiagonalLength) +
-                ", surfaceArea=" + Format.format(getSurfaceArea()) +
+                Format.parameterToString("side", getSideLength()) + ", " +
+                Format.parameterToString("shortdiagonal", shortDiagonalLength) + ", " +
+                Format.parameterToString("longdiagonal", longDiagonalLength) + ", " +
+                Format.parameterToString("area", getSurfaceArea()) + ", " +
+                Format.parameterToString("circut", getCircuit()) +
                 '}';
     }
 }

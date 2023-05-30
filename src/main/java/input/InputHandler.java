@@ -14,14 +14,12 @@ import factory.ShapeFactory.ArgumentType;
 import repository.ShapeRepository;
 import command.Command;
 import command.CommandFactory;
-import exceptions.argument.InvalidArgumentTypeException;
-import exceptions.argument.InvalidArgumentValueException;
 import exceptions.argument.OddArgumentsException;
-import exceptions.command.InvalidFunctionNameException;
 
 public class InputHandler {
 
     private static final ShapeFactory shapeFactory = new ShapeFactory();
+    private final Parser parser = new Parser();
     private final CommandFactory commandFactory;
 
     public InputHandler(ShapeRepository shapeRepository) {
@@ -33,7 +31,7 @@ public class InputHandler {
         if (args.size() > 0) {
             try {
                 Command command = commandFactory.createCommand(
-                        parseCommand(args.poll()),
+                        parser.parseCommand(args.poll()),
                         args);
                 command.run();
             } catch (Exception e) {
@@ -42,16 +40,8 @@ public class InputHandler {
         }
     }
 
-    public CommandFactory.CommandName parseCommand(String command) {
-        try {
-            return CommandFactory.CommandName.valueOf(command);
-        } catch (IllegalArgumentException e) {
-            throw new InvalidFunctionNameException();
-        }
-    }
-
     public Shape createFigureWithArguments(Queue<String> args) {
-        return shapeFactory.createShape(args.poll(), getArgumentsList(args));
+        return shapeFactory.createShape(parser.parseShapeName(args.poll()), getArgumentsList(args));
     }
 
     private List<Entry<ArgumentType, Double>> getArgumentsList(Queue<String> args) {
@@ -61,29 +51,9 @@ public class InputHandler {
         List<Entry<ArgumentType, Double>> argsList = new ArrayList<>();
         while (args.size() > 1) {
             argsList.add(new SimpleImmutableEntry<>(
-                    convertStringToArgumentType(args.poll()),
-                    convertStringToArgumentValue(args.poll())));
+                    parser.parseArgumentType(args.poll()),
+                    parser.parseArgumentValue(args.poll())));
         }
         return argsList;
-    }
-
-    private ShapeFactory.ArgumentType convertStringToArgumentType(String s) {
-        try {
-            return ShapeFactory.ArgumentType.valueOf(s.toLowerCase());
-        } catch (IllegalArgumentException e) {
-            throw new InvalidArgumentTypeException();
-        }
-    }
-
-    private Double convertStringToArgumentValue(String s) {
-        try {
-            double val = Double.parseDouble(s);
-            if (val <= 0) {
-                throw new NumberFormatException();
-            }
-            return val;
-        } catch (NumberFormatException e) {
-            throw new InvalidArgumentValueException();
-        }
     }
 }
