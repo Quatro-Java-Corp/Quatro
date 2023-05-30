@@ -75,13 +75,19 @@ public class InputHandlerTest {
     private final double TRIANGLE_AREA_VALUE = 56.99506557589;
     private final double TRIANGLE_CIRCUIT_VALUE = 35;
 
-    //Isosceles Trapezoid data
+    // Isosceles Trapezoid data
     private final double ISOSCELES_TRAPEZOID_SIDE_VALUE = 5;
     private final double ISOSCELES_TRAPEZOID_SHORT_BASE_VALUE = 7;
     private final double ISOSCELES_TRAPEZOID_LONG_BASE_VALUE = 13;
     private final double ISOSCELES_TRAPEZOID_HEIGHT_VALUE = 4;
     private final double ISOSCELES_TRAPEZOID_AREA_VALUE = 40;
     private final double ISOSCELES_TRAPEZOID_CIRCUIT_VALUE = 30;
+
+    // Regular Hexagon data
+    private final double REGULAR_HEXAGON_SIDE_VALUE = 3.0;
+    private final double REGULAR_HEXAGON_AREA_VALUE = 23.3826859;
+    private final double REGULAR_HEXAGON_CIRCUIT_VALUE = 18.0;
+
 
     /**
      * Square with side length
@@ -98,6 +104,22 @@ public class InputHandlerTest {
         assertEquals(s.getDiagonalLength(), SQUARE_DIAGONAL_VALUE, DELTA);
         assertEquals(s.getSurfaceArea(), SQUARE_AREA_VALUE, DELTA);
         assertEquals(s.getCircuit(), SQUARE_CIRCUIT_VALUE, DELTA);
+    }
+
+    /**
+     * Regular Hexagon with side length
+     */
+    @Test
+    public void shouldCreateRegularHexagonWithSide() {
+        ShapeRepository shapeRepository = new ShapeRepository();
+        InputHandler inputHandler = new InputHandler(shapeRepository);
+
+        inputHandler.parseInput(String.format(Locale.US, "add regularhexagon side %f", REGULAR_HEXAGON_SIDE_VALUE));
+
+        RegularHexagon h = (RegularHexagon) shapeRepository.get(0).get();
+        assertEquals(h.getSideLength(), REGULAR_HEXAGON_SIDE_VALUE, DELTA);
+        assertEquals(h.getSurfaceArea(), REGULAR_HEXAGON_AREA_VALUE, DELTA);
+        assertEquals(h.getCircuit(), REGULAR_HEXAGON_CIRCUIT_VALUE, DELTA);
     }
 
     /**
