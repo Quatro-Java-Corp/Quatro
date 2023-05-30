@@ -87,9 +87,6 @@ public class InputHandlerTest {
     private final double REGULAR_HEXAGON_SIDE_VALUE = 3.0;
     private final double REGULAR_HEXAGON_AREA_VALUE = 23.3826859;
     private final double REGULAR_HEXAGON_CIRCUIT_VALUE = 18.0;
-    private final double REGULAR_HEXAGON_NEGATIVE_VALUE = -13.592;
-    private final double REGULAR_HEXAGON_CIRCUMSCRIBED_CIRCLE_RADIUS_VALUE = REGULAR_HEXAGON_SIDE_VALUE;
-    private final double REGULAR_HEXAGON_DOUBLED_AREA_VALUE = 2 * REGULAR_HEXAGON_AREA_VALUE;
 
 
     /**
