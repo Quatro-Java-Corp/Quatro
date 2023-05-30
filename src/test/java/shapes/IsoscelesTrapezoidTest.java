@@ -3,10 +3,11 @@ package shapes;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
+import exceptions.shape.IsoscelesTrapezoidHeightShorterThenSideException;
+import exceptions.shape.IsoscelesTrapezoidTooShortBaseException;
 import org.junit.jupiter.api.Test;
 
 import exceptions.argument.NegativeArgumentValueException;
-import exceptions.shape.IllegalTriangleSidesException;
 
 /**
  * Unit test for IsoscelesTrapezoid.
@@ -19,7 +20,7 @@ public class IsoscelesTrapezoidTest {
     private final double LONG_BASE_VALUE = 13;
     private final double HEIGHT_VALUE = 4;
     private final double AREA_VALUE = 40;
-    private final double CIRCUIT_VALUE = 2 * SIDE_VALUE + SHORT_BASE_VALUE + LONG_BASE_VALUE;
+    private final double CIRCUIT_VALUE = 30;
     private final double NEGATIVE_VALUE = -13.5;
     private final double DOUBLED_AREA_VALUE = 2 * AREA_VALUE;
 
@@ -146,7 +147,7 @@ public class IsoscelesTrapezoidTest {
      */
     @Test
     public void shouldThrowExceptionAfterReceivingLongerHeightThanSide() {
-        assertThrows(Exception.class,
+        assertThrows(IsoscelesTrapezoidHeightShorterThenSideException.class,
                 () -> IsoscelesTrapezoid.withLongBaseAndSideAndHeight(LONG_BASE_VALUE,
                         SIDE_VALUE, 2 * SIDE_VALUE));
     }
@@ -156,8 +157,29 @@ public class IsoscelesTrapezoidTest {
      */
     @Test
     public void shouldThrowExceptionAfterReceivingLongerSideThanDoubledBase() {
-        assertThrows(Exception.class,
+        assertThrows(IsoscelesTrapezoidTooShortBaseException.class,
                 () -> IsoscelesTrapezoid.withLongBaseAndSideAndHeight(LONG_BASE_VALUE,
                         2 * LONG_BASE_VALUE, 2 * HEIGHT_VALUE));
+    }
+
+    /**
+     * Checking exceptions caused by negative value
+     */
+    @Test
+    public void shouldThrowExceptionAfterReceivingNegativeValue() {
+        assertThrows(NegativeArgumentValueException.class,
+                () -> IsoscelesTrapezoid.withLongBaseAndSideAndHeight(NEGATIVE_VALUE,
+                        2 * LONG_BASE_VALUE, 2 * HEIGHT_VALUE));
+    }
+
+    /**
+     * Should return isosceles trapezoid with doubled area
+     */
+    @Test
+    public void shouldReturnDoubledIsoscelesTrapezoid() {
+        IsoscelesTrapezoid t = IsoscelesTrapezoid.withTwoBaseAndSide(SHORT_BASE_VALUE, LONG_BASE_VALUE,
+                SIDE_VALUE);
+        IsoscelesTrapezoid doubled = (IsoscelesTrapezoid) t.getDoubledSized();
+        assertEquals(DOUBLED_AREA_VALUE, doubled.getSurfaceArea(), DELTA);
     }
 }

@@ -14,7 +14,7 @@ public class SquareFactoryWorker implements ShapeFactoryWorker {
     public static final double numberOfArguments = 1;
 
     public Square create(List<Entry<ArgumentType, Double>> args){
-        if (args.size() != SquareFactoryWorker.numberOfArguments) {
+        if (args.size() != numberOfArguments) {
             throw new InvalidArgumentsNumberException(shapeName);
         }
 
