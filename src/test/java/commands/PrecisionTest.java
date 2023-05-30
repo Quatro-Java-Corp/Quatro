@@ -9,7 +9,6 @@ import repository.ShapeRepository;
 import utils.Format;
 
 public class PrecisionTest {
-    // Regular Triangle data
     private final double LONG_DOUBLE = 19.8746328748324623874;
     private final String LONG_DOUBLE_PRECISION_STANDARD = "19.87";
     private final String LONG_DOUBLE_PRECISION_ZERO = "20";

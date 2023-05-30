@@ -14,7 +14,7 @@ public class RegularTriangleFactoryWorker implements ShapeFactoryWorker {
     public static final double numberOfArguments = 1;
 
     public RegularTriangle create(List<Entry<ArgumentType, Double>> args) {
-        if (args.size() != RegularTriangleFactoryWorker.numberOfArguments) {
+        if (args.size() != numberOfArguments) {
             throw new InvalidArgumentsNumberException(shapeName);
         }
 
