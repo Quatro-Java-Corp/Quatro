@@ -1,8 +1,10 @@
 package shapes;
 
+import java.util.Objects;
 import java.util.Optional;
 
 import exceptions.argument.NegativeArgumentValueException;
+import utils.CompareDouble;
 import utils.Format;
 
 public class Circle implements Shape {
@@ -81,5 +83,18 @@ public class Circle implements Shape {
                 Format.parameterToString("radius", radius) + ", " +
                 Format.parameterToString("area", getSurfaceArea()) + ", " +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Circle circle = (Circle) o;
+        return CompareDouble.doubleEquals(circle.radius, radius);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(radius);
     }
 }

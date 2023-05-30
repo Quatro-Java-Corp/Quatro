@@ -1,6 +1,7 @@
 package repository;
 
 import exceptions.command.IllegalIndexException;
+import exceptions.shape.DuplicatedShapeException;
 import shapes.Shape;
 
 import java.util.*;
@@ -10,7 +11,17 @@ public class ShapeRepository {
     private final List<ShapeRecord> shapes = new ArrayList<>();
 
     public void addShape(Shape shape) {
-        shapes.add(new ShapeRecord(shape));
+        if (!contains(shape)) {
+            shapes.add(new ShapeRecord(shape));
+        } else {
+            throw new DuplicatedShapeException();
+        }
+    }
+
+    private boolean contains(Shape shape) {
+        return shapes.stream()
+                .map(ShapeRecord::getShape)
+                .anyMatch(shape::equals);
     }
 
     public void sort(Comparator<ShapeRecord> comparator) {

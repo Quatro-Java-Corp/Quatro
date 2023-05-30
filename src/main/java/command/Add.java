@@ -21,8 +21,8 @@ class Add implements Command {
     public void run() {
         try {
             Shape shape = inputHandler.createFigureWithArguments(args);
-            System.out.println(shape.toString());
             shapeRepository.addShape(shape);
+            System.out.println(shape.toString());
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }

@@ -3,9 +3,11 @@ package shapes;
 import static java.lang.Math.PI;
 import static java.lang.Math.sqrt;
 
+import java.util.Objects;
 import java.util.Optional;
 
 import exceptions.argument.NegativeArgumentValueException;
+import utils.CompareDouble;
 import utils.Format;
 
 public class Ellipse implements Shape {
@@ -89,5 +91,18 @@ public class Ellipse implements Shape {
                 Format.parameterToString("area", getSurfaceArea()) + ", " +
                 Format.parameterToString("circut", getCircuit()) +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Ellipse ellipse = (Ellipse) o;
+        return CompareDouble.doubleEquals(ellipse.semiMinorAxis, semiMinorAxis) && CompareDouble.doubleEquals(ellipse.semiMajorAxis, semiMajorAxis);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(semiMinorAxis, semiMajorAxis);
     }
 }

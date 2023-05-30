@@ -2,9 +2,11 @@ package shapes;
 
 import exceptions.argument.NegativeArgumentValueException;
 import exceptions.shape.IllegalTriangleSidesException;
+import utils.CompareDouble;
 import utils.Format;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.stream.Stream;
 
@@ -38,17 +40,6 @@ public class Triangle implements Shape {
     }
 
     @Override
-    public String toString() {
-        return "Triangle{" +
-                "sideA=" + Format.format(shortSide) +
-                ", sideB=" + Format.format(mediumSide) +
-                ", sideC=" + Format.format(longSide) +
-                ", circuit=" + Format.format(getCircuit()) +
-                ", surfaceArea=" + Format.format(getSurfaceArea()) +
-                '}';
-    }
-
-    @Override
     public double getSurfaceArea() {
         double p = (shortSide + mediumSide + longSide) / 2;
         return sqrt(p * (p - shortSide) * (p - mediumSide) * (p - longSide));
@@ -72,5 +63,31 @@ public class Triangle implements Shape {
     @Override
     public int getVertexCount() {
         return 3;
+    }
+
+    @Override
+    public String toString() {
+        return "Triangle{" +
+                "sideA=" + Format.format(shortSide) +
+                ", sideB=" + Format.format(mediumSide) +
+                ", sideC=" + Format.format(longSide) +
+                ", circuit=" + Format.format(getCircuit()) +
+                ", surfaceArea=" + Format.format(getSurfaceArea()) +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Triangle triangle = (Triangle) o;
+        return CompareDouble.doubleEquals(triangle.shortSide, shortSide) &&
+                CompareDouble.doubleEquals(triangle.mediumSide, mediumSide) &&
+                CompareDouble.doubleEquals(triangle.longSide, longSide);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(shortSide, mediumSide, longSide);
     }
 }

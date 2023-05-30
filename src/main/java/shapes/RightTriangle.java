@@ -1,9 +1,11 @@
 package shapes;
 
+import java.util.Objects;
 import java.util.Optional;
 
 import exceptions.argument.NegativeArgumentValueException;
 import exceptions.shape.IllegalTriangleSidesException;
+import utils.CompareDouble;
 import utils.Format;
 
 import static java.lang.Math.*;
@@ -106,5 +108,18 @@ public class RightTriangle implements Shape {
                 Format.parameterToString("area", getSurfaceArea()) + ", " +
                 Format.parameterToString("circut", getCircuit()) +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        RightTriangle that = (RightTriangle) o;
+        return CompareDouble.doubleEquals(that.shortCathetusLength, shortCathetusLength) && CompareDouble.doubleEquals(that.longCathetusLength, longCathetusLength);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(shortCathetusLength, longCathetusLength);
     }
 }

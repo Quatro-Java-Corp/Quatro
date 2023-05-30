@@ -1,8 +1,10 @@
 package shapes;
 
+import java.util.Objects;
 import java.util.Optional;
 
 import exceptions.argument.NegativeArgumentValueException;
+import utils.CompareDouble;
 import utils.Format;
 
 import static java.lang.Math.*;
@@ -111,5 +113,18 @@ public class Rhombus implements Shape {
                 Format.parameterToString("area", getSurfaceArea()) + ", " +
                 Format.parameterToString("circut", getCircuit()) +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Rhombus rhombus = (Rhombus) o;
+        return CompareDouble.doubleEquals(rhombus.shortDiagonalLength, shortDiagonalLength) && CompareDouble.doubleEquals(rhombus.longDiagonalLength, longDiagonalLength);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(shortDiagonalLength, longDiagonalLength);
     }
 }
