@@ -10,6 +10,7 @@ import exceptions.argument.NegativeArgumentValueException;
 import exceptions.factory.IllegalSurfaceException;
 import exceptions.shape.IllegalTriangleSidesException;
 import utils.CompareDouble;
+import utils.Dictionary;
 import utils.Format;
 
 public class IsoscelesTriangle implements Shape {
@@ -112,7 +113,8 @@ public class IsoscelesTriangle implements Shape {
 
     @Override
     public String toString() {
-        return "IsoscelesTriangle{" +
+        return Dictionary.fromENG("isosclestriangle") +
+                "{" +
                 Format.parameterToString("side", sideLength) + ", " +
                 Format.parameterToString("base", baseLength) + ", " +
                 Format.parameterToString("area", getSurfaceArea()) + ", " +

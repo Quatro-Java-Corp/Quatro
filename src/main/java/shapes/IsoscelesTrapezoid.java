@@ -4,6 +4,7 @@ import exceptions.argument.NegativeArgumentValueException;
 import exceptions.shape.IsoscelesTrapezoidHeightShorterThenSideException;
 import exceptions.shape.IsoscelesTrapezoidTooShortBaseException;
 import utils.CompareDouble;
+import utils.Dictionary;
 import utils.Format;
 
 import java.util.Objects;
@@ -147,13 +148,14 @@ public class IsoscelesTrapezoid implements Shape {
 
     @Override
     public String toString() {
-        return "IsoscelesTrapezoid{" +
+        return Dictionary.fromENG("isoscelestrapezoid") +
+                "{" +
                 Format.parameterToString("shortbase", shortBaseLength) + ", " +
                 Format.parameterToString("longbase", longBaseLength) + ", " +
                 Format.parameterToString("height", getHeight()) + ", " +
                 Format.parameterToString("side", getSide()) + ", " +
                 Format.parameterToString("area", getSurfaceArea()) + ", " +
-                Format.parameterToString("circut", getCircuit()) +
+                Format.parameterToString("circuit", getCircuit()) +
                 '}';
     }
 

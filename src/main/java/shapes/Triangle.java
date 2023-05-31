@@ -3,6 +3,7 @@ package shapes;
 import exceptions.argument.NegativeArgumentValueException;
 import exceptions.shape.IllegalTriangleSidesException;
 import utils.CompareDouble;
+import utils.Dictionary;
 import utils.Format;
 
 import java.util.List;
@@ -67,12 +68,13 @@ public class Triangle implements Shape {
 
     @Override
     public String toString() {
-        return "Triangle{" +
+        return Dictionary.fromENG("triangle") +
+                "{" +
                 "sideA=" + Format.format(shortSide) +
                 ", sideB=" + Format.format(mediumSide) +
                 ", sideC=" + Format.format(longSide) +
                 ", circuit=" + Format.format(getCircuit()) +
-                ", surfaceArea=" + Format.format(getSurfaceArea()) +
+                ", area=" + Format.format(getSurfaceArea()) +
                 '}';
     }
 

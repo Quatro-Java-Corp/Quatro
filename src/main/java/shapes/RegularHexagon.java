@@ -4,6 +4,7 @@ import java.util.Objects;
 import java.util.Optional;
 
 import exceptions.argument.NegativeArgumentValueException;
+import utils.Dictionary;
 import utils.Format;
 import utils.CompareDouble;
 
@@ -69,7 +70,8 @@ public class RegularHexagon implements Shape {
 
     @Override
     public String toString() {
-        return "RegularHexagon{" +
+        return Dictionary.fromENG("regulaxhexagon") +
+                "{" +
                 Format.parameterToString("side", sideLength) + ", " +
                 Format.parameterToString("area", getSurfaceArea()) + ", " +
                 Format.parameterToString("circut", getCircuit()) +

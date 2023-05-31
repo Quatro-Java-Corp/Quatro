@@ -53,6 +53,7 @@ public class Dictionary {
             Map.entry("romb", "rhombus"),
             Map.entry("trójkątprostokątny", "righttriangle"),
             Map.entry("kwadrat", "square"),
+            Map.entry("trójkat", "triangle"),
             Map.entry("sześciokątforemny", "regularhexagon"));
 
     private static final Map<String, String> dictionaryFromENG = dictionaryFromPL.entrySet().stream()

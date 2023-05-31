@@ -9,6 +9,7 @@ import java.util.Optional;
 
 import exceptions.argument.NegativeArgumentValueException;
 import utils.CompareDouble;
+import utils.Dictionary;
 import utils.Format;
 
 public class Rectangle implements Shape {
@@ -108,7 +109,8 @@ public class Rectangle implements Shape {
 
     @Override
     public String toString() {
-        return "Rectangle{" +
+        return Dictionary.fromENG("rectangle") +
+                "{" +
                 Format.parameterToString("shortside", shortSideLength) + ", " +
                 Format.parameterToString("longside", longSideLength) + ", " +
                 Format.parameterToString("diagonal", getDiagonalLength()) + ", " +

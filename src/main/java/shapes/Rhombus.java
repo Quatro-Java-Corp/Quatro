@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import exceptions.argument.NegativeArgumentValueException;
 import utils.CompareDouble;
+import utils.Dictionary;
 import utils.Format;
 
 import static java.lang.Math.*;
@@ -106,7 +107,8 @@ public class Rhombus implements Shape {
 
     @Override
     public String toString() {
-        return "Rhombus{" +
+        return Dictionary.fromENG("rhombus") +
+                "{" +
                 Format.parameterToString("side", getSideLength()) + ", " +
                 Format.parameterToString("shortdiagonal", shortDiagonalLength) + ", " +
                 Format.parameterToString("longdiagonal", longDiagonalLength) + ", " +

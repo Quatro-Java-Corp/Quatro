@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import exceptions.argument.NegativeArgumentValueException;
 import utils.CompareDouble;
+import utils.Dictionary;
 import utils.Format;
 
 public class Circle implements Shape {
@@ -77,7 +78,8 @@ public class Circle implements Shape {
 
     @Override
     public String toString() {
-        return "Circle{" +
+        return Dictionary.fromENG("circle") +
+                "{" +
                 Format.parameterToString("circuit", getCircuit()) + ", " +
                 Format.parameterToString("diameter", getDiameter()) + ", " +
                 Format.parameterToString("radius", radius) + ", " +

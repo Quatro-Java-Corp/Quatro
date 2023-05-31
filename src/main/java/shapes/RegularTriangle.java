@@ -4,6 +4,7 @@ import java.util.Objects;
 import java.util.Optional;
 
 import exceptions.argument.NegativeArgumentValueException;
+import utils.Dictionary;
 import utils.Format;
 import utils.CompareDouble;
 
@@ -73,7 +74,8 @@ public class RegularTriangle implements Shape {
 
     @Override
     public String toString() {
-        return "RegularTriangle{" +
+        return Dictionary.fromENG("regulartriangle") +
+                "{" +
                 Format.parameterToString("side", sideLength) + ", " +
                 Format.parameterToString("height", getHeight()) + ", " +
                 Format.parameterToString("area", getSurfaceArea()) + ", " +
