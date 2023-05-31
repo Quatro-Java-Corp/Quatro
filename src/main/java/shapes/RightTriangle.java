@@ -6,6 +6,7 @@ import java.util.Optional;
 import exceptions.argument.NegativeArgumentValueException;
 import exceptions.shape.IllegalTriangleSidesException;
 import utils.CompareDouble;
+import utils.Dictionary;
 import utils.Format;
 
 import static java.lang.Math.*;
@@ -100,13 +101,14 @@ public class RightTriangle implements Shape {
 
     @Override
     public String toString() {
-        return "RightTriangle{" +
+        return Dictionary.fromENG("righttriangle") +
+                "{" +
                 Format.parameterToString("shortcathetus", shortCathetusLength) + ", " +
                 Format.parameterToString("longcathetus", longCathetusLength) + ", " +
                 Format.parameterToString("hypotenuse", getHypotenuse()) + ", " +
                 Format.parameterToString("height", getHeight()) + ", " +
                 Format.parameterToString("area", getSurfaceArea()) + ", " +
-                Format.parameterToString("circut", getCircuit()) +
+                Format.parameterToString("circuit", getCircuit()) +
                 '}';
     }
 

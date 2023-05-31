@@ -8,6 +8,7 @@ import java.util.Optional;
 
 import exceptions.argument.NegativeArgumentValueException;
 import utils.CompareDouble;
+import utils.Dictionary;
 import utils.Format;
 
 public class Ellipse implements Shape {
@@ -85,7 +86,8 @@ public class Ellipse implements Shape {
 
     @Override
     public String toString() {
-        return "Ellipse{" +
+        return Dictionary.fromENG("ellipse") +
+                "{" +
                 Format.parameterToString("semiminoraxis", semiMinorAxis) + ", " +
                 Format.parameterToString("semimajoraxis", semiMajorAxis) + ", " +
                 Format.parameterToString("area", getSurfaceArea()) + ", " +

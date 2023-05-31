@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import exceptions.argument.NegativeArgumentValueException;
 import utils.CompareDouble;
+import utils.Dictionary;
 import utils.Format;
 
 public final class Square implements Shape {
@@ -71,11 +72,12 @@ public final class Square implements Shape {
 
     @Override
     public String toString() {
-        return "Square{" +
+        return Dictionary.fromENG("square") +
+                "{" +
                 Format.parameterToString("side", sideLength) + ", " +
                 Format.parameterToString("diagonal", getDiagonalLength()) + ", " +
                 Format.parameterToString("area", getSurfaceArea()) + ", " +
-                Format.parameterToString("circut", getCircuit()) +
+                Format.parameterToString("circuit", getCircuit()) +
                 '}';
     }
 
